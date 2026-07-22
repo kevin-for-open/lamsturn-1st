@@ -80,14 +80,20 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <main data-screen-label="Home">
   <div style="position:relative;height:78vh;min-height:620px">
-    <div style="position:absolute;inset:0;opacity:{{ h1o }};transition:opacity 1s ease;pointer-events:{{ h1pe }};z-index:{{ h1z }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-hero" shape="rect" fit="cover" placeholder="Hero slide 1 — open flame over steel grill, dusk" hint-size="100%,100%"></x-import></div>
-    <div style="position:absolute;inset:0;opacity:{{ h2o }};transition:opacity 1s ease;pointer-events:{{ h2pe }};z-index:{{ h2z }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-hero-2" shape="rect" fit="cover" placeholder="Hero slide 2 — grill in a Michelin kitchen" hint-size="100%,100%"></x-import></div>
-    <div style="position:absolute;inset:0;opacity:{{ h3o }};transition:opacity 1s ease;pointer-events:{{ h3pe }};z-index:{{ h3z }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-hero-3" shape="rect" fit="cover" placeholder="Hero slide 3 — the workshop, sparks" hint-size="100%,100%"></x-import></div>
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 30%,rgba(19,17,16,0) 45%,rgba(19,17,16,.85) 90%,rgba(19,17,16,.4) 100%);pointer-events:none;z-index:5"></div>
+    <div style="position:absolute;inset:0 0 96px 0;opacity:{{ h1o }};transition:opacity 1s ease;pointer-events:{{ h1pe }};z-index:{{ h1z }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-hero" src="assets/photos/b-hero.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0 0 96px 0;opacity:{{ h2o }};transition:opacity 1s ease;pointer-events:{{ h2pe }};z-index:{{ h2z }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-hero-2" src="assets/photos/b-hero-2.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0 0 96px 0;opacity:{{ h3o }};transition:opacity 1s ease;pointer-events:{{ h3pe }};z-index:{{ h3z }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-hero-3" src="assets/photos/b-hero-3.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0 0 96px 0;opacity:{{ h4o }};transition:opacity 1s ease;pointer-events:{{ h4pe }};z-index:{{ h4z }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-hero-4" src="assets/photos/b-hero-4.jpg" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0 0 96px 0;opacity:{{ h5o }};transition:opacity 1s ease;pointer-events:{{ h5pe }};z-index:{{ h5z }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-hero-5" src="assets/photos/b-hero-5.jpg" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0 0 96px 0;opacity:{{ h6o }};transition:opacity 1s ease;pointer-events:{{ h6pe }};z-index:{{ h6z }}"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-hero-6" src="assets/photos/b-hero-6.jpg" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0 0 96px 0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 30%,rgba(19,17,16,0) 45%,rgba(19,17,16,.85) 90%,rgba(19,17,16,.4) 100%);pointer-events:none;z-index:5"></div>
     <div style="position:absolute;right:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));bottom:120px;z-index:20;display:flex;align-items:center;gap:10px;pointer-events:auto">
       <a onClick="{{ toSlide0 }}" aria-label="Slide 1" style="cursor:pointer;padding:8px 0;display:flex;flex-direction:column;gap:6px;align-items:center"><span style="display:block;width:34px;height:2px;background:{{ d1 }}"></span><span style="font:500 9.5px 'IBM Plex Mono',monospace;color:{{ d1 }}">01</span></a>
       <a onClick="{{ toSlide1 }}" aria-label="Slide 2" style="cursor:pointer;padding:8px 0;display:flex;flex-direction:column;gap:6px;align-items:center"><span style="display:block;width:34px;height:2px;background:{{ d2 }}"></span><span style="font:500 9.5px 'IBM Plex Mono',monospace;color:{{ d2 }}">02</span></a>
       <a onClick="{{ toSlide2 }}" aria-label="Slide 3" style="cursor:pointer;padding:8px 0;display:flex;flex-direction:column;gap:6px;align-items:center"><span style="display:block;width:34px;height:2px;background:{{ d3 }}"></span><span style="font:500 9.5px 'IBM Plex Mono',monospace;color:{{ d3 }}">03</span></a>
+      <a onClick="{{ toSlide3 }}" aria-label="Slide 4" style="cursor:pointer;padding:8px 0;display:flex;flex-direction:column;gap:6px;align-items:center"><span style="display:block;width:34px;height:2px;background:{{ d4 }}"></span><span style="font:500 9.5px 'IBM Plex Mono',monospace;color:{{ d4 }}">04</span></a>
+      <a onClick="{{ toSlide4 }}" aria-label="Slide 5" style="cursor:pointer;padding:8px 0;display:flex;flex-direction:column;gap:6px;align-items:center"><span style="display:block;width:34px;height:2px;background:{{ d5 }}"></span><span style="font:500 9.5px 'IBM Plex Mono',monospace;color:{{ d5 }}">05</span></a>
+      <a onClick="{{ toSlide5 }}" aria-label="Slide 6" style="cursor:pointer;padding:8px 0;display:flex;flex-direction:column;gap:6px;align-items:center"><span style="display:block;width:34px;height:2px;background:{{ d6 }}"></span><span style="font:500 9.5px 'IBM Plex Mono',monospace;color:{{ d6 }}">06</span></a>
     </div>
     <div style="position:absolute;left:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));right:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));bottom:110px;pointer-events:none;z-index:10">
       <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:18px">{{ t.heroEyebrow }}</div>
@@ -97,24 +103,13 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         <a onClick="{{ goProducts }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.4)" style-hover="border-color:#e05a1f;color:#e05a1f">{{ t.explore }}</a>
       </div>
     </div>
-    <div data-hide-sm style="position:absolute;left:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));right:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));bottom:32px;display:flex;gap:0;border-top:1px solid rgba(235,230,221,.25);pointer-events:none;z-index:10">
-      <div style="flex:1;padding:14px 0 0"><span style="font:500 12px 'IBM Plex Mono',monospace">STS 304</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — BODY & GRATES</span></div>
-      <div style="flex:1;padding:14px 0 0"><span style="font:500 12px 'IBM Plex Mono',monospace">GEAR-DRIVEN</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — 30 MM STEPS</span></div>
-      <div style="flex:1;padding:14px 0 0"><span style="font:500 12px 'IBM Plex Mono',monospace">100% IN-HOUSE</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — DESIGN TO WELD</span></div>
-      <div style="flex:0;padding:14px 0 0;white-space:nowrap"><span style="font:500 12px 'IBM Plex Mono',monospace">EST. 2012</span></div>
+    <div data-hide-sm style="position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:0;min-height:96px;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));box-sizing:border-box;background:#131110;border-top:1px solid rgba(235,230,221,.28);pointer-events:none;z-index:10">
+      <div style="flex:1"><span style="font:500 16px 'IBM Plex Mono',monospace">STS 304</span><span style="font:400 13.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — BODY & GRATES</span></div>
+      <div style="flex:1"><span style="font:500 16px 'IBM Plex Mono',monospace">GEAR-DRIVEN</span><span style="font:400 13.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — 30 MM STEPS</span></div>
+      <div style="flex:1"><span style="font:500 16px 'IBM Plex Mono',monospace">100% IN-HOUSE</span><span style="font:400 13.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — DESIGN TO WELD</span></div>
+      <div style="flex:0;white-space:nowrap"><span style="font:500 16px 'IBM Plex Mono',monospace">EST. 2012</span></div>
     </div>
   </div>
-
-  <section style="padding:88px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 72px">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5);margin-bottom:16px">{{ t.sec1Eyebrow }}</div>
-    <h2 style="margin:0 0 44px;font:600 clamp(30px,5vw,42px)/1.15 Archivo,sans-serif;letter-spacing:-.02em;max-width:24ch">{{ t.sec1Title }}</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
-      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">01</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">Parrilla</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradPd }}</p></div>
-      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">02</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">Robata</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradRd }}</p></div>
-      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">03</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">{{ t.tradB }}</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradBd }}</p></div>
-      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">04</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">{{ t.tradS }}</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradSd }}</p></div>
-    </div>
-  </section>
 
   <section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid rgba(235,230,221,.18);padding-inline:max(0px, calc((100% - 1280px) / 2))">
     <div style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center;gap:22px">
@@ -128,11 +123,11 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         <div><div style="font:600 34px Archivo,sans-serif;letter-spacing:-.02em">5-YR</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:5px">{{ t.lblWarranty }}</div></div>
       </div>
     </div>
-    <div data-rimg style="position:relative;min-height:520px;border-left:1px solid rgba(235,230,221,.18)"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="c-craft" shape="rect" fit="cover" placeholder="Workshop — welding / metalwork in the Seoul atelier" hint-size="100%,520px"></x-import></div>
+    <div data-rimg style="position:relative;min-height:520px;border-left:1px solid rgba(235,230,221,.18)"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="c-craft" src="assets/photos/c-craft.png" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
   </section>
 
   <section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid rgba(235,230,221,.18);padding-inline:max(0px, calc((100% - 1280px) / 2))">
-    <div data-rimg style="position:relative;min-height:520px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-gear" shape="rect" fit="cover" placeholder="Close-up — cogwheel gear & handle, macro" hint-size="100%,520px"></x-import></div>
+    <div data-rimg style="position:relative;min-height:520px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-gear" src="assets/photos/b-gear.png" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     <div style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-left:1px solid rgba(235,230,221,.18);display:flex;flex-direction:column;justify-content:center;gap:22px">
       <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.precisionEyebrow }}</div>
       <div style="display:flex;align-items:baseline;gap:12px"><span style="font:600 clamp(64px,12vw,104px)/0.9 Archivo,sans-serif;letter-spacing:-.045em;color:#e05a1f">30</span><span style="font:600 34px Archivo,sans-serif">mm</span></div>
@@ -155,7 +150,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       </div>
       <p style="margin:6px 0 0;font:400 14px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.btoFootPre }}<span style="color:#e05a1f">{{ t.btoFootAcc }}</span></p>
     </div>
-    <div data-rimg style="position:relative;min-height:560px;border-left:1px solid rgba(235,230,221,.18)"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-custom" shape="rect" fit="cover" placeholder="Bespoke install — chef & engineer over drawings, or custom grill in situ" hint-size="100%,560px"></x-import></div>
+    <div data-rimg style="position:relative;min-height:560px;border-left:1px solid rgba(235,230,221,.18)"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-custom" src="assets/photos/b-custom.png" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
   </section>
 
   <section style="padding:80px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.18)">
@@ -164,12 +159,64 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <a onClick="{{ goProducts }}" style="cursor:pointer;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#e05a1f">{{ t.allProducts }}</a>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px">
-      <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p1" shape="rect" fit="cover" placeholder="Asado grill — studio shot" hint-size="100%,280px"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif">{{ t.famAsado }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">LGA — 15 MODELS</span></div></a>
-      <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p2" shape="rect" fit="cover" placeholder="Robata grill — studio shot" hint-size="100%,280px"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif">{{ t.famRobata }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">LGY — 4 MODELS</span></div></a>
-      <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p3" shape="rect" fit="cover" placeholder="Professional smoker — studio shot" hint-size="100%,280px"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif">{{ t.famSmokers }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">LSO / LSV — 9 MODELS</span></div></a>
-      <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p4" shape="rect" fit="cover" placeholder="Indoor smoker — studio shot" hint-size="100%,280px"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif">{{ t.famIndoor }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">LSC — 7 MODELS</span></div></a>
-      <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p5" shape="rect" fit="cover" placeholder="Wood-fired oven — studio shot" hint-size="100%,280px"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif">{{ t.famOvens }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">LOW / LGR — 4 MODELS</span></div></a>
-      <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p6" shape="rect" fit="cover" placeholder="Accessories — tools flat lay" hint-size="100%,280px"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif">{{ t.famAcc }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">STS 304 — 16 PIECES</span></div></a>
+            <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p2" src="assets/photos/b-p2.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif">{{ t.famRobata }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">LGY — 2 MODELS</span></div></a>
+      <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p1g" src="assets/photos/b-p1g.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif;padding-right:10px">{{ t.famAsadoGear }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">LGA GEAR · 5 MODELS</span></div></a>
+      <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p1" src="assets/photos/b-p1.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif;padding-right:10px">{{ t.famAsadoChain }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">LGA CHAIN · 9 MODELS</span></div></a>
+      <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p4" src="assets/photos/b-p4.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif">{{ t.famIndoor }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">LSC — 7 MODELS</span></div></a>
+      <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p3" src="assets/photos/b-p3.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif">{{ t.famSmokers }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">LSO / LSV — 9 MODELS</span></div></a>
+      <a onClick="{{ goProducts }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p6" src="assets/photos/b-p6.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif">{{ t.famAcc }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">STS 304 — 13 PIECES</span></div></a>
+    
+    </div>
+  </section>
+
+  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.18)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+      <div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:14px">FIELD NOTES — REELS</div>
+        <h2 style="margin:0;max-width:20ch;font:600 clamp(30px,5vw,42px) Archivo,sans-serif;letter-spacing:-.02em">Real fire, real kitchens.</h2>
+      </div>
+      <div style="display:flex;gap:10px">
+        <a onClick="{{ prevReel }}" aria-label="Previous" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(235,230,221,.4);display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;padding-bottom:3px" style-hover="border-color:#e05a1f;color:#e05a1f">‹</a>
+        <a onClick="{{ nextReel }}" aria-label="Next" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(235,230,221,.4);display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;padding-bottom:3px" style-hover="border-color:#e05a1f;color:#e05a1f">›</a>
+      </div>
+    </div>
+    <div ref="{{ setReelRail }}" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;margin-top:32px;padding-bottom:4px">
+      <sc-for list="{{ reels }}" as="reel" hint-placeholder-count="7">
+      <div style="flex:0 0 auto;width:clamp(240px,70vw,300px);scroll-snap-align:start">
+        <div style="position:relative;aspect-ratio:9/16;background:#1c1917;overflow:hidden;border-radius:clamp(20px,2.4vw,30px)">
+          <sc-if value="{{ reel.v }}" hint-placeholder-val="{{ false }}">
+            <video ref="{{ reel.setVid }}" muted loop playsinline autoplay preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+              <a onClick="{{ reel.toggleMute }}" aria-label="Toggle sound" style="position:absolute;right:12px;bottom:12px;z-index:3;cursor:pointer;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(19,17,16,.5);backdrop-filter:blur(4px);border:1px solid rgba(235,230,221,.35);color:#ebe6dd" style-hover="border-color:#e05a1f"><sc-if value="{{ reel.muted }}" hint-placeholder-val="{{ true }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></sc-if><sc-if value="{{ reel.unmuted }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19.5 5a9 9 0 0 1 0 14"/></svg></sc-if></a>
+          </sc-if>
+          <sc-if value="{{ reel.img }}" hint-placeholder-val="{{ true }}">
+            <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ reel.id }}" src="{{ reel.poster }}" shape="rect" fit="cover" placeholder="Reel poster" hint-size="100%,100%"></x-import>
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div style="width:56px;height:56px;border-radius:50%;background:rgba(19,17,16,.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(235,230,221,.5)"><div style="width:0;height:0;border-left:16px solid #ebe6dd;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px"></div></div></div>
+          </sc-if>
+        </div>
+        <a onClick="{{ reel.go }}" style="cursor:pointer;display:block;margin-top:14px" style-hover="color:#e05a1f">
+          <div style="font:600 14px Archivo,sans-serif;color:#ebe6dd">{{ reel.cap }}</div>
+          <div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;margin-top:5px">{{ reel.tag }} — SEE THE GRILL →</div>
+        </a>
+      </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.18)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+      <div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:14px">COMMUNITY — @LAMSTURN</div>
+        <h2 style="margin:0;font:600 clamp(30px,5vw,42px) Archivo,sans-serif;letter-spacing:-.02em">Tagged #Lamsturn</h2>
+      </div>
+      <div style="display:flex;gap:10px">
+        <a onClick="{{ prevComm }}" aria-label="Previous" style="cursor:pointer;width:44px;height:44px;border:1px solid rgba(235,230,221,.4);display:flex;align-items:center;justify-content:center;font-size:15px" style-hover="border-color:#e05a1f;color:#e05a1f">◀</a>
+        <a onClick="{{ nextComm }}" aria-label="Next" style="cursor:pointer;width:44px;height:44px;border:1px solid rgba(235,230,221,.4);display:flex;align-items:center;justify-content:center;font-size:15px" style-hover="border-color:#e05a1f;color:#e05a1f">▶</a>
+      </div>
+    </div>
+    <div ref="{{ setCommRail }}" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:32px;padding-bottom:12px">
+      <sc-for list="{{ community }}" as="ig" hint-placeholder-count="8">
+      <div style="flex:0 0 auto;width:clamp(230px,26vw,320px);aspect-ratio:4/5;background:#1c1917;scroll-snap-align:start;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ ig.id }}" src="{{ ig.poster }}" shape="rect" fit="cover" placeholder="Tagged #Lamsturn" hint-size="100%,100%"></x-import></div>
+      </sc-for>
     </div>
   </section>
 
@@ -214,79 +261,20 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
 <sc-if value="{{ isProducts }}" hint-placeholder-val="{{ false }}">
 <main data-screen-label="Products" style="flex:1">
-  <div style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 40px;border-bottom:1px solid rgba(235,230,221,.18)">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5);margin-bottom:16px">{{ t.pEyebrow }}</div>
-    <h1 style="margin:0;font:600 clamp(34px,6.5vw,56px)/1.08 Archivo,sans-serif;letter-spacing:-.025em">{{ t.rangeTitle }}</h1>
-    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 32px;margin-top:28px;padding:20px 24px;background:#1c1917;border:1px solid rgba(235,230,221,.14)">
-      <p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.65)">{{ t.pIntro }}</p>
-      <a onClick="{{ goContact }}" style="cursor:pointer;white-space:nowrap;font:600 12.5px Archivo,sans-serif;letter-spacing:.05em;padding:12px 22px;border:1px solid #e05a1f;color:#e05a1f" style-hover="background:#e05a1f;color:#131110">{{ t.quote }}</a>
-    </div>
-    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px">
-      <span style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:rgba(235,230,221,.4);margin-right:4px">SORT BY</span>
-      <a onClick="{{ setPsArea }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ psArea }}">COOKING AREA</a>
-      <a onClick="{{ setPsSize }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ psSize }}">SIZE</a>
-      <a onClick="{{ setPsWeight }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ psWeight }}">WEIGHT</a>
-    </div>
+  <section style="padding:clamp(80px,13vh,160px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) clamp(40px,6vh,72px);border-bottom:1px solid rgba(235,230,221,.18)">
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:20px">{{ t.pEyebrow }}</div>
+    <h1 style="margin:0;max-width:14ch;font:600 clamp(44px,8.5vw,104px)/0.98 Archivo,sans-serif;letter-spacing:-.03em">Built to your fire.</h1>
+    <p style="margin:26px 0 0;max-width:56ch;font:400 clamp(15px,1.5vw,18px)/1.7 Archivo,sans-serif;color:rgba(235,230,221,.6)">Every model below is made to order — dimensions, grate pattern, accessories and finish shaped to your kitchen. Pricing on request, and a five-year warranty on every build.</p>
+  </section>
+  <div style="padding:clamp(48px,7vh,80px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 0">
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:14px">EVERY GRILL WE BUILD</div>
+    <h2 style="margin:0;font:600 clamp(30px,5vw,42px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.rangeTitle }}</h2>
   </div>
 
   <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
     <div data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:end;margin-bottom:32px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">01 — ASADO · CHAIN-DRIVEN</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">Chain-Driven Asado</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">Constructed from high-strength steel and finished with heat-resistant paint — a chain-drive height system built for easy maintenance and lasting durability.</p></div>
-      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p1" shape="rect" fit="cover" placeholder="Chain-driven asado family shot" hint-size="100%,200px"></x-import></div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
-      <sc-for list="{{ lgaChain }}" as="m" hint-placeholder-count="6">
-        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(224,90,31,.6)">
-          <div style="margin:-22px -22px 16px;aspect-ratio:4/3;background:#131110"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ m.c }}" shape="rect" fit="cover" placeholder="{{ m.c }}" hint-size="100%,100%"></x-import></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px 'IBM Plex Mono',monospace;color:#e05a1f;white-space:nowrap">{{ m.n }}</span></div>
-          <div style="margin-top:10px"><span style="display:inline-block;font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.75);border:1px solid rgba(235,230,221,.28);padding:3px 9px">{{ m.hgt }}</span></div>
-          <div style="display:flex;flex-direction:column;gap:5px;margin-top:14px;font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">
-            <div style="display:flex;justify-content:space-between;gap:12px"><span>SIZE</span><span style="color:rgba(235,230,221,.8)">{{ m.s }}</span></div>
-            <div style="display:flex;justify-content:space-between;gap:12px"><span>GRILL</span><span style="color:rgba(235,230,221,.8)">{{ m.g }}</span></div>
-            <div style="display:flex;justify-content:space-between;gap:12px"><span>WEIGHT</span><span style="color:rgba(235,230,221,.8)">{{ m.w }}</span></div>
-          </div>
-          <div style="display:flex;gap:18px;align-items:baseline">
-            <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
-              <a onClick="{{ goJ900 }}" style="cursor:pointer;display:inline-block;margin-top:16px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
-            </sc-if>
-            <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:16px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.7);border-bottom:1px solid rgba(235,230,221,.3);padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ t.reqQuote }}</a>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-  </section>
-
-  <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
-    <div data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:end;margin-bottom:32px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">02 — ASADO · GEAR-DRIVEN</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">Gear-Driven Asado</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">Machined entirely from stainless steel 304 with a precision gear system: smooth operation and adjustable height for exact heat control.</p></div>
-      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p1g" shape="rect" fit="cover" placeholder="Gear-driven asado family shot" hint-size="100%,200px"></x-import></div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
-      <sc-for list="{{ lgaGear }}" as="m" hint-placeholder-count="5">
-        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(224,90,31,.6)">
-          <div style="margin:-22px -22px 16px;aspect-ratio:4/3;background:#131110"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ m.c }}" shape="rect" fit="cover" placeholder="{{ m.c }}" hint-size="100%,100%"></x-import></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px 'IBM Plex Mono',monospace;color:#e05a1f;white-space:nowrap">{{ m.n }}</span></div>
-          <div style="margin-top:10px"><span style="display:inline-block;font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.75);border:1px solid rgba(235,230,221,.28);padding:3px 9px">{{ m.hgt }}</span></div>
-          <div style="display:flex;flex-direction:column;gap:5px;margin-top:14px;font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">
-            <div style="display:flex;justify-content:space-between;gap:12px"><span>SIZE</span><span style="color:rgba(235,230,221,.8)">{{ m.s }}</span></div>
-            <div style="display:flex;justify-content:space-between;gap:12px"><span>GRILL</span><span style="color:rgba(235,230,221,.8)">{{ m.g }}</span></div>
-            <div style="display:flex;justify-content:space-between;gap:12px"><span>WEIGHT</span><span style="color:rgba(235,230,221,.8)">{{ m.w }}</span></div>
-          </div>
-          <div style="display:flex;gap:18px;align-items:baseline">
-            <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
-              <a onClick="{{ goJ900 }}" style="cursor:pointer;display:inline-block;margin-top:16px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
-            </sc-if>
-            <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:16px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.7);border-bottom:1px solid rgba(235,230,221,.3);padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ t.reqQuote }}</a>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-  </section>
-
-  <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
-    <div data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:end;margin-bottom:32px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">03 — LGY SERIES · MANUAL</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famRobata }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.lgyIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">Manually operated: fully customisable to your kitchen layout and optimised for a range of recipes — a robust metal body with a hands-on, user-focused design.</p></div>
-      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p2" shape="rect" fit="cover" placeholder="Robata grill family shot" hint-size="100%,200px"></x-import></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">01 — LGY SERIES · MANUAL</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famRobata }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.lgyIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">Manually operated: fully customisable to your kitchen layout and optimised for a range of recipes — a robust metal body with a hands-on, user-focused design.</p></div>
+      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p2" src="assets/photos/b-p2.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
       <sc-for list="{{ lgy }}" as="m" hint-placeholder-count="4">
@@ -303,7 +291,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
             <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
               <a onClick="{{ m.go }}" style="cursor:pointer;display:inline-block;margin-top:16px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
             </sc-if>
-            <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:16px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.7);border-bottom:1px solid rgba(235,230,221,.3);padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ t.reqQuote }}</a>
+            
           </div>
         </div>
       </sc-for>
@@ -312,11 +300,11 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
     <div data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:end;margin-bottom:32px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">04 — LSO / LSV SERIES</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famSmokers }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.smokerIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">Precision, power and pure smoke — commercial-grade performance with stable smoke control and a compact footprint, scaling to full commercial lines.</p></div>
-      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p3" shape="rect" fit="cover" placeholder="Professional smoker family shot" hint-size="100%,200px"></x-import></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">02 — ASADO · GEAR-DRIVEN</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">Gear-Driven Asado</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">Machined entirely from stainless steel 304 with a precision gear system: smooth operation and adjustable height for exact heat control.</p></div>
+      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p1g" src="assets/photos/b-p1g.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
-      <sc-for list="{{ smokers }}" as="m" hint-placeholder-count="6">
+      <sc-for list="{{ lgaGear }}" as="m" hint-placeholder-count="5">
         <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(224,90,31,.6)">
           <div style="margin:-22px -22px 16px;aspect-ratio:4/3;background:#131110"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ m.c }}" shape="rect" fit="cover" placeholder="{{ m.c }}" hint-size="100%,100%"></x-import></div>
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px 'IBM Plex Mono',monospace;color:#e05a1f;white-space:nowrap">{{ m.n }}</span></div>
@@ -326,7 +314,12 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
             <div style="display:flex;justify-content:space-between;gap:12px"><span>GRILL</span><span style="color:rgba(235,230,221,.8)">{{ m.g }}</span></div>
             <div style="display:flex;justify-content:space-between;gap:12px"><span>WEIGHT</span><span style="color:rgba(235,230,221,.8)">{{ m.w }}</span></div>
           </div>
-          <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:16px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.7);border-bottom:1px solid rgba(235,230,221,.3);padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ t.reqQuote }}</a>
+          <div style="display:flex;gap:18px;align-items:baseline">
+            <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
+              <a onClick="{{ goJ900 }}" style="cursor:pointer;display:inline-block;margin-top:16px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
+            </sc-if>
+            
+          </div>
         </div>
       </sc-for>
     </div>
@@ -334,8 +327,35 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
     <div data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:end;margin-bottom:32px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">05 — LSC / LSO SERIES</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famIndoor }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.indoorIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">The innovation of home smokers — precision-engineered for authentic barbecue flavour that turns a backyard into a chef’s kitchen.</p></div>
-      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p4" shape="rect" fit="cover" placeholder="Indoor smoker family shot" hint-size="100%,200px"></x-import></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">03 — ASADO · CHAIN-DRIVEN</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">Chain-Driven Asado</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">Constructed from high-strength steel and finished with heat-resistant paint — a chain-drive height system built for easy maintenance and lasting durability.</p></div>
+      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p1" src="assets/photos/b-p1.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
+      <sc-for list="{{ lgaChain }}" as="m" hint-placeholder-count="6">
+        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(224,90,31,.6)">
+          <div style="margin:-22px -22px 16px;aspect-ratio:4/3;background:#131110"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ m.c }}" shape="rect" fit="cover" placeholder="{{ m.c }}" hint-size="100%,100%"></x-import></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px 'IBM Plex Mono',monospace;color:#e05a1f;white-space:nowrap">{{ m.n }}</span></div>
+          <div style="margin-top:10px"><span style="display:inline-block;font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.75);border:1px solid rgba(235,230,221,.28);padding:3px 9px">{{ m.hgt }}</span></div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-top:14px;font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">
+            <div style="display:flex;justify-content:space-between;gap:12px"><span>SIZE</span><span style="color:rgba(235,230,221,.8)">{{ m.s }}</span></div>
+            <div style="display:flex;justify-content:space-between;gap:12px"><span>GRILL</span><span style="color:rgba(235,230,221,.8)">{{ m.g }}</span></div>
+            <div style="display:flex;justify-content:space-between;gap:12px"><span>WEIGHT</span><span style="color:rgba(235,230,221,.8)">{{ m.w }}</span></div>
+          </div>
+          <div style="display:flex;gap:18px;align-items:baseline">
+            <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
+              <a onClick="{{ goJ900 }}" style="cursor:pointer;display:inline-block;margin-top:16px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
+            </sc-if>
+            
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
+    <div data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:end;margin-bottom:32px">
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">04 — LSC / LOW SERIES</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famIndoor }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.indoorIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">The innovation of home smokers — precision-engineered for authentic barbecue flavour that turns a backyard into a chef’s kitchen.</p></div>
+      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p4" src="assets/photos/b-p4.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
       <sc-for list="{{ indoor }}" as="m" hint-placeholder-count="6">
@@ -348,7 +368,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
             <div style="display:flex;justify-content:space-between;gap:12px"><span>GRILL</span><span style="color:rgba(235,230,221,.8)">{{ m.g }}</span></div>
             <div style="display:flex;justify-content:space-between;gap:12px"><span>WEIGHT</span><span style="color:rgba(235,230,221,.8)">{{ m.w }}</span></div>
           </div>
-          <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:16px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.7);border-bottom:1px solid rgba(235,230,221,.3);padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ t.reqQuote }}</a>
+          
         </div>
       </sc-for>
     </div>
@@ -356,11 +376,11 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
     <div data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:end;margin-bottom:32px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">06 — LOW / LGR SERIES</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famOvens }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.ovenIntro }}</p></div>
-      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p5" shape="rect" fit="cover" placeholder="Wood-fired oven family shot" hint-size="100%,200px"></x-import></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">05 — LSO / LSV SERIES</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famSmokers }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.smokerIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">Precision, power and pure smoke — commercial-grade performance with stable smoke control and a compact footprint, scaling to full commercial lines.</p></div>
+      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p3" src="assets/photos/b-p3.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
-      <sc-for list="{{ ovens }}" as="m" hint-placeholder-count="4">
+      <sc-for list="{{ smokers }}" as="m" hint-placeholder-count="6">
         <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(224,90,31,.6)">
           <div style="margin:-22px -22px 16px;aspect-ratio:4/3;background:#131110"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ m.c }}" shape="rect" fit="cover" placeholder="{{ m.c }}" hint-size="100%,100%"></x-import></div>
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px 'IBM Plex Mono',monospace;color:#e05a1f;white-space:nowrap">{{ m.n }}</span></div>
@@ -370,7 +390,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
             <div style="display:flex;justify-content:space-between;gap:12px"><span>GRILL</span><span style="color:rgba(235,230,221,.8)">{{ m.g }}</span></div>
             <div style="display:flex;justify-content:space-between;gap:12px"><span>WEIGHT</span><span style="color:rgba(235,230,221,.8)">{{ m.w }}</span></div>
           </div>
-          <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:16px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.7);border-bottom:1px solid rgba(235,230,221,.3);padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ t.reqQuote }}</a>
+          
         </div>
       </sc-for>
     </div>
@@ -378,8 +398,8 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
     <div data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;align-items:end;margin-bottom:32px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">07 — STS 304 TOOLS</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famAcc }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.accIntro }}</p></div>
-      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p6" shape="rect" fit="cover" placeholder="Accessories flat lay" hint-size="100%,200px"></x-import></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">06 — STS 304 TOOLS</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famAcc }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.accIntro }}</p></div>
+      <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p6" src="assets/photos/b-p6.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px">
       <sc-for list="{{ acc }}" as="m" hint-placeholder-count="8">
@@ -389,6 +409,17 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:3px">{{ m.n }}</div>
         </div>
       </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.18)">
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5);margin-bottom:16px">{{ t.sec1Eyebrow }}</div>
+    <h2 style="margin:0 0 44px;font:600 clamp(30px,5vw,42px)/1.15 Archivo,sans-serif;letter-spacing:-.02em;max-width:24ch">{{ t.sec1Title }}</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
+      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">01</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">Parrilla</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradPd }}</p></div>
+      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">02</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">Robata</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradRd }}</p></div>
+      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">03</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">{{ t.tradB }}</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradBd }}</p></div>
+      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">04</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">{{ t.tradS }}</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradSd }}</p></div>
     </div>
   </section>
 
@@ -436,14 +467,14 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           </svg>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="height:260px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ab-craft" shape="rect" fit="cover" placeholder="Brand portrait — save the photo from lamsturn.com/Lamsturn and drop it here" hint-size="100%,260px"></x-import></div>
+          <div style="height:260px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ab-craft" src="assets/photos/ab-craft.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
           <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.45)">THE WORKSHOP, AT WORK — LAMSTURN.COM</div>
         </div>
       </div>
     </div>
   </section>
   <section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-bottom:1px solid rgba(235,230,221,.18);padding-inline:max(0px, calc((100% - 1280px) / 2))">
-    <div data-rimg style="position:relative;min-height:520px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ab-atelier" shape="rect" fit="cover" placeholder="The workshop — wide shot" hint-size="100%,520px"></x-import></div>
+    <div data-rimg style="position:relative;min-height:520px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ab-atelier" src="assets/photos/ab-atelier.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     <div style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-left:1px solid rgba(235,230,221,.18);display:flex;flex-direction:column;justify-content:center;gap:20px">
       <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.workshopEyebrow }}</div>
       <h2 style="margin:0;font:600 clamp(28px,5vw,38px)/1.2 Archivo,sans-serif;letter-spacing:-.02em">{{ t.workshopTitle }}</h2>
@@ -458,7 +489,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <p style="margin:0;max-width:46ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.65)">{{ t.umzikimBody1 }}</p>
       <p style="margin:0;max-width:46ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.65)">{{ t.umzikimBody2 }}</p>
     </div>
-    <div data-rimg style="position:relative;min-height:520px;border-left:1px solid rgba(235,230,221,.18)"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ab-global" shape="rect" fit="cover" placeholder="Install abroad — grill in a European kitchen / crate shipping" hint-size="100%,520px"></x-import></div>
+    <div data-rimg style="position:relative;min-height:520px;border-left:1px solid rgba(235,230,221,.18)"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ab-global" src="assets/photos/ab-global.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
   </section>
   <section style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5);margin-bottom:36px">{{ t.milestonesLabel }}</div>
@@ -506,7 +537,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         </div>
         <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fInterestL }}</span>
           <select value="{{ fInterest }}" onChange="{{ onInterest }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none;cursor:pointer">
-            <option>Asado Grills (LGA)</option><option>Robata Grills (LGY)</option><option>Professional Smokers (LSO / LSV)</option><option>Indoor Smokers (LSC)</option><option>Ovens & Griddles (LOW / LGR)</option><option>Accessories</option><option>Custom build / full kitchen plan</option>
+            <option>Asado Grills (LGA)</option><option>Robata Grills (LGY)</option><option>Professional Smokers (LSO / LSV)</option><option>Indoor Smokers (LSC / LOW)</option><option>Accessories</option><option>Custom build / full kitchen plan</option>
           </select>
         </label>
         <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fMsgL }}</span><textarea value="{{ fMsg }}" onChange="{{ onMsg }}" rows="6" placeholder="{{ t.phMsg }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none;resize:vertical" style-focus="border-color:#e05a1f"></textarea></label>
@@ -534,7 +565,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   <div style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 0">
     <a onClick="{{ goProducts }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(235,230,221,.5)" style-hover="color:#e05a1f">{{ t.dCrumbLGA }}</a>
     <div data-r2 style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;margin-top:32px;align-items:stretch">
-      <div style="min-height:440px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-hero" shape="rect" fit="cover" placeholder="LGA_J900_T — 3/4 studio shot" hint-size="100%,100%"></x-import></div>
+      <div style="min-height:440px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-hero" src="assets/photos/j900-hero.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
       <div style="display:flex;flex-direction:column;gap:22px">
         <div>
           <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:14px">{{ t.jEyebrow }}</div>
@@ -565,7 +596,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   </section>
 
   <section style="position:relative;height:80vh;min-height:520px">
-    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-d1" shape="rect" fit="cover" placeholder="Gearbox & cast-iron handle — macro" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-d1" src="assets/photos/j900-d1.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 26%,rgba(19,17,16,0) 46%,rgba(19,17,16,.88) 92%);pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:8%;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
       <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">GEAR-DRIVEN FIRE CONTROL</div>
@@ -590,7 +621,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <h2 style="margin:0;font:600 clamp(28px,3.8vw,46px)/1.08 Archivo,sans-serif;letter-spacing:-.02em">Clear the ash, mid-service.</h2>
       <p style="margin:0;max-width:46ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.68)">An integrated charcoal support and ash drawer let you clear ash quickly and hygienically without stopping — clean airflow, consistent combustion, and less cleaning time at the end of the night.</p>
     </div>
-    <div style="position:relative;min-height:520px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-d2" shape="rect" fit="cover" placeholder="Ash drawer — pulled out" hint-size="100%,100%"></x-import></div>
+    <div style="position:relative;min-height:520px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-d2" src="assets/photos/j900-d2.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
   </section>
 
   <section style="position:relative;height:82vh;min-height:540px">
@@ -796,7 +827,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   <div style="padding:24px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 0"><a onClick="{{ goProducts }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(235,230,221,.5)" style-hover="color:#e05a1f">{{ t.dCrumbLGY }}</a></div>
 
   <section style="position:relative;height:84vh;min-height:600px;margin-top:14px">
-    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-hero" shape="rect" fit="cover" placeholder="LGY_840 — wide counter over binchotan" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-hero" src="assets/photos/lgy840-hero.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 26%,rgba(19,17,16,0) 46%,rgba(19,17,16,.88) 92%);pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:7vh;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
       <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.y8Eyebrow }}</div>
@@ -815,7 +846,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   </section>
 
   <section style="position:relative;height:80vh;min-height:520px">
-    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-d1" shape="rect" fit="cover" placeholder="Fire staged in zones — the wide coal bed" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-d1" src="assets/photos/lgy840-d1.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 26%,rgba(19,17,16,0) 46%,rgba(19,17,16,.88) 92%);pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:8%;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
       <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">FIRE IN ZONES</div>
@@ -1133,7 +1164,7 @@ class Component extends DCLogic {
     this._map.setView(mk.getLatLng(), Math.max(this._map.getZoom(), 6), { animate: true });
     try { const el = document.getElementById('lam-map'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); } catch(e) {}
   }
-  startTimer() { clearInterval(this._t); this._t = setInterval(() => this.setState(s => ({ slide: ((s.slide||0) + 1) % 3 })), 6000); }
+  startTimer() { clearInterval(this._t); this._t = setInterval(() => this.setState(s => ({ slide: ((s.slide||0) + 1) % 6 })), 6000); }
   setSlide(i) { this.startTimer(); this.setState({ slide: i }); }
   set(k) { return (e) => this.setState({ [k]: e.target.value, err:'' }); }
   renderVals() {
@@ -1144,7 +1175,7 @@ class Component extends DCLogic {
       { q: 'How do I place an order?', a: 'Please contact us at sales@lamsturn.com with your preferred model and shipping destination. We’ll send you a full quotation including lead time, shipping options, and payment details.' },
       { q: 'Do you ship internationally?', a: 'Yes — we ship worldwide. Smaller models are usually sent via FedEx, while larger orders are shipped by sea freight. We’ll recommend the most suitable method based on your location and order.' },
       { q: 'How long does production take?', a: 'Each Lamsturn grill is handcrafted to order. Production typically takes around 6 weeks after payment is confirmed, and shipping time depends on your destination and chosen method.' },
-      { q: 'What charcoal should I use?', a: 'We recommend high-quality hardwood lump charcoal. Avoid briquettes or self-lighting charcoal, as they produce more ash and can affect airflow and cooking performance.' },
+      { q: 'What charcoal should I use?', a: 'We recommend high-quality hardwood lump charcoal — or binchotan (white charcoal) for robata grilling, where its long, clean, steady burn is ideal. Avoid briquettes or self-lighting charcoal, as they produce more ash and can affect airflow and cooking performance.' },
       { q: 'How do I clean the grill?', a: 'Allow the grill to cool completely after use. Remove ash regularly, wipe the stainless steel with a soft cloth, and clean the grates with a grill brush. Avoid harsh chemicals or abrasive cleaners.' },
       { q: 'Can the grill stay outdoors?', a: 'Yes, though we recommend protecting it from prolonged exposure to rain, snow, and humidity. When not in use, store it under cover or use a weather-resistant cover to extend its lifespan.' },
       { q: 'Can I customize the grill?', a: 'Yes. We offer custom sizes and configurations for restaurants, hotels, and professional kitchens. Just contact us with your project requirements.' },
@@ -1200,10 +1231,12 @@ class Component extends DCLogic {
             "rangeTitle": "The range",
             "allProducts": "ALL PRODUCTS →",
             "famAsado": "Asado Grills",
+            "famAsadoChain": "Asado · Chain-Driven",
+            "famAsadoGear": "Asado · Gear-Driven",
             "famRobata": "Robata Grills",
             "famSmokers": "Professional Smokers",
             "famIndoor": "Indoor Smokers",
-            "famOvens": "Ovens & Griddles",
+            "famOvens": "Ovens",
             "famAcc": "Accessories",
             "michelinBlurb": "In service in Michelin three-star and two-star kitchens — and 60+ professional kitchens worldwide.",
             "seeMap": "SEE THE MAP →",
@@ -1215,8 +1248,8 @@ class Component extends DCLogic {
             "lgyIntro": "Compact binchotan grills for counter cooking — the most requested Lamsturn line in European and Asian fine dining. Serious heat from a small footprint, with a precision height-adjustment handle.",
             "smokerIntro": "In the offset firebox, heat and smoke roll into the cooking chamber as a slow vortex, wrapping the meat in smoke as it cooks. Stable smoke control and precise temperature, from compact verticals to 5.5-metre commercial lines — equally at home over direct fire.",
             "indoorIntro": "Real barbecue flavour, precision-engineered for indoor and backyard use — the smokehouse pit, brought home.",
-            "ovenIntro": "Wood-fired ovens in brick-lined steel, and round griddle plates stamped with the Lamsturn mark — companions to the open-fire line.",
-            "accIntro": "Not just tools — hanging grills, shovels, hooks and griddle plates that turn a Lamsturn grill into a complete culinary system. All engineered to fit every model in the range.",
+            "ovenIntro": "Wood-fired ovens in brick-lined steel — a companion to the open-fire line.",
+            "accIntro": "Not just tools — hanging grills, shovels and hooks that turn a Lamsturn grill into a complete culinary system. All engineered to fit every model in the range.",
             "reqQuote": "REQUEST A QUOTE →",
             "viewDetails": "VIEW DETAILS →",
             "prodCtaPre": "Don’t see your size? ",
@@ -1344,10 +1377,12 @@ class Component extends DCLogic {
             "rangeTitle": "La gama",
             "allProducts": "TODOS LOS PRODUCTOS →",
             "famAsado": "Parrillas Asado",
+            "famAsadoChain": "Asado · Cadena",
+            "famAsadoGear": "Asado · Engranaje",
             "famRobata": "Parrillas Robata",
             "famSmokers": "Ahumadores profesionales",
             "famIndoor": "Ahumadores de interior",
-            "famOvens": "Hornos y planchas",
+            "famOvens": "Hornos",
             "famAcc": "Accesorios",
             "michelinBlurb": "En servicio en Jungsik, Kwonsooksoo, Restaurant Allen y Amelia — y más de 60 cocinas profesionales en Corea, Europa y Asia.",
             "seeMap": "VER EL MAPA →",
@@ -1359,8 +1394,8 @@ class Component extends DCLogic {
             "lgyIntro": "Parrillas binchotan compactas para cocina de barra — la línea Lamsturn más solicitada en la alta cocina europea y asiática. Gran potencia en poco espacio, con palanca de altura de precisión.",
             "smokerIntro": "En el hogar lateral, calor y humo entran en la cámara como un lento remolino que envuelve la carne mientras se cocina. Control estable del humo y temperatura precisa, desde verticales compactos hasta líneas comerciales de 5,5 metros — igual de a gusto sobre fuego directo.",
             "indoorIntro": "Auténtico sabor de barbacoa, con ingeniería de precisión para interior y jardín — el ahumadero, en casa.",
-            "ovenIntro": "Hornos de leña en acero revestido de ladrillo y planchas redondas grabadas con el sello Lamsturn — el complemento de la línea de fuego abierto.",
-            "accIntro": "No solo herramientas — parrillas colgantes, palas, ganchos y planchas que convierten un Lamsturn en un sistema culinario completo. Todo diseñado para encajar con cada modelo de la gama.",
+            "ovenIntro": "Hornos de leña en acero revestido de ladrillo — el complemento de la línea de fuego abierto.",
+            "accIntro": "No solo herramientas — parrillas colgantes, palas y ganchos que convierten un Lamsturn en un sistema culinario completo. Todo diseñado para encajar con cada modelo de la gama.",
             "reqQuote": "SOLICITAR PRESUPUESTO →",
             "viewDetails": "VER DETALLES →",
             "prodCtaPre": "¿No ves tu medida? ",
@@ -1488,10 +1523,12 @@ class Component extends DCLogic {
             "rangeTitle": "产品系列",
             "allProducts": "全部产品 →",
             "famAsado": "Asado 烤炉",
+            "famAsadoChain": "Asado · 链条驱动",
+            "famAsadoGear": "Asado · 齿轮驱动",
             "famRobata": "Robata 烤炉",
             "famSmokers": "专业烟熏炉",
             "famIndoor": "室内烟熏炉",
-            "famOvens": "烤箱与铁板",
+            "famOvens": "烤箱",
             "famAcc": "配件",
             "michelinBlurb": "已服务于 Jungsik、Kwonsooksoo、Restaurant Allen 与 Amelia —— 以及遍布韩国、欧洲与亚洲的 60 多间专业厨房。",
             "seeMap": "查看地图 →",
@@ -1503,8 +1540,8 @@ class Component extends DCLogic {
             "lgyIntro": "紧凑型备长炭吧台烤炉 —— 欧洲与亚洲高级餐饮中最受青睐的 Lamsturn 系列。占地虽小，火力十足，配精准升降手柄。",
             "smokerIntro": "偏置火箱中，热与烟如缓慢的漩涡涌入烹饪室，在烹制中将肉裹入烟香。稳定的控烟与精准控温，从紧凑立式到 5.5 米商用线 —— 直火烧烤同样得心应手。",
             "indoorIntro": "地道的烧烤风味，为室内与庭院精密打造 —— 把烟熏工坊带回家。",
-            "ovenIntro": "砖衬钢制柴火烤箱，以及印有 Lamsturn 标记的圆形铁板 —— 明火系列的绝配。",
-            "accIntro": "不只是工具 —— 挂式炉栅、铲、钩与铁板，让 Lamsturn 烤炉成为完整的烹饪系统。全部为适配全系机型而设计。",
+            "ovenIntro": "砖衬钢制柴火烤箱 —— 明火系列的绝配。",
+            "accIntro": "不只是工具 —— 挂式炉栅、铲与钩，让 Lamsturn 烤炉成为完整的烹饪系统。全部为适配全系机型而设计。",
             "reqQuote": "索取报价 →",
             "viewDetails": "查看详情 →",
             "prodCtaPre": "没有你要的尺寸？",
@@ -1632,10 +1669,12 @@ class Component extends DCLogic {
             "rangeTitle": "La gamme",
             "allProducts": "TOUS LES PRODUITS →",
             "famAsado": "Grils Asado",
+            "famAsadoChain": "Asado · Chaîne",
+            "famAsadoGear": "Asado · Engrenage",
             "famRobata": "Grils Robata",
             "famSmokers": "Fumoirs professionnels",
             "famIndoor": "Fumoirs d’intérieur",
-            "famOvens": "Fours et plaques",
+            "famOvens": "Fours",
             "famAcc": "Accessoires",
             "michelinBlurb": "En service chez Jungsik, Kwonsooksoo, Restaurant Allen et Amelia — et plus de 60 cuisines professionnelles en Corée, en Europe et en Asie.",
             "seeMap": "VOIR LA CARTE →",
@@ -1647,8 +1686,8 @@ class Component extends DCLogic {
             "lgyIntro": "Grils binchotan compacts pour la cuisine de comptoir — la gamme Lamsturn la plus demandée dans la haute gastronomie européenne et asiatique. Une vraie puissance dans peu d’espace, avec une manette de hauteur de précision.",
             "smokerIntro": "Dans le foyer décalé, chaleur et fumée s’engouffrent dans la chambre en un lent tourbillon qui enveloppe la viande pendant la cuisson. Contrôle stable de la fumée et température précise, du vertical compact aux lignes commerciales de 5,5 mètres — tout aussi à l’aise sur feu direct.",
             "indoorIntro": "Une vraie saveur de barbecue, conçue avec précision pour l’intérieur et le jardin — le fumoir, à la maison.",
-            "ovenIntro": "Fours à bois en acier garni de brique et plaques rondes gravées de la marque Lamsturn — les compagnons de la ligne au feu ouvert.",
-            "accIntro": "Pas seulement des outils — grilles suspendues, pelles, crochets et plaques qui font d’un Lamsturn un système culinaire complet. Le tout conçu pour s’adapter à chaque modèle de la gamme.",
+            "ovenIntro": "Fours à bois en acier garni de brique — le compagnon de la ligne au feu ouvert.",
+            "accIntro": "Pas seulement des outils — grilles suspendues, pelles et crochets qui font d’un Lamsturn un système culinaire complet. Le tout conçu pour s’adapter à chaque modèle de la gamme.",
             "reqQuote": "DEMANDER UN DEVIS →",
             "viewDetails": "VOIR LES DÉTAILS →",
             "prodCtaPre": "Votre format n’y est pas ? ",
@@ -1776,10 +1815,12 @@ class Component extends DCLogic {
             "rangeTitle": "製品ライン",
             "allProducts": "すべての製品 →",
             "famAsado": "アサード・グリル",
+            "famAsadoChain": "アサード · チェーン式",
+            "famAsadoGear": "アサード · ギア式",
             "famRobata": "炉端グリル",
             "famSmokers": "業務用スモーカー",
             "famIndoor": "屋内用スモーカー",
-            "famOvens": "オーブン & 鉄板",
+            "famOvens": "オーブン",
             "famAcc": "アクセサリー",
             "michelinBlurb": "Jungsik、Kwonsooksoo、Restaurant Allen、Amelia で稼働中 — さらに韓国・ヨーロッパ・アジアの 60 を超えるプロの厨房で。",
             "seeMap": "地図を見る →",
@@ -1791,8 +1832,8 @@ class Component extends DCLogic {
             "lgyIntro": "カウンター調理のためのコンパクトな備長炭グリル — ヨーロッパとアジアのファインダイニングで最も求められる Lamsturn のラインです。小さな設置面積から本格的な火力を、精密な高さ調整ハンドルとともに。",
             "smokerIntro": "オフセットの火室では、熱と煙がゆるやかな渦となって調理室へ流れ込み、火が入るあいだ肉を煙で包みます。安定した煙のコントロールと精密な温度管理を、コンパクトな縦型から 5.5 メートルの業務用ラインまで — 直火でも同じように使えます。",
             "indoorIntro": "本物のバーベキューの風味を、屋内と庭での使用に合わせて精密に設計 — スモークハウスのピットを、家庭へ。",
-            "ovenIntro": "レンガ張りの鋼でつくる薪窯と、Lamsturn の刻印を押した丸い鉄板 — 直火のラインに寄り添う仲間たちです。",
-            "accIntro": "単なる道具ではなく — 吊りグリル、シャベル、フック、鉄板が、Lamsturn のグリルを完全な調理システムへと変えます。すべてがラインナップの全モデルに適合するよう設計されています。",
+            "ovenIntro": "レンガ張りの鋼でつくる薪窯 — 直火のラインに寄り添う一台です。",
+            "accIntro": "単なる道具ではなく — 吊りグリル、シャベル、フックが、Lamsturn のグリルを完全な調理システムへと変えます。すべてがラインナップの全モデルに適合するよう設計されています。",
             "reqQuote": "見積もりを依頼 →",
             "viewDetails": "詳細を見る →",
             "prodCtaPre": "お探しの寸法がありませんか? ",
@@ -2236,15 +2277,12 @@ class Component extends DCLogic {
       {c:'LGA_J900_T', n:'GEAR · TABLETOP', s:'W900×D743.5×H920', g:'W378×D495', w:'120 KG', hasDetail:true},
       {c:'LGA_D1500_T', n:'GEAR · TABLETOP', s:'W1500×D836×H1000', g:'W444×D670', w:'350 KG'},
       {c:'LGA_D1500_S', n:'GEAR · STAND', s:'W1500×D836×H1800', g:'W444×D670', w:'460 KG'},
-      {c:'LGR_5500_S', n:'MANUAL · STAND', s:'W1500×D770×H1681', g:'W565/258×D270', w:'269 KG'},
       {c:'LGA_M1000_T', n:'MANUAL · REFRACTORY BRICK', s:'W1000×D700×H980', g:'W295×D600 ×9', w:'103 KG'}
     ];
     const gL6 = () => this.go('lgy610'), gL8 = () => this.go('lgy840');
     const lgy = [
-      {c:'LGY_610_D300', n:'ROBATA · COMPACT', s:'W610×D300×H510', g:'W315×D250', w:'35 KG', hasDetail:true, go:gL6},
-      {c:'LGY_840_D300', n:'ROBATA · WIDE', s:'W840×D300×H510', g:'W315×D250', w:'46 KG', hasDetail:true, go:gL8},
-      {c:'LGY_610_D400', n:'ROBATA · DEEP', s:'W610×D400×H510', g:'W292×D354', w:'45 KG', hasDetail:true, go:gL6},
-      {c:'LGY_840_D400', n:'ROBATA · WIDE DEEP', s:'W840×D400×H510', g:'W409×D354', w:'55 KG', hasDetail:true, go:gL8}
+      {c:'LGY_610', n:'ROBATA · D300 / D400', s:'W610×D300/400×H510', g:'W315×250 · W292×354', w:'35 / 45 KG', hasDetail:true, go:gL6},
+      {c:'LGY_840', n:'ROBATA · D300 / D400', s:'W840×D300/400×H510', g:'W315×250 · W409×354', w:'46 / 55 KG', hasDetail:true, go:gL8}
     ];
     const smokers = [
       {c:'LSO_1800_SE', n:'VERTICAL · SE', s:'W1779×D645×H1836', g:'W886×D485/195', w:'155 KG'},
@@ -2264,22 +2302,19 @@ class Component extends DCLogic {
       {c:'LSO_1300_PA', n:'SLIM VERTICAL · PA', s:'W1258×D533×H1756', g:'W536×D395', w:'68 KG'},
       {c:'LSO_1800_Li_SE', n:'LIGHT · SE', s:'W1768×D582×H1833', g:'W886×D485/195', w:'89 KG'},
       {c:'LSO_1800_Li_PA', n:'LIGHT · PA', s:'W1768×D582×H1833', g:'W886×D485/195', w:'89 KG'},
-      {c:'LGC_380', n:'PORTABLE · WITH BAG', s:'W372×D309×H333', g:'W315×D250', w:'11 KG'}
+      {c:'LGC_380', n:'PORTABLE · WITH BAG', s:'W372×D309×H333', g:'W315×D250', w:'11 KG'},
+      {c:'LOW_800_S', n:'WOOD-FIRED OVEN', s:'W800×D982×H1606', g:'OPENING W480×D285', w:'350 KG'},
+      {c:'LOW_1100_S', n:'WOOD-FIRED OVEN', s:'W1050×D982×H1606', g:'OPENING W550×D285', w:'455 KG'}
     ];
     const ovens = [
       {c:'LOW_800_S', n:'WOOD-FIRED OVEN', s:'W800×D982×H1606', g:'OPENING W480×D285', w:'350 KG'},
-      {c:'LOW_1100_S', n:'WOOD-FIRED OVEN', s:'W1050×D982×H1606', g:'OPENING W550×D285', w:'455 KG'},
-      {c:'LGR_C_600', n:'ROUND GRIDDLE', s:'Ø600×6 MM', g:'LOGO PLATE Ø215', w:'11 KG'},
-      {c:'LGR_C_800', n:'ROUND GRIDDLE', s:'Ø800×6 MM', g:'LOGO PLATE Ø215', w:'20 KG'}
+      {c:'LOW_1100_S', n:'WOOD-FIRED OVEN', s:'W1050×D982×H1606', g:'OPENING W550×D285', w:'455 KG'}
     ];
     const acc = [
       {c:'Hanging Grill 520', s:'W520×D522×H152', n:'FOR LGA_900'},
       {c:'Hanging Grill 210', s:'W202×D522×H152', n:'FOR LGA_900'},
       {c:'Hanging Grill 580', s:'W577×D522×H152', n:'FOR LGA_1800'},
       {c:'Hanging Grill 320', s:'W312×D522×H152', n:'FOR LGA_1800'},
-      {c:'Griddle LGR_S_3X3', s:'W357×D300×H67', n:'BLACK STEEL PLATE'},
-      {c:'Griddle LGR_S_5X3', s:'W552×D300×H67', n:'BLACK STEEL PLATE'},
-      {c:'Griddle LGR_S_5X5', s:'W552×D495×H67', n:'BLACK STEEL PLATE'},
       {c:'Scraper', s:'L357×W155×H60', n:'STS 304'},
       {c:'Shovel', s:'L552×W155×H30', n:'STS 304'},
       {c:'Hook', s:'L552×W90×H28', n:'STS 304'},
@@ -2305,6 +2340,21 @@ class Component extends DCLogic {
     const psChip = v => (s.prodSort||'area')===v ? '#e05a1f' : 'rgba(235,230,221,.5)';
     const psArea = psChip('area'), psSize = psChip('size'), psWeight = psChip('weight');
     const setPsArea = () => this.setState({prodSort:'area'}), setPsSize = () => this.setState({prodSort:'size'}), setPsWeight = () => this.setState({prodSort:'weight'});
+    const reels = [
+        {id:'reel-6', v:true, img:false, video:'assets/video/reel-6.mp4', poster:'', cap:'BMW — on location', tag:'IN SERVICE', go:()=>this.go('products')},
+        {id:'reel-5', v:true, img:false, video:'assets/video/reel-5.mp4', poster:'assets/photos/reel-5.jpg', cap:'Restaurant Papilio — Prague', tag:'LGY_610', go:()=>this.go('lgy610')},
+        {id:'reel-4', v:true, img:false, video:'assets/video/reel-4.mp4', poster:'', cap:'LGA_J900_T — asado', tag:'LGA_J900_T', go:()=>this.go('j900')},
+        {id:'reel-1', v:true, img:false, video:'assets/video/reel-1.mp4', poster:'assets/photos/reel-1.jpg', cap:'Robata — LGY_610 / 840', tag:'LGY_840', go:()=>this.go('lgy840')},
+        {id:'reel-7', v:true, img:false, video:'assets/video/reel-7.mp4', poster:'assets/photos/reel-7.jpg', cap:'LGC_380 — portable', tag:'PORTABLE', go:()=>this.go('products')},
+        {id:'reel-2', v:true, img:false, video:'assets/video/reel-2.mp4', poster:'', cap:'Around the fire', tag:'IN SERVICE', go:()=>this.go('products')},
+        {id:'reel-3', v:true, img:false, video:'assets/video/reel-3.mp4', poster:'', cap:'In the workshop', tag:'BASED ON CRAFT', go:()=>this.go('products')},
+    ].map((r) => Object.assign({}, r, {
+      muted: (s.mutedMap||{})[r.id] !== false,
+      unmuted: (s.mutedMap||{})[r.id] === false,
+      soundLabel: (s.mutedMap||{})[r.id] !== false ? 'SOUND OFF' : 'SOUND ON',
+      setVid: (el) => { if (!el) return; this._vids = this._vids || {}; this._vids[r.id] = el; el.muted = (this.state.mutedMap||{})[r.id] !== false; el.loop = true; el.playsInline = true; if (el.getAttribute('data-src') !== r.video) { el.setAttribute('data-src', r.video); if (r.poster) el.poster = r.poster; el.src = r.video; } const p = el.play(); if (p && p.catch) p.catch(()=>{}); },
+      toggleMute: () => { const el = (this._vids||{})[r.id]; const cur = (this.state.mutedMap||{})[r.id] !== false; const nm = !cur; if (el) el.muted = nm; this.setState((st) => ({ mutedMap: Object.assign({}, st.mutedMap, { [r.id]: nm }) })); },
+    }));
     return {
       isHome: s.page==='home', isProducts: s.page==='products', isAbout: s.page==='about', isContact: s.page==='contact', isKitchens: s.page==='kitchens', isJ900: s.page==='j900', isLgy610: s.page==='lgy610', isLgy840: s.page==='lgy840',
       goJ900: () => this.go('j900'), goLgy610: () => this.go('lgy610'), goLgy840: () => this.go('lgy840'),
@@ -2312,12 +2362,22 @@ class Component extends DCLogic {
       goKitchens: () => this.go('kitchens'),
       goHome: () => this.go('home'), goProducts: () => this.go('products'), goAbout: () => this.go('about'), goContact: () => this.go('contact'),
       menuOpen: !!s.menu, toggleMenu: () => this.setState({ menu: !this.state.menu }), mHome: s.page==='home'?active:idle,
-      h1o: (s.slide||0)===0?1:0, h2o: (s.slide||0)===1?1:0, h3o: (s.slide||0)===2?1:0,
-      h1pe: (s.slide||0)===0?'auto':'none', h2pe: (s.slide||0)===1?'auto':'none', h3pe: (s.slide||0)===2?'auto':'none',
-      h1z: (s.slide||0)===0?2:1, h2z: (s.slide||0)===1?2:1, h3z: (s.slide||0)===2?2:1,
-      d1: (s.slide||0)===0?active:'rgba(235,230,221,.45)', d2: (s.slide||0)===1?active:'rgba(235,230,221,.45)', d3: (s.slide||0)===2?active:'rgba(235,230,221,.45)',
-      toSlide0: () => this.setSlide(0), toSlide1: () => this.setSlide(1), toSlide2: () => this.setSlide(2),
-      lang, t, faqItems, onLang: (e) => this.setState({ lang: e.target.value }),
+      h1o: (s.slide||0)===0?1:0, h2o: (s.slide||0)===1?1:0, h3o: (s.slide||0)===2?1:0, h4o: (s.slide||0)===3?1:0, h5o: (s.slide||0)===4?1:0, h6o: (s.slide||0)===5?1:0,
+      h1pe: (s.slide||0)===0?'auto':'none', h2pe: (s.slide||0)===1?'auto':'none', h3pe: (s.slide||0)===2?'auto':'none', h4pe: (s.slide||0)===3?'auto':'none', h5pe: (s.slide||0)===4?'auto':'none', h6pe: (s.slide||0)===5?'auto':'none',
+      h1z: (s.slide||0)===0?2:1, h2z: (s.slide||0)===1?2:1, h3z: (s.slide||0)===2?2:1, h4z: (s.slide||0)===3?2:1, h5z: (s.slide||0)===4?2:1, h6z: (s.slide||0)===5?2:1,
+      d1: (s.slide||0)===0?active:'rgba(235,230,221,.45)', d2: (s.slide||0)===1?active:'rgba(235,230,221,.45)', d3: (s.slide||0)===2?active:'rgba(235,230,221,.45)', d4: (s.slide||0)===3?active:'rgba(235,230,221,.45)', d5: (s.slide||0)===4?active:'rgba(235,230,221,.45)', d6: (s.slide||0)===5?active:'rgba(235,230,221,.45)',
+      toSlide0: () => this.setSlide(0), toSlide1: () => this.setSlide(1), toSlide2: () => this.setSlide(2), toSlide3: () => this.setSlide(3), toSlide4: () => this.setSlide(4), toSlide5: () => this.setSlide(5),
+      lang, t, faqItems,
+      reels,
+      community: [{id:'ig-1',poster:''},{id:'ig-2',poster:''},{id:'ig-3',poster:''},{id:'ig-4',poster:''},{id:'ig-5',poster:''},{id:'ig-6',poster:''},{id:'ig-7',poster:''},{id:'ig-8',poster:''}],
+      setCommRail: (el)=>{ this._comm = el; },
+      prevComm: ()=>{ if(this._comm) this._comm.scrollBy({left:-Math.round(this._comm.clientWidth*0.85), behavior:'smooth'}); },
+      nextComm: ()=>{ if(this._comm) this._comm.scrollBy({left:Math.round(this._comm.clientWidth*0.85), behavior:'smooth'}); },
+      setReelRail: (el)=>{ this._reelRail = el; },
+      prevReel: ()=>{ if(this._reelRail) this._reelRail.scrollBy({left:-Math.round(this._reelRail.clientWidth*0.8), behavior:'smooth'}); },
+      nextReel: ()=>{ if(this._reelRail) this._reelRail.scrollBy({left:Math.round(this._reelRail.clientWidth*0.8), behavior:'smooth'}); },
+      setReelVid: (el)=>{ if(el){ el.muted=true; el.loop=true; el.playsInline=true; const p=el.play(); if(p&&p.catch)p.catch(()=>{}); } },
+      onLang: (e) => this.setState({ lang: e.target.value }),
       showMichelin: this.props.showMichelin ?? true,
       lgaChain: lgaChainS, lgaGear: lgaGearS, lgy: lgyS, smokers: smokersS, indoor: indoorS, ovens: ovensS, acc,
       psArea, psSize, psWeight, setPsArea, setPsSize, setPsWeight,
