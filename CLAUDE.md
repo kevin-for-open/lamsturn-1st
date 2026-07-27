@@ -196,3 +196,7 @@ account, **expires 2027-08-01**) and `CLOUDFLARE_ACCOUNT_ID`.
   bundle — it 404s in production. Either add the folder + PDF or remove the button.
 - Optional: PDF catalog download, OG meta tags.
 - About timeline years (2016/2020/2024) were estimates — confirm with the brand.
+- **Three-star venues are not in `const D` yet.** `michelinBlurb` says "Michelin three-star and
+  two-star kitchens" while the data tops out at two stars (`m = 3`). This is deliberate — the
+  three-star kitchens are to be added to the dataset shortly. **Do not "correct" the copy**; add
+  the venues instead, with a new tier above `m = 3` and matching `GRP` labels in all five languages.
