@@ -1,0 +1,81 @@
+name: Deploy to Cloudflare Pages
+
+# Ordinary commits to main do NOT deploy.
+# Release either by clicking "Run workflow" on the Actions tab,
+# or by pushing a version tag:  git tag v1.0 && git push origin v1.0
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+# Never let two deployments race each other.
+concurrency:
+  group: cloudflare-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Build a clean upload directory: the site only, no repo/internal files.
+      # CLAUDE.md and README.md are excluded on purpose — they would otherwise be
+      # publicly fetchable at /CLAUDE.md and they contain internal notes and TODOs.
+      - name: Stage site files
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='_site' \
+            --exclude='.gitignore' \
+            --exclude='.gitattributes' \
+            --exclude='.image-slots.state.json' \
+            --exclude='CLAUDE.md' \
+            --exclude='README.md' \
+            ./ _site/
+
+      - name: Sanity check the bundle
+        run: |
+          set -e
+          test -f _site/index.html || { echo "::error::index.html missing"; exit 1; }
+          test -f _site/support.js || { echo "::error::support.js missing — the site would not render"; exit 1; }
+
+          echo "files: $(find _site -type f | wc -l)"
+          echo "size:  $(du -sh _site | cut -f1)"
+
+          # Cloudflare Pages rejects any single file over 25 MiB.
+          big=$(find _site -type f -size +25M)
+          if [ -n "$big" ]; then
+            echo "::error::file(s) exceed the 25 MiB Cloudflare Pages limit:"
+            echo "$big"
+            exit 1
+          fi
+
+          # Every local asset referenced by index.html must exist with exactly the
+          # right case. Windows and macOS are case-insensitive but Cloudflare is not,
+          # so a case slip shows up only in production as silently broken images.
+          missing=0
+          for ref in $(grep -oE 'assets/[A-Za-z0-9_./-]+\.(webp|jpg|jpeg|png|svg|mp4)' _site/index.html | sort -u); do
+            if [ ! -f "_site/$ref" ]; then
+              echo "::error::referenced asset missing or wrong case: $ref"
+              missing=1
+            fi
+          done
+          [ "$missing" -eq 0 ] || exit 1
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: >-
+            pages deploy _site
+            --project-name=fire
+            --branch=main
+            --commit-dirty=true
