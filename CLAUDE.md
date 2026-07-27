@@ -5,6 +5,9 @@ brand (asado / robata / smokers), targeting international professional-kitchen i
 
 This file briefs you (Claude Code) on how the project is built so you can make changes safely.
 
+Last verified against the build: **2026-07-27** (0723 final build + dead-key cleanup,
+`index.html` ≈ 329 KB).
+
 ---
 
 ## How to run it
@@ -28,77 +31,149 @@ python3 -m http.server 8000   # open http://localhost:8000/
 
 1. **`support.js`** — the runtime that renders the component. **Do not edit.** It parses the
    `<x-dc>` template, resolves `{{ }}` holes, and mounts the logic class.
-2. **The template** — everything between `<x-dc>` and `</x-dc>`. Plain HTML with **inline styles
-   only** (no CSS classes/stylesheets — keep it that way). Dynamic values are `{{ dotted.paths }}`
-   filled from the logic class. Control flow uses `<sc-if>` / `<sc-for>`.
+2. **The template** — everything between `<x-dc>` and `</x-dc>` (roughly lines 20–1100). Plain HTML
+   with **inline styles only** (no CSS classes/stylesheets — keep it that way). Dynamic values are
+   `{{ dotted.paths }}` filled from the logic class. Control flow uses `<sc-if>` / `<sc-for>`.
 3. **The logic class** — inside `<script type="text/x-dc" data-dc-script>`:
    `class Component extends DCLogic { … }`. `renderVals()` returns every value the template reads.
    This is plain JS (no imports/TypeScript). Put any computed value / handler here and expose it by
    name; the template can only do dotted lookups, never expressions like `{{ a + b }}`.
 
-### Where things live (search inside `index.html`)
+External CDN dependencies (in `<helmet>`): Google Fonts (Archivo, IBM Plex Mono) and
+**Leaflet 1.9.4** for the kitchens map.
+
+### Where things live (line numbers are approximate — search by name)
 
 | What | Where |
 |---|---|
-| Page routing (home / products / about / contact / product-detail) | `state.page`, the `go(p)` method, and `nav*` vals in `renderVals()` |
-| **All UI copy**, 5 languages | the **`T`** object in `renderVals()` — keys `EN`, `ES`, `ZH`, `FR`, `JA` |
-| Product-detail copy, 5 languages | the **`DT`** object (same 5 language keys) |
-| Language switcher | two `<select>`s near the top (desktop nav + mobile menu) → `onLang` |
-| Product tables (models, dims, weights) | `lga`, `lgy`, `smokers`, `indoor`, `ovens`, `acc` arrays — **not translated** (model codes/specs stay as-is) |
-| World map + restaurant list | Leaflet (CDN), `installs` array of pins, kitchens section in `renderVals()` |
-| Kitchens tier/column labels per language | `GRP` and `COL` objects |
-| Tweakable props (`lang`, `showMichelin`) | `data-props` on the `<script>` tag |
+| Page routing (home / products / about / contact / compare / product-detail) | `state.page`, the `go(p)` method, and `nav*` vals in `renderVals()` |
+| **All UI copy**, 5 languages, **264 keys each** | the **`T`** object, line ~1256 — keys `EN`, `ES`, `ZH`, `FR`, `JA` |
+| **Product-detail body copy** | also in **`T`** — the 69 `dj*` (J900) and `dy*` (LGY) keys |
+| Detail-page eyebrows / intros / breadcrumbs / CTAs | the **`DT`** object — **20 keys** per language |
+| How the template sees copy | `renderVals()` does `const t = Object.assign({}, T[lang], DT[lang])` — so **both** objects are read as `{{ t.someKey }}`; there is no `dt.` namespace in the template |
+| Language switcher | two `<select>`s (desktop nav + mobile menu) → `onLang` |
+| Product tables (models, dims, weights) | `lga`, `lgy`, `smokers`, `indoor`, `acc` arrays — **not translated** (model codes/specs stay as-is) |
+| Kitchens map + restaurant list | Leaflet; venue data in `const D` (line ~1127), mapped to `this._inst` at line ~1210 |
+| Kitchens tier/column labels per language | `GRP` (line ~3128) and `COL` (line ~3143) |
+| Tweakable props (`lang`, `showMichelin`) | `data-props` on the `<script data-dc-script>` tag |
+
+### Kitchens / Michelin data
+
+`const D` is a compact tuple array — `[name, lat, lng, prods, m, place]`. **79 rows**; the one row
+with `m === -1` is a showroom and is filtered out of the kitchen count, so the site shows
+**78 kitchens**, 17 of them Michelin-rated (`m > 0`).
+
+`m` (tier) mapping, used for the list badge and map popup around line 1233:
+
+| `m` | Meaning | Rows |
+|---|---|---|
+| `3` | Two Michelin stars | 7 |
+| `2` | One Michelin star | 2 |
+| `1` | Michelin Guide | 8 |
+| `0` | Listed kitchen, no Michelin badge | 61 |
+| `-1` | Showroom — excluded from the kitchen count | 1 |
+
+Tier labels are translated in `GRP`; list column headers in `COL`. Badge icons come from
+`assets/michelin-star.webp`, `michelin-star-white.png`, `michelin-guide-white.png`, `michelin-bib.png`.
 
 ### Editing copy / translations
-Every text string exists once per language inside `T` (and `DT` for detail pages). To change wording,
-edit the matching key in **each** language object. Keys must stay identical across all five languages.
+Every text string exists once per language inside `T` (and `DT`). To change wording, edit the matching
+key in **each** language object. Keys must stay identical across all five languages —
+they currently are (264 in `T`, 20 in `DT`, all five languages aligned, no untranslated leftovers).
+Every one of the 284 merged keys is referenced by the template or logic; there are no unused keys.
+
 Do **not** translate: model codes (`LGA_900_S`…), dimensions, weights, phone numbers, email.
+Some values are legitimately identical to English (`SHOWROOM` in ES; `CONTACT`, `SITE`, `MESSAGE *`,
+`DIMENSIONS` in FR) — that is correct, not a missing translation.
+
+### Removed keys — do not re-add
+
+On 2026-07-27, **52 unused keys (× 5 languages = 260 lines)** were deleted after verifying that
+nothing in the template or logic referenced them:
+
+- **`T`** (5): `famAsado`, `famOvens`, `pIntro`, `lgaIntro`, `ovenIntro`
+- **`DT`** (47): all `jc*`, `jSec*`, `jCta*` and the `y6*` / `y8*` **body-copy** keys, plus
+  `dSeeOnMap`, `dWellDraw` — superseded by the `dj*` / `dy*` keys in `T`.
+  `DT` kept its 20 live keys (`dCrumb*`, `dTechSheet`, `dMadeToOrder`, `dLetsDraw`, `dViewY8`,
+  `dCompactSee`, `dAllKitchensMap`, `jEyebrow/jSub/jIntro`, `y6Eyebrow/y6Sub/y6Intro/y6Cta*`,
+  `y8Eyebrow/y8Intro/y8Cta*`).
+
+Note `y6*` / `y8*` were **partially** removed — the eyebrow/sub/intro/CTA keys are live. Never
+delete by prefix; check the actual reference first.
+
+**Ovens are not a product family on this site.** There is no oven card; ovens are folded into the
+`fSmokers` label ("SMOKERS & OVENS"). `famOvens` / `ovenIntro` are leftovers — do not restore an
+oven family card, and note `assets/photos/b-p5.webp` (the oven shot) is intentionally unused.
+
+The product-family strip has **6 cards**: robata `b-p2`, gear `b-p1g`, chain `b-p1`,
+indoor `b-p4`, smokers `b-p3`, accessories `b-p6` — each appearing **twice** (products page +
+home range strip), so edits must be made in both places.
 
 ---
 
 ## Photos — IMPORTANT
 
-Real photos live in **`assets/photos/`** and are referenced as normal `<img>` tags. 12 slots are
-already filled. The remaining spots are still **drop-zone placeholders** written as
-`<x-import component-from-global-scope="image-slot" … id="…"></x-import>` (rendered by
-`image-slot.js`). They show a labelled empty box until you wire a real image.
+Real photos live in **`assets/photos/`** (74 files) and videos in **`assets/video/`**
+(`reel-1.mp4` … `reel-7.mp4`).
+
+There are **68 `image-slot` slots**: **36 are filled** (they carry a `src=`) and
+**32 are still empty drop-zone placeholders** rendered by `image-slot.js` as labelled grey boxes.
+Every empty slot is on a product-detail page — the home, products, about and contact pages are
+fully illustrated.
+
+A filled slot looks like this:
+
+```html
+<x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-hero"
+          src="assets/photos/b-hero.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import>
+```
 
 ### To add / replace a photo
 1. Drop the image file into `assets/photos/` (webp or jpg; keep files small).
-2. Find the placeholder by its `id` and replace the whole `<x-import …></x-import>` element with:
-   ```html
-   <img src="assets/photos/YOUR-FILE.webp" alt="short description"
-        style="width:100%;height:100%;object-fit:cover;display:block">
-   ```
-   (This matches how the 12 filled slots were done — the parent `<div>` controls the size, the
-   image just fills it.)
-3. To swap an existing photo, just replace the file in `assets/photos/` (same name) or edit the `src`.
+2. Find the slot by its `id` and **add a `src="assets/photos/YOUR-FILE.webp"` attribute** to the
+   existing `<x-import>` tag — that is how all 36 filled slots are done. (Replacing the tag with a
+   plain `<img style="width:100%;height:100%;object-fit:cover;display:block">` also works.)
+3. To swap an existing photo, replace the file in `assets/photos/` (same name) or edit the `src`.
+4. For dimension drawings use `fit="contain"` rather than `cover`.
 
-### Empty placeholder ids still needing photos
-- **Home hero** (2nd/3rd slides): `b-hero-2`, `b-hero-3`
-- **Products page family shots**: `b-p3` (smoker), `b-p4` (indoor smoker), `b-p5` (oven), `b-p6` (accessories) — each appears **twice** (products page + home range strip), so replace both
-- **J900 detail**: `j900-d3` (in service), `j900-drawing` (dimension drawing, use `object-fit:contain`)
-- **LGY_610 detail**: `lgy-hero`, `lgy-d1`, `lgy-d2`, `lgy-d3`
-- **LGY_840 detail**: `lgy840-hero`, `lgy840-d1`, `lgy840-d2`, `lgy840-d3`
+### Empty slots still needing photos (32)
+- **J900 detail** (8): `j900-build1`, `j900-build2`, `j900-q1`, `j900-q2`, `j900-dim-size`,
+  `j900-exploded`, `j900-cross`, `j900-video`
+- **LGY_610 detail** (16): `lgy-hero`, `lgy-d1`, `lgy-d2`, `lgy-d3`, `lgy610-smoke`, `lgy610-q1`,
+  `lgy610-q2`, `lgy610-dim-size`, `lgy610-dim-height`, `lgy610-exploded`, `lgy610-cross`,
+  `lgy610-video`, `lgy610-chef`
+- **LGY_840 detail** (11): `lgy840-d2`, `lgy840-d3`, `lgy840-smoke`, `lgy840-q1`, `lgy840-q2`,
+  `lgy840-dim-size`, `lgy840-dim-height`, `lgy840-exploded`, `lgy840-cross`, `lgy840-video`,
+  `lgy840-chef`
 
-`image-slot.js` is only needed while empty placeholders remain. Once every slot is a real `<img>`,
-you can delete `image-slot.js` and its `<x-import … image-slot …>` references.
+`image-slot.js` is only needed while empty placeholders remain. Once every slot has a real image,
+it and the `<x-import … image-slot …>` wrappers can be dropped.
+
+Unused asset files (kept intentionally): `assets/photos/b-p5.webp` (oven — no oven card),
+`assets/lamsturn-ci.svg` (dark-background variant; the site is dark so it uses `-white`),
+`assets/michelin-face.png`.
 
 ---
 
 ## Rules
 - **Inline styles only.** No CSS files, no class-based styling, no build tooling.
 - **Never edit `support.js`.**
-- Keep the `T`/`DT` language keys in sync across `EN/ES/ZH/FR/JA`.
+- Keep the `T`/`DT` language keys in sync across `EN/ES/ZH/FR/JA` — add a key to all five or none.
 - The template can't run JS expressions — compute in `renderVals()` and expose by name.
+- Mobile is tested down to **390px**; check that width after any layout change.
+- Family-strip and product-card edits appear twice (products page + home range strip).
 
 ## Deploy
 Static, root = site root, `index.html` is the entry. No build command.
-- **GitHub Pages:** Settings → Pages → Deploy from branch → `main` / root.
-- **Cloudflare Pages / Netlify / Vercel:** framework preset = None, build command = *(none)*,
-  output/publish directory = `/` (repo root).
+- **Current target: Cloudflare Pages project `fire`** — upload this folder as a *New deployment*.
+- Framework preset = None, build command = *(none)*, output/publish directory = `/` (repo root).
+- **GitHub Pages** alternative: Settings → Pages → Deploy from branch → `main` / root.
 
-## Open items (from the design phase)
+## Open items
+- **32 empty photo slots on the three detail pages** (list above) — the biggest remaining gap.
 - Inquiry form is front-end only — wire it to a backend (Formspree/email) in `submit()`.
-- Optional: PDF catalog download, favicon/OG meta tags.
+- **Broken link:** the J900 detail page "TECH SHEET (PDF)" button (line ~663) points to
+  `uploads/26_LGA_J900_T_technical%20sheet%20share.pdf`, but there is no `uploads/` folder in the
+  bundle — it 404s in production. Either add the folder + PDF or remove the button.
+- Optional: PDF catalog download, OG meta tags.
 - About timeline years (2016/2020/2024) were estimates — confirm with the brand.

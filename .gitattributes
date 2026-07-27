@@ -1,0 +1,19 @@
+# Normalise line endings: stored as LF in the repo, checked out native per OS.
+# Keeps Windows <-> macOS collaboration from producing whole-file diffs.
+* text=auto
+
+# Text
+*.html text
+*.js   text
+*.json text
+*.md   text
+*.svg  text
+
+# Binary — never touch these
+*.webp binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.mp4  binary
+*.pdf  binary
+*.ico  binary
