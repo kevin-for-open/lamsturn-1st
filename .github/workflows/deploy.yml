@@ -69,13 +69,41 @@ jobs:
           done
           [ "$missing" -eq 0 ] || exit 1
 
+      # wrangler is called directly rather than through cloudflare/wrangler-action,
+      # which swallows wrangler's stderr and reports only "exit code 1".
+      - name: Check credentials are present
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          fail=0
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::secret CLOUDFLARE_API_TOKEN is missing or empty"; fail=1
+          else
+            echo "CLOUDFLARE_API_TOKEN present (${#CLOUDFLARE_API_TOKEN} chars)"
+          fi
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::secret CLOUDFLARE_ACCOUNT_ID is missing or empty"; fail=1
+          else
+            echo "CLOUDFLARE_ACCOUNT_ID present (${#CLOUDFLARE_ACCOUNT_ID} chars)"
+          fi
+          exit $fail
+
+      # Diagnostic: prints the project names this token can actually see, so a
+      # --project-name mismatch is obvious. Never fails the run.
+      - name: List Pages projects
+        continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@3 pages project list
+
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: >-
-            pages deploy _site
-            --project-name=fire
-            --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@3 pages deploy _site \
+            --project-name=fire \
+            --branch=main \
             --commit-dirty=true
