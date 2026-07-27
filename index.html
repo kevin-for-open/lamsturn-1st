@@ -563,7 +563,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
 <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
 <main data-screen-label="Contact" style="flex:1">
-  <div data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:calc(100vh - 77px)">
+  <div data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:calc(100vh - 77px);padding-inline:max(0px, calc((100% - 1280px) / 2))">
     <div style="padding:80px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;gap:36px;border-right:1px solid rgba(235,230,221,.18)">
       <div>
         <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:18px">{{ t.contactEyebrow }}</div>
@@ -578,17 +578,6 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       </div>
     </div>
     <div style="padding:80px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-      <sc-if value="{{ hasInq }}" hint-placeholder-val="{{ false }}">
-      <div style="max-width:560px;margin-bottom:26px;padding:18px 20px;background:#1c1917;border:1px solid rgba(224,90,31,.45)">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#e05a1f">{{ t.inqTitle }} · {{ inqCount }}</div><a onClick="{{ clearInq }}" style="cursor:pointer;font:400 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:rgba(235,230,221,.45)" style-hover="color:#e05a1f">{{ t.inqClear }}</a></div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
-          <sc-for list="{{ inqItems }}" as="q" hint-placeholder-count="2">
-          <span style="display:inline-flex;align-items:center;gap:9px;font:500 11px 'IBM Plex Mono',monospace;color:#ebe6dd;border:1px solid rgba(235,230,221,.3);padding:6px 10px">{{ q.c }}<a onClick="{{ q.rm }}" aria-label="Remove" style="cursor:pointer;color:rgba(235,230,221,.5);font-size:13px;line-height:1" style-hover="color:#e05a1f">×</a></span>
-          </sc-for>
-        </div>
-        <div style="font:400 11px/1.6 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:12px">{{ t.inqHint }}</div>
-      </div>
-      </sc-if>
       <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
       <div style="display:flex;flex-direction:column;gap:22px;max-width:560px">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
@@ -609,6 +598,17 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fModelL }}</span>{{ fModelSel }}</label>
         </sc-if>
         </div>
+        <sc-if value="{{ hasInq }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:18px 20px;background:#1c1917;border:1px solid rgba(224,90,31,.45)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#e05a1f">{{ t.inqTitle }} · {{ inqCount }}</div><a onClick="{{ clearInq }}" style="cursor:pointer;font:400 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:rgba(235,230,221,.45)" style-hover="color:#e05a1f">{{ t.inqClear }}</a></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+            <sc-for list="{{ inqItems }}" as="q" hint-placeholder-count="2">
+            <span style="display:inline-flex;align-items:center;gap:9px;font:500 11px 'IBM Plex Mono',monospace;color:#ebe6dd;border:1px solid rgba(235,230,221,.3);padding:6px 10px">{{ q.c }}<a onClick="{{ q.rm }}" aria-label="Remove" style="cursor:pointer;color:rgba(235,230,221,.5);font-size:13px;line-height:1" style-hover="color:#e05a1f">×</a></span>
+            </sc-for>
+          </div>
+          <div style="font:400 11px/1.6 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:12px">{{ t.inqHint }}</div>
+        </div>
+        </sc-if>
         <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fMsgL }}</span><textarea value="{{ fMsg }}" onChange="{{ onMsg }}" rows="6" placeholder="{{ t.phMsg }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none;resize:vertical" style-focus="border-color:#e05a1f"></textarea></label>
         <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}">
           <div style="font:400 12.5px 'IBM Plex Mono',monospace;color:#e05a1f">{{ err }}</div>
@@ -1036,15 +1036,17 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:16px">{{ t.kEyebrow }}</div>
     <h1 style="margin:0;font:600 clamp(34px,6.5vw,56px)/1.08 Archivo,sans-serif;letter-spacing:-.025em">{{ t.kH1 }}</h1>
     <p style="margin:20px 0 0;max-width:60ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.kIntro }}</p>
+    <div style="margin-top:18px;font:500 12.5px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f">{{ kSlogan }}</div>
     <div style="display:flex;flex-wrap:wrap;gap:28px 44px;margin-top:28px">
-      <div><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em">{{ kCount }}</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px">{{ t.kLblKitchens }}</div></div>
-      <div><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em">{{ kMich }}</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px">{{ t.kLblMich }}</div></div>
-      <div><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em">{{ kCities }}</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px">{{ t.kLblCities }}</div></div>
-      <div><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em">{{ kCountries }}</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px">{{ t.kLblCountries }}</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M4 2v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7 11v11"/><path d="M20 15V2a5 5 0 0 0-4 5v6a2 2 0 0 0 2 2h2v7"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#e05a1f">{{ kCount }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblKitchens }}</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;flex:none;object-fit:contain;display:block"><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#e05a1f">{{ kMich }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblMich }}</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M2.5 21h19"/><path d="M5 21V6.5L11 3v18"/><path d="M11 21V10.5h7.5V21"/><path d="M7.7 8.4h.01M7.7 12.2h.01M7.7 16h.01M14.6 14h.01M14.6 17.4h.01"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#e05a1f">{{ kCities }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblCities }}</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4"/><path d="M12 2.8a14 14 0 0 1 3.7 9.2 14 14 0 0 1-3.7 9.2 14 14 0 0 1-3.7-9.2A14 14 0 0 1 12 2.8z"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#e05a1f">{{ kCountries }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblCountries }}</div></div>
     </div>
   </div>
   <div style="padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 16px;display:flex;flex-wrap:wrap;gap:10px">
     <a onClick="{{ kfAll }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ kcAll }}">{{ t.fAll }}</a>
+    <a onClick="{{ kfMichelin }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ kcMichelin }}">{{ t.fMichelin }}</a>
     <a onClick="{{ kfAsado }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ kcAsado }}">ASADO — LGA</a>
     <a onClick="{{ kfRobata }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ kcRobata }}">ROBATA — LGY</a>
     <a onClick="{{ kfSmoker }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ kcSmoker }}">{{ t.fSmokers }}</a>
@@ -1227,13 +1229,17 @@ class Component extends DCLogic {
   refreshMarkers(fit) {
     if (!this._map || !window.L) return;
     const f = this.state.kf || 'all'; this._markers.clearLayers(); this._mk = {}; const pts = [];
+    const kfPass = (k) => f === 'all' ? true : f === 'michelin' ? k.m > 0 : (k.cats.includes(f) || k.m === -1);
     this.installs().forEach(k => {
       if (k.lat == null) return;
-      if (f !== 'all' && !k.cats.includes(f) && k.m !== -1) return;
+      if (!kfPass(k)) return;
       pts.push([k.lat, k.lng]);
-      const mk = L.circleMarker([k.lat, k.lng], k.m === -1
-        ? { radius: 8, color: '#ebe6dd', weight: 1.5, fillColor: '#e05a1f', fillOpacity: .9 }
-        : { radius: 6, color: '#e05a1f', weight: 1.5, fillColor: '#e05a1f', fillOpacity: .5 });
+      const mIcon = (k.m === 3 || k.m === 2) ? 'assets/michelin-star-white.png' : k.m === 1 ? 'assets/michelin-guide-white.png' : null;
+      const mk = mIcon
+        ? L.marker([k.lat, k.lng], { icon: L.divIcon({ className: '', html: '<img src="' + mIcon + '" alt="" style="width:22px;height:22px;display:block;object-fit:contain;filter:drop-shadow(0 0 2px rgba(0,0,0,.85))">', iconSize: [22, 22], iconAnchor: [11, 11] }) })
+        : L.circleMarker([k.lat, k.lng], k.m === -1
+          ? { radius: 8, color: '#ebe6dd', weight: 1.5, fillColor: '#e05a1f', fillOpacity: .9 }
+          : { radius: 6, color: '#e05a1f', weight: 1.5, fillColor: '#e05a1f', fillOpacity: .5 });
       const badge = k.m === 3 ? '<div style="font-size:10.5px;margin-top:5px;letter-spacing:.08em"><img src="assets/michelin-star.webp" style="width:12px;height:12px;vertical-align:-2px"><img src="assets/michelin-star.webp" style="width:12px;height:12px;vertical-align:-2px"> MICHELIN 2 STARS</div>' : k.m === 2 ? '<div style="font-size:10.5px;margin-top:5px;letter-spacing:.08em"><img src="assets/michelin-star.webp" style="width:12px;height:12px;vertical-align:-2px"> MICHELIN STAR</div>' : k.m === 1 ? '<div style="font-size:10.5px;margin-top:5px;letter-spacing:.08em">MICHELIN GUIDE</div>' : k.m === -1 ? '<div style="font-size:10.5px;margin-top:5px;letter-spacing:.08em;color:#e05a1f">SHOWROOM — VISITS WELCOME</div>' : '';
       mk.bindPopup('<div style="font-family:Archivo,sans-serif;min-width:190px"><div style="font-weight:600;font-size:14px">' + k.name.replace(/&/g, '&') + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;opacity:.65;margin-top:3px;letter-spacing:.06em">' + k.place + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;color:#e05a1f;margin-top:6px">' + k.prods + '</div>' + badge + '</div>', { autoPan: false });
       this._mk[k.id] = mk; this._markers.addLayer(mk);
@@ -1504,11 +1510,13 @@ class Component extends DCLogic {
             "kEyebrow": "INSTALLATIONS — WORLDWIDE",
             "kH1": "In service, tonight.",
             "kIntro": "From Michelin-starred rooms in San Sebastián and Hong Kong to smokehouses in Seoul — every ember dot is a kitchen cooking on Lamsturn. Positions shown at city level.",
+            "kSloganTpl": "{stars} MICHELIN STARS ACROSS {kitchens} STARRED KITCHENS",
             "kLblKitchens": "KITCHENS",
             "kLblMich": "MICHELIN LISTED",
             "kLblCities": "CITIES",
             "kLblCountries": "COUNTRIES",
             "fAll": "ALL",
+            "fMichelin": "MICHELIN",
             "fSmokers": "SMOKERS & OVENS",
             "fCustom": "CUSTOM BUILDS",
             "mapCaption": "CITY-LEVEL POSITIONS — CLICK A DOT FOR THE KITCHEN & ITS GRILL",
@@ -1771,11 +1779,13 @@ class Component extends DCLogic {
             "kEyebrow": "INSTALACIONES — EN TODO EL MUNDO",
             "kH1": "En servicio, esta noche.",
             "kIntro": "De salas con estrella Michelin en San Sebastián y Hong Kong a ahumaderos en Seúl — cada punto ámbar es una cocina que cocina con Lamsturn. Ubicaciones a nivel de ciudad.",
+            "kSloganTpl": "{stars} ESTRELLAS MICHELIN EN {kitchens} COCINAS ESTRELLADAS",
             "kLblKitchens": "COCINAS",
             "kLblMich": "EN LA GUÍA MICHELIN",
             "kLblCities": "CIUDADES",
             "kLblCountries": "PAÍSES",
             "fAll": "TODO",
+            "fMichelin": "MICHELIN",
             "fSmokers": "AHUMADORES Y HORNOS",
             "fCustom": "A MEDIDA",
             "mapCaption": "UBICACIONES POR CIUDAD — TOCA UN PUNTO PARA VER LA COCINA Y SU GRILL",
@@ -2038,11 +2048,13 @@ class Component extends DCLogic {
             "kEyebrow": "装机案例 — 全球",
             "kH1": "今夜，正在服务。",
             "kIntro": "从圣塞瓦斯蒂安、香港的米其林星级餐厅，到首尔的烟熏工坊 —— 每一个琥珀色圆点，都是一间以 Lamsturn 烹饪的厨房。位置精确到城市。",
+            "kSloganTpl": "米其林 {stars} 星 · {kitchens} 家星级厨房",
             "kLblKitchens": "厨房",
             "kLblMich": "米其林收录",
             "kLblCities": "城市",
             "kLblCountries": "国家",
             "fAll": "全部",
+            "fMichelin": "米其林",
             "fSmokers": "烟熏炉与烤箱",
             "fCustom": "定制",
             "mapCaption": "位置精确到城市 —— 点击圆点查看厨房及其烤炉",
@@ -2305,11 +2317,13 @@ class Component extends DCLogic {
             "kEyebrow": "INSTALLATIONS — DANS LE MONDE",
             "kH1": "En service, ce soir.",
             "kIntro": "Des salles étoilées de Saint-Sébastien et Hong Kong aux fumoirs de Séoul — chaque point ambré est une cuisine qui cuisine sur Lamsturn. Positions à l’échelle de la ville.",
+            "kSloganTpl": "{stars} ÉTOILES MICHELIN DANS {kitchens} CUISINES ÉTOILÉES",
             "kLblKitchens": "CUISINES",
             "kLblMich": "AU GUIDE MICHELIN",
             "kLblCities": "VILLES",
             "kLblCountries": "PAYS",
             "fAll": "TOUT",
+            "fMichelin": "MICHELIN",
             "fSmokers": "FUMOIRS & FOURS",
             "fCustom": "SUR MESURE",
             "mapCaption": "POSITIONS PAR VILLE — CLIQUEZ SUR UN POINT POUR LA CUISINE ET SON GRIL",
@@ -2572,11 +2586,13 @@ class Component extends DCLogic {
             "kEyebrow": "導入実績 — 全世界",
             "kH1": "今夜も、稼働中。",
             "kIntro": "サン・セバスティアンや香港のミシュラン星付きの部屋から、ソウルのスモークハウスまで — すべての熾火のドットが、Lamsturn で調理する厨房です。位置は都市単位で表示しています。",
+            "kSloganTpl": "ミシュラン {stars} 星 ／ 星付き厨房 {kitchens} 軒",
             "kLblKitchens": "厨房",
             "kLblMich": "ミシュラン掲載",
             "kLblCities": "都市",
             "kLblCountries": "国",
             "fAll": "すべて",
+            "fMichelin": "ミシュラン",
             "fSmokers": "スモーカー & オーブン",
             "fCustom": "特注品",
             "mapCaption": "都市単位の位置 — ドットをクリックで厨房とそのグリルを表示",
@@ -2884,7 +2900,8 @@ class Component extends DCLogic {
         const inst = this.installs();
         const kf = s.kf || 'all';
         const kitchens = inst.filter(k => k.m !== -1);
-        const shown = inst.filter(k => k.lat != null && (kf === 'all' || k.cats.includes(kf) || k.m === -1));
+        const kfPass = (k) => kf === 'all' ? true : kf === 'michelin' ? k.m > 0 : (k.cats.includes(kf) || k.m === -1);
+        const shown = inst.filter(k => k.lat != null && kfPass(k));
         const GRP = {
           EN:['TWO MICHELIN STARS','ONE MICHELIN STAR','MICHELIN GUIDE','ALL KITCHENS'],
           ES:['DOS ESTRELLAS MICHELIN','UNA ESTRELLA MICHELIN','GUÍA MICHELIN','TODAS LAS COCINAS'],
@@ -2894,7 +2911,7 @@ class Component extends DCLogic {
         };
         const gl = GRP[lang] || GRP.EN;
         const tierIdx = (m) => m === 3 ? 0 : m === 2 ? 1 : m === 1 ? 2 : 3;
-        const filtered = kitchens.filter(k => kf === 'all' || k.cats.includes(kf))
+        const filtered = kitchens.filter(kfPass)
           .slice().sort((a, b) => (b.m - a.m) || a.name.replace(/&/g,'&').localeCompare(b.name.replace(/&/g,'&'), 'en', { sensitivity: 'base' }));
         const counts = [0,0,0,0]; filtered.forEach(k => counts[tierIdx(k.m)]++);
         let prevTier = null;
@@ -2908,15 +2925,21 @@ class Component extends DCLogic {
           JA:['レストラン','所在地','グリル','評価']
         };
         const col = COL[lang] || COL.EN;
+        // Stars awarded per tier. When a three-star tier is added to the dataset (a new `m` above 3),
+        // it must be added here as well, otherwise its stars go uncounted in the slogan.
+        const starsOf = (m) => m === 3 ? 2 : m === 2 ? 1 : 0;
+        const kStars = kitchens.reduce((n, k) => n + starsOf(k.m), 0);
+        const kStarred = kitchens.filter(k => k.m >= 2).length;
+        const kSlogan = String(t.kSloganTpl || '').replace('{stars}', kStars).replace('{kitchens}', kStarred);
         const chip = (v) => kf === v ? '#e05a1f' : 'rgba(235,230,221,.5)';
         const setKf = (v) => () => this.setState({ kf: v });
         return {
-          kCount: kitchens.length, kMich: kitchens.filter(k => k.m > 0).length,
+          kCount: kitchens.length, kMich: kitchens.filter(k => k.m > 0).length, kSlogan,
           kCities: new Set(kitchens.filter(k => k.lat != null).map(k => k.place.split('—')[0].split(',')[0].trim())).size,
           kCountries: new Set(kitchens.filter(k => k.lat != null).map(k => k.country)).size,
           kShown: shown.length, kList: list, colR: col[0], colLoc: col[1], colG: col[2], colGuide: col[3],
-          kcAll: chip('all'), kcAsado: chip('asado'), kcRobata: chip('robata'), kcSmoker: chip('smoker'), kcCustom: chip('custom'),
-          kfAll: setKf('all'), kfAsado: setKf('asado'), kfRobata: setKf('robata'), kfSmoker: setKf('smoker'), kfCustom: setKf('custom')
+          kcAll: chip('all'), kcMichelin: chip('michelin'), kcAsado: chip('asado'), kcRobata: chip('robata'), kcSmoker: chip('smoker'), kcCustom: chip('custom'),
+          kfAll: setKf('all'), kfMichelin: setKf('michelin'), kfAsado: setKf('asado'), kfRobata: setKf('robata'), kfSmoker: setKf('smoker'), kfCustom: setKf('custom')
         };
       })()
     };
