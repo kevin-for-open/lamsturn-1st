@@ -164,10 +164,29 @@ Unused asset files (kept intentionally): `assets/photos/b-p5.webp` (oven — no 
 - Family-strip and product-card edits appear twice (products page + home range strip).
 
 ## Deploy
-Static, root = site root, `index.html` is the entry. No build command.
-- **Current target: Cloudflare Pages project `fire`** — upload this folder as a *New deployment*.
-- Framework preset = None, build command = *(none)*, output/publish directory = `/` (repo root).
-- **GitHub Pages** alternative: Settings → Pages → Deploy from branch → `main` / root.
+Static, no build step. `index.html` is the entry point.
+
+**Target: the Cloudflare Worker `fire`** (Workers Static Assets), live at
+<https://fire.kimin-271.workers.dev/>. It is a *Worker*, not a Pages project — `wrangler deploy`,
+never `wrangler pages deploy`. Config is in `wrangler.toml` (`[assets] directory = "./_site"`).
+
+> **Do not deploy this site to the Pages project `lamsturn-website`.** That project serves the
+> separate Korean site at `lamsturn.co.kr`; deploying here would overwrite it.
+
+Releases are deliberate — `.github/workflows/deploy.yml` runs **only** on manual dispatch from the
+Actions tab or on a `v*` tag push, so ordinary commits to `main` never reach production:
+
+```bash
+git tag v1.0 && git push origin v1.0     # or click "Run workflow" on the Actions tab
+```
+
+The workflow stages the site into `_site/` (excluding `.git`, `.github`, `wrangler.toml`,
+`CLAUDE.md`, `README.md` and the dotfiles), then refuses to upload if `index.html` or `support.js`
+is missing, if a file exceeds 25 MiB, or if any asset referenced by `index.html` is absent —
+including a case-only mismatch, which passes on Windows/macOS but 404s on Cloudflare.
+
+Requires repository secrets `CLOUDFLARE_API_TOKEN` (permission `Workers Scripts:Edit`, single
+account, **expires 2027-08-01**) and `CLOUDFLARE_ACCOUNT_ID`.
 
 ## Open items
 - **32 empty photo slots on the three detail pages** (list above) — the biggest remaining gap.
