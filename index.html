@@ -36,7 +36,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 <div style="min-height:100vh;display:flex;flex-direction:column">
 <header data-hdr style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));background:rgba(19,17,16,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(235,230,221,.14)">
   <a onClick="{{ goHome }}" style="cursor:pointer;display:flex;align-items:center"><img src="assets/lamsturn-ci-white.svg" alt="Lamsturn — Based on Craft" style="height:44px;display:block"></a>
-  <nav data-hide-sm style="display:flex;align-items:center;gap:30px;font:500 12.5px Archivo,sans-serif;letter-spacing:.1em">
+  <nav data-hide-sm style="display:flex;align-items:center;gap:24px;font:500 12.5px Archivo,sans-serif;letter-spacing:.1em">
     <a onClick="{{ goAbout }}" style="cursor:pointer;color:{{ cAbout }}">{{ t.about }}</a>
     <a onClick="{{ goProducts }}" style="cursor:pointer;color:{{ cProducts }}">{{ t.products }}</a>
     <a onClick="{{ goCompare }}" style="cursor:pointer;text-transform:uppercase;color:{{ cCompare }}">{{ t.cmpNav }}</a>
@@ -49,6 +49,10 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <option value="FR" style="color:#131110">FR</option>
       <option value="JA" style="color:#131110">日本語</option>
       <option value="ZH" style="color:#131110">中文</option>
+    </select>
+    <select value="{{ unit }}" onChange="{{ onUnit }}" aria-label="Measurement units" style="width:126px;background:transparent;color:rgba(235,230,221,.7);border:1px solid rgba(235,230,221,.25);font:500 10.5px 'IBM Plex Mono',monospace;padding:6px 7px;cursor:pointer;letter-spacing:0">
+      <option value="metric" style="color:#131110">METRIC — MM / KG</option>
+      <option value="imperial" style="color:#131110">IMPERIAL — IN / LB</option>
     </select>
   </nav>
   <a data-show-sm onClick="{{ toggleMenu }}" aria-label="Menu" style="cursor:pointer;display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;padding:0 11px;border:1px solid rgba(235,230,221,.3);box-sizing:border-box" style-hover="border-color:#e05a1f">
@@ -74,13 +78,19 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <sc-if value="{{ hasInq }}" hint-placeholder-val="{{ false }}"><a onClick="{{ goContact }}" style="cursor:pointer;display:flex;align-items:baseline;gap:16px;padding:20px 0;border-bottom:1px solid rgba(235,230,221,.14)"><span style="font:500 11px 'IBM Plex Mono',monospace;color:#e05a1f">→</span><span style="font:600 20px Archivo,sans-serif;color:#e05a1f">{{ t.inqTitle }} · {{ inqCount }}</span></a></sc-if>
   </nav>
   <div style="margin-top:auto;display:flex;flex-direction:column;gap:16px">
-    <select value="{{ lang }}" onChange="{{ onLang }}" style="background:transparent;color:rgba(235,230,221,.7);border:1px solid rgba(235,230,221,.25);font:500 12px 'IBM Plex Mono',monospace;padding:12px 10px;cursor:pointer;align-self:flex-start">
-      <option value="EN" style="color:#131110">EN — ENGLISH</option>
-      <option value="ES" style="color:#131110">ES — ESPAÑOL</option>
-      <option value="FR" style="color:#131110">FR — FRANÇAIS</option>
-      <option value="JA" style="color:#131110">日本語 — JAPANESE</option>
-      <option value="ZH" style="color:#131110">中文</option>
-    </select>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;width:100%">
+      <select value="{{ lang }}" onChange="{{ onLang }}" style="min-width:0;flex:1 1 150px;background:transparent;color:rgba(235,230,221,.7);border:1px solid rgba(235,230,221,.25);font:500 11px 'IBM Plex Mono',monospace;padding:12px 9px;cursor:pointer">
+        <option value="EN" style="color:#131110">EN — ENGLISH</option>
+        <option value="ES" style="color:#131110">ES — ESPAÑOL</option>
+        <option value="FR" style="color:#131110">FR — FRANÇAIS</option>
+        <option value="JA" style="color:#131110">日本語 — JAPANESE</option>
+        <option value="ZH" style="color:#131110">中文</option>
+      </select>
+      <select value="{{ unit }}" onChange="{{ onUnit }}" aria-label="Measurement units" style="min-width:0;flex:1 1 150px;background:transparent;color:rgba(235,230,221,.7);border:1px solid rgba(235,230,221,.25);font:500 10.5px 'IBM Plex Mono',monospace;padding:12px 9px;cursor:pointer">
+        <option value="metric" style="color:#131110">METRIC — MM / KG</option>
+        <option value="imperial" style="color:#131110">IMPERIAL — IN / LB</option>
+      </select>
+    </div>
     <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.4);text-align:center">LAMSTURN@GMAIL.COM</div>
   </div>
 </div>
@@ -114,7 +124,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     </div>
     <div data-heroband style="position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:0;min-height:96px;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));box-sizing:border-box;background:#131110;border-top:1px solid rgba(235,230,221,.28);pointer-events:none;z-index:10">
       <div style="flex:1"><span style="font:500 16px 'IBM Plex Mono',monospace">STS 304</span><span style="font:400 13.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — BODY & GRATES</span></div>
-      <div style="flex:1"><span style="font:500 16px 'IBM Plex Mono',monospace">GEAR-DRIVEN</span><span style="font:400 13.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — 30 MM STEPS</span></div>
+      <div style="flex:1"><span style="font:500 16px 'IBM Plex Mono',monospace">GEAR-DRIVEN</span><span style="font:400 13.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">{{ homeGearStep }}</span></div>
       <div style="flex:1"><span style="font:500 16px 'IBM Plex Mono',monospace">100% IN-HOUSE</span><span style="font:400 13.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — DESIGN TO WELD</span></div>
       <div style="flex:0;white-space:nowrap"><span style="font:500 16px 'IBM Plex Mono',monospace">EST. 2012</span></div>
     </div>
@@ -139,10 +149,10 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div data-rimg style="position:relative;min-height:520px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-gear" src="assets/photos/b-gear.png" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     <div style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-left:1px solid rgba(235,230,221,.18);display:flex;flex-direction:column;justify-content:center;gap:22px">
       <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.precisionEyebrow }}</div>
-      <div style="display:flex;align-items:baseline;gap:12px"><span style="font:600 clamp(64px,12vw,104px)/0.9 Archivo,sans-serif;letter-spacing:-.045em;color:#e05a1f">30</span><span style="font:600 34px Archivo,sans-serif">mm</span></div>
+      <div style="display:flex;align-items:baseline;gap:12px"><span style="font:600 clamp(64px,12vw,104px)/0.9 Archivo,sans-serif;letter-spacing:-.045em;color:#e05a1f">{{ homeStepValue }}</span><span style="font:600 34px Archivo,sans-serif">{{ homeStepUnit }}</span></div>
       <p style="margin:0;max-width:42ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.65)">{{ t.precisionBody }}</p>
       <div style="display:flex;gap:10px;align-items:flex-end;margin-top:6px">
-        <span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:4px;background:#e05a1f"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;margin-left:6px">SEAR · 30 MM</span>
+        <span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:4px;background:#e05a1f"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;margin-left:6px">{{ homeSearStep }}</span>
       </div>
     </div>
   </section>
@@ -647,10 +657,10 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         </div>
         <p style="margin:0;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.68)">{{ t.jIntro }}</p>
         <div style="display:flex;flex-direction:column;font:400 11.5px 'IBM Plex Mono',monospace">
-          <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="color:rgba(235,230,221,.5)">{{ t.lblOverall }}</span><span>W900 × D750 × H920 MM</span></div>
-          <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="color:rgba(235,230,221,.5)">{{ t.lblMainGrill }}</span><span>378 × 495 MM — ROUND BAR × 2</span></div>
-          <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="color:rgba(235,230,221,.5)">{{ t.lblRestingGrill }}</span><span>378 × 250 MM × 2</span></div>
-          <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="color:rgba(235,230,221,.5)">{{ t.lblWeight }}</span><span>120 KG</span></div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="color:rgba(235,230,221,.5)">{{ t.lblOverall }}</span><span>{{ jOverall }}</span></div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="color:rgba(235,230,221,.5)">{{ t.lblMainGrill }}</span><span>{{ jMainGrill }}</span></div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="color:rgba(235,230,221,.5)">{{ t.lblRestingGrill }}</span><span>{{ jRestingGrill }}</span></div>
+          <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="color:rgba(235,230,221,.5)">{{ t.lblWeight }}</span><span>{{ jWeight }}</span></div>
           <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="color:rgba(235,230,221,.5)">{{ t.lblBody }}</span><span>STAINLESS STEEL 304</span></div>
           <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(235,230,221,.16);border-bottom:1px solid rgba(235,230,221,.16)"><span style="color:rgba(235,230,221,.5)">{{ t.lblFrontPanel }}</span><span>BLACK COATING — RATED 600 °C</span></div>
         </div>
@@ -684,7 +694,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <p style="margin:18px 0 0;max-width:58ch;font:400 16px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.djMatB }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:40px">
       <div style="aspect-ratio:4/5;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-build1" shape="rect" fit="cover" placeholder="Welded 304 frame — detail" hint-size="100%,100%"></x-import></div>
-      <div style="aspect-ratio:4/5;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-build2" shape="rect" fit="cover" placeholder="9 mm charcoal tray" hint-size="100%,100%"></x-import></div>
+      <div style="aspect-ratio:4/5;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-build2" shape="rect" fit="cover" placeholder="{{ jTrayPlaceholder }}" hint-size="100%,100%"></x-import></div>
     </div>
   </section>
 
@@ -723,7 +733,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <h2 style="margin:12px 0 0;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em;color:#131110">{{ t.djSizeT }}</h2>
     <p style="margin:14px 0 0;font:400 12px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);letter-spacing:.04em">{{ t.djDims }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:36px">
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-dim-size" shape="rect" fit="contain" placeholder="LGA_J900_T size chart (mm)" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
+      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-dim-size" shape="rect" fit="contain" placeholder="{{ jSizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
       <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-exploded" shape="rect" fit="contain" placeholder="Exploded view diagram" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblExploded }}</figcaption></figure>
       <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-cross" shape="rect" fit="contain" placeholder="Cross-section view" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblCross }}</figcaption></figure>
     </div>
@@ -835,15 +845,15 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <h2 style="margin:12px 0 0;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em;color:#131110">{{ t.djSizeT }}</h2>
     <p style="margin:14px 0 0;font:400 12px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);letter-spacing:.04em">{{ t.dyDims610 }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:36px">
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-dim-size" shape="rect" fit="contain" placeholder="LGY_610_D400 size chart (mm)" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
+      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-dim-size" shape="rect" fit="contain" placeholder="{{ l6SizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
       <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-dim-height" shape="rect" fit="contain" placeholder="Charcoal support / resting grill — height by level" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblHeightByLevel }}</figcaption></figure>
       <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-exploded" shape="rect" fit="contain" placeholder="Exploded view diagram" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblExploded }}</figcaption></figure>
       <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-cross" shape="rect" fit="contain" placeholder="Cross-section view" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblCross }}</figcaption></figure>
     </div>
     <div style="max-width:640px;margin-top:44px;font:400 12px 'IBM Plex Mono',monospace;color:#131110">
-      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblD300Overall }}</span><span>W610 × D300 × H300 MM — 35 KG</span></div>
-      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblD400Overall }}</span><span>W610 × D400 × H300 MM — 45 KG</span></div>
-      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblGrillD }}</span><span>315 × 250 · 292 × 354 MM</span></div>
+      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblD300Overall }}</span><span>{{ l6D300 }}</span></div>
+      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblD400Overall }}</span><span>{{ l6D400 }}</span></div>
+      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblGrillD }}</span><span>{{ l6Grill }}</span></div>
       <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16);border-bottom:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblFireMat }}</span><span>{{ t.lblTray }}</span></div>
     </div>
   </section>
@@ -973,15 +983,15 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <h2 style="margin:12px 0 0;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em;color:#131110">{{ t.djSizeT }}</h2>
     <p style="margin:14px 0 0;font:400 12px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);letter-spacing:.04em">{{ t.dyDims840 }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:36px">
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-dim-size" shape="rect" fit="contain" placeholder="LGY_840_D400 size chart (mm)" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
+      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-dim-size" shape="rect" fit="contain" placeholder="{{ l8SizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
       <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-dim-height" shape="rect" fit="contain" placeholder="Charcoal support / resting grill — height by level" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblHeightByLevel }}</figcaption></figure>
       <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-exploded" shape="rect" fit="contain" placeholder="Exploded view diagram" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblExploded }}</figcaption></figure>
       <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-cross" shape="rect" fit="contain" placeholder="Cross-section view" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblCross }}</figcaption></figure>
     </div>
     <div style="max-width:640px;margin-top:44px;font:400 12px 'IBM Plex Mono',monospace;color:#131110">
-      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblD300Overall }}</span><span>W840 × D300 × H300 MM — 46 KG</span></div>
-      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblD400Overall }}</span><span>W840 × D400 × H300 MM — 55 KG</span></div>
-      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblGrillD }}</span><span>315 × 250 · 409 × 354 MM</span></div>
+      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblD300Overall }}</span><span>{{ l8D300 }}</span></div>
+      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblD400Overall }}</span><span>{{ l8D400 }}</span></div>
+      <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblGrillD }}</span><span>{{ l8Grill }}</span></div>
       <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16);border-bottom:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblFireMat }}</span><span>{{ t.lblTray }}</span></div>
     </div>
   </section>
@@ -1040,6 +1050,12 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <h1 style="margin:0;font:600 clamp(34px,6.5vw,56px)/1.08 Archivo,sans-serif;letter-spacing:-.025em">{{ t.kH1 }}</h1>
     <p style="margin:20px 0 0;max-width:60ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.kIntro }}</p>
     <div style="margin-top:18px;font:500 12.5px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f">{{ kSlogan }}</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
+      <a onClick="{{ kfMichelin }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelin }}"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain">{{ t.mfAll }}</a>
+      <a onClick="{{ kfMichelinTwo }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelinTwo }}"><span style="display:inline-flex;gap:1px"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain"></span>{{ t.mfTwo }}</a>
+      <a onClick="{{ kfMichelinOne }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelinOne }}"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain">{{ t.mfOne }}</a>
+      <a onClick="{{ kfMichelinGuide }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelinGuide }}"><img src="assets/michelin-guide-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain">{{ t.mfGuide }}</a>
+    </div>
     <div style="display:flex;flex-wrap:wrap;gap:28px 44px;margin-top:28px">
       <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M4 2v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7 11v11"/><path d="M20 15V2a5 5 0 0 0-4 5v6a2 2 0 0 0 2 2h2v7"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#e05a1f">{{ kCount }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblKitchens }}</div></div>
       <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;flex:none;object-fit:contain;display:block"><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#e05a1f">{{ kMich }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblMich }}</div></div>
@@ -1120,12 +1136,14 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;EN&quot;,&quot;ES&quot;,&quot;ZH&quot;,&quot;FR&quot;,&quot;JA&quot;],&quot;default&quot;:&quot;EN&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;showMichelin&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Site&quot;}}">
 class Component extends DCLogic {
-  state = { page: 'home', lang: null, fName:'', fEmail:'', fCountry:'', fCompany:'', fInterest:'Asado Grills (LGA)', fModel:'', fMsg:'', sent:false, err:'' };
+  state = { page: 'home', lang: null, unit:'metric', fName:'', fEmail:'', fCountry:'', fCompany:'', fInterest:'Asado Grills (LGA)', fModel:'', fMsg:'', sent:false, err:'' };
   go(p) { this.setState({ page: p, menu: false, depthPopup: null }); try { window.scrollTo(0, 0); } catch(e) {} }
   goSec(id) { this.setState({ page: 'products', menu: false, depthPopup: null }); let n = 0; const seek = () => { const el = document.getElementById(id); if (el) { const y = el.getBoundingClientRect().top + window.pageYOffset - 112; try { window.scrollTo(0, Math.max(0, y)); } catch(e) {} } else if (n++ < 20) { setTimeout(seek, 50); } }; try { window.scrollTo(0, 0); } catch(e) {} setTimeout(seek, 60); }
   componentDidMount() {
     this.startTimer(); this.initMap();
     try {
+      const savedUnit = localStorage.getItem('lamsturn-unit');
+      if (savedUnit === 'metric' || savedUnit === 'imperial') this.setState({ unit: savedUnit });
       const raw = JSON.parse(localStorage.getItem('lamsturn-inq') || '[]');
       if (Array.isArray(raw)) {
         const aliases = { LSO_1800_SE:'LSO_1800', LSO_1800_PA:'LSO_1800', LSO_1800_PL_SE:'LSO_1800_PL', LSO_1800_PL_PA:'LSO_1800_PL' };
@@ -1237,6 +1255,14 @@ class Component extends DCLogic {
     this._inst = D.map((d, i) => ({ id: i, name: d[0], lat: d[1], lng: d[2], prods: d[3], m: d[4], place: d[5], cats: catsOf(d[3]), country: countryOf(d[5]) }));
     return this._inst;
   }
+  kitchenFilterPass(k, f) {
+    if (f === 'all') return true;
+    if (f === 'michelin') return k.m > 0;
+    if (f === 'michelin-2') return k.m === 3;
+    if (f === 'michelin-1') return k.m === 2;
+    if (f === 'michelin-guide') return k.m === 1;
+    return k.cats.includes(f) || k.m === -1;
+  }
     initMap() {
     if (this.state.page !== 'kitchens') { if (this._map) { this._map.remove(); this._map = null; } return; }
     const el = document.getElementById('lam-map');
@@ -1250,10 +1276,9 @@ class Component extends DCLogic {
   refreshMarkers(fit) {
     if (!this._map || !window.L) return;
     const f = this.state.kf || 'all'; this._markers.clearLayers(); this._mk = {}; const pts = [];
-    const kfPass = (k) => f === 'all' ? true : f === 'michelin' ? k.m > 0 : (k.cats.includes(f) || k.m === -1);
     this.installs().forEach(k => {
       if (k.lat == null) return;
-      if (!kfPass(k)) return;
+      if (!this.kitchenFilterPass(k, f)) return;
       pts.push([k.lat, k.lng]);
       const mIcon = (k.m === 3 || k.m === 2) ? 'assets/michelin-star-white.png' : k.m === 1 ? 'assets/michelin-guide-white.png' : null;
       const mk = mIcon
@@ -1280,6 +1305,56 @@ class Component extends DCLogic {
   renderVals() {
     const s = this.state;
     const lang = s.lang || (this.props.lang ?? 'EN');
+    const unit = s.unit === 'imperial' ? 'imperial' : 'metric';
+    const imperial = unit === 'imperial';
+    const commaDecimal = lang === 'ES' || lang === 'FR';
+    const formatInches = (value) => {
+      const out = (Number(String(value).replace(',', '.')) / 25.4).toFixed(1);
+      return commaDecimal ? out.replace('.', ',') : out;
+    };
+    const formatPounds = (value) => String(Math.round(Number(String(value).replace(',', '.')) * 2.2046226218));
+    const displayDimensions = (value, showMetricUnit) => {
+      const raw = String(value == null ? '' : value);
+      if (!raw || raw === '\u2014') return raw;
+      if (!imperial) return raw + (showMetricUnit ? ' MM' : '');
+      const converted = raw.replace(/\d+(?:[.,]\d+)?/g, (number, offset, whole) => {
+        const before = whole.slice(0, offset);
+        const after = whole.slice(offset + number.length);
+        const finalQuantity = /\s[×x]\s*$/.test(before) && /^\s*$/.test(after);
+        return finalQuantity ? number : formatInches(number);
+      });
+      return converted + ' IN';
+    };
+    const displayWeight = (value) => {
+      const raw = String(value == null ? '' : value);
+      if (!imperial || !/\bKG\b/i.test(raw)) return raw;
+      return raw.replace(/\d+(?:[.,]\d+)?/g, formatPounds).replace(/\s*\bKG\b/gi, ' LB');
+    };
+    const dimensionHeadings = {
+      EN:['ALL DIMENSIONS IN MILLIMETRES','ALL DIMENSIONS IN INCHES'],
+      ES:['TODAS LAS DIMENSIONES EN MILÍMETROS','TODAS LAS DIMENSIONES EN PULGADAS'],
+      ZH:['所有尺寸单位为毫米','所有尺寸单位为英寸'],
+      FR:['TOUTES LES DIMENSIONS EN MILLIMÈTRES','TOUTES LES DIMENSIONS EN POUCES'],
+      JA:['寸法はすべてミリメートル','寸法はすべてインチ']
+    };
+    const heroUnits = {
+      EN:['Thirty millimetres.','1.2 inches.'],
+      ES:['Treinta milímetros.','1,2 pulgadas.'],
+      ZH:['三十毫米。','1.2 英寸。'],
+      FR:['Trente millimètres.','1,2 pouces.'],
+      JA:['三十ミリ。','1.2インチ。']
+    };
+    const convertCopy = (value) => {
+      if (!imperial || typeof value !== 'string') return value;
+      const heading = dimensionHeadings[lang] || dimensionHeadings.EN;
+      const hero = heroUnits[lang] || heroUnits.EN;
+      return value.replace(heading[0], heading[1]).replace(hero[0], hero[1])
+        .replace(/(\d+(?:[.,]\d+)?)\s*(mm|kg)\b/gi, (match, number, measure) => {
+          const upper = measure === measure.toUpperCase();
+          if (measure.toLowerCase() === 'kg') return formatPounds(number) + (upper ? ' LB' : ' lb');
+          return formatInches(number) + (upper ? ' IN' : ' in');
+        });
+    };
     const faqOpen = s.faqOpen;
     const faqByLang = { EN: [{ q: "How do I place an order?", a: "Please contact us at lamsturn@gmail.com with your preferred model and shipping destination. We’ll send you a full quotation including lead time, shipping options, and payment details." }, { q: "Do you ship internationally?", a: "Yes — we ship worldwide. Smaller models are usually sent via FedEx, while larger orders are shipped by sea freight. We’ll recommend the most suitable method based on your location and order." }, { q: "How long does production take?", a: "Each Lamsturn grill is handcrafted to order. Production typically takes around 6 weeks after payment is confirmed, and shipping time depends on your destination and chosen method." }, { q: "What charcoal should I use?", a: "We recommend high-quality hardwood lump charcoal — or binchotan (white charcoal) for robata grilling, where its long, clean, steady burn is ideal. Avoid briquettes or self-lighting charcoal, as they produce more ash and can affect airflow and cooking performance." }, { q: "How do I clean the grill?", a: "Allow the grill to cool completely after use. Remove ash regularly, wipe the stainless steel with a soft cloth, and clean the grates with a grill brush. Avoid harsh chemicals or abrasive cleaners." }, { q: "Can the grill stay outdoors?", a: "Yes, though we recommend protecting it from prolonged exposure to rain, snow, and humidity. When not in use, store it under cover or use a weather-resistant cover to extend its lifespan." }, { q: "Can I customize the grill?", a: "Yes. We offer custom sizes and configurations for restaurants, hotels, and professional kitchens. Just contact us with your project requirements." }, { q: "Do you offer warranty and support?", a: "Yes. If you experience any manufacturing defects or need replacement parts, please reach out to our support team — we’ll be happy to help." }], ES: [{ q: "¿Cómo hago un pedido?", a: "Escríbenos a lamsturn@gmail.com indicando el modelo que prefieres y el destino de envío. Te enviaremos un presupuesto completo con el plazo de fabricación, las opciones de envío y los datos de pago." }, { q: "¿Hacéis envíos internacionales?", a: "Sí, enviamos a todo el mundo. Los modelos más pequeños suelen enviarse por FedEx y los pedidos grandes por transporte marítimo. Te recomendaremos el método más adecuado según tu ubicación y pedido." }, { q: "¿Cuánto tarda la fabricación?", a: "Cada parrilla Lamsturn se fabrica a mano por encargo. La producción suele tardar unas 6 semanas tras confirmarse el pago; el tiempo de envío depende del destino y del método elegido." }, { q: "¿Qué carbón debo usar?", a: "Recomendamos carbón de leña dura de alta calidad — o binchotan (carbón blanco) para la parrilla robata, cuya combustión larga, limpia y estable es ideal. Evita las briquetas o el carbón autoencendible, ya que generan más ceniza y pueden afectar al flujo de aire y al rendimiento." }, { q: "¿Cómo limpio la parrilla?", a: "Deja que se enfríe por completo tras su uso. Retira la ceniza con regularidad, limpia el acero inoxidable con un paño suave y las rejillas con un cepillo. Evita productos químicos agresivos o limpiadores abrasivos." }, { q: "¿Puede quedarse a la intemperie?", a: "Sí, aunque recomendamos protegerla de la exposición prolongada a la lluvia, la nieve y la humedad. Cuando no la uses, guárdala bajo cubierto o usa una funda resistente a la intemperie para alargar su vida útil." }, { q: "¿Puedo personalizar la parrilla?", a: "Sí. Ofrecemos tamaños y configuraciones a medida para restaurantes, hoteles y cocinas profesionales. Solo tienes que contarnos los requisitos de tu proyecto." }, { q: "¿Ofrecéis garantía y soporte?", a: "Sí. Si detectas cualquier defecto de fabricación o necesitas piezas de repuesto, contacta con nuestro equipo de soporte — estaremos encantados de ayudarte." }], ZH: [{ q: "如何下单？", a: "请通过 lamsturn@gmail.com 联系我们，告知您想要的型号与收货地。我们会发送完整报价，含制作周期、运输方案与付款方式。" }, { q: "是否支持国际配送？", a: "是的，我们发货至全球。较小的型号通常经 FedEx 寄送，大宗订单则走海运。我们会根据您的所在地与订单推荐最合适的方式。" }, { q: "制作需要多久？", a: "每台 Lamsturn 烤炉均按单手工打造。确认付款后，制作通常约需 6 周；运输时间视目的地与所选方式而定。" }, { q: "该用什么木炭？", a: "建议使用优质硬木块炭 —— 若用于 robata 烤制，则推荐备长炭（白炭），其燃烧持久、洁净、稳定，最为理想。请避免使用型煤或速燃炭，它们灰烬更多，且会影响气流与烹饪表现。" }, { q: "如何清洁烤炉？", a: "使用后请让烤炉完全冷却。定期清除灰烬，用软布擦拭不锈钢，并以炉刷清洁炉栅。请勿使用强力化学品或研磨性清洁剂。" }, { q: "可以放在户外吗？", a: "可以，但建议避免长期淋雨、积雪与受潮。不使用时请置于遮蔽处，或使用防候罩以延长使用寿命。" }, { q: "可以定制烤炉吗？", a: "可以。我们为餐厅、酒店与专业厨房提供定制尺寸与配置。将您的项目需求告诉我们即可。" }, { q: "是否提供保修与支持？", a: "是的。若出现任何制造缺陷或需要更换部件，请联系我们的支持团队 —— 我们很乐意协助。" }], FR: [{ q: "Comment passer commande ?", a: "Écrivez-nous à lamsturn@gmail.com en précisant le modèle souhaité et la destination de livraison. Nous vous enverrons un devis complet avec le délai de fabrication, les options d’expédition et les modalités de paiement." }, { q: "Livrez-vous à l’international ?", a: "Oui, nous livrons dans le monde entier. Les petits modèles partent généralement par FedEx, les commandes plus importantes par fret maritime. Nous vous conseillerons la méthode la plus adaptée à votre localisation et à votre commande." }, { q: "Combien de temps prend la fabrication ?", a: "Chaque gril Lamsturn est fabriqué à la main sur commande. La production prend généralement environ 6 semaines après confirmation du paiement ; le délai de livraison dépend de la destination et de la méthode choisie." }, { q: "Quel charbon utiliser ?", a: "Nous recommandons un charbon de bois dur de qualité — ou du binchotan (charbon blanc) pour la cuisson robata, dont la combustion longue, propre et régulière est idéale. Évitez les briquettes ou le charbon auto-allumant, qui produisent plus de cendres et peuvent nuire au flux d’air et aux performances." }, { q: "Comment nettoyer le gril ?", a: "Laissez le gril refroidir complètement après usage. Retirez la cendre régulièrement, essuyez l’inox avec un chiffon doux et nettoyez les grilles avec une brosse. Évitez les produits chimiques agressifs ou abrasifs." }, { q: "Le gril peut-il rester dehors ?", a: "Oui, mais nous conseillons de le protéger d’une exposition prolongée à la pluie, à la neige et à l’humidité. Hors utilisation, rangez-le à l’abri ou utilisez une housse résistante aux intempéries pour prolonger sa durée de vie." }, { q: "Puis-je personnaliser le gril ?", a: "Oui. Nous proposons des tailles et configurations sur mesure pour les restaurants, hôtels et cuisines professionnelles. Contactez-nous avec les besoins de votre projet." }, { q: "Proposez-vous garantie et support ?", a: "Oui. En cas de défaut de fabrication ou de besoin de pièces de rechange, contactez notre équipe de support — nous serons ravis de vous aider." }], JA: [{ q: "注文はどうすればよいですか？", a: "ご希望のモデルと配送先を添えて lamsturn@gmail.com までご連絡ください。製作期間・配送方法・お支払い詳細を含むお見積もりをお送りします。" }, { q: "海外へ発送できますか？", a: "はい、世界中へ発送します。小型モデルは通常 FedEx、大型のご注文は海上輸送でお届けします。所在地とご注文内容に応じて最適な方法をご提案します。" }, { q: "製作にはどのくらいかかりますか？", a: "Lamsturn のグリルはすべて受注手作りです。製作はご入金確認後おおよそ 6 週間、配送期間は配送先と選択した方法によります。" }, { q: "どの炭を使えばよいですか？", a: "良質な硬木のかたまり炭をおすすめします。炉端焼きには備長炭（白炭）が理想的で、長く清らかに安定して燃えます。灰が多く出て通気や焼き上がりに影響するため、成形炭や着火加工炭は避けてください。" }, { q: "グリルの手入れは？", a: "使用後は完全に冷ましてください。灰はこまめに取り除き、ステンレスは柔らかい布で拭き、グレートはグリルブラシで清掃します。強い薬剤や研磨剤は避けてください。" }, { q: "屋外に置いたままでよいですか？", a: "可能ですが、雨・雪・湿気への長時間の露出は避けることをおすすめします。使用しないときは屋根のある場所に置くか、耐候カバーを使うと長持ちします。" }, { q: "グリルはカスタマイズできますか？", a: "はい。レストラン・ホテル・業務用厨房向けに、サイズや構成のオーダーメイドに対応します。プロジェクトのご要望をお知らせください。" }, { q: "保証とサポートはありますか？", a: "はい。製造上の不具合や交換部品が必要な場合は、サポートチームまでご連絡ください。喜んでお手伝いします。" }] };
     const faqData = faqByLang[lang] || faqByLang.EN;
@@ -1538,6 +1613,10 @@ class Component extends DCLogic {
             "kLblCountries": "COUNTRIES",
             "fAll": "ALL",
             "fMichelin": "MICHELIN",
+            "mfAll": "MICHELIN ALL",
+            "mfTwo": "2 STARS",
+            "mfOne": "1 STAR",
+            "mfGuide": "GUIDE",
             "fSmokers": "SMOKERS & OVENS",
             "fCustom": "CUSTOM BUILDS",
             "mapCaption": "CITY-LEVEL POSITIONS — CLICK A DOT FOR THE KITCHEN & ITS GRILL",
@@ -1807,6 +1886,10 @@ class Component extends DCLogic {
             "kLblCountries": "PAÍSES",
             "fAll": "TODO",
             "fMichelin": "MICHELIN",
+            "mfAll": "TODO MICHELIN",
+            "mfTwo": "2 ESTRELLAS",
+            "mfOne": "1 ESTRELLA",
+            "mfGuide": "GUÍA",
             "fSmokers": "AHUMADORES Y HORNOS",
             "fCustom": "A MEDIDA",
             "mapCaption": "UBICACIONES POR CIUDAD — TOCA UN PUNTO PARA VER LA COCINA Y SU GRILL",
@@ -2076,6 +2159,10 @@ class Component extends DCLogic {
             "kLblCountries": "国家",
             "fAll": "全部",
             "fMichelin": "米其林",
+            "mfAll": "米其林全部",
+            "mfTwo": "2 星",
+            "mfOne": "1 星",
+            "mfGuide": "指南",
             "fSmokers": "烟熏炉与烤箱",
             "fCustom": "定制",
             "mapCaption": "位置精确到城市 —— 点击圆点查看厨房及其烤炉",
@@ -2345,6 +2432,10 @@ class Component extends DCLogic {
             "kLblCountries": "PAYS",
             "fAll": "TOUT",
             "fMichelin": "MICHELIN",
+            "mfAll": "TOUT MICHELIN",
+            "mfTwo": "2 ÉTOILES",
+            "mfOne": "1 ÉTOILE",
+            "mfGuide": "GUIDE",
             "fSmokers": "FUMOIRS & FOURS",
             "fCustom": "SUR MESURE",
             "mapCaption": "POSITIONS PAR VILLE — CLIQUEZ SUR UN POINT POUR LA CUISINE ET SON GRIL",
@@ -2614,6 +2705,10 @@ class Component extends DCLogic {
             "kLblCountries": "国",
             "fAll": "すべて",
             "fMichelin": "ミシュラン",
+            "mfAll": "ミシュランすべて",
+            "mfTwo": "2つ星",
+            "mfOne": "1つ星",
+            "mfGuide": "ガイド",
             "fSmokers": "スモーカー & オーブン",
             "fCustom": "特注品",
             "mapCaption": "都市単位の位置 — ドットをクリックで厨房とそのグリルを表示",
@@ -2743,7 +2838,9 @@ class Component extends DCLogic {
             "y8CtaSub": "すべての LGY は受注生産です — 幅、奥行き、棚、網を、あなたのカウンターとメニューに合わせて。"
       }
 };
-    const t = Object.assign({}, T[lang] || T.EN, DT[lang] || DT.EN);
+    const canonicalT = Object.assign({}, T[lang] || T.EN, DT[lang] || DT.EN);
+    const t = {};
+    Object.keys(canonicalT).forEach((key) => { t[key] = convertCopy(canonicalT[key]); });
     const active = '#e05a1f', idle = '#ebe6dd';
     const inq = s.inq || [];
     const inqTgl = (c) => () => { const cur = this.state.inq || []; const nx = cur.indexOf(c) >= 0 ? cur.filter(x => x !== c) : cur.concat([c]); try { localStorage.setItem('lamsturn-inq', JSON.stringify(nx)); } catch(e) {} this.setState({ inq: nx }); };
@@ -2824,7 +2921,8 @@ class Component extends DCLogic {
     const missingLast = n => n > 0 ? n : Number.MAX_SAFE_INTEGER;
     const keyFn = ps==='size' ? (m=>sizeKey(m.s)) : ps==='weight' ? (m=>missingLast(wKey(m.w))) : (m=>missingLast(areaKey(m.g)));
     const hgtFor = (fam, n) => /MANUAL/.test(n||'') ? 'MANUAL' : fam==='lgy' ? '↕ HANDLE' : fam==='asado' ? (/GEAR/.test(n) ? '↕ GEAR' : /CHAIN/.test(n) ? '↕ CHAIN' : '↕ ADJUSTABLE') : 'FIXED';
-    const prep = (arr, fam) => arr.map(m => Object.assign({}, m, { hgt: hgtFor(fam, m.n) }, inqFields(m))).sort((a,b)=>keyFn(a)-keyFn(b));
+    const displayModel = (m) => Object.assign({}, m, { s: displayDimensions(m.s, false), g: displayDimensions(m.g, false), w: displayWeight(m.w) });
+    const prep = (arr, fam) => arr.map(m => Object.assign({}, m, { hgt: hgtFor(fam, m.n) }, inqFields(m))).sort((a,b)=>keyFn(a)-keyFn(b)).map(displayModel);
     const _gear = m => /GEAR/.test(m.n||''), _manual = m => /MANUAL/.test(m.n||'');
     const lgaChainS = prep(lga.filter(m=>!_gear(m)&&!_manual(m)),'asado');
     const lgaGearS = prep(lga.filter(_gear).map(m=> m.c==='LGA_J900_T'?Object.assign({},m,{hasDetail:true}):m),'asado');
@@ -2845,7 +2943,7 @@ class Component extends DCLogic {
       return Object.assign(base, { val: code, on: cmpSet(i), selEl: selEl, phLabel: m ? m.c : '\u2014' });
     };
     const cmpCols = cSel.map((c, i) => mkCol(c, i));
-    const intMap = { 'Asado Grills (LGA)': lga, 'Robata Grills (LGY)': lgy, 'Professional Smokers (LSO / LSV)': smokers, 'Indoor Smokers (LSC / LOW)': indoor, 'Accessories': acc };
+    const intMap = { 'Asado Grills (LGA)': lga.map(displayModel), 'Robata Grills (LGY)': lgy.map(displayModel), 'Professional Smokers (LSO / LSV)': smokers.map(displayModel), 'Indoor Smokers (LSC / LOW)': indoor.map(displayModel), 'Accessories': acc.map(displayModel) };
     const intModels = intMap[s.fInterest || 'Asado Grills (LGA)'] || null;
     const hasModelSel = !!intModels;
     const mSelOpt = (v, lbl) => React.createElement('option', { key: v || 'any', value: v, style: { color: '#ebe6dd', background: '#1c1917' } }, lbl);
@@ -2880,7 +2978,25 @@ class Component extends DCLogic {
       h1z: (s.slide||0)===0?2:1, h2z: (s.slide||0)===1?2:1, h3z: (s.slide||0)===2?2:1, h4z: (s.slide||0)===3?2:1, h5z: (s.slide||0)===4?2:1, h6z: (s.slide||0)===5?2:1,
       d1: (s.slide||0)===0?active:'rgba(235,230,221,.45)', d2: (s.slide||0)===1?active:'rgba(235,230,221,.45)', d3: (s.slide||0)===2?active:'rgba(235,230,221,.45)', d4: (s.slide||0)===3?active:'rgba(235,230,221,.45)', d5: (s.slide||0)===4?active:'rgba(235,230,221,.45)', d6: (s.slide||0)===5?active:'rgba(235,230,221,.45)',
       toSlide0: () => this.setSlide(0), toSlide1: () => this.setSlide(1), toSlide2: () => this.setSlide(2), toSlide3: () => this.setSlide(3), toSlide4: () => this.setSlide(4), toSlide5: () => this.setSlide(5),
-      lang, t, faqItems,
+      lang, unit, t, faqItems,
+      homeGearStep: imperial ? ' — ' + formatInches(30) + ' IN STEPS' : ' — 30 MM STEPS',
+      homeStepValue: imperial ? formatInches(30) : '30',
+      homeStepUnit: imperial ? 'in' : 'mm',
+      homeSearStep: imperial ? 'SEAR · ' + formatInches(30) + ' IN' : 'SEAR · 30 MM',
+      jOverall: displayDimensions('W900 × D750 × H920', true),
+      jMainGrill: displayDimensions('378 × 495', true) + ' — ROUND BAR × 2',
+      jRestingGrill: displayDimensions('378 × 250', true) + ' × 2',
+      jWeight: displayWeight('120 KG'),
+      jTrayPlaceholder: convertCopy('9 mm charcoal tray'),
+      jSizePlaceholder: imperial ? 'LGA_J900_T size chart (in)' : 'LGA_J900_T size chart (mm)',
+      l6D300: displayDimensions('W610 × D300 × H300', true) + ' — ' + displayWeight('35 KG'),
+      l6D400: displayDimensions('W610 × D400 × H300', true) + ' — ' + displayWeight('45 KG'),
+      l6Grill: displayDimensions('315 × 250 · 292 × 354', true),
+      l6SizePlaceholder: imperial ? 'LGY_610_D400 size chart (in)' : 'LGY_610_D400 size chart (mm)',
+      l8D300: displayDimensions('W840 × D300 × H300', true) + ' — ' + displayWeight('46 KG'),
+      l8D400: displayDimensions('W840 × D400 × H300', true) + ' — ' + displayWeight('55 KG'),
+      l8Grill: displayDimensions('315 × 250 · 409 × 354', true),
+      l8SizePlaceholder: imperial ? 'LGY_840_D400 size chart (in)' : 'LGY_840_D400 size chart (mm)',
       reels,
       community: [{id:'ig-1',poster:'assets/photos/comm-1.jpg'},{id:'ig-2',poster:'assets/photos/comm-2.jpg'},{id:'ig-3',poster:'assets/photos/comm-3.jpg'},{id:'ig-4',poster:'assets/photos/comm-4.jpg'},{id:'ig-5',poster:'assets/photos/comm-5.jpg'},{id:'ig-6',poster:'assets/photos/comm-6.jpg'},{id:'ig-7',poster:'assets/photos/comm-7.jpg'},{id:'ig-8',poster:'assets/photos/comm-8.jpg'},{id:'ig-9',poster:'assets/photos/comm-9.jpg'},{id:'ig-10',poster:'assets/photos/comm-10.jpg'},{id:'ig-11',poster:'assets/photos/comm-11.jpg'},{id:'ig-12',poster:'assets/photos/comm-12.jpg'},{id:'ig-13',poster:'assets/photos/comm-13.jpg'},{id:'ig-14',poster:'assets/photos/comm-14.jpg'},{id:'ig-15',poster:'assets/photos/comm-15.jpg'},{id:'ig-16',poster:'assets/photos/comm-16.jpg'},{id:'ig-17',poster:'assets/photos/comm-17.jpg'},{id:'ig-18',poster:'assets/photos/comm-18.jpg'},{id:'ig-19',poster:'assets/photos/comm-19.jpg'},{id:'ig-20',poster:'assets/photos/comm-20.jpg'},{id:'ig-21',poster:'assets/photos/comm-21.jpg'},{id:'ig-22',poster:'assets/photos/comm-22.jpg'},{id:'ig-23',poster:'assets/photos/comm-23.jpg'},{id:'ig-24',poster:'assets/photos/comm-24.jpg'},{id:'ig-25',poster:'assets/photos/comm-25.jpg'}],
       setCommRail: (el)=>{ if(!el) return; this._comm = el; el.style.willChange='transform'; if(this._commRAF) return; this._commX = 0; this._commPaused = false; el.addEventListener('mouseenter', ()=>{ this._commPaused = true; }); el.addEventListener('mouseleave', ()=>{ this._commPaused = false; }); let last = performance.now(); const speed = 42; const step = (now)=>{ const dt = Math.min(0.05, (now-last)/1000); last = now; if(!this._commPaused && el.children.length > 1){ const cs = getComputedStyle(el); const gap = parseFloat(cs.columnGap||cs.gap||'16') || 16; const first = el.children[0]; const fw = first.getBoundingClientRect().width + gap; if(fw > 0){ this._commX -= speed*dt; if(-this._commX >= fw){ this._commX += fw; el.appendChild(first); } el.style.transform = 'translateX(' + this._commX + 'px)'; } } this._commRAF = requestAnimationFrame(step); }; this._commRAF = requestAnimationFrame(step); },
@@ -2890,6 +3006,7 @@ class Component extends DCLogic {
       prevReel: ()=>{ if(this._reelRail) this._reelRail.scrollBy({left:-Math.round(this._reelRail.clientWidth*0.8), behavior:'smooth'}); },
       nextReel: ()=>{ if(this._reelRail) this._reelRail.scrollBy({left:Math.round(this._reelRail.clientWidth*0.8), behavior:'smooth'}); },
       onLang: (e) => this.setState({ lang: e.target.value }),
+      onUnit: (e) => { const next = e.target.value === 'imperial' ? 'imperial' : 'metric'; try { localStorage.setItem('lamsturn-unit', next); } catch(err) {} this.setState({ unit: next }); },
       showMichelin: this.props.showMichelin ?? true,
       cmpCols, cmpOpts,
       hasInq: inq.length > 0, inqCount: inq.length,
@@ -2897,7 +3014,7 @@ class Component extends DCLogic {
       clearInq: () => { try { localStorage.setItem('lamsturn-inq','[]'); } catch(e) {} this.setState({ inq: [] }); },
       sentModels: s.sentModels || '', hasSentModels: !!s.sentModels,
       hasModelSel, fModelSel,
-      lgaChain: lgaChainS, lgaGear: lgaGearS, lgy: lgyS, smokers: smokersS, indoor: indoorS, acc: acc.map(m => Object.assign({}, m, inqFields(m))),
+      lgaChain: lgaChainS, lgaGear: lgaGearS, lgy: lgyS, smokers: smokersS, indoor: indoorS, acc: acc.map(m => Object.assign({}, displayModel(m), inqFields(m))),
       depthPopupOpen: !!(s.depthPopup && depthReg[s.depthPopup]),
       depthPopupTitle: s.depthPopup || '',
       depthPopupOpts: (s.depthPopup && depthReg[s.depthPopup]) || [],
@@ -2917,7 +3034,7 @@ class Component extends DCLogic {
         const inst = this.installs();
         const kf = s.kf || 'all';
         const kitchens = inst.filter(k => k.m !== -1);
-        const kfPass = (k) => kf === 'all' ? true : kf === 'michelin' ? k.m > 0 : (k.cats.includes(kf) || k.m === -1);
+        const kfPass = (k) => this.kitchenFilterPass(k, kf);
         const shown = inst.filter(k => k.lat != null && kfPass(k));
         const GRP = {
           EN:['TWO MICHELIN STARS','ONE MICHELIN STAR','MICHELIN GUIDE','ALL KITCHENS'],
@@ -2955,8 +3072,8 @@ class Component extends DCLogic {
           kCities: new Set(kitchens.filter(k => k.lat != null).map(k => k.place.split('—')[0].split(',')[0].trim())).size,
           kCountries: new Set(kitchens.filter(k => k.lat != null).map(k => k.country)).size,
           kShown: shown.length, kList: list, colR: col[0], colLoc: col[1], colG: col[2], colGuide: col[3],
-          kcAll: chip('all'), kcMichelin: chip('michelin'), kcAsado: chip('asado'), kcRobata: chip('robata'), kcSmoker: chip('smoker'), kcCustom: chip('custom'),
-          kfAll: setKf('all'), kfMichelin: setKf('michelin'), kfAsado: setKf('asado'), kfRobata: setKf('robata'), kfSmoker: setKf('smoker'), kfCustom: setKf('custom')
+          kcAll: chip('all'), kcMichelin: chip('michelin'), kcMichelinTwo: chip('michelin-2'), kcMichelinOne: chip('michelin-1'), kcMichelinGuide: chip('michelin-guide'), kcAsado: chip('asado'), kcRobata: chip('robata'), kcSmoker: chip('smoker'), kcCustom: chip('custom'),
+          kfAll: setKf('all'), kfMichelin: setKf('michelin'), kfMichelinTwo: setKf('michelin-2'), kfMichelinOne: setKf('michelin-1'), kfMichelinGuide: setKf('michelin-guide'), kfAsado: setKf('asado'), kfRobata: setKf('robata'), kfSmoker: setKf('smoker'), kfCustom: setKf('custom')
         };
       })()
     };
