@@ -30,6 +30,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 @media (max-width:760px){[data-hdr]{padding:14px 20px!important;gap:10px}[data-herocta]{flex-wrap:nowrap!important}[data-herocta]>a{flex:1 1 0;text-align:center;padding-left:8px!important;padding-right:8px!important;white-space:nowrap}[data-heroband]{display:grid!important;grid-template-columns:1fr 1fr;align-content:center;align-items:start!important;row-gap:14px;column-gap:18px}[data-heroband]>div{flex:none!important}[data-heroband] span{font-size:11.5px!important}[data-herodots]{top:24px!important;bottom:auto!important;right:20px!important}[data-khead]{display:none!important}[data-krow]{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:5px!important}[data-krow]>span:last-child{justify-content:flex-start!important}[data-wrow]{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:5px!important}}
 @media (max-width:1100px){[data-inqlabel]{display:none!important}}
 @media (max-width:760px){[data-cmpgrid]{min-width:640px!important}[data-cmpwrap]{overflow-x:auto!important;padding-bottom:8px}}
+@media (max-width:760px){[data-reelviewport]{padding-left:clamp(20px,5vw,48px)!important;padding-right:clamp(20px,5vw,48px)!important}[data-reeltrack]{min-width:1220px!important}}
 </style>
 </helmet>
 <div style="min-height:100vh;display:flex;flex-direction:column">
@@ -177,8 +178,8 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     </div>
   </section>
 
-  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.18)">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+  <section style="padding:clamp(72px,10vh,130px) 0;border-top:1px solid rgba(235,230,221,.18)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;padding-inline:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
       <div>
         <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:14px">{{ t.reelsEyebrow }}</div>
         <h2 style="margin:0;max-width:20ch;font:600 clamp(30px,5vw,42px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.reelsTitle }}</h2>
@@ -188,12 +189,13 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         <a onClick="{{ nextReel }}" aria-label="Next" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(235,230,221,.4);display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;padding-bottom:3px" style-hover="border-color:#e05a1f;color:#e05a1f">›</a>
       </div>
     </div>
-    <div ref="{{ setReelRail }}" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;margin-top:32px;padding-bottom:4px">
+    <div data-reelviewport ref="{{ setReelRail }}" style="overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;margin-top:32px;padding-bottom:4px">
+      <div data-reeltrack style="display:flex;gap:16px;width:max-content;min-width:100%">
       <sc-for list="{{ reels }}" as="reel" hint-placeholder-count="7">
       <div style="flex:0 0 auto;width:clamp(240px,70vw,300px);scroll-snap-align:start">
         <div style="position:relative;aspect-ratio:9/16;background:#1c1917;overflow:hidden;border-radius:clamp(20px,2.4vw,30px)">
           <sc-if value="{{ reel.v }}" hint-placeholder-val="{{ false }}">
-            <video ref="{{ reel.setVid }}" muted loop playsinline autoplay preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+            <video ref="{{ reel.setVid }}" data-src="{{ reel.video }}" muted loop playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
               <a onClick="{{ reel.toggleMute }}" aria-label="Toggle sound" style="position:absolute;right:12px;bottom:12px;z-index:3;cursor:pointer;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(19,17,16,.5);backdrop-filter:blur(4px);border:1px solid rgba(235,230,221,.35);color:#ebe6dd" style-hover="border-color:#e05a1f"><sc-if value="{{ reel.muted }}" hint-placeholder-val="{{ true }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></sc-if><sc-if value="{{ reel.unmuted }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19.5 5a9 9 0 0 1 0 14"/></svg></sc-if></a>
           </sc-if>
           <sc-if value="{{ reel.img }}" hint-placeholder-val="{{ true }}">
@@ -207,6 +209,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         </a>
       </div>
       </sc-for>
+      </div>
     </div>
   </section>
 
@@ -1138,7 +1141,13 @@ class Component extends DCLogic {
     const f = this.state.kf || 'all';
     if (this._map && this._lastKf !== f) { this._lastKf = f; this.refreshMarkers(false); }
   }
-  componentWillUnmount() { clearInterval(this._t); clearInterval(this._lpoll); if (this._map) { this._map.remove(); this._map = null; } }
+  componentWillUnmount() { clearInterval(this._t); clearInterval(this._lpoll); if (this._reelIO) { this._reelIO.disconnect(); this._reelIO = null; } if (this._map) { this._map.remove(); this._map = null; } }
+  loadReelVideo(v) {
+    if (!v) return;
+    if (v._rsrc && v.getAttribute('src') !== v._rsrc) { v.src = v._rsrc; v.load(); }
+    const p = v.play();
+    if (p && p.catch) p.catch(() => {});
+  }
   installs() {
     if (this._inst) return this._inst;
     // [name, lat, lng, product(s), michelin(3=2★, 2=1★, 1=guide, 0=none, -1=showroom), place] — coords from Lamsturn.kml
@@ -2856,7 +2865,7 @@ class Component extends DCLogic {
       muted: (s.mutedMap||{})[r.id] !== false,
       unmuted: (s.mutedMap||{})[r.id] === false,
       soundLabel: (s.mutedMap||{})[r.id] !== false ? 'SOUND OFF' : 'SOUND ON',
-      setVid: (el) => { if (!el) return; this._vids = this._vids || {}; this._vids[r.id] = el; el.muted = (this.state.mutedMap||{})[r.id] !== false; el.loop = true; el.playsInline = true; el.preload = 'metadata'; el._rsrc = r.video; if (r.poster) el.poster = r.poster; if (!this._reelIO) { this._reelIO = new IntersectionObserver((ents) => { ents.forEach((e) => { const v = e.target; if (e.isIntersecting) { if (v._rsrc && v.getAttribute('src') !== v._rsrc) v.src = v._rsrc; const p = v.play(); if (p && p.catch) p.catch(() => {}); } else { try { v.pause(); } catch (_) {} } }); }, { root: null, rootMargin: '150px 250px', threshold: 0.15 }); } this._reelIO.observe(el); },
+      setVid: (el) => { this._vids = this._vids || {}; const prev = this._vids[r.id]; if (!el) { if (prev && this._reelIO) this._reelIO.unobserve(prev); if (prev) delete this._vids[r.id]; return; } if (prev && prev !== el && this._reelIO) this._reelIO.unobserve(prev); this._vids[r.id] = el; el.muted = (this.state.mutedMap||{})[r.id] !== false; el.loop = true; el.playsInline = true; el.preload = 'none'; el._rsrc = el.dataset.src || r.video; if (r.poster) el.poster = r.poster; if (typeof IntersectionObserver === 'undefined') { this.loadReelVideo(el); return; } if (!this._reelIO) { this._reelIO = new IntersectionObserver((ents) => { ents.forEach((e) => { const v = e.target; if (e.isIntersecting) this.loadReelVideo(v); else { try { v.pause(); } catch (_) {} } }); }, { root: null, rootMargin: '160px 180px', threshold: 0.15 }); } this._reelIO.observe(el); },
       toggleMute: () => { const el = (this._vids||{})[r.id]; const cur = (this.state.mutedMap||{})[r.id] !== false; const nm = !cur; if (el) el.muted = nm; this.setState((st) => ({ mutedMap: Object.assign({}, st.mutedMap, { [r.id]: nm }) })); },
     }));
     return {
@@ -2880,7 +2889,6 @@ class Component extends DCLogic {
       setReelRail: (el)=>{ this._reelRail = el; },
       prevReel: ()=>{ if(this._reelRail) this._reelRail.scrollBy({left:-Math.round(this._reelRail.clientWidth*0.8), behavior:'smooth'}); },
       nextReel: ()=>{ if(this._reelRail) this._reelRail.scrollBy({left:Math.round(this._reelRail.clientWidth*0.8), behavior:'smooth'}); },
-      setReelVid: (el)=>{ if(el){ el.muted=true; el.loop=true; el.playsInline=true; const p=el.play(); if(p&&p.catch)p.catch(()=>{}); } },
       onLang: (e) => this.setState({ lang: e.target.value }),
       showMichelin: this.props.showMichelin ?? true,
       cmpCols, cmpOpts,
