@@ -627,7 +627,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           </select>
         </label>
         <sc-if value="{{ hasModelSel }}" hint-placeholder-val="{{ true }}">
-        <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fModelL }}</span>{{ fModelSel }}</label>
+        <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fModelL }}</span>{{ fModelSel }}<sc-if value="{{ hasSelectedModel }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ addSelectedModel }}" style="align-self:flex-start;border:1px solid rgba(224,90,31,.55);background:transparent;color:#e05a1f;cursor:pointer;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;padding:9px 12px">{{ t.addInq }}</button></sc-if></label>
         </sc-if>
         </div>
         <sc-if value="{{ hasInq }}" hint-placeholder-val="{{ false }}">
@@ -3161,7 +3161,7 @@ class Component extends DCLogic {
       inqItems: inq.map(c => ({ c: c, rm: inqTgl(c) })),
       clearInq: () => { try { localStorage.setItem('lamsturn-inq','[]'); } catch(e) {} this.setState({ inq: [] }); },
       sentModels: s.sentModels || '', hasSentModels: !!s.sentModels,
-      hasModelSel, fCountrySel, fModelSel,
+      hasModelSel, hasSelectedModel: !!(s.fModel || '').trim(), fCountrySel, fModelSel,
       lgaChain: lgaChainS, lgaGear: lgaGearS, lgy: lgyS, smokers: smokersS, indoor: indoorS, acc: acc.map(m => Object.assign({}, displayModel(m), inqFields(m))),
       depthPopupOpen: !!(s.depthPopup && depthReg[s.depthPopup]),
       depthPopupTitle: s.depthPopup || '',
@@ -3170,6 +3170,14 @@ class Component extends DCLogic {
       psArea, psSize, psWeight, setPsArea, setPsSize, setPsWeight,
       fName:s.fName, fEmail:s.fEmail, fCountry:s.fCountry, fCompany:s.fCompany, fInstagram:s.fInstagram, fWebsite:s.fWebsite, fInterest:s.fInterest, fMsg:s.fMsg,
       onName:this.set('fName'), onEmail:this.set('fEmail'), onCompany:this.set('fCompany'), onInstagram:this.set('fInstagram'), onWebsite:this.set('fWebsite'), onInterest: (e) => this.setState({ fInterest: e.target.value, fModel: '' }), onMsg:this.set('fMsg'),
+      addSelectedModel: () => {
+        const model = String(this.state.fModel || '').trim();
+        if (!model) return;
+        const cur = this.state.inq || [];
+        const nx = cur.indexOf(model) >= 0 ? cur : cur.concat([model]);
+        try { localStorage.setItem('lamsturn-inq', JSON.stringify(nx)); } catch(e) {}
+        this.setState({ inq: nx, fModel: '' });
+      },
       sent: s.sent, notSent: !s.sent, err: (s.err==='fill'?t.errFill:s.err==='email'?t.errEmail:s.err==='verification'?t.errVerification:s.err==='submit'?t.errSubmit:''), hasErr: !!s.err, echoEmail: 'lamsturn@gmail.com',
       turnstileRef, errorRef, isSubmitting: !!s.submitting, sendLabel: s.submitting ? t.sending : t.send, sendCursor: s.submitting ? 'wait' : 'pointer', sendOpacity: s.submitting ? .7 : 1,
       submit: async (event) => {
