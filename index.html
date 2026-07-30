@@ -34,6 +34,7 @@ body{margin:0;background:#131110;color:#ebe6dd;font-family:Archivo,system-ui,san
 a{color:inherit;text-decoration:none}a:hover{color:#e05a1f}
 ::selection{background:#e05a1f;color:#131110}
 input,select,textarea{font-family:Archivo,system-ui,sans-serif}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:2px solid #e05a1f!important;outline-offset:3px}
 .leaflet-container{background:#131110}
 .leaflet-popup-content-wrapper{background:#1c1917;color:#ebe6dd;border:1px solid rgba(224,90,31,.5);border-radius:0;box-shadow:0 8px 24px rgba(0,0,0,.5)}
 .leaflet-popup-tip{background:#1c1917;border:1px solid rgba(224,90,31,.5)}
@@ -2970,11 +2971,11 @@ class Component extends DCLogic {
       }
 };
     const contactFieldLabels = {
-      EN: { fCountryChoose:'Select your country', fInstagramL:'INSTAGRAM (OPTIONAL)', fWebsiteL:'WEBSITE (OPTIONAL)', phInstagram:'@yourrestaurant', phWebsite:'https://yourrestaurant.com' },
-      ES: { fCountryChoose:'Selecciona tu pa\u00eds', fInstagramL:'INSTAGRAM (OPCIONAL)', fWebsiteL:'SITIO WEB (OPCIONAL)', phInstagram:'@turestaurante', phWebsite:'https://turestaurante.com' },
-      ZH: { fCountryChoose:'\u9009\u62e9\u56fd\u5bb6', fInstagramL:'Instagram\uff08\u53ef\u9009\uff09', fWebsiteL:'\u7f51\u7ad9\uff08\u53ef\u9009\uff09', phInstagram:'@\u9910\u5385\u8d26\u53f7', phWebsite:'https://...' },
-      FR: { fCountryChoose:'S\u00e9lectionnez votre pays', fInstagramL:'INSTAGRAM (FACULTATIF)', fWebsiteL:'SITE WEB (FACULTATIF)', phInstagram:'@votrerestaurant', phWebsite:'https://votrerestaurant.com' },
-      JA: { fCountryChoose:'\u56fd\u3092\u9078\u629e', fInstagramL:'Instagram\uff08\u4efb\u610f\uff09', fWebsiteL:'\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\uff08\u4efb\u610f\uff09', phInstagram:'@\u30ec\u30b9\u30c8\u30e9\u30f3', phWebsite:'https://...' }
+      EN: { fCountryChoose:'Select your country', fInstagramL:'INSTAGRAM (OPTIONAL)', fWebsiteL:'WEBSITE (OPTIONAL)', phInstagram:'@yourrestaurant', phWebsite:'https://yourrestaurant.com', specOnRequest:'ON REQUEST' },
+      ES: { fCountryChoose:'Selecciona tu pa\u00eds', fInstagramL:'INSTAGRAM (OPCIONAL)', fWebsiteL:'SITIO WEB (OPCIONAL)', phInstagram:'@turestaurante', phWebsite:'https://turestaurante.com', specOnRequest:'BAJO CONSULTA' },
+      ZH: { fCountryChoose:'\u9009\u62e9\u56fd\u5bb6', fInstagramL:'Instagram\uff08\u53ef\u9009\uff09', fWebsiteL:'\u7f51\u7ad9\uff08\u53ef\u9009\uff09', phInstagram:'@\u9910\u5385\u8d26\u53f7', phWebsite:'https://...', specOnRequest:'\u8bf7\u54a8\u8be2' },
+      FR: { fCountryChoose:'S\u00e9lectionnez votre pays', fInstagramL:'INSTAGRAM (FACULTATIF)', fWebsiteL:'SITE WEB (FACULTATIF)', phInstagram:'@votrerestaurant', phWebsite:'https://votrerestaurant.com', specOnRequest:'SUR DEMANDE' },
+      JA: { fCountryChoose:'\u56fd\u3092\u9078\u629e', fInstagramL:'Instagram\uff08\u4efb\u610f\uff09', fWebsiteL:'\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\uff08\u4efb\u610f\uff09', phInstagram:'@\u30ec\u30b9\u30c8\u30e9\u30f3', phWebsite:'https://...', specOnRequest:'\u8981\u554f\u3044\u5408\u308f\u305b' }
     };
     Object.keys(contactFieldLabels).forEach((code) => Object.assign(T[code], contactFieldLabels[code]));
     const canonicalT = Object.assign({}, T[lang] || T.EN, DT[lang] || DT.EN);
@@ -3060,7 +3061,8 @@ class Component extends DCLogic {
     const missingLast = n => n > 0 ? n : Number.MAX_SAFE_INTEGER;
     const keyFn = ps==='size' ? (m=>sizeKey(m.s)) : ps==='weight' ? (m=>missingLast(wKey(m.w))) : (m=>missingLast(areaKey(m.g)));
     const hgtFor = (fam, n) => /MANUAL/.test(n||'') ? 'MANUAL' : fam==='lgy' ? '↕ HANDLE' : fam==='asado' ? (/GEAR/.test(n) ? '↕ GEAR' : /CHAIN/.test(n) ? '↕ CHAIN' : '↕ ADJUSTABLE') : 'FIXED';
-    const displayModel = (m) => Object.assign({}, m, { s: displayDimensions(m.s, false), g: displayDimensions(m.g, false), w: displayWeight(m.w) });
+    const displaySpec = (value, formatter) => value === '\u2014' ? t.specOnRequest : formatter(value);
+    const displayModel = (m) => Object.assign({}, m, { s: displayDimensions(m.s, false), g: displaySpec(m.g, value => displayDimensions(value, false)), w: displaySpec(m.w, displayWeight) });
     const prep = (arr, fam) => arr.map(m => Object.assign({}, m, { hgt: hgtFor(fam, m.n) }, inqFields(m))).sort((a,b)=>keyFn(a)-keyFn(b)).map(displayModel);
     const _gear = m => /GEAR/.test(m.n||''), _manual = m => /MANUAL/.test(m.n||'');
     const lgaChainS = prep(lga.filter(m=>!_gear(m)&&!_manual(m)),'asado');
