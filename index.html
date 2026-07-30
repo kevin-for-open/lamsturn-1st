@@ -1187,19 +1187,64 @@ class Component extends DCLogic {
     const key = { lgy610:'lgy-610', lgy840:'lgy-840', j900:'lga-j900-t' }[p];
     try { return key ? `${window.location.pathname}?product=${key}` : window.location.pathname; } catch(e) { return '/'; }
   }
-  go(p) { this.setState({ page: p, menu: false, depthPopup: null, turnstileToken: p === 'contact' ? this.state.turnstileToken : '' }); try { window.history.pushState({ product: p }, '', this.urlForPage(p)); window.scrollTo(0, 0); } catch(e) {} }
+  seoForPage(p) {
+    const base = {
+      title: 'Lamsturn, a premium grill brand from South Korea',
+      description: 'Professional charcoal grills, robata grills and smokers, designed and handcrafted in South Korea for chefs and restaurants worldwide.',
+      url: 'https://lamsturn.com/',
+      type: 'website'
+    };
+    return {
+      lgy610: {
+        title: 'LGY_610 Robata Grill | Lamsturn',
+        description: 'Compact binchotan robata grill handcrafted in South Korea for professional restaurant counters, available in D300 and D400 depths.',
+        url: 'https://lamsturn.com/?product=lgy-610',
+        type: 'product'
+      },
+      lgy840: {
+        title: 'LGY_840 Robata Grill | Lamsturn',
+        description: 'Wide-format binchotan robata grill handcrafted for professional kitchens, available in D300 and D400 depths with precision height control.',
+        url: 'https://lamsturn.com/?product=lgy-840',
+        type: 'product'
+      },
+      j900: {
+        title: 'LGA_J900_T Asado Grill | Lamsturn',
+        description: 'Gear-driven tabletop charcoal grill handcrafted in South Korea with precision grate-height control for professional kitchens.',
+        url: 'https://lamsturn.com/?product=lga-j900-t',
+        type: 'product'
+      }
+    }[p] || base;
+  }
+  syncSeo(p) {
+    try {
+      const seo = this.seoForPage(p);
+      const setMeta = (selector, value) => { const el = document.querySelector(selector); if (el) el.setAttribute('content', value); };
+      document.title = seo.title;
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.setAttribute('href', seo.url);
+      setMeta('meta[name="description"]', seo.description);
+      setMeta('meta[property="og:type"]', seo.type);
+      setMeta('meta[property="og:title"]', seo.title);
+      setMeta('meta[property="og:description"]', seo.description);
+      setMeta('meta[property="og:url"]', seo.url);
+      setMeta('meta[name="twitter:title"]', seo.title);
+      setMeta('meta[name="twitter:description"]', seo.description);
+    } catch(e) {}
+  }
+  go(p) { this.setState({ page: p, menu: false, depthPopup: null, turnstileToken: p === 'contact' ? this.state.turnstileToken : '' }); this.syncSeo(p); try { window.history.pushState({ product: p }, '', this.urlForPage(p)); window.scrollTo(0, 0); } catch(e) {} }
   countryOptions() {
     const codes = 'AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE,BZ,BJ,BM,BT,BO,BQ,BA,BW,BV,BR,IO,BN,BG,BF,BI,CV,KH,CM,CA,KY,CF,TD,CL,CN,CX,CC,CO,KM,CG,CD,CK,CR,CI,HR,CU,CW,CY,CZ,DK,DJ,DM,DO,EC,EG,SV,GQ,ER,EE,SZ,ET,FK,FO,FJ,FI,FR,GF,PF,TF,GA,GM,GE,DE,GH,GI,GR,GL,GD,GP,GU,GT,GG,GN,GW,GY,HT,HM,VA,HN,HK,HU,IS,IN,ID,IR,IQ,IE,IM,IL,IT,JM,JP,JE,JO,KZ,KE,KI,KP,KR,KW,KG,LA,LV,LB,LS,LR,LY,LI,LT,LU,MO,MG,MW,MY,MV,ML,MT,MH,MQ,MR,MU,YT,MX,FM,MD,MC,MN,ME,MS,MA,MZ,MM,NA,NR,NP,NL,NC,NZ,NI,NE,NG,NU,NF,MK,MP,NO,OM,PK,PW,PS,PA,PG,PY,PE,PH,PN,PL,PT,PR,QA,RE,RO,RU,RW,BL,SH,KN,LC,MF,PM,VC,WS,SM,ST,SA,SN,RS,SC,SL,SG,SX,SK,SI,SB,SO,ZA,GS,SS,ES,LK,SD,SR,SJ,SE,CH,SY,TW,TJ,TZ,TH,TL,TG,TK,TO,TT,TN,TR,TM,TC,TV,UG,UA,AE,GB,US,UM,UY,UZ,VU,VE,VN,VG,VI,WF,EH,YE,ZM,ZW,XK'.split(',');
     let names = null;
     try { names = typeof Intl !== 'undefined' && Intl.DisplayNames ? new Intl.DisplayNames(['en'], { type: 'region' }) : null; } catch(e) {}
     return codes.map((code) => { const name = names ? names.of(code) : code; return { value: name || code, label: name || code }; });
   }
-  goSec(id) { this.setState({ page: 'products', menu: false, depthPopup: null }); let n = 0; const seek = () => { const el = document.getElementById(id); if (el) { const y = el.getBoundingClientRect().top + window.pageYOffset - 112; try { window.scrollTo(0, Math.max(0, y)); } catch(e) {} } else if (n++ < 20) { setTimeout(seek, 50); } }; try { window.scrollTo(0, 0); } catch(e) {} setTimeout(seek, 60); }
+  goSec(id) { this.setState({ page: 'products', menu: false, depthPopup: null }); this.syncSeo('products'); let n = 0; const seek = () => { const el = document.getElementById(id); if (el) { const y = el.getBoundingClientRect().top + window.pageYOffset - 112; try { window.scrollTo(0, Math.max(0, y)); } catch(e) {} } else if (n++ < 20) { setTimeout(seek, 50); } }; try { window.history.pushState({ product: 'products' }, '', this.urlForPage('products')); window.scrollTo(0, 0); } catch(e) {} setTimeout(seek, 60); }
   componentDidMount() {
     this.startTimer(); this.initMap();
     const linkedPage = this.pageFromUrl();
     if (linkedPage) this.setState({ page: linkedPage });
-    this._onPopState = () => { const next = this.pageFromUrl(); this.setState({ page: next || 'home', menu: false, depthPopup: null }); };
+    this.syncSeo(linkedPage || 'home');
+    this._onPopState = () => { const next = this.pageFromUrl(); this.syncSeo(next || 'home'); this.setState({ page: next || 'home', menu: false, depthPopup: null }); };
     try { window.addEventListener('popstate', this._onPopState); } catch(e) {}
     let activeLang = this.normalizeLang(this.props.lang ?? 'EN');
     try {
