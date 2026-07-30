@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="/">
 <title>Lamsturn, a premium grill brand from South Korea</title>
 <meta name="description" content="Professional charcoal grills, robata grills and smokers, designed and handcrafted in South Korea for chefs and restaurants worldwide.">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -335,7 +336,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between">
             <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
-              <a onClick="{{ m.go }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
+              <a href="{{ m.href }}" onClick="{{ m.go }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
             </sc-if>
             <sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ m.inqLabel }}</a></sc-if>
             
@@ -361,7 +362,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between">
             <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
-              <a onClick="{{ goJ900 }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
+              <a href="/products/lga-j900-t/" onClick="{{ goJ900 }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
             </sc-if>
             <sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ m.inqLabel }}</a></sc-if>
             
@@ -387,7 +388,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between">
             <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
-              <a onClick="{{ goJ900 }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
+              <a href="/products/lga-j900-t/" onClick="{{ goJ900 }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
             </sc-if>
             <sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ m.inqLabel }}</a></sc-if>
             
@@ -800,7 +801,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <div style="font:400 clamp(15px,1.9vw,19px) Archivo,sans-serif;color:rgba(235,230,221,.78);margin-top:14px">{{ t.y6Sub }}</div>
       <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px">
         <a onClick="{{ goContact }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.quote }}</a>
-        <a onClick="{{ goLgy840 }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.45)" style-hover="border-color:#e05a1f;color:#e05a1f">{{ t.dViewY8 }}</a>
+        <a href="/products/lgy-840/" onClick="{{ goLgy840 }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.45)" style-hover="border-color:#e05a1f;color:#e05a1f">{{ t.dViewY8 }}</a>
       </div>
     </div>
   </section>
@@ -938,7 +939,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <div style="font:400 clamp(15px,1.9vw,19px) Archivo,sans-serif;color:rgba(235,230,221,.78);margin-top:14px">{{ t.y6Sub }}</div>
       <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px">
         <a onClick="{{ goContact }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.quote }}</a>
-        <a onClick="{{ goLgy610 }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.45)" style-hover="border-color:#e05a1f;color:#e05a1f">{{ t.dCompactSee }}</a>
+        <a href="/products/lgy-610/" onClick="{{ goLgy610 }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.45)" style-hover="border-color:#e05a1f;color:#e05a1f">{{ t.dCompactSee }}</a>
       </div>
     </div>
   </section>
@@ -1179,13 +1180,19 @@ class Component extends DCLogic {
   }
   pageFromUrl() {
     try {
+      const path = window.location.pathname.replace(/\/+$/, '').toLowerCase();
+      const byPath = {
+        '/products/lgy-610':'lgy610',
+        '/products/lgy-840':'lgy840',
+        '/products/lga-j900-t':'j900'
+      }[path];
+      if (byPath) return byPath;
       const key = new URLSearchParams(window.location.search).get('product');
       return { 'lgy-610':'lgy610', 'lgy-840':'lgy840', 'lga-j900-t':'j900' }[String(key || '').toLowerCase()] || null;
     } catch(e) { return null; }
   }
   urlForPage(p) {
-    const key = { lgy610:'lgy-610', lgy840:'lgy-840', j900:'lga-j900-t' }[p];
-    try { return key ? `${window.location.pathname}?product=${key}` : window.location.pathname; } catch(e) { return '/'; }
+    return { lgy610:'/products/lgy-610/', lgy840:'/products/lgy-840/', j900:'/products/lga-j900-t/' }[p] || '/';
   }
   seoForPage(p) {
     const base = {
@@ -1198,19 +1205,19 @@ class Component extends DCLogic {
       lgy610: {
         title: 'LGY_610 Robata Grill | Lamsturn',
         description: 'Compact binchotan robata grill handcrafted in South Korea for professional restaurant counters, available in D300 and D400 depths.',
-        url: 'https://lamsturn.com/?product=lgy-610',
+        url: 'https://lamsturn.com/products/lgy-610/',
         type: 'product'
       },
       lgy840: {
         title: 'LGY_840 Robata Grill | Lamsturn',
         description: 'Wide-format binchotan robata grill handcrafted for professional kitchens, available in D300 and D400 depths with precision height control.',
-        url: 'https://lamsturn.com/?product=lgy-840',
+        url: 'https://lamsturn.com/products/lgy-840/',
         type: 'product'
       },
       j900: {
         title: 'LGA_J900_T Asado Grill | Lamsturn',
         description: 'Gear-driven tabletop charcoal grill handcrafted in South Korea with precision grate-height control for professional kitchens.',
-        url: 'https://lamsturn.com/?product=lga-j900-t',
+        url: 'https://lamsturn.com/products/lga-j900-t/',
         type: 'product'
       }
     }[p] || base;
@@ -1242,7 +1249,13 @@ class Component extends DCLogic {
   componentDidMount() {
     this.startTimer(); this.initMap();
     const linkedPage = this.pageFromUrl();
-    if (linkedPage) this.setState({ page: linkedPage });
+    if (linkedPage) {
+      this.setState({ page: linkedPage });
+      try {
+        const canonicalPath = this.urlForPage(linkedPage);
+        if (window.location.pathname !== canonicalPath) window.history.replaceState({ product: linkedPage }, '', canonicalPath);
+      } catch(e) {}
+    }
     this.syncSeo(linkedPage || 'home');
     this._onPopState = () => { const next = this.pageFromUrl(); this.syncSeo(next || 'home'); this.setState({ page: next || 'home', menu: false, depthPopup: null }); };
     try { window.addEventListener('popstate', this._onPopState); } catch(e) {}
@@ -3078,8 +3091,8 @@ class Component extends DCLogic {
     ];
     const gL6 = () => this.go('lgy610'), gL8 = () => this.go('lgy840');
     const lgy = [
-      {c:'LGY_610', d:['D300','D400'], img:'assets/photos/LGY_610.webp', n:'ROBATA · D300 / D400', s:'W610×D300/400×H300', g:'W315×250 · W292×354', w:'35 / 45 KG', hasDetail:true, go:gL6},
-      {c:'LGY_840', d:['D300','D400'], img:'assets/photos/LGY_840.webp', n:'ROBATA · D300 / D400', s:'W840×D300/400×H300', g:'W315×250 · W409×354', w:'46 / 55 KG', hasDetail:true, go:gL8}
+      {c:'LGY_610', d:['D300','D400'], img:'assets/photos/LGY_610.webp', n:'ROBATA · D300 / D400', s:'W610×D300/400×H300', g:'W315×250 · W292×354', w:'35 / 45 KG', hasDetail:true, href:'/products/lgy-610/', go:gL6},
+      {c:'LGY_840', d:['D300','D400'], img:'assets/photos/LGY_840.webp', n:'ROBATA · D300 / D400', s:'W840×D300/400×H300', g:'W315×250 · W409×354', w:'46 / 55 KG', hasDetail:true, href:'/products/lgy-840/', go:gL8}
     ];
     const smokers = [
       {c:'LSO_1400_PA', n:'OFFSET · PA', s:'W1358×D533×H1756', g:'—', w:'—'},

@@ -38,13 +38,20 @@ jobs:
             --exclude='.image-slots.state.json' \
             --exclude='CLAUDE.md' \
             --exclude='README.md' \
+            --exclude='scripts' \
             --exclude='wrangler.toml' \
             ./ _site/
+
+      - name: Generate product pages
+        run: node scripts/build-product-pages.mjs _site
 
       - name: Sanity check the bundle
         run: |
           set -e
           test -f _site/index.html || { echo "::error::index.html missing"; exit 1; }
+          test -f _site/products/lgy-610/index.html || { echo "::error::LGY_610 product page missing"; exit 1; }
+          test -f _site/products/lgy-840/index.html || { echo "::error::LGY_840 product page missing"; exit 1; }
+          test -f _site/products/lga-j900-t/index.html || { echo "::error::LGA_J900_T product page missing"; exit 1; }
           test -f _site/support.js || { echo "::error::support.js missing — the site would not render"; exit 1; }
 
           echo "files: $(find _site -type f | wc -l)"
