@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lamsturn, a premium grill brand from South Korea</title>
+<meta name="description" content="Professional charcoal grills, robata grills and smokers, designed and handcrafted in South Korea for chefs and restaurants worldwide.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#131110">
+<meta name="color-scheme" content="dark">
+<!-- SEO_ORIGIN: replace every https://lamsturn.com occurrence if the public origin changes. -->
+<link rel="canonical" href="https://lamsturn.com/">
+<meta property="og:site_name" content="Lamsturn">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lamsturn, a premium grill brand from South Korea">
+<meta property="og:description" content="Professional charcoal grills, robata grills and smokers, designed and handcrafted in South Korea for chefs and restaurants worldwide.">
+<meta property="og:url" content="https://lamsturn.com/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lamsturn, a premium grill brand from South Korea">
+<meta name="twitter:description" content="Professional charcoal grills, robata grills and smokers, designed and handcrafted in South Korea for chefs and restaurants worldwide.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="favicon.png" sizes="64x64">
 <script src="./support.js"></script>
@@ -592,18 +606,22 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     </div>
     <div style="padding:80px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
       <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
-      <div style="display:flex;flex-direction:column;gap:22px;max-width:560px">
+      <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:22px;max-width:560px">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
-          <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fNameL }}</span><input value="{{ fName }}" onChange="{{ onName }}" placeholder="{{ t.phName }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
-          <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fEmailL }}</span><input value="{{ fEmail }}" onChange="{{ onEmail }}" placeholder="name@restaurant.com" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fNameL }}</span><input type="text" name="name" autocomplete="name" required="{{ true }}" value="{{ fName }}" onChange="{{ onName }}" placeholder="{{ t.phName }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fEmailL }}</span><input type="email" name="email" autocomplete="email" inputmode="email" required="{{ true }}" value="{{ fEmail }}" onChange="{{ onEmail }}" placeholder="name@restaurant.com" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
-          <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fCountryL }}</span><input value="{{ fCountry }}" onChange="{{ onCountry }}" placeholder="{{ t.phCountry }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
-          <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fCompanyL }}</span><input value="{{ fCompany }}" onChange="{{ onCompany }}" placeholder="{{ t.phCompany }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
+           <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fCountryL }}</span>{{ fCountrySel }}</label>
+           <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fCompanyL }}</span><input type="text" name="company" autocomplete="organization" value="{{ fCompany }}" onChange="{{ onCompany }}" placeholder="{{ t.phCompany }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
+         </div>
+         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
+           <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fInstagramL }}</span><input type="text" name="instagram" autocomplete="off" value="{{ fInstagram }}" onChange="{{ onInstagram }}" placeholder="{{ t.phInstagram }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
+           <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fWebsiteL }}</span><input type="url" name="website" autocomplete="url" inputmode="url" value="{{ fWebsite }}" onChange="{{ onWebsite }}" placeholder="{{ t.phWebsite }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
+         </div>
+         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
         <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fInterestL }}</span>
-          <select value="{{ fInterest }}" onChange="{{ onInterest }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none;cursor:pointer">
+          <select name="interest" autocomplete="off" value="{{ fInterest }}" onChange="{{ onInterest }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none;cursor:pointer">
             <option style="background:#1c1917;color:#ebe6dd">Asado Grills (LGA)</option><option style="background:#1c1917;color:#ebe6dd">Robata Grills (LGY)</option><option style="background:#1c1917;color:#ebe6dd">Professional Smokers (LSO / LSV)</option><option style="background:#1c1917;color:#ebe6dd">Indoor Smokers (LSC / LOW)</option><option style="background:#1c1917;color:#ebe6dd">Accessories</option><option style="background:#1c1917;color:#ebe6dd">Custom build / full kitchen plan</option>
           </select>
         </label>
@@ -622,12 +640,13 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           <div style="font:400 11px/1.6 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:12px">{{ t.inqHint }}</div>
         </div>
         </sc-if>
-        <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fMsgL }}</span><textarea value="{{ fMsg }}" onChange="{{ onMsg }}" rows="6" placeholder="{{ t.phMsg }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none;resize:vertical" style-focus="border-color:#e05a1f"></textarea></label>
+        <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fMsgL }}</span><textarea name="message" autocomplete="off" required="{{ true }}" value="{{ fMsg }}" onChange="{{ onMsg }}" rows="6" placeholder="{{ t.phMsg }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none;resize:vertical" style-focus="border-color:#e05a1f"></textarea></label>
+        <div ref="{{ turnstileRef }}" style="min-height:66px;display:flex;align-items:center"></div>
         <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}">
-          <div style="font:400 12.5px 'IBM Plex Mono',monospace;color:#e05a1f">{{ err }}</div>
+          <div ref="{{ errorRef }}" role="alert" aria-live="assertive" aria-atomic="true" tabIndex="-1" style="font:400 12.5px 'IBM Plex Mono',monospace;color:#e05a1f">{{ err }}</div>
         </sc-if>
-        <a onClick="{{ submit }}" style="cursor:pointer;align-self:flex-start;font:600 13.5px Archivo,sans-serif;letter-spacing:.04em;padding:16px 34px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.send }}</a>
-      </div>
+        <button type="submit" disabled="{{ isSubmitting }}" aria-busy="{{ isSubmitting }}" aria-disabled="{{ isSubmitting }}" style="border:0;appearance:none;cursor:{{ sendCursor }};align-self:flex-start;font:600 13.5px Archivo,sans-serif;letter-spacing:.04em;padding:16px 34px;background:#e05a1f;color:#131110;opacity:{{ sendOpacity }}" style-hover="background:#f06a2c;color:#131110">{{ sendLabel }}</button>
+      </form>
       </sc-if>
       <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex;flex-direction:column;gap:20px;max-width:520px;padding:48px;background:#1c1917;border:1px solid rgba(224,90,31,.5)">
@@ -1136,12 +1155,47 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;EN&quot;,&quot;ES&quot;,&quot;ZH&quot;,&quot;FR&quot;,&quot;JA&quot;],&quot;default&quot;:&quot;EN&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;showMichelin&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Site&quot;}}">
 class Component extends DCLogic {
-  state = { page: 'home', lang: null, unit:'metric', fName:'', fEmail:'', fCountry:'', fCompany:'', fInterest:'Asado Grills (LGA)', fModel:'', fMsg:'', sent:false, err:'' };
-  go(p) { this.setState({ page: p, menu: false, depthPopup: null }); try { window.scrollTo(0, 0); } catch(e) {} }
+  state = { page: 'home', lang: null, unit:'metric', fName:'', fEmail:'', fCountry:'', fCompany:'', fInstagram:'', fWebsite:'', fInterest:'Asado Grills (LGA)', fModel:'', fMsg:'', turnstileToken:'', submitting:false, sent:false, err:'' };
+  isSupportedLang(value) {
+    const code = typeof value === 'string' ? value.trim().toUpperCase() : '';
+    return ['EN','ES','ZH','FR','JA'].includes(code);
+  }
+  normalizeLang(value) {
+    const code = typeof value === 'string' ? value.trim().toUpperCase() : '';
+    return this.isSupportedLang(code) ? code : 'EN';
+  }
+  documentLang(value) {
+    return { EN:'en', ES:'es', ZH:'zh-Hans', FR:'fr', JA:'ja' }[this.normalizeLang(value)];
+  }
+  syncDocumentLang(value) {
+    try { document.documentElement.setAttribute('lang', this.documentLang(value)); } catch(e) {}
+  }
+  setLanguage(value) {
+    const next = this.normalizeLang(value);
+    try { localStorage.setItem('lamsturn-lang', next); } catch(e) {}
+    this.syncDocumentLang(next);
+    this.setState({ lang: next });
+  }
+  go(p) { this.setState({ page: p, menu: false, depthPopup: null, turnstileToken: p === 'contact' ? this.state.turnstileToken : '' }); try { window.scrollTo(0, 0); } catch(e) {} }
+  countryOptions() {
+    const codes = 'AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE,BZ,BJ,BM,BT,BO,BQ,BA,BW,BV,BR,IO,BN,BG,BF,BI,CV,KH,CM,CA,KY,CF,TD,CL,CN,CX,CC,CO,KM,CG,CD,CK,CR,CI,HR,CU,CW,CY,CZ,DK,DJ,DM,DO,EC,EG,SV,GQ,ER,EE,SZ,ET,FK,FO,FJ,FI,FR,GF,PF,TF,GA,GM,GE,DE,GH,GI,GR,GL,GD,GP,GU,GT,GG,GN,GW,GY,HT,HM,VA,HN,HK,HU,IS,IN,ID,IR,IQ,IE,IM,IL,IT,JM,JP,JE,JO,KZ,KE,KI,KP,KR,KW,KG,LA,LV,LB,LS,LR,LY,LI,LT,LU,MO,MG,MW,MY,MV,ML,MT,MH,MQ,MR,MU,YT,MX,FM,MD,MC,MN,ME,MS,MA,MZ,MM,NA,NR,NP,NL,NC,NZ,NI,NE,NG,NU,NF,MK,MP,NO,OM,PK,PW,PS,PA,PG,PY,PE,PH,PN,PL,PT,PR,QA,RE,RO,RU,RW,BL,SH,KN,LC,MF,PM,VC,WS,SM,ST,SA,SN,RS,SC,SL,SG,SX,SK,SI,SB,SO,ZA,GS,SS,ES,LK,SD,SR,SJ,SE,CH,SY,TW,TJ,TZ,TH,TL,TG,TK,TO,TT,TN,TR,TM,TC,TV,UG,UA,AE,GB,US,UM,UY,UZ,VU,VE,VN,VG,VI,WF,EH,YE,ZM,ZW,XK'.split(',');
+    let names = null;
+    try { names = typeof Intl !== 'undefined' && Intl.DisplayNames ? new Intl.DisplayNames(['en'], { type: 'region' }) : null; } catch(e) {}
+    return codes.map((code) => { const name = names ? names.of(code) : code; return { value: name || code, label: name || code }; });
+  }
   goSec(id) { this.setState({ page: 'products', menu: false, depthPopup: null }); let n = 0; const seek = () => { const el = document.getElementById(id); if (el) { const y = el.getBoundingClientRect().top + window.pageYOffset - 112; try { window.scrollTo(0, Math.max(0, y)); } catch(e) {} } else if (n++ < 20) { setTimeout(seek, 50); } }; try { window.scrollTo(0, 0); } catch(e) {} setTimeout(seek, 60); }
   componentDidMount() {
     this.startTimer(); this.initMap();
+    let activeLang = this.normalizeLang(this.props.lang ?? 'EN');
     try {
+      const savedLang = localStorage.getItem('lamsturn-lang');
+      if (savedLang !== null && this.isSupportedLang(savedLang)) {
+        activeLang = this.normalizeLang(savedLang);
+        if (savedLang !== activeLang) localStorage.setItem('lamsturn-lang', activeLang);
+        this.setState({ lang: activeLang });
+      } else if (savedLang !== null) {
+        localStorage.removeItem('lamsturn-lang');
+      }
       const savedUnit = localStorage.getItem('lamsturn-unit');
       if (savedUnit === 'metric' || savedUnit === 'imperial') this.setState({ unit: savedUnit });
       const raw = JSON.parse(localStorage.getItem('lamsturn-inq') || '[]');
@@ -1153,13 +1207,16 @@ class Component extends DCLogic {
         if (JSON.stringify(raw) !== JSON.stringify(next)) localStorage.setItem('lamsturn-inq', JSON.stringify(next));
       }
     } catch(e) {}
+    this.syncDocumentLang(activeLang);
   }
   componentDidUpdate() {
+    this.syncDocumentLang(this.state.lang || this.props.lang || 'EN');
     this.initMap();
+    this.initTurnstile();
     const f = this.state.kf || 'all';
     if (this._map && this._lastKf !== f) { this._lastKf = f; this.refreshMarkers(false); }
   }
-  componentWillUnmount() { clearInterval(this._t); clearInterval(this._lpoll); if (this._reelIO) { this._reelIO.disconnect(); this._reelIO = null; } if (this._map) { this._map.remove(); this._map = null; } }
+  componentWillUnmount() { clearInterval(this._t); clearInterval(this._lpoll); if (this._reelIO) { this._reelIO.disconnect(); this._reelIO = null; } if (this._map) { this._map.remove(); this._map = null; } if (this._turnstileWidgetId !== undefined && window.turnstile) { try { window.turnstile.remove(this._turnstileWidgetId); } catch(e) {} } }
   loadReelVideo(v) {
     if (!v) return;
     if (v._rsrc && v.getAttribute('src') !== v._rsrc) { v.src = v._rsrc; v.load(); }
@@ -1302,9 +1359,68 @@ class Component extends DCLogic {
   startTimer() { clearInterval(this._t); this._t = setInterval(() => this.setState(s => ({ slide: ((s.slide||0) + 1) % 6 })), 6000); }
   setSlide(i) { this.startTimer(); this.setState({ slide: i }); }
   set(k) { return (e) => this.setState({ [k]: e.target.value, err:'' }); }
+  showFormError(err, extraState) {
+    this.setState(Object.assign({}, extraState || {}, { err }), () => {
+      if (this._formErrorEl && typeof this._formErrorEl.focus === 'function') this._formErrorEl.focus();
+    });
+  }
+  loadTurnstile() {
+    if (window.turnstile && typeof window.turnstile.render === 'function') return Promise.resolve(window.turnstile);
+    if (this._turnstileLoad) return this._turnstileLoad;
+    this._turnstileLoad = new Promise((resolve, reject) => {
+      const loaded = () => {
+        if (window.turnstile && typeof window.turnstile.render === 'function') resolve(window.turnstile);
+        else reject(new Error('turnstile_unavailable'));
+      };
+      const failed = () => reject(new Error('turnstile_unavailable'));
+      let script = document.querySelector('script[data-lamsturn-turnstile]');
+      if (!script) {
+        script = document.createElement('script');
+        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        script.async = true;
+        script.defer = true;
+        script.dataset.lamsturnTurnstile = 'true';
+        document.head.appendChild(script);
+      }
+      script.addEventListener('load', loaded, { once: true });
+      script.addEventListener('error', failed, { once: true });
+      if (window.turnstile && typeof window.turnstile.render === 'function') loaded();
+    });
+    return this._turnstileLoad;
+  }
+  setTurnstile(el) {
+    if (this._turnstileEl === el) return;
+    if (!el && this._turnstileWidgetId !== undefined && window.turnstile) { try { window.turnstile.remove(this._turnstileWidgetId); } catch(e) {} }
+    this._turnstileEl = el || null;
+    this._turnstileWidgetId = undefined;
+    if (el) this.initTurnstile();
+  }
+  initTurnstile() {
+    if (!this._turnstileEl || this._turnstileWidgetId !== undefined || this._turnstileInitializing || this.state.page !== 'contact' || this.state.sent) return;
+    this._turnstileInitializing = true;
+    this.loadTurnstile().then((turnstile) => {
+      if (!this._turnstileEl || this._turnstileWidgetId !== undefined || this.state.page !== 'contact' || this.state.sent) return;
+      this._turnstileWidgetId = turnstile.render(this._turnstileEl, {
+        sitekey: '0x4AAAAAAEAkTMbGgp3JtTQi',
+        action: 'inquiry',
+        theme: 'dark',
+        callback: (token) => this.setState({ turnstileToken: token, err: '' }),
+        'expired-callback': () => this.setState({ turnstileToken: '' }),
+        'error-callback': () => this.showFormError('verification', { turnstileToken: '' })
+      });
+    }).catch(() => {
+      if (this._turnstileEl && this.state.page === 'contact') this.showFormError('verification');
+    }).finally(() => { this._turnstileInitializing = false; });
+  }
+  resetTurnstile() {
+    this.setState({ turnstileToken: '' });
+    if (this._turnstileWidgetId !== undefined && window.turnstile) { try { window.turnstile.reset(this._turnstileWidgetId); } catch(e) {} }
+  }
   renderVals() {
     const s = this.state;
-    const lang = s.lang || (this.props.lang ?? 'EN');
+    const turnstileRef = this._turnstileRef || (this._turnstileRef = (el) => this.setTurnstile(el));
+    const errorRef = this._errorRef || (this._errorRef = (el) => { this._formErrorEl = el || null; });
+    const lang = this.normalizeLang(s.lang || this.props.lang || 'EN');
     const unit = s.unit === 'imperial' ? 'imperial' : 'metric';
     const imperial = unit === 'imperial';
     const commaDecimal = lang === 'ES' || lang === 'FR';
@@ -1603,6 +1719,9 @@ class Component extends DCLogic {
             "sendAnother": "SEND ANOTHER →",
             "errFill": "PLEASE FILL NAME, EMAIL AND MESSAGE.",
             "errEmail": "PLEASE ENTER A VALID EMAIL ADDRESS.",
+            "sending": "SENDING…",
+            "errVerification": "PLEASE COMPLETE THE SECURITY CHECK AND TRY AGAIN.",
+            "errSubmit": "WE COULDN'T SEND YOUR INQUIRY. PLEASE TRY AGAIN.",
             "kEyebrow": "INSTALLATIONS — WORLDWIDE",
             "kH1": "In service, tonight.",
             "kIntro": "From Michelin-starred rooms in San Sebastián and Hong Kong to smokehouses in Seoul — every ember dot is a kitchen cooking on Lamsturn. Positions shown at city level.",
@@ -1876,6 +1995,9 @@ class Component extends DCLogic {
             "sendAnother": "ENVIAR OTRA →",
             "errFill": "COMPLETA NOMBRE, CORREO Y MENSAJE.",
             "errEmail": "INTRODUCE UN CORREO VÁLIDO.",
+            "sending": "ENVIANDO…",
+            "errVerification": "COMPLETA LA VERIFICACIÓN DE SEGURIDAD E INTÉNTALO DE NUEVO.",
+            "errSubmit": "NO PUDIMOS ENVIAR TU CONSULTA. VUELVE A INTENTARLO.",
             "kEyebrow": "INSTALACIONES — EN TODO EL MUNDO",
             "kH1": "En servicio, esta noche.",
             "kIntro": "De salas con estrella Michelin en San Sebastián y Hong Kong a ahumaderos en Seúl — cada punto ámbar es una cocina que cocina con Lamsturn. Ubicaciones a nivel de ciudad.",
@@ -2149,6 +2271,9 @@ class Component extends DCLogic {
             "sendAnother": "再发一条 →",
             "errFill": "请填写姓名、邮箱与留言。",
             "errEmail": "请输入有效的邮箱地址。",
+            "sending": "\u6b63\u5728\u53d1\u9001…",
+            "errVerification": "\u8bf7\u5b8c\u6210\u5b89\u5168\u9a8c\u8bc1\u540e\u91cd\u8bd5\u3002",
+            "errSubmit": "\u65e0\u6cd5\u53d1\u9001\u60a8\u7684\u54a8\u8be2\uff0c\u8bf7\u91cd\u8bd5\u3002",
             "kEyebrow": "装机案例 — 全球",
             "kH1": "今夜，正在服务。",
             "kIntro": "从圣塞瓦斯蒂安、香港的米其林星级餐厅，到首尔的烟熏工坊 —— 每一个琥珀色圆点，都是一间以 Lamsturn 烹饪的厨房。位置精确到城市。",
@@ -2422,6 +2547,9 @@ class Component extends DCLogic {
             "sendAnother": "ENVOYER UNE AUTRE →",
             "errFill": "MERCI DE REMPLIR NOM, E-MAIL ET MESSAGE.",
             "errEmail": "MERCI DE SAISIR UN E-MAIL VALIDE.",
+            "sending": "ENVOI EN COURS…",
+            "errVerification": "VEUILLEZ TERMINER LA VÉRIFICATION DE SÉCURITÉ PUIS RÉESSAYER.",
+            "errSubmit": "NOUS N’AVONS PAS PU ENVOYER VOTRE DEMANDE. VEUILLEZ RÉESSAYER.",
             "kEyebrow": "INSTALLATIONS — DANS LE MONDE",
             "kH1": "En service, ce soir.",
             "kIntro": "Des salles étoilées de Saint-Sébastien et Hong Kong aux fumoirs de Séoul — chaque point ambré est une cuisine qui cuisine sur Lamsturn. Positions à l’échelle de la ville.",
@@ -2695,6 +2823,9 @@ class Component extends DCLogic {
             "sendAnother": "もう一件送る →",
             "errFill": "お名前・メール・メッセージをご入力ください。",
             "errEmail": "有効なメールアドレスをご入力ください。",
+            "sending": "\u9001\u4fe1\u4e2d…",
+            "errVerification": "\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3\u78ba\u8a8d\u3092\u5b8c\u4e86\u3057\u3066\u304b\u3089\u3001\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002",
+            "errSubmit": "\u304a\u554f\u3044\u5408\u308f\u305b\u3092\u9001\u4fe1\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002",
             "kEyebrow": "導入実績 — 全世界",
             "kH1": "今夜も、稼働中。",
             "kIntro": "サン・セバスティアンや香港のミシュラン星付きの部屋から、ソウルのスモークハウスまで — すべての熾火のドットが、Lamsturn で調理する厨房です。位置は都市単位で表示しています。",
@@ -2838,6 +2969,14 @@ class Component extends DCLogic {
             "y8CtaSub": "すべての LGY は受注生産です — 幅、奥行き、棚、網を、あなたのカウンターとメニューに合わせて。"
       }
 };
+    const contactFieldLabels = {
+      EN: { fCountryChoose:'Select your country', fInstagramL:'INSTAGRAM (OPTIONAL)', fWebsiteL:'WEBSITE (OPTIONAL)', phInstagram:'@yourrestaurant', phWebsite:'https://yourrestaurant.com' },
+      ES: { fCountryChoose:'Selecciona tu pa\u00eds', fInstagramL:'INSTAGRAM (OPCIONAL)', fWebsiteL:'SITIO WEB (OPCIONAL)', phInstagram:'@turestaurante', phWebsite:'https://turestaurante.com' },
+      ZH: { fCountryChoose:'\u9009\u62e9\u56fd\u5bb6', fInstagramL:'Instagram\uff08\u53ef\u9009\uff09', fWebsiteL:'\u7f51\u7ad9\uff08\u53ef\u9009\uff09', phInstagram:'@\u9910\u5385\u8d26\u53f7', phWebsite:'https://...' },
+      FR: { fCountryChoose:'S\u00e9lectionnez votre pays', fInstagramL:'INSTAGRAM (FACULTATIF)', fWebsiteL:'SITE WEB (FACULTATIF)', phInstagram:'@votrerestaurant', phWebsite:'https://votrerestaurant.com' },
+      JA: { fCountryChoose:'\u56fd\u3092\u9078\u629e', fInstagramL:'Instagram\uff08\u4efb\u610f\uff09', fWebsiteL:'\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\uff08\u4efb\u610f\uff09', phInstagram:'@\u30ec\u30b9\u30c8\u30e9\u30f3', phWebsite:'https://...' }
+    };
+    Object.keys(contactFieldLabels).forEach((code) => Object.assign(T[code], contactFieldLabels[code]));
     const canonicalT = Object.assign({}, T[lang] || T.EN, DT[lang] || DT.EN);
     const t = {};
     Object.keys(canonicalT).forEach((key) => { t[key] = convertCopy(canonicalT[key]); });
@@ -2943,11 +3082,18 @@ class Component extends DCLogic {
       return Object.assign(base, { val: code, on: cmpSet(i), selEl: selEl, phLabel: m ? m.c : '\u2014' });
     };
     const cmpCols = cSel.map((c, i) => mkCol(c, i));
-    const intMap = { 'Asado Grills (LGA)': lga.map(displayModel), 'Robata Grills (LGY)': lgy.map(displayModel), 'Professional Smokers (LSO / LSV)': smokers.map(displayModel), 'Indoor Smokers (LSC / LOW)': indoor.map(displayModel), 'Accessories': acc.map(displayModel) };
+    const robataInquiryModels = [
+      { c:'LGY_610_D300', label:'LGY 610 — D300' },
+      { c:'LGY_610_D400', label:'LGY 610 — D400' },
+      { c:'LGY_840_D300', label:'LGY 840 — D300' },
+      { c:'LGY_840_D400', label:'LGY 840 — D400' }
+    ];
+    const intMap = { 'Asado Grills (LGA)': lga.map(displayModel), 'Robata Grills (LGY)': robataInquiryModels, 'Professional Smokers (LSO / LSV)': smokers.map(displayModel), 'Indoor Smokers (LSC / LOW)': indoor.map(displayModel), 'Accessories': acc.map(displayModel) };
     const intModels = intMap[s.fInterest || 'Asado Grills (LGA)'] || null;
     const hasModelSel = !!intModels;
     const mSelOpt = (v, lbl) => React.createElement('option', { key: v || 'any', value: v, style: { color: '#ebe6dd', background: '#1c1917' } }, lbl);
-    const fModelSel = hasModelSel ? React.createElement('select', { value: s.fModel || '', onChange: (e) => this.setState({ fModel: e.target.value }), style: { width: '100%', boxSizing: 'border-box', background: '#1c1917', border: '1px solid rgba(235,230,221,.2)', color: '#ebe6dd', padding: '14px 16px', fontSize: '14px', fontFamily: 'Archivo,system-ui,sans-serif', outline: 'none', cursor: 'pointer' } }, [mSelOpt('', t.fModelAny)].concat(intModels.map(m => mSelOpt(m.c, m.c)))) : null;
+    const fCountrySel = React.createElement('select', { name: 'country', autoComplete: 'country-name', value: s.fCountry || '', onChange: (e) => this.setState({ fCountry: e.target.value }), style: { width: '100%', boxSizing: 'border-box', background: '#1c1917', border: '1px solid rgba(235,230,221,.2)', color: '#ebe6dd', padding: '14px 16px', fontSize: '14px', fontFamily: 'Archivo,system-ui,sans-serif', outline: 'none', cursor: 'pointer' } }, [mSelOpt('', t.fCountryChoose)].concat(this.countryOptions().map(country => mSelOpt(country.value, country.label))));
+    const fModelSel = hasModelSel ? React.createElement('select', { name: 'model', autoComplete: 'off', value: s.fModel || '', onChange: (e) => this.setState({ fModel: e.target.value }), style: { width: '100%', boxSizing: 'border-box', background: '#1c1917', border: '1px solid rgba(235,230,221,.2)', color: '#ebe6dd', padding: '14px 16px', fontSize: '14px', fontFamily: 'Archivo,system-ui,sans-serif', outline: 'none', cursor: 'pointer' } }, [mSelOpt('', t.fModelAny)].concat(intModels.map(m => mSelOpt(m.c, m.label || m.c)))) : null;
     const psChip = v => (s.prodSort||'area')===v ? '#e05a1f' : 'rgba(235,230,221,.5)';
     const psArea = psChip('area'), psSize = psChip('size'), psWeight = psChip('weight');
     const setPsArea = () => this.setState({prodSort:'area'}), setPsSize = () => this.setState({prodSort:'size'}), setPsWeight = () => this.setState({prodSort:'weight'});
@@ -3005,7 +3151,7 @@ class Component extends DCLogic {
       setReelRail: (el)=>{ this._reelRail = el; },
       prevReel: ()=>{ if(this._reelRail) this._reelRail.scrollBy({left:-Math.round(this._reelRail.clientWidth*0.8), behavior:'smooth'}); },
       nextReel: ()=>{ if(this._reelRail) this._reelRail.scrollBy({left:Math.round(this._reelRail.clientWidth*0.8), behavior:'smooth'}); },
-      onLang: (e) => this.setState({ lang: e.target.value }),
+      onLang: (e) => this.setLanguage(e.target.value),
       onUnit: (e) => { const next = e.target.value === 'imperial' ? 'imperial' : 'metric'; try { localStorage.setItem('lamsturn-unit', next); } catch(err) {} this.setState({ unit: next }); },
       showMichelin: this.props.showMichelin ?? true,
       cmpCols, cmpOpts,
@@ -3013,23 +3159,50 @@ class Component extends DCLogic {
       inqItems: inq.map(c => ({ c: c, rm: inqTgl(c) })),
       clearInq: () => { try { localStorage.setItem('lamsturn-inq','[]'); } catch(e) {} this.setState({ inq: [] }); },
       sentModels: s.sentModels || '', hasSentModels: !!s.sentModels,
-      hasModelSel, fModelSel,
+      hasModelSel, fCountrySel, fModelSel,
       lgaChain: lgaChainS, lgaGear: lgaGearS, lgy: lgyS, smokers: smokersS, indoor: indoorS, acc: acc.map(m => Object.assign({}, displayModel(m), inqFields(m))),
       depthPopupOpen: !!(s.depthPopup && depthReg[s.depthPopup]),
       depthPopupTitle: s.depthPopup || '',
       depthPopupOpts: (s.depthPopup && depthReg[s.depthPopup]) || [],
       closeDepthPopup: () => this.setState({ depthPopup: null }),
       psArea, psSize, psWeight, setPsArea, setPsSize, setPsWeight,
-      fName:s.fName, fEmail:s.fEmail, fCountry:s.fCountry, fCompany:s.fCompany, fInterest:s.fInterest, fMsg:s.fMsg,
-      onName:this.set('fName'), onEmail:this.set('fEmail'), onCountry:this.set('fCountry'), onCompany:this.set('fCompany'), onInterest: (e) => this.setState({ fInterest: e.target.value, fModel: '' }), onMsg:this.set('fMsg'),
-      sent: s.sent, notSent: !s.sent, err: (s.err==='fill'?t.errFill:s.err==='email'?t.errEmail:''), hasErr: !!s.err, echoEmail: 'lamsturn@gmail.com',
-      submit: () => {
-        const { fName, fEmail, fMsg } = this.state;
-        if (!fName.trim() || !fEmail.trim() || !fMsg.trim()) { this.setState({ err: 'fill' }); return; }
-        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fEmail)) { this.setState({ err: 'email' }); return; }
-        const _models = (this.state.inq || []).join(', '); try { localStorage.setItem('lamsturn-inq', '[]'); } catch(e) {} this.setState({ sent: true, err: '', sentModels: _models, inq: [] });
+      fName:s.fName, fEmail:s.fEmail, fCountry:s.fCountry, fCompany:s.fCompany, fInstagram:s.fInstagram, fWebsite:s.fWebsite, fInterest:s.fInterest, fMsg:s.fMsg,
+      onName:this.set('fName'), onEmail:this.set('fEmail'), onCompany:this.set('fCompany'), onInstagram:this.set('fInstagram'), onWebsite:this.set('fWebsite'), onInterest: (e) => this.setState({ fInterest: e.target.value, fModel: '' }), onMsg:this.set('fMsg'),
+      sent: s.sent, notSent: !s.sent, err: (s.err==='fill'?t.errFill:s.err==='email'?t.errEmail:s.err==='verification'?t.errVerification:s.err==='submit'?t.errSubmit:''), hasErr: !!s.err, echoEmail: 'lamsturn@gmail.com',
+      turnstileRef, errorRef, isSubmitting: !!s.submitting, sendLabel: s.submitting ? t.sending : t.send, sendCursor: s.submitting ? 'wait' : 'pointer', sendOpacity: s.submitting ? .7 : 1,
+      submit: async (event) => {
+        if (event && typeof event.preventDefault === 'function') event.preventDefault();
+        if (this.state.submitting) return;
+        const { fName, fEmail, fCountry, fCompany, fInstagram, fWebsite, fInterest, fModel, fMsg, turnstileToken } = this.state;
+        if (!fName.trim() || !fEmail.trim() || !fMsg.trim()) { this.showFormError('fill'); return; }
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fEmail)) { this.showFormError('email'); return; }
+        if (!turnstileToken) { this.initTurnstile(); this.showFormError('verification'); return; }
+        const models = Array.from(new Set([fModel, ...(this.state.inq || [])].map((model) => String(model || '').trim()).filter(Boolean))).slice(0, 60);
+        this.setState({ submitting: true, err: '' });
+        let response;
+        let result = null;
+        try {
+          response = await fetch('https://lamsturn-inquiry-collector.kimin-271.workers.dev/inquiries', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ name: fName.trim(), email: fEmail.trim(), country: fCountry.trim(), company: fCompany.trim(), instagram: fInstagram.trim(), website: fWebsite.trim(), interest: fInterest.trim(), model: fModel.trim(), message: fMsg.trim(), models, language: lang, source: 'lamsturn-web', turnstileToken })
+          });
+          result = await response.json().catch(() => null);
+        } catch(e) {
+          this.showFormError('submit', { submitting: false });
+          this.resetTurnstile();
+          return;
+        }
+        if (!response.ok || !result || result.ok !== true) {
+          this.showFormError(result && result.error === 'turnstile_failed' ? 'verification' : 'submit', { submitting: false });
+          this.resetTurnstile();
+          return;
+        }
+        const sentModels = models.join(', ');
+        try { localStorage.setItem('lamsturn-inq', '[]'); } catch(e) {}
+        this.setState({ sent: true, submitting: false, err: '', sentModels, inq: [], turnstileToken: '' });
       },
-      resetForm: () => this.setState({ sent:false, fName:'', fEmail:'', fCountry:'', fCompany:'', fModel:'', fMsg:'', err:'' }),
+      resetForm: () => this.setState({ sent:false, fName:'', fEmail:'', fCountry:'', fCompany:'', fInstagram:'', fWebsite:'', fModel:'', fMsg:'', turnstileToken:'', submitting:false, err:'' }),
       ...(() => {
         const inst = this.installs();
         const kf = s.kf || 'all';

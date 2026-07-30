@@ -1,0 +1,5 @@
+# SEO_ORIGIN: update this file if the public origin changes.
+User-agent: *
+Allow: /
+
+Sitemap: https://lamsturn.com/sitemap.xml
