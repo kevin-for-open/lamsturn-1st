@@ -1177,7 +1177,17 @@ class Component extends DCLogic {
     this.syncDocumentLang(next);
     this.setState({ lang: next });
   }
-  go(p) { this.setState({ page: p, menu: false, depthPopup: null, turnstileToken: p === 'contact' ? this.state.turnstileToken : '' }); try { window.scrollTo(0, 0); } catch(e) {} }
+  pageFromUrl() {
+    try {
+      const key = new URLSearchParams(window.location.search).get('product');
+      return { 'lgy-610':'lgy610', 'lgy-840':'lgy840', 'lga-j900-t':'j900' }[String(key || '').toLowerCase()] || null;
+    } catch(e) { return null; }
+  }
+  urlForPage(p) {
+    const key = { lgy610:'lgy-610', lgy840:'lgy-840', j900:'lga-j900-t' }[p];
+    try { return key ? `${window.location.pathname}?product=${key}` : window.location.pathname; } catch(e) { return '/'; }
+  }
+  go(p) { this.setState({ page: p, menu: false, depthPopup: null, turnstileToken: p === 'contact' ? this.state.turnstileToken : '' }); try { window.history.pushState({ product: p }, '', this.urlForPage(p)); window.scrollTo(0, 0); } catch(e) {} }
   countryOptions() {
     const codes = 'AF,AX,AL,DZ,AS,AD,AO,AI,AQ,AG,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BY,BE,BZ,BJ,BM,BT,BO,BQ,BA,BW,BV,BR,IO,BN,BG,BF,BI,CV,KH,CM,CA,KY,CF,TD,CL,CN,CX,CC,CO,KM,CG,CD,CK,CR,CI,HR,CU,CW,CY,CZ,DK,DJ,DM,DO,EC,EG,SV,GQ,ER,EE,SZ,ET,FK,FO,FJ,FI,FR,GF,PF,TF,GA,GM,GE,DE,GH,GI,GR,GL,GD,GP,GU,GT,GG,GN,GW,GY,HT,HM,VA,HN,HK,HU,IS,IN,ID,IR,IQ,IE,IM,IL,IT,JM,JP,JE,JO,KZ,KE,KI,KP,KR,KW,KG,LA,LV,LB,LS,LR,LY,LI,LT,LU,MO,MG,MW,MY,MV,ML,MT,MH,MQ,MR,MU,YT,MX,FM,MD,MC,MN,ME,MS,MA,MZ,MM,NA,NR,NP,NL,NC,NZ,NI,NE,NG,NU,NF,MK,MP,NO,OM,PK,PW,PS,PA,PG,PY,PE,PH,PN,PL,PT,PR,QA,RE,RO,RU,RW,BL,SH,KN,LC,MF,PM,VC,WS,SM,ST,SA,SN,RS,SC,SL,SG,SX,SK,SI,SB,SO,ZA,GS,SS,ES,LK,SD,SR,SJ,SE,CH,SY,TW,TJ,TZ,TH,TL,TG,TK,TO,TT,TN,TR,TM,TC,TV,UG,UA,AE,GB,US,UM,UY,UZ,VU,VE,VN,VG,VI,WF,EH,YE,ZM,ZW,XK'.split(',');
     let names = null;
@@ -1187,6 +1197,10 @@ class Component extends DCLogic {
   goSec(id) { this.setState({ page: 'products', menu: false, depthPopup: null }); let n = 0; const seek = () => { const el = document.getElementById(id); if (el) { const y = el.getBoundingClientRect().top + window.pageYOffset - 112; try { window.scrollTo(0, Math.max(0, y)); } catch(e) {} } else if (n++ < 20) { setTimeout(seek, 50); } }; try { window.scrollTo(0, 0); } catch(e) {} setTimeout(seek, 60); }
   componentDidMount() {
     this.startTimer(); this.initMap();
+    const linkedPage = this.pageFromUrl();
+    if (linkedPage) this.setState({ page: linkedPage });
+    this._onPopState = () => { const next = this.pageFromUrl(); this.setState({ page: next || 'home', menu: false, depthPopup: null }); };
+    try { window.addEventListener('popstate', this._onPopState); } catch(e) {}
     let activeLang = this.normalizeLang(this.props.lang ?? 'EN');
     try {
       const savedLang = localStorage.getItem('lamsturn-lang');
@@ -1217,7 +1231,7 @@ class Component extends DCLogic {
     const f = this.state.kf || 'all';
     if (this._map && this._lastKf !== f) { this._lastKf = f; this.refreshMarkers(false); }
   }
-  componentWillUnmount() { clearInterval(this._t); clearInterval(this._lpoll); if (this._reelIO) { this._reelIO.disconnect(); this._reelIO = null; } if (this._map) { this._map.remove(); this._map = null; } if (this._turnstileWidgetId !== undefined && window.turnstile) { try { window.turnstile.remove(this._turnstileWidgetId); } catch(e) {} } }
+  componentWillUnmount() { try { window.removeEventListener('popstate', this._onPopState); } catch(e) {} clearInterval(this._t); clearInterval(this._lpoll); if (this._reelIO) { this._reelIO.disconnect(); this._reelIO = null; } if (this._map) { this._map.remove(); this._map = null; } if (this._turnstileWidgetId !== undefined && window.turnstile) { try { window.turnstile.remove(this._turnstileWidgetId); } catch(e) {} } }
   loadReelVideo(v) {
     if (!v) return;
     if (v._rsrc && v.getAttribute('src') !== v._rsrc) { v.src = v._rsrc; v.load(); }
