@@ -135,9 +135,9 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <a onClick="{{ toSlide7 }}" aria-label="Slide 8" style="cursor:pointer;padding:8px 0;display:flex;flex-direction:column;gap:6px;align-items:center"><span style="display:block;width:34px;height:2px;background:{{ d8 }}"></span><span style="font:500 9.5px 'IBM Plex Mono',monospace;color:{{ d8 }}">08</span></a>
     </div>
     <div style="position:absolute;left:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));right:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));bottom:110px;pointer-events:none;z-index:10">
-      <div style="display:{{ heroTitleDisplay }}">
+      <div>
         <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:18px">{{ t.heroEyebrow }}</div>
-        <h1 style="margin:0;font:600 clamp(38px,7.5vw,72px)/1.05 Archivo,sans-serif;letter-spacing:-.025em;max-width:20ch">{{ t.heroT1 }}<br>{{ t.heroT2 }}</h1>
+        <h1 style="margin:0;font:600 clamp(38px,7.5vw,72px)/1.05 Archivo,sans-serif;letter-spacing:-.025em;max-width:20ch">{{ heroTitle1 }}<br>{{ heroTitle2 }}</h1>
       </div>
       <div data-herocta style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;pointer-events:auto">
         <a onClick="{{ goContact }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.quote }}</a>
@@ -3257,7 +3257,8 @@ class Component extends DCLogic {
       goKitchens: () => this.go('kitchens'),
       goHome: () => this.go('home'), goProducts: () => this.go('products'), goAbout: () => this.go('about'), goContact: () => this.go('contact'),
       menuOpen: !!s.menu, toggleMenu: () => this.setState({ menu: !this.state.menu }), mHome: s.page==='home'?active:idle,
-      heroTitleDisplay: ((s.slide||0)===1 || (s.slide||0)===2)?'none':'block',
+      heroTitle1: (s.slide||0)===1?'OUTDOOR COKKING,':((s.slide||0)===2?'THE PREMIUM':t.heroT1),
+      heroTitle2: (s.slide||0)===1?'REFINED.':((s.slide||0)===2?'ROBATA GRILL':t.heroT2),
       h1o: (s.slide||0)===0?1:0, h2o: (s.slide||0)===1?1:0, h3o: (s.slide||0)===2?1:0, h4o: (s.slide||0)===3?1:0, h5o: (s.slide||0)===4?1:0, h6o: (s.slide||0)===5?1:0, h7o: (s.slide||0)===6?1:0, h8o: (s.slide||0)===7?1:0,
       h1pe: (s.slide||0)===0?'auto':'none', h2pe: (s.slide||0)===1?'auto':'none', h3pe: (s.slide||0)===2?'auto':'none', h4pe: (s.slide||0)===3?'auto':'none', h5pe: (s.slide||0)===4?'auto':'none', h6pe: (s.slide||0)===5?'auto':'none', h7pe: (s.slide||0)===6?'auto':'none', h8pe: (s.slide||0)===7?'auto':'none',
       h1z: (s.slide||0)===0?2:1, h2z: (s.slide||0)===1?2:1, h3z: (s.slide||0)===2?2:1, h4z: (s.slide||0)===3?2:1, h5z: (s.slide||0)===4?2:1, h6z: (s.slide||0)===5?2:1, h7z: (s.slide||0)===6?2:1, h8z: (s.slide||0)===7?2:1,
