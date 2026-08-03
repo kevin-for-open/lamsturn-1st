@@ -3225,10 +3225,10 @@ class Component extends DCLogic {
     const psArea = psChip('area'), psSize = psChip('size'), psWeight = psChip('weight');
     const setPsArea = () => this.setState({prodSort:'area'}), setPsSize = () => this.setState({prodSort:'size'}), setPsWeight = () => this.setState({prodSort:'weight'});
     const reels = [
+        {id:'reel-1', v:true, img:false, video:'assets/video/reel-1.mp4', poster:'assets/photos/reel-1.jpg', cap:'Robata — LGY_610 / 840', tag:'LGY_840', go:()=>this.go('lgy840')},
         {id:'reel-6', v:true, img:false, video:'assets/video/reel-6.mp4', poster:'', cap:'BMW — on location', tag:'IN SERVICE', go:()=>this.go('products')},
         {id:'reel-5', v:true, img:false, video:'assets/video/reel-5.mp4', poster:'assets/photos/reel-5.jpg', cap:'Restaurant Papilio — Prague', tag:'LGY_610', go:()=>this.go('lgy610')},
         {id:'reel-4', v:true, img:false, video:'assets/video/reel-4.mp4', poster:'', cap:'LGA_J900_T — asado', tag:'LGA_J900_T', go:()=>this.go('j900')},
-        {id:'reel-1', v:true, img:false, video:'assets/video/reel-1.mp4', poster:'assets/photos/reel-1.jpg', cap:'Robata — LGY_610 / 840', tag:'LGY_840', go:()=>this.go('lgy840')},
         {id:'reel-7', v:true, img:false, video:'assets/video/reel-7.mp4', poster:'assets/photos/reel-7.jpg', cap:'LGC_380 — portable', tag:'PORTABLE', go:()=>this.go('products')},
         {id:'reel-2', v:true, img:false, video:'assets/video/reel-2.mp4', poster:'', cap:'Around the fire', tag:'IN SERVICE', go:()=>this.go('products')},
         {id:'reel-3', v:true, img:false, video:'assets/video/reel-3.mp4', poster:'', cap:'In the workshop', tag:'BASED ON CRAFT', go:()=>this.go('products')},
