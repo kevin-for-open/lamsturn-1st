@@ -217,7 +217,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     </div>
     <div data-reelviewport ref="{{ setReelRail }}" style="overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;margin-top:32px;padding-bottom:4px">
       <div data-reeltrack style="display:flex;gap:16px;width:max-content;min-width:100%">
-      <sc-for list="{{ reels }}" as="reel" hint-placeholder-count="7">
+      <sc-for list="{{ reels }}" as="reel" hint-placeholder-count="11">
       <div style="flex:0 0 auto;width:clamp(240px,70vw,300px);scroll-snap-align:start">
         <div style="position:relative;aspect-ratio:9/16;background:#1c1917;overflow:hidden;border-radius:clamp(20px,2.4vw,30px)">
           <sc-if value="{{ reel.v }}" hint-placeholder-val="{{ false }}">
@@ -362,7 +362,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between">
             <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
-              <a href="/products/lga-j900-t/" onClick="{{ goJ900 }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
+              <a href="{{ m.href }}" onClick="{{ m.go }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
             </sc-if>
             <sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ m.inqLabel }}</a></sc-if>
             
@@ -388,7 +388,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between">
             <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
-              <a href="/products/lga-j900-t/" onClick="{{ goJ900 }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
+              <a href="{{ m.href }}" onClick="{{ m.go }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
             </sc-if>
             <sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ m.inqLabel }}</a></sc-if>
             
@@ -1155,9 +1155,91 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   </div>
 </div></sc-if>
 </x-dc>
+<script type="application/json" id="lamsturn-product-catalog">
+{
+  "version": 1,
+  "groups": {
+    "asado": [
+      {"c":"LGA_900_S","img":"assets/photos/LGA_900_S.webp","n":"CHAIN · STAND","s":"W922×D672×H1808","g":"W533×D486","w":"145 KG"},
+      {"c":"LGA_900_T","img":"assets/photos/LGA_900_T.webp","n":"CHAIN · TABLETOP","s":"W906×D612×H1175","g":"W533×D486","w":"118 KG"},
+      {"c":"LGA_1200_S","n":"CHAIN · STAND","s":"W1200×D612×H1808","g":"—","w":"—"},
+      {"c":"LGA_1200_T","n":"CHAIN · TABLETOP","s":"W1200×D612×H1175","g":"—","w":"—"},
+      {"c":"LGA_1800_S","img":"assets/photos/LGA_1800_S.webp","n":"CHAIN · STAND","s":"W1734×D787×H1808","g":"W590×D600","w":"307 KG"},
+      {"c":"LGA_1800_T","img":"assets/photos/LGA_1800_T.webp","n":"CHAIN · TABLETOP","s":"W1734×D729×H1175","g":"W590×D600","w":"280 KG"},
+      {"c":"LGA_M1700_S","n":"CHAIN · STAND","s":"W1700×D770×H1800","g":"W606×D635","w":"280 KG"},
+      {"c":"LGA_M2000_B","n":"CHAIN · GAS-COMPATIBLE","s":"W1996×D705×H1205","g":"W756×D595","w":"150 KG"},
+      {"c":"LGR_5500_S","n":"CHAIN · STAND","s":"W1500×D770×H1681","g":"—","w":"—"},
+      {"c":"LGA_C1700_T","img":"assets/photos/LGA_C1700_T.webp","n":"GEAR · TABLETOP","s":"W1700×D850×H1023","g":"W500×D607","w":"324 KG"},
+      {"c":"LGA_J900_T","img":"assets/photos/LGA_J900_T.webp","n":"GEAR · TABLETOP","s":"W900×D750×H920","g":"W378×D495","w":"120 KG","detail":{"slug":"lga-j900-t","page":"j900","category":"Professional Asado Charcoal Grill","title":"LGA_J900_T Asado Grill | Lamsturn","description":"Gear-driven tabletop charcoal grill handcrafted in South Korea with precision grate-height control for professional kitchens.","material":"Stainless steel 304","fuel":"Charcoal","manufacturing":"Made to order in South Korea","width":900,"depth":750,"height":920,"weight":120,"grillArea":"W378 × D495 mm"}},
+      {"c":"LGA_J900_T_NS","n":"GEAR · TABLETOP · NS","s":"W1310×D750×H920","g":"—","w":"—"},
+      {"c":"LGA_D1500_T","img":"assets/photos/LGA_D1500_T.webp","n":"GEAR · TABLETOP","s":"W1500×D836×H1000","g":"W444×D670","w":"350 KG"},
+      {"c":"LGA_D1500_S","img":"assets/photos/LGA_D1500_S.webp","n":"GEAR · STAND","s":"W1500×D836×H1800","g":"W444×D670","w":"460 KG"},
+      {"c":"LGA_M1000_T","n":"MANUAL · REFRACTORY BRICK","s":"W1000×D700×H980","g":"W295×D600 ×9","w":"103 KG"}
+    ],
+    "robata": [
+      {"c":"LGY_610","d":["D300","D400"],"img":"assets/photos/LGY_610.webp","n":"ROBATA · D300 / D400","s":"W610×D300/400×H300","g":"W315×250 · W292×354","w":"35 / 45 KG","detail":{"slug":"lgy-610","page":"lgy610","category":"Professional Robata Grill","title":"LGY_610 Robata Grill | Lamsturn","description":"Compact binchotan robata grill handcrafted in South Korea for professional restaurant counters, available in D300 and D400 depths.","material":"Stainless steel 304","fuel":"Binchotan charcoal","manufacturing":"Made to order in South Korea","width":610,"height":300,"variants":[{"model":"LGY_610_D300","depth":300,"weight":35},{"model":"LGY_610_D400","depth":400,"weight":45}]}},
+      {"c":"LGY_840","d":["D300","D400"],"img":"assets/photos/LGY_840.webp","n":"ROBATA · D300 / D400","s":"W840×D300/400×H300","g":"W315×250 · W409×354","w":"46 / 55 KG","detail":{"slug":"lgy-840","page":"lgy840","category":"Professional Robata Grill","title":"LGY_840 Robata Grill | Lamsturn","description":"Wide-format binchotan robata grill handcrafted for professional kitchens, available in D300 and D400 depths with precision height control.","material":"Stainless steel 304","fuel":"Binchotan charcoal","manufacturing":"Made to order in South Korea","width":840,"height":300,"variants":[{"model":"LGY_840_D300","depth":300,"weight":46},{"model":"LGY_840_D400","depth":400,"weight":55}]}}
+    ],
+    "smokers": [
+      {"c":"LSO_1400_PA","n":"OFFSET · PA","s":"W1358×D533×H1756","g":"—","w":"—"},
+      {"c":"LSO_1800","img":"assets/photos/LSO_1800_SE.webp","n":"VERTICAL","s":"W1779×D645×H1836","g":"W886×D485/195","w":"155 KG"},
+      {"c":"LSO_1800_PL","img":"assets/photos/LSO_1800_PL_SE.webp","n":"VERTICAL · PL","s":"W1779×D645×H1836","g":"W886×D485/195","w":"165 KG"},
+      {"c":"LSO_2300_PL_REV","img":"assets/photos/LSO_2300_PL_REV.webp","n":"REVERSE FLOW","s":"W2054×D982×H2045","g":"W1186×D580/230","w":"570 KG"},
+      {"c":"LSV_850","img":"assets/photos/LSV_850.webp","n":"VAULT","s":"W815×D944×H1970","g":"W571×D550","w":"584 KG"},
+      {"c":"LSO_3500_V2","img":"assets/photos/LSO_3500_V2.webp","n":"COMMERCIAL LINE","s":"W3525×D1130×H2079","g":"W830×D870/690","w":"941 KG"},
+      {"c":"LSO_4500_V2","img":"assets/photos/LSO_4500_V2.webp","n":"COMMERCIAL LINE","s":"W4505×D1130×H2079","g":"W830×D870/690","w":"1184 KG"},
+      {"c":"LSO_5500_V2","img":"assets/photos/LSO_5500_V2.webp","n":"COMMERCIAL LINE","s":"W5485×D1130×H2079","g":"W830×D870/690","w":"1430 KG"}
+    ],
+    "indoor": [
+      {"c":"LSC_500_SE","img":"assets/photos/LSC_500_SE.webp","n":"COUNTERTOP · SE","s":"W590×D455×H673","g":"W430×D386","w":"25 KG"},
+      {"c":"LSC_500_PA","n":"COUNTERTOP · PA","s":"W590×D455×H673","g":"W430×D386","w":"25 KG"},
+      {"c":"LGC_380","img":"assets/photos/LGC_380.webp","n":"PORTABLE · WITH BAG","s":"W372×D309×H333","g":"W315×D250","w":"11 KG"},
+      {"c":"LOW_800_S","n":"WOOD-FIRED OVEN","s":"W800×D982×H1606","g":"OPENING W480×D285","w":"350 KG"},
+      {"c":"LOW_1100_S","img":"assets/photos/LOW_1100_S.webp","n":"WOOD-FIRED OVEN","s":"W1050×D982×H1606","g":"OPENING W550×D285","w":"455 KG"}
+    ],
+    "accessories": [
+      {"c":"Hanging Grill 520","s":"W520×D522×H152","n":"FOR LGA_900"},
+      {"c":"Hanging Grill 210","s":"W202×D522×H152","n":"FOR LGA_900"},
+      {"c":"Hanging Grill 580","s":"W577×D522×H152","n":"FOR LGA_1800"},
+      {"c":"Hanging Grill 320","s":"W312×D522×H152","n":"FOR LGA_1800"},
+      {"c":"Scraper","s":"L357×W155×H60","n":"STS 304"},
+      {"c":"Shovel","s":"L552×W155×H30","n":"STS 304"},
+      {"c":"Hook","s":"L552×W90×H28","n":"STS 304"},
+      {"c":"Hanger","s":"W339×D75×H42","n":"STS 304"},
+      {"c":"Axe","s":"L360×W138×H27","n":"FORGED"},
+      {"c":"Wire Brush","s":"L435×W70×H85","n":"GRATE CLEANING"},
+      {"c":"Long Wire Brush","s":"L1250×W205×H60","n":"WOOD HANDLE"},
+      {"c":"Thermometer","s":"L79×W50","n":"ANALOG"},
+      {"c":"Broom","s":"L360×W100×H45","n":"ASH SWEEP"}
+    ]
+  }
+}
+</script>
 <script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;EN&quot;,&quot;ES&quot;,&quot;ZH&quot;,&quot;FR&quot;,&quot;JA&quot;],&quot;default&quot;:&quot;EN&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;showMichelin&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Site&quot;}}">
 class Component extends DCLogic {
   state = { page: 'home', lang: null, unit:'metric', fName:'', fEmail:'', fCountry:'', fCompany:'', fInstagram:'', fWebsite:'', fInterest:'Asado Grills (LGA)', fModel:'', fMsg:'', turnstileToken:'', submitting:false, sent:false, err:'' };
+  productCatalog() {
+    if (this._productCatalog) return this._productCatalog;
+    const source = document.getElementById('lamsturn-product-catalog');
+    if (!source) throw new Error('Missing Lamsturn product catalog');
+    const catalog = JSON.parse(source.textContent || '');
+    const groupNames = ['asado','robata','smokers','indoor','accessories'];
+    if (!catalog || catalog.version !== 1 || !catalog.groups) throw new Error('Invalid Lamsturn product catalog');
+    const codes = new Set();
+    groupNames.forEach((name) => {
+      const group = catalog.groups[name];
+      if (!Array.isArray(group)) throw new Error('Invalid Lamsturn product group: ' + name);
+      group.forEach((product) => {
+        if (!product || typeof product.c !== 'string' || !product.c || codes.has(product.c)) throw new Error('Invalid or duplicate Lamsturn product code');
+        if (product.detail && (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(product.detail.slug) || typeof product.detail.page !== 'string' || !product.detail.page)) {
+          throw new Error('Invalid Lamsturn product detail route: ' + product.c);
+        }
+        codes.add(product.c);
+      });
+    });
+    this._productCatalog = catalog;
+    return catalog;
+  }
   isSupportedLang(value) {
     const code = typeof value === 'string' ? value.trim().toUpperCase() : '';
     return ['EN','ES','ZH','FR','JA'].includes(code);
@@ -3086,60 +3168,17 @@ class Component extends DCLogic {
       }
       return base;
     };
-    const lga = [
-      {c:'LGA_900_S', img:'assets/photos/LGA_900_S.webp', n:'CHAIN · STAND', s:'W922×D672×H1808', g:'W533×D486', w:'145 KG'},
-      {c:'LGA_900_T', img:'assets/photos/LGA_900_T.webp', n:'CHAIN · TABLETOP', s:'W906×D612×H1175', g:'W533×D486', w:'118 KG'},
-      {c:'LGA_1200_S', n:'CHAIN · STAND', s:'W1200×D612×H1808', g:'—', w:'—'},
-      {c:'LGA_1200_T', n:'CHAIN · TABLETOP', s:'W1200×D612×H1175', g:'—', w:'—'},
-      {c:'LGA_1800_S', img:'assets/photos/LGA_1800_S.webp', n:'CHAIN · STAND', s:'W1734×D787×H1808', g:'W590×D600', w:'307 KG'},
-      {c:'LGA_1800_T', img:'assets/photos/LGA_1800_T.webp', n:'CHAIN · TABLETOP', s:'W1734×D729×H1175', g:'W590×D600', w:'280 KG'},
-      {c:'LGA_M1700_S', n:'CHAIN · STAND', s:'W1700×D770×H1800', g:'W606×D635', w:'280 KG'},
-      {c:'LGA_M2000_B', n:'CHAIN · GAS-COMPATIBLE', s:'W1996×D705×H1205', g:'W756×D595', w:'150 KG'},
-      {c:'LGR_5500_S', n:'CHAIN · STAND', s:'W1500×D770×H1681', g:'—', w:'—'},
-      {c:'LGA_C1700_T', img:'assets/photos/LGA_C1700_T.webp', n:'GEAR · TABLETOP', s:'W1700×D850×H1023', g:'W500×D607', w:'324 KG'},
-      {c:'LGA_J900_T', img:'assets/photos/LGA_J900_T.webp', n:'GEAR · TABLETOP', s:'W900×D750×H920', g:'W378×D495', w:'120 KG', hasDetail:true},
-      {c:'LGA_J900_T_NS', n:'GEAR · TABLETOP · NS', s:'W1310×D750×H920', g:'—', w:'—'},
-      {c:'LGA_D1500_T', img:'assets/photos/LGA_D1500_T.webp', n:'GEAR · TABLETOP', s:'W1500×D836×H1000', g:'W444×D670', w:'350 KG'},
-      {c:'LGA_D1500_S', img:'assets/photos/LGA_D1500_S.webp', n:'GEAR · STAND', s:'W1500×D836×H1800', g:'W444×D670', w:'460 KG'},
-      {c:'LGA_M1000_T', n:'MANUAL · REFRACTORY BRICK', s:'W1000×D700×H980', g:'W295×D600 ×9', w:'103 KG'}
-    ];
-    const gL6 = () => this.go('lgy610'), gL8 = () => this.go('lgy840');
-    const lgy = [
-      {c:'LGY_610', d:['D300','D400'], img:'assets/photos/LGY_610.webp', n:'ROBATA · D300 / D400', s:'W610×D300/400×H300', g:'W315×250 · W292×354', w:'35 / 45 KG', hasDetail:true, href:'/products/lgy-610/', go:gL6},
-      {c:'LGY_840', d:['D300','D400'], img:'assets/photos/LGY_840.webp', n:'ROBATA · D300 / D400', s:'W840×D300/400×H300', g:'W315×250 · W409×354', w:'46 / 55 KG', hasDetail:true, href:'/products/lgy-840/', go:gL8}
-    ];
-    const smokers = [
-      {c:'LSO_1400_PA', n:'OFFSET · PA', s:'W1358×D533×H1756', g:'—', w:'—'},
-      {c:'LSO_1800', img:'assets/photos/LSO_1800_SE.webp', n:'VERTICAL', s:'W1779×D645×H1836', g:'W886×D485/195', w:'155 KG'},
-      {c:'LSO_1800_PL', img:'assets/photos/LSO_1800_PL_SE.webp', n:'VERTICAL · PL', s:'W1779×D645×H1836', g:'W886×D485/195', w:'165 KG'},
-      {c:'LSO_2300_PL_REV', img:'assets/photos/LSO_2300_PL_REV.webp', n:'REVERSE FLOW', s:'W2054×D982×H2045', g:'W1186×D580/230', w:'570 KG'},
-      {c:'LSV_850', img:'assets/photos/LSV_850.webp', n:'VAULT', s:'W815×D944×H1970', g:'W571×D550', w:'584 KG'},
-      {c:'LSO_3500_V2', img:'assets/photos/LSO_3500_V2.webp', n:'COMMERCIAL LINE', s:'W3525×D1130×H2079', g:'W830×D870/690', w:'941 KG'},
-      {c:'LSO_4500_V2', img:'assets/photos/LSO_4500_V2.webp', n:'COMMERCIAL LINE', s:'W4505×D1130×H2079', g:'W830×D870/690', w:'1184 KG'},
-      {c:'LSO_5500_V2', img:'assets/photos/LSO_5500_V2.webp', n:'COMMERCIAL LINE', s:'W5485×D1130×H2079', g:'W830×D870/690', w:'1430 KG'}
-    ];
-    const indoor = [
-      {c:'LSC_500_SE', img:'assets/photos/LSC_500_SE.webp', n:'COUNTERTOP · SE', s:'W590×D455×H673', g:'W430×D386', w:'25 KG'},
-      {c:'LSC_500_PA', n:'COUNTERTOP · PA', s:'W590×D455×H673', g:'W430×D386', w:'25 KG'},
-      {c:'LGC_380', img:'assets/photos/LGC_380.webp', n:'PORTABLE · WITH BAG', s:'W372×D309×H333', g:'W315×D250', w:'11 KG'},
-      {c:'LOW_800_S', n:'WOOD-FIRED OVEN', s:'W800×D982×H1606', g:'OPENING W480×D285', w:'350 KG'},
-      {c:'LOW_1100_S', img:'assets/photos/LOW_1100_S.webp', n:'WOOD-FIRED OVEN', s:'W1050×D982×H1606', g:'OPENING W550×D285', w:'455 KG'}
-    ];
-    const acc = [
-      {c:'Hanging Grill 520', s:'W520×D522×H152', n:'FOR LGA_900'},
-      {c:'Hanging Grill 210', s:'W202×D522×H152', n:'FOR LGA_900'},
-      {c:'Hanging Grill 580', s:'W577×D522×H152', n:'FOR LGA_1800'},
-      {c:'Hanging Grill 320', s:'W312×D522×H152', n:'FOR LGA_1800'},
-      {c:'Scraper', s:'L357×W155×H60', n:'STS 304'},
-      {c:'Shovel', s:'L552×W155×H30', n:'STS 304'},
-      {c:'Hook', s:'L552×W90×H28', n:'STS 304'},
-      {c:'Hanger', s:'W339×D75×H42', n:'STS 304'},
-      {c:'Axe', s:'L360×W138×H27', n:'FORGED'},
-      {c:'Wire Brush', s:'L435×W70×H85', n:'GRATE CLEANING'},
-      {c:'Long Wire Brush', s:'L1250×W205×H60', n:'WOOD HANDLE'},
-      {c:'Thermometer', s:'L79×W50', n:'ANALOG'},
-      {c:'Broom', s:'L360×W100×H45', n:'ASH SWEEP'}
-    ];
+    const catalog = this.productCatalog().groups;
+    const withDetail = (product) => product.detail ? Object.assign({}, product, {
+      hasDetail: true,
+      href: '/products/' + product.detail.slug + '/',
+      go: () => this.go(product.detail.page)
+    }) : Object.assign({}, product);
+    const lga = catalog.asado.map(withDetail);
+    const lgy = catalog.robata.map(withDetail);
+    const smokers = catalog.smokers.map(withDetail);
+    const indoor = catalog.indoor.map(withDetail);
+    const acc = catalog.accessories.map(withDetail);
     const areaKey = g => { const n=(g||'').match(/\d+(?:\.\d+)?/g)||[]; return n.length>=2 ? (+n[0])*(+n[1]) : (n.length ? (+n[0])*(+n[0]) : 0); };
     const sizeKey = z => { const n=(z||'').match(/\d+(?:\.\d+)?/g)||[]; return n.length>=2 ? (+n[0])*(+n[1]) : (n.length ? +n[0] : 0); };
     const wKey = w => parseFloat(String(w||'').replace(/[^\d.]/g,'')) || 0;
@@ -3152,7 +3191,7 @@ class Component extends DCLogic {
     const prep = (arr, fam) => arr.map(m => Object.assign({}, m, { hgt: hgtFor(fam, m.n) }, inqFields(m))).sort((a,b)=>keyFn(a)-keyFn(b)).map(displayModel);
     const _gear = m => /GEAR/.test(m.n||''), _manual = m => /MANUAL/.test(m.n||'');
     const lgaChainS = prep(lga.filter(m=>!_gear(m)&&!_manual(m)),'asado');
-    const lgaGearS = prep(lga.filter(_gear).map(m=> m.c==='LGA_J900_T'?Object.assign({},m,{hasDetail:true}):m),'asado');
+    const lgaGearS = prep(lga.filter(_gear),'asado');
     const lgyS = prep(lgy.concat(lga.filter(_manual)),'lgy');
     const smokersS = prep(smokers,'smoker'), indoorS = prep(indoor,'indoor');
     const SERL = { lgy:'ROBATA — LGY', gear:'ASADO — GEAR', chain:'ASADO — LGA / LGR CHAIN', indoor:'INDOOR — LGC / LSC / LOW', smoker:'SMOKER — LSO / LSV' };
@@ -3193,6 +3232,10 @@ class Component extends DCLogic {
         {id:'reel-7', v:true, img:false, video:'assets/video/reel-7.mp4', poster:'assets/photos/reel-7.jpg', cap:'LGC_380 — portable', tag:'PORTABLE', go:()=>this.go('products')},
         {id:'reel-2', v:true, img:false, video:'assets/video/reel-2.mp4', poster:'', cap:'Around the fire', tag:'IN SERVICE', go:()=>this.go('products')},
         {id:'reel-3', v:true, img:false, video:'assets/video/reel-3.mp4', poster:'', cap:'In the workshop', tag:'BASED ON CRAFT', go:()=>this.go('products')},
+        {id:'reel-8', v:true, img:false, video:'assets/video/reel-8.mp4', poster:'', cap:'Lamsturn LSO_1800', tag:'LSO_1800', go:()=>this.go('products')},
+        {id:'reel-9', v:true, img:false, video:'assets/video/reel-9.mp4', poster:'', cap:'LGA_900_NS', tag:'LGA_900_NS', go:()=>this.go('products')},
+        {id:'reel-10', v:true, img:false, video:'assets/video/reel-10.mp4', poster:'', cap:'LGA_C1700_T', tag:'LGA_C1700_T', go:()=>this.go('products')},
+        {id:'reel-11', v:true, img:false, video:'assets/video/reel-11.mp4', poster:'', cap:'Fall BBQ', tag:'FALL BBQ', go:()=>this.go('products')},
     ].map((r) => Object.assign({}, r, {
       muted: (s.mutedMap||{})[r.id] !== false,
       unmuted: (s.mutedMap||{})[r.id] === false,

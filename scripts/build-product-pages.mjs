@@ -12,51 +12,58 @@ const defaults = {
   type: 'website'
 };
 
-const products = [
-  {
-    slug: 'lgy-610',
-    model: 'LGY_610',
-    category: 'Professional Robata Grill',
-    title: 'LGY_610 Robata Grill | Lamsturn',
-    description: 'Compact binchotan robata grill handcrafted in South Korea for professional restaurant counters, available in D300 and D400 depths.',
-    url: 'https://lamsturn.com/products/lgy-610/',
-    image: 'https://lamsturn.com/assets/photos/LGY_610.webp',
-    variants: [
-      { model: 'LGY_610_D300', depth: 300, weight: 35 },
-      { model: 'LGY_610_D400', depth: 400, weight: 45 }
-    ],
-    width: 610,
-    height: 300
-  },
-  {
-    slug: 'lgy-840',
-    model: 'LGY_840',
-    category: 'Professional Robata Grill',
-    title: 'LGY_840 Robata Grill | Lamsturn',
-    description: 'Wide-format binchotan robata grill handcrafted for professional kitchens, available in D300 and D400 depths with precision height control.',
-    url: 'https://lamsturn.com/products/lgy-840/',
-    image: 'https://lamsturn.com/assets/photos/LGY_840.webp',
-    variants: [
-      { model: 'LGY_840_D300', depth: 300, weight: 46 },
-      { model: 'LGY_840_D400', depth: 400, weight: 55 }
-    ],
-    width: 840,
-    height: 300
-  },
-  {
-    slug: 'lga-j900-t',
-    model: 'LGA_J900_T',
-    category: 'Professional Asado Charcoal Grill',
-    title: 'LGA_J900_T Asado Grill | Lamsturn',
-    description: 'Gear-driven tabletop charcoal grill handcrafted in South Korea with precision grate-height control for professional kitchens.',
-    url: 'https://lamsturn.com/products/lga-j900-t/',
-    image: 'https://lamsturn.com/assets/photos/LGA_J900_T.webp',
-    width: 900,
-    depth: 750,
-    height: 920,
-    weight: 120
+const catalogMarker = '<script type="application/json" id="lamsturn-product-catalog">';
+
+function catalogItems(html) {
+  const start = html.indexOf(catalogMarker);
+  if (start < 0) throw new Error('Missing Lamsturn product catalog');
+  const contentStart = start + catalogMarker.length;
+  const end = html.indexOf('</script>', contentStart);
+  if (end < 0) throw new Error('Missing Lamsturn product catalog closing tag');
+  const catalog = JSON.parse(html.slice(contentStart, end));
+  const groupNames = ['asado', 'robata', 'smokers', 'indoor', 'accessories'];
+  if (!catalog || catalog.version !== 1 || !catalog.groups) throw new Error('Invalid Lamsturn product catalog');
+  const codes = new Set();
+  return groupNames.flatMap((name) => {
+    const group = catalog.groups[name];
+    if (!Array.isArray(group)) throw new Error(`Invalid Lamsturn product group: ${name}`);
+    return group.map((product) => {
+      if (!product || typeof product.c !== 'string' || !product.c || codes.has(product.c)) throw new Error('Invalid or duplicate Lamsturn product code');
+      codes.add(product.c);
+      return product;
+    });
+  });
+}
+
+function detailProduct(product) {
+  const detail = product.detail;
+  const requiredStrings = ['slug', 'page', 'category', 'title', 'description', 'material', 'fuel', 'manufacturing'];
+  if (!product.img || requiredStrings.some((key) => typeof detail[key] !== 'string' || !detail[key])) {
+    throw new Error(`Incomplete detail metadata for ${product.c}`);
   }
-];
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(detail.slug)) throw new Error(`Invalid product slug for ${product.c}`);
+  return {
+    slug: detail.slug,
+    model: product.c,
+    category: detail.category,
+    title: detail.title,
+    description: detail.description,
+    url: new URL(`products/${detail.slug}/`, defaults.url).href,
+    image: new URL(product.img, defaults.url).href,
+    material: detail.material,
+    fuel: detail.fuel,
+    manufacturing: detail.manufacturing,
+    grillArea: detail.grillArea,
+    variants: detail.variants,
+    width: detail.width,
+    depth: detail.depth,
+    height: detail.height,
+    weight: detail.weight
+  };
+}
+
+const products = catalogItems(source).filter((product) => product.detail).map(detailProduct);
+if (products.length !== 3) throw new Error(`Expected 3 detailed products, found ${products.length}`);
 
 const brand = { '@type': 'Brand', name: 'Lamsturn' };
 const manufacturer = { '@type': 'Organization', name: 'Lamsturn', url: 'https://lamsturn.com/' };
@@ -75,7 +82,7 @@ function commonProduct(product) {
     brand,
     manufacturer,
     countryOfOrigin,
-    material: 'Stainless steel 304'
+    material: product.material
   };
 }
 
@@ -101,14 +108,14 @@ function structuredData(product) {
         brand,
         manufacturer,
         countryOfOrigin,
-        material: 'Stainless steel 304',
+        material: product.material,
         width: millimetres(product.width),
         depth: millimetres(variant.depth),
         height: millimetres(product.height),
         weight: kilograms(variant.weight),
         additionalProperty: [
-          { '@type': 'PropertyValue', name: 'Fuel', value: 'Binchotan charcoal' },
-          { '@type': 'PropertyValue', name: 'Manufacturing', value: 'Made to order in South Korea' }
+          { '@type': 'PropertyValue', name: 'Fuel', value: product.fuel },
+          { '@type': 'PropertyValue', name: 'Manufacturing', value: product.manufacturing }
         ]
       }))
     };
@@ -125,9 +132,9 @@ function structuredData(product) {
     height: millimetres(product.height),
     weight: kilograms(product.weight),
     additionalProperty: [
-      { '@type': 'PropertyValue', name: 'Fuel', value: 'Charcoal' },
-      { '@type': 'PropertyValue', name: 'Main grill area', value: 'W378 × D495 mm' },
-      { '@type': 'PropertyValue', name: 'Manufacturing', value: 'Made to order in South Korea' }
+      { '@type': 'PropertyValue', name: 'Fuel', value: product.fuel },
+      { '@type': 'PropertyValue', name: 'Main grill area', value: product.grillArea },
+      { '@type': 'PropertyValue', name: 'Manufacturing', value: product.manufacturing }
     ]
   };
 }
