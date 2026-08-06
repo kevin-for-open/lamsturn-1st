@@ -16,9 +16,14 @@
 <meta property="og:title" content="Lamsturn, a premium grill brand from South Korea">
 <meta property="og:description" content="Professional charcoal grills, robata grills and smokers, designed and handcrafted in South Korea for chefs and restaurants worldwide.">
 <meta property="og:url" content="https://lamsturn.com/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://lamsturn.com/assets/photos/b-hero-aug-01.jpg">
+<meta property="og:image:width" content="1672">
+<meta property="og:image:height" content="941">
+<meta property="og:image:alt" content="Lamsturn custom grill installation">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Lamsturn, a premium grill brand from South Korea">
 <meta name="twitter:description" content="Professional charcoal grills, robata grills and smokers, designed and handcrafted in South Korea for chefs and restaurants worldwide.">
+<meta name="twitter:image" content="https://lamsturn.com/assets/photos/b-hero-aug-01.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="favicon.png" sizes="64x64">
 <script src="./support.js"></script>
@@ -3257,7 +3262,7 @@ class Component extends DCLogic {
       goKitchens: () => this.go('kitchens'),
       goHome: () => this.go('home'), goProducts: () => this.go('products'), goAbout: () => this.go('about'), goContact: () => this.go('contact'),
       menuOpen: !!s.menu, toggleMenu: () => this.setState({ menu: !this.state.menu }), mHome: s.page==='home'?active:idle,
-      heroTitle1: (s.slide||0)===1?'OUTDOOR COKKING,':((s.slide||0)===2?'THE PREMIUM':t.heroT1),
+      heroTitle1: (s.slide||0)===1?'OUTDOOR COOKING,':((s.slide||0)===2?'THE PREMIUM':t.heroT1),
       heroTitle2: (s.slide||0)===1?'REFINED.':((s.slide||0)===2?'ROBATA GRILL':t.heroT2),
       h1o: (s.slide||0)===0?1:0, h2o: (s.slide||0)===1?1:0, h3o: (s.slide||0)===2?1:0, h4o: (s.slide||0)===3?1:0, h5o: (s.slide||0)===4?1:0, h6o: (s.slide||0)===5?1:0, h7o: (s.slide||0)===6?1:0, h8o: (s.slide||0)===7?1:0,
       h1pe: (s.slide||0)===0?'auto':'none', h2pe: (s.slide||0)===1?'auto':'none', h3pe: (s.slide||0)===2?'auto':'none', h4pe: (s.slide||0)===3?'auto':'none', h5pe: (s.slide||0)===4?'auto':'none', h6pe: (s.slide||0)===5?'auto':'none', h7pe: (s.slide||0)===6?'auto':'none', h8pe: (s.slide||0)===7?'auto':'none',
