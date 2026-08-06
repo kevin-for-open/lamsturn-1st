@@ -47,6 +47,7 @@ External CDN dependencies (in `<helmet>`): Google Fonts (Archivo, IBM Plex Mono)
 | What | Where |
 |---|---|
 | Page routing (home / products / about / contact / compare / product-detail) | `state.page`, the `go(p)` method, and `nav*` vals in `renderVals()` |
+| Per-page SEO (title/description/canonical/og) | `seoForPage(p)` + `urlForPage(p)` + `pageFromUrl()`. **Every indexable route needs an entry in all three, and a matching row in `sections`/`products` inside `scripts/build-static-pages.mjs`** — the script emits the static HTML that crawlers actually fetch, the logic class keeps the meta in step during SPA navigation. |
 | **All UI copy**, 5 languages, **264 keys each** | the **`T`** object, line ~1256 — keys `EN`, `ES`, `ZH`, `FR`, `JA` |
 | **Product-detail body copy** | also in **`T`** — the 69 `dj*` (J900) and `dy*` (LGY) keys |
 | Detail-page eyebrows / intros / breadcrumbs / CTAs | the **`DT`** object — **20 keys** per language |
@@ -166,6 +167,34 @@ Unused asset files (kept intentionally): `assets/photos/b-p5.webp` (oven — no 
 - The template can't run JS expressions — compute in `renderVals()` and expose by name.
 - Mobile is tested down to **390px**; check that width after any layout change.
 - Family-strip and product-card edits appear twice (products page + home range strip).
+
+## SEO
+
+`index.html` is a single-page app, so crawlers only ever see whatever static HTML sits at a
+URL. `scripts/build-static-pages.mjs` produces that HTML at release time: it copies the
+staged `index.html` to **3 product routes** (`/products/<slug>/`, from the catalog's
+`detail` entries) and **5 section routes** (`/products/ /about/ /kitchens/ /compare/
+/contact/`, from the `sections` table in the script), swaps title/description/canonical/og
+per page, adds Product + BreadcrumbList JSON-LD to product pages, and regenerates
+`sitemap.xml` (9 URLs, `lastmod` = build date; override with `--date=YYYY-MM-DD`).
+**`sitemap.xml` is generated — do not hand-edit it.** Organization + WebSite JSON-LD is
+static in the `index.html` head, so it rides along on every page.
+
+Adding an indexable route means four places: `sections` in the script, plus `urlForPage`,
+`pageFromUrl` and `seoForPage` in `index.html`. Miss `pageFromUrl` and the generated page
+silently renders Home; miss the script and the URL 404s. `deploy.yml` asserts all eight
+generated pages and the sitemap exist, so a regression fails the release.
+
+**Origin:** every canonical / og:url / sitemap entry uses `https://lamsturn.com` and is
+marked `SEO_ORIGIN`. The domain is not connected yet (2026-08-06) — when it is confirmed,
+swap that origin everywhere (`index.html`, `scripts/build-static-pages.mjs`, `robots.txt`),
+then register the site in Google Search Console and submit the sitemap. Until then the site
+is deliberately not indexable under the workers.dev URL.
+
+Image `alt`: `<image-slot>` takes an `alt` attribute (added to the component's
+`observedAttributes`). Product cards get `Lamsturn <code> — <badge>` from `altFor()` in
+`renderVals()`; the six family tiles are intentionally left with empty alt because they sit
+inside links that already carry a visible text label.
 
 ## Deploy
 Static, no build step. `index.html` is the entry point.

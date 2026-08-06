@@ -42,8 +42,8 @@ jobs:
             --exclude='wrangler.toml' \
             ./ _site/
 
-      - name: Generate product pages
-        run: node scripts/build-product-pages.mjs _site
+      - name: Generate static pages and sitemap
+        run: node scripts/build-static-pages.mjs _site
 
       - name: Sanity check the bundle
         run: |
@@ -53,6 +53,14 @@ jobs:
           test -f _site/products/lgy-840/index.html || { echo "::error::LGY_840 product page missing"; exit 1; }
           test -f _site/products/lga-j900-t/index.html || { echo "::error::LGA_J900_T product page missing"; exit 1; }
           test -f _site/support.js || { echo "::error::support.js missing — the site would not render"; exit 1; }
+
+          # Indexable section routes — a generator regression here would ship 404s to
+          # every link and search result pointing at them.
+          for sec in products about kitchens compare contact; do
+            test -f "_site/$sec/index.html" || { echo "::error::section page missing: /$sec/"; exit 1; }
+          done
+          test -f _site/sitemap.xml || { echo "::error::sitemap.xml missing"; exit 1; }
+          grep -q '<loc>.*/about/</loc>' _site/sitemap.xml || { echo "::error::sitemap.xml is missing the section routes"; exit 1; }
 
           echo "files: $(find _site -type f | wc -l)"
           echo "size:  $(du -sh _site | cut -f1)"

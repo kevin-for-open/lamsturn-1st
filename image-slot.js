@@ -428,7 +428,7 @@
 
   class ImageSlot extends HTMLElement {
     static get observedAttributes() {
-      return ['shape', 'radius', 'mask', 'fit', 'placeholder', 'src', 'id', 'credit', 'credit-href'];
+      return ['shape', 'radius', 'mask', 'fit', 'placeholder', 'src', 'id', 'credit', 'credit-href', 'alt'];
     }
 
     /** Duplicate-slide hook (called by deck-stage, see its
@@ -1065,6 +1065,9 @@
       this.toggleAttribute('data-editable', editable);
       this._sub.style.display = editable ? '' : 'none';
       this._empty.style.cursor = editable ? '' : 'default';
+      // Alt text belongs to the page author, not the component — a filled slot with no
+      // alt stays decorative (empty string), which is what a screen reader expects.
+      this._img.alt = this.getAttribute('alt') || '';
 
       // Content. The sidecar is also writable by the agent's write_file
       // tool, so its value isn't guaranteed canvas-originated — only accept
