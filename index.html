@@ -494,8 +494,8 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   </div>
   <section style="padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 90px">
     <div data-cmpwrap>
-      <div data-cmpgrid style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.4vw,28px)">
-        <sc-for list="{{ cmpCols }}" as="col" hint-placeholder-count="3">
+      <div data-cmpgrid style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2.4vw,28px)">
+        <sc-for list="{{ cmpCols }}" as="col" hint-placeholder-count="2">
         <div style="display:flex;flex-direction:column;min-width:0">
           <div style="position:sticky;top:86px;z-index:5;background:#131110;padding:8px 0 14px">
             {{ col.selEl }}
@@ -590,7 +590,6 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#e05a1f">2012</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2012 }}</span></div>
       <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#e05a1f">2016</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2016 }}</span></div>
       <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#e05a1f">2020</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2020 }}</span></div>
-      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#e05a1f">2024</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2024 }}</span></div>
       <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16);border-bottom:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#e05a1f">2026</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2026 }}</span></div>
     </div>
   </section>
@@ -1188,8 +1187,8 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       {"c":"LGA_M1000_T","n":"MANUAL · REFRACTORY BRICK","s":"W1000×D700×H980","g":"W295×D600 ×9","w":"103 KG"}
     ],
     "robata": [
-      {"c":"LGY_610","d":["D300","D400"],"img":"assets/photos/LGY_610.webp","img2":"assets/photos/LGY_610_2.webp","n":"ROBATA · D300 / D400","s":"W610×D300/400×H300","g":"W315×250 · W292×354","w":"35 / 45 KG","detail":{"slug":"lgy-610","page":"lgy610","category":"Professional Robata Grill","title":"LGY_610 Robata Grill | Lamsturn","description":"Compact binchotan robata grill handcrafted in South Korea for professional restaurant counters, available in D300 and D400 depths.","material":"Stainless steel 304","fuel":"Binchotan charcoal","manufacturing":"Made to order in South Korea","width":610,"height":300,"variants":[{"model":"LGY_610_D300","depth":300,"weight":35},{"model":"LGY_610_D400","depth":400,"weight":45}]}},
-      {"c":"LGY_840","d":["D300","D400"],"img":"assets/photos/LGY_840.webp","img2":"assets/photos/LGY_840_2.webp","n":"ROBATA · D300 / D400","s":"W840×D300/400×H300","g":"W315×250 · W409×354","w":"46 / 55 KG","detail":{"slug":"lgy-840","page":"lgy840","category":"Professional Robata Grill","title":"LGY_840 Robata Grill | Lamsturn","description":"Wide-format binchotan robata grill handcrafted for professional kitchens, available in D300 and D400 depths with precision height control.","material":"Stainless steel 304","fuel":"Binchotan charcoal","manufacturing":"Made to order in South Korea","width":840,"height":300,"variants":[{"model":"LGY_840_D300","depth":300,"weight":46},{"model":"LGY_840_D400","depth":400,"weight":55}]}}
+      {"c":"LGY_610","d":["D300","D400"],"img":"assets/photos/LGY_610.webp","img2":"assets/photos/LGY_610_2.webp","n":"ROBATA · D300 / D400","s":"W610×D300/400×H300","g":"W315×250 · W292×354","w":"42 / 46 KG","detail":{"slug":"lgy-610","page":"lgy610","category":"Professional Robata Grill","title":"LGY_610 Robata Grill | Lamsturn","description":"Compact binchotan robata grill handcrafted in South Korea for professional restaurant counters, available in D300 and D400 depths.","material":"Stainless steel 304","fuel":"Binchotan charcoal","manufacturing":"Made to order in South Korea","width":610,"height":300,"variants":[{"model":"LGY_610_D300","depth":300,"weight":42},{"model":"LGY_610_D400","depth":400,"weight":46}]}},
+      {"c":"LGY_840","d":["D300","D400"],"img":"assets/photos/LGY_840.webp","img2":"assets/photos/LGY_840_2.webp","n":"ROBATA · D300 / D400","s":"W840×D300/400×H300","g":"W315×250 · W409×354","w":"52 / 60 KG","detail":{"slug":"lgy-840","page":"lgy840","category":"Professional Robata Grill","title":"LGY_840 Robata Grill | Lamsturn","description":"Wide-format binchotan robata grill handcrafted for professional kitchens, available in D300 and D400 depths with precision height control.","material":"Stainless steel 304","fuel":"Binchotan charcoal","manufacturing":"Made to order in South Korea","width":840,"height":300,"variants":[{"model":"LGY_840_D300","depth":300,"weight":52},{"model":"LGY_840_D400","depth":400,"weight":60}]}}
     ],
     "smokers": [
       {"c":"LSO_1400_PA","img":"assets/photos/LSO_1400_PA.webp","n":"OFFSET · PA","s":"W1358×D533×H1756","g":"—","w":"—"},
@@ -1871,7 +1870,6 @@ class Component extends DCLogic {
             "ms2012": "Founded among the steel workshops of Mullae-dong, Seoul — \"based on craft\" from day one.",
             "ms2016": "Gear-driven height control introduced — 30 mm increments become the Lamsturn signature.",
             "ms2020": "Michelin-starred kitchens across Korea adopt Lamsturn as their standard.",
-            "ms2024": "First installs in Europe and Hong Kong — Amelia (San Sebastián), NOI (Hong Kong) and Restaurant Papilio (Prague).",
             "ms2026": "Worldwide export operations scale up with Umzikim for hospitality groups across Europe and Asia.",
             "contactEyebrow": "CONTACT — INQUIRIES",
             "contactIntro": "Tell us about your kitchen — the space, the menu, the size you wish existed. Our engineers reply with drawings, options and a quote.",
@@ -2148,7 +2146,6 @@ class Component extends DCLogic {
             "ms2012": "Fundada entre las herrerías de Mullae-dong, Seúl — \"basado en el oficio\" desde el primer día.",
             "ms2016": "Se introduce el control de altura por engranaje — los pasos de 30 mm se vuelven la firma de Lamsturn.",
             "ms2020": "Cocinas con estrella Michelin de toda Corea adoptan Lamsturn como estándar.",
-            "ms2024": "Primeras instalaciones en Europa y Hong Kong — Amelia (San Sebastián), NOI (Hong Kong) y Restaurant Papilio (Praga).",
             "ms2026": "Las operaciones de exportación mundial crecen con Umzikim para grupos de hostelería de Europa y Asia.",
             "contactEyebrow": "CONTACTO — CONSULTAS",
             "contactIntro": "Cuéntanos sobre tu cocina — el espacio, la carta, la medida que desearías que existiera. Nuestros ingenieros responden con planos, opciones y un presupuesto.",
@@ -2425,7 +2422,6 @@ class Component extends DCLogic {
             "ms2012": "于首尔文来洞的钢铁作坊间创立 ——「以匠艺为本」自第一天起。",
             "ms2016": "推出齿轮升降控制 —— 30 mm 步距成为 Lamsturn 的标志。",
             "ms2020": "韩国各地的米其林星级厨房将 Lamsturn 奉为标准。",
-            "ms2024": "首批装机落地欧洲与香港 —— Amelia（圣塞瓦斯蒂安）、NOI（香港）与 Restaurant Papilio（布拉格）。",
             "ms2026": "携手 Umzikim，面向欧亚酒店餐饮集团扩大全球出口业务。",
             "contactEyebrow": "联系 — 咨询",
             "contactIntro": "告诉我们你的厨房 —— 空间、菜单，以及你希望存在的那个尺寸。我们的工程师将以图纸、方案与报价回复。",
@@ -2702,7 +2698,6 @@ class Component extends DCLogic {
             "ms2012": "Fondée parmi les ateliers d’acier de Mullae-dong, à Séoul — « fondé sur le savoir-faire » dès le premier jour.",
             "ms2016": "Introduction du réglage de hauteur à engrenage — les pas de 30 mm deviennent la signature Lamsturn.",
             "ms2020": "Des cuisines étoilées au Michelin dans toute la Corée adoptent Lamsturn comme référence.",
-            "ms2024": "Premières installations en Europe et à Hong Kong — Amelia (Saint-Sébastien), NOI (Hong Kong) et Restaurant Papilio (Prague).",
             "ms2026": "Les opérations d’export mondial montent en puissance avec Umzikim pour les groupes hôteliers d’Europe et d’Asie.",
             "contactEyebrow": "CONTACT — DEMANDES",
             "contactIntro": "Parlez-nous de votre cuisine — l’espace, la carte, le format dont vous rêvez. Nos ingénieurs répondent par des plans, des options et un devis.",
@@ -2979,7 +2974,6 @@ class Component extends DCLogic {
             "ms2012": "ソウル・文来洞の鉄工所群のなかで創業 — 初日から「クラフトに基づいて」。",
             "ms2016": "歯車駆動の高さ制御を導入 — 30 mm 刻みが Lamsturn の象徴に。",
             "ms2020": "韓国各地のミシュラン星付き厨房が、Lamsturn を標準として採用。",
-            "ms2024": "ヨーロッパと香港で初導入 — Amelia(サン・セバスティアン)、NOI(香港)、Restaurant Papilio(プラハ)。",
             "ms2026": "Umzikim とともに、ヨーロッパとアジアのホスピタリティ・グループ向けに世界輸出体制を拡大。",
             "contactEyebrow": "お問い合わせ — ご相談",
             "contactIntro": "あなたの厨房について聞かせてください — 空間、メニュー、こんな寸法があればという願い。私たちのエンジニアが、図面と選択肢、そして見積もりとともにお返事します。",
@@ -3217,17 +3211,17 @@ class Component extends DCLogic {
     const displayModel = (m) => Object.assign({}, m, { s: displayDimensions(m.s, false), g: displaySpec(m.g, value => displayDimensions(value, false)), w: displaySpec(m.w, displayWeight) });
     const prep = (arr, fam) => arr.map(m => Object.assign({}, m, { hgt: hgtFor(fam, m.n) }, inqFields(m))).sort((a,b)=>keyFn(a)-keyFn(b)).map(displayModel);
     const _gear = m => /GEAR/.test(m.n||''), _manual = m => /MANUAL/.test(m.n||'');
-    const lgaChainS = prep(lga.filter(m=>!_gear(m)&&!_manual(m)),'asado');
+    const lgaChainS = prep(lga.filter(m=>(!_gear(m)&&!_manual(m))||m.c==='LGA_M1000_T'),'asado');
     const lgaGearS = prep(lga.filter(_gear),'asado');
-    const lgyS = prep(lgy.concat(lga.filter(_manual)),'lgy');
+    const lgyS = prep(lgy.concat(lga.filter(m=>_manual(m)&&m.c!=='LGA_M1000_T')),'lgy');
     const smokersS = prep(smokers,'smoker'), indoorS = prep(indoor,'indoor');
     const SERL = { lgy:'ROBATA — LGY', gear:'ASADO — GEAR', chain:'ASADO — LGA / LGR CHAIN', indoor:'INDOOR — LGC / LSC / LOW', smoker:'SMOKER — LSO / LSV' };
     const tagSer = (arr, k) => arr.map(m => Object.assign({}, m, { ser: SERL[k] }));
     const regAll = [].concat(tagSer(lgyS,'lgy'), tagSer(lgaGearS,'gear'), tagSer(lgaChainS,'chain'), tagSer(indoorS,'indoor'), tagSer(smokersS,'smoker'));
     const byCode = {}; regAll.forEach(m => { byCode[m.c] = m; });
     const cmpOpts = regAll.map(m => ({ v: m.c, label: m.ser + ' — ' + m.c }));
-    const cSel = [s.cmpA !== undefined ? s.cmpA : 'LGY_840', s.cmpB !== undefined ? s.cmpB : 'LGA_J900_T', s.cmpC !== undefined ? s.cmpC : ''];
-    const cmpSet = (i) => (e) => { const k = ['cmpA','cmpB','cmpC'][i]; const o = {}; o[k] = e.target.value; this.setState(o); };
+    const cSel = [s.cmpA !== undefined ? s.cmpA : 'LGY_840', s.cmpB !== undefined ? s.cmpB : 'LGA_J900_T'];
+    const cmpSet = (i) => (e) => { const k = ['cmpA','cmpB'][i]; const o = {}; o[k] = e.target.value; this.setState(o); };
     const mkCol = (code, i) => { const m = byCode[code];
       const base = m ? { filled: true, c: m.c, n: m.n, ser: m.ser, s: m.s, g: m.g, w: m.w, hgt: m.hgt, hasImg: !!m.img, noImg: !m.img, img: m.img || '', inqLabel: m.inqLabel, inqCol: m.inqCol, inqTgl: m.inqTgl }
                      : { filled: false, c: '\u2014', n: '', ser: '\u2014', s: '\u2014', g: '\u2014', w: '\u2014', hgt: '\u2014', hasImg: false, noImg: true, img: '' };
@@ -3296,12 +3290,12 @@ class Component extends DCLogic {
       jWeight: displayWeight('120 KG'),
       jTrayPlaceholder: convertCopy('9 mm charcoal tray'),
       jSizePlaceholder: imperial ? 'LGA_J900_T size chart (in)' : 'LGA_J900_T size chart (mm)',
-      l6D300: displayDimensions('W610 × D300 × H300', true) + ' — ' + displayWeight('35 KG'),
-      l6D400: displayDimensions('W610 × D400 × H300', true) + ' — ' + displayWeight('45 KG'),
+      l6D300: displayDimensions('W610 × D300 × H300', true) + ' — ' + displayWeight('42 KG'),
+      l6D400: displayDimensions('W610 × D400 × H300', true) + ' — ' + displayWeight('46 KG'),
       l6Grill: displayDimensions('315 × 250 · 292 × 354', true),
       l6SizePlaceholder: imperial ? 'LGY_610_D400 size chart (in)' : 'LGY_610_D400 size chart (mm)',
-      l8D300: displayDimensions('W840 × D300 × H300', true) + ' — ' + displayWeight('46 KG'),
-      l8D400: displayDimensions('W840 × D400 × H300', true) + ' — ' + displayWeight('55 KG'),
+      l8D300: displayDimensions('W840 × D300 × H300', true) + ' — ' + displayWeight('52 KG'),
+      l8D400: displayDimensions('W840 × D400 × H300', true) + ' — ' + displayWeight('60 KG'),
       l8Grill: displayDimensions('315 × 250 · 409 × 354', true),
       l8SizePlaceholder: imperial ? 'LGY_840_D400 size chart (in)' : 'LGY_840_D400 size chart (mm)',
       reels,

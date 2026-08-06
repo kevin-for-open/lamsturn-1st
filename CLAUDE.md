@@ -88,6 +88,10 @@ Some values are legitimately identical to English (`SHOWROOM` in ES; `CONTACT`, 
 
 ### Removed keys — do not re-add
 
+On 2026-08-06, `ms2024` (the 2024 About-timeline milestone, × 5 languages) was removed
+together with its template row on the owner's request — do not restore the 2024 row.
+(`photoSoon` was added the same day, so `T` stays at 264 keys per language.)
+
 On 2026-07-27, **52 unused keys (× 5 languages = 260 lines)** were deleted after verifying that
 nothing in the template or logic referenced them:
 
