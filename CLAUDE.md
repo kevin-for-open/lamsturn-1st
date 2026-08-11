@@ -154,7 +154,9 @@ A filled slot looks like this:
 `image-slot.js` is only needed while empty placeholders remain. Once every slot has a real image,
 it and the `<x-import … image-slot …>` wrappers can be dropped.
 
-Unused asset files (kept intentionally): `assets/photos/b-p5.webp` (oven — no oven card),
+Unused asset files (kept intentionally): `assets/photos/LGA_D1500_S.webp` (the owner asked on
+2026-08-11 for that card to show the "photography in progress" placeholder instead — re-wire
+the `img` field when the final photo is decided), `assets/photos/b-p5.webp` (oven — no oven card),
 `assets/lamsturn-ci.svg` (dark-background variant; the site is dark so it uses `-white`),
 `assets/michelin-face.png`.
 
