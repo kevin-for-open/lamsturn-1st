@@ -1208,12 +1208,12 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       {"c":"LGA_M1000_T","img":"assets/photos/LGA_M1000_T.webp","img2":"assets/photos/LGA_M1000_T_2.webp","n":"MANUAL · REFRACTORY BRICK","s":"W1000×D700×H980","g":"W295×D600 ×9","w":"103 KG"},
       {"c":"LGA_M1700_S","img":"assets/photos/LGA_M1700_S.webp","img2":"assets/photos/LGA_M1700_S_2.webp","n":"CHAIN · STAND","s":"W1700×D770×H1800","g":"W606×D635","w":"280 KG"},
       {"c":"LGA_M2000_T","img":"assets/photos/LGA_M2000_T.webp","img2":"assets/photos/LGA_M2000_T_2.webp","n":"CHAIN · GAS-COMPATIBLE","s":"W1996×D705×H1205","g":"W756×D595","w":"150 KG"},
-      {"c":"LTR_5500_S","img":"assets/photos/LTR_5500_S.webp","img2":"assets/photos/LTR_5500_S_2.webp","n":"CHAIN · STAND","s":"W1500×D770×H1681","g":"—","w":"269 KG"},
+      {"c":"LTR_5500_S","img":"assets/photos/LTR_5500_S.webp","img2":"assets/photos/LTR_5500_S_2.webp","n":"CHAIN · STAND","s":"W1500×D770×H1681","g":"W258×D270 ×3 · W565×D270 ×2","w":"269 KG"},
       {"c":"LGA_J900_T","img":"assets/photos/LGA_J900_T.webp","img2":"assets/photos/LGA_J900_T_2.webp","n":"GEAR · TABLETOP","s":"W900×D750×H920","g":"W378×D495 ×2","w":"120 KG","detail":{"slug":"lga-j900-t","page":"j900","category":"Professional Asado Charcoal Grill","title":"LGA_J900_T Asado Grill | Lamsturn","description":"Gear-driven tabletop charcoal grill handcrafted in South Korea with precision grate-height control for professional kitchens.","material":"Stainless steel 304","fuel":"Charcoal","manufacturing":"Made to order in South Korea","width":900,"depth":750,"height":920,"weight":120,"grillArea":"W378 × D495 mm"}},
-      {"c":"LGA_J1310_T","img":"assets/photos/LGA_J1310_T.webp","img2":"assets/photos/LGA_J1310_T_2.webp","n":"GEAR · TABLETOP","s":"W1310×D750×H920","g":"W378×D495","w":"200 KG"},
+      {"c":"LGA_J1310_T","img":"assets/photos/LGA_J1310_T.webp","img2":"assets/photos/LGA_J1310_T_2.webp","n":"GEAR · TABLETOP","s":"W1310×D750×H920","g":"W378×D495 ×3","w":"200 KG"},
       {"c":"LGA_D1500_T","img":"assets/photos/LGA_D1500_T.webp","img2":"assets/photos/LGA_D1500_T_2.webp","n":"GEAR · TABLETOP","s":"W1500×D836×H1000","g":"W444×D670 ×3","w":"350 KG"},
       {"c":"LGA_D1500_S","n":"GEAR · STAND","s":"W1500×D836×H1800","g":"W444×D670 ×3","w":"460 KG"},
-      {"c":"LGA_C1700_T","img":"assets/photos/LGA_C1700_T.webp","img2":"assets/photos/LGA_C1700_T_2.webp","n":"GEAR · TABLETOP","s":"W1700×D850×H1023","g":"W494×D607 ×1","w":"324 KG"}
+      {"c":"LGA_C1700_T","img":"assets/photos/LGA_C1700_T.webp","img2":"assets/photos/LGA_C1700_T_2.webp","n":"GEAR · TABLETOP","s":"W1700×D850×H1023","g":"W494×D607","w":"324 KG"}
     ],
     "robata": [
       {"c":"LGY_610_D300","img":"assets/photos/LGY_610.webp","img2":"assets/photos/LGY_610_2.webp","n":"ROBATA · D300","s":"W610×D300×H300","g":"W315×250 ×2","w":"42 KG","detail":{"model":"LGY_610","slug":"lgy-610","page":"lgy610","category":"Professional Robata Grill","title":"LGY_610 Robata Grill | Lamsturn","description":"Compact binchotan robata grill handcrafted in South Korea for professional restaurant counters, available in D300 and D400 depths.","material":"Stainless steel 304","fuel":"Binchotan charcoal","manufacturing":"Made to order in South Korea","width":610,"height":300,"variants":[{"model":"LGY_610_D300","depth":300,"weight":42},{"model":"LGY_610_D400","depth":400,"weight":46}]}},
@@ -1677,10 +1677,12 @@ class Component extends DCLogic {
       if (!raw || raw === '\u2014') return raw;
       if (!imperial) return raw + (showMetricUnit ? ' MM' : '');
       const converted = raw.replace(/\d+(?:[.,]\d+)?/g, (number, offset, whole) => {
-        const before = whole.slice(0, offset);
-        const after = whole.slice(offset + number.length);
-        const finalQuantity = /\s[×x]\s*$/.test(before) && /^\s*$/.test(after);
-        return finalQuantity ? number : formatInches(number);
+        // A piece count is written " ×N" — whitespace, then ×, then the digits with no gap
+        // ("W378×D495 ×2"). Dimensions never take that shape: they join with "×" (no space
+        // before it) or " × " (a space after it), so a measurement is never mistaken for a
+        // count, and a count is kept as-is wherever it sits in the value.
+        const isCount = /\s[×x]$/.test(whole.slice(0, offset));
+        return isCount ? number : formatInches(number);
       });
       return converted + ' IN';
     };
