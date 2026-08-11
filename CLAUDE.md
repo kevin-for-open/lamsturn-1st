@@ -55,6 +55,7 @@ External CDN dependencies (in `<helmet>`): Google Fonts (Archivo, IBM Plex Mono)
 | Language switcher | two `<select>`s (desktop nav + mobile menu) → `onLang` |
 | Product tables (models, dims, weights) | `lga`, `lgy`, `smokers`, `indoor`, `acc` arrays — **not translated** (model codes/specs stay as-is) |
 | Product card order | the order entries are written in the catalog JSON **is** the display order — `prep()` does not sort. To reorder cards, move the lines. |
+| Grill piece counts (`g`) | a count is written as a **trailing** ` ×N` (`W378×D495 ×2`). `displayDimensions` converts every number to inches EXCEPT one that is preceded by ` ×` and ends the string, so a count anywhere else — or any letters after a number (`2ea`, `SUS304`) — is rendered as a bogus inch value. The card/compare row is labelled `t.lblMainGrill`; resting-grill sizes live on detail pages only. |
 | Depth pairs (LGY_610_D300 / _D400 …) | two separate cards sharing one detail page: the **D300** entry carries the full `detail` payload plus `detail.model` (the family code, so the ProductGroup JSON-LD is not named after one card), the **D400** entry carries `detailOf: {slug, page}` — a link-only reference the generator ignores. The detail page's own CTA still opens a depth chooser, built by grouping catalog codes in `renderVals` (`depthReg`). |
 | Kitchens map + restaurant list | Leaflet; venue data in `const D` (line ~1127), mapped to `this._inst` at line ~1210 |
 | Kitchens tier/column labels per language | `GRP` (line ~3128) and `COL` (line ~3143) |
@@ -82,8 +83,8 @@ Tier labels are translated in `GRP`; list column headers in `COL`. Badge icons c
 ### Editing copy / translations
 Every text string exists once per language inside `T` (and `DT`). To change wording, edit the matching
 key in **each** language object. Keys must stay identical across all five languages —
-they currently are (264 in `T`, 20 in `DT`, all five languages aligned, no untranslated leftovers).
-Every one of the 284 merged keys is referenced by the template or logic; there are no unused keys.
+they currently are (273 in `T`, 20 in `DT`, all five languages aligned, no untranslated leftovers).
+Every one of the 293 merged keys is referenced by the template or logic; there are no unused keys.
 
 Do **not** translate: model codes (`LGA_900_S`…), dimensions, weights, phone numbers, email.
 Some values are legitimately identical to English (`SHOWROOM` in ES; `CONTACT`, `SITE`, `MESSAGE *`,
