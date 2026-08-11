@@ -54,6 +54,8 @@ External CDN dependencies (in `<helmet>`): Google Fonts (Archivo, IBM Plex Mono)
 | How the template sees copy | `renderVals()` does `const t = Object.assign({}, T[lang], DT[lang])` — so **both** objects are read as `{{ t.someKey }}`; there is no `dt.` namespace in the template |
 | Language switcher | two `<select>`s (desktop nav + mobile menu) → `onLang` |
 | Product tables (models, dims, weights) | `lga`, `lgy`, `smokers`, `indoor`, `acc` arrays — **not translated** (model codes/specs stay as-is) |
+| Product card order | the order entries are written in the catalog JSON **is** the display order — `prep()` does not sort. To reorder cards, move the lines. |
+| Depth pairs (LGY_610_D300 / _D400 …) | two separate cards sharing one detail page: the **D300** entry carries the full `detail` payload plus `detail.model` (the family code, so the ProductGroup JSON-LD is not named after one card), the **D400** entry carries `detailOf: {slug, page}` — a link-only reference the generator ignores. The detail page's own CTA still opens a depth chooser, built by grouping catalog codes in `renderVals` (`depthReg`). |
 | Kitchens map + restaurant list | Leaflet; venue data in `const D` (line ~1127), mapped to `this._inst` at line ~1210 |
 | Kitchens tier/column labels per language | `GRP` (line ~3128) and `COL` (line ~3143) |
 | Tweakable props (`lang`, `showMichelin`) | `data-props` on the `<script data-dc-script>` tag |

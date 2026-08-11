@@ -79,7 +79,9 @@ function detailProduct(product) {
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(detail.slug)) throw new Error(`Invalid product slug for ${product.c}`);
   return {
     slug: detail.slug,
-    model: product.c,
+    // A depth pair is two cards sharing one page: the D300 card owns `detail` and names the
+    // family through `detail.model`, so the group is not labelled with that one card's code.
+    model: detail.model || product.c,
     category: detail.category,
     title: detail.title,
     description: detail.description,
