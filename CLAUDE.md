@@ -40,7 +40,7 @@ python3 -m http.server 8000   # open http://localhost:8000/
    name; the template can only do dotted lookups, never expressions like `{{ a + b }}`.
 
 External CDN dependencies (in `<helmet>`): Google Fonts (Archivo, IBM Plex Mono) and
-**Leaflet 1.9.4** for the kitchens map.
+**Leaflet 1.9.4** plus **Leaflet.markercluster 1.5.3** for the kitchens map.
 
 ### Where things live (line numbers are approximate — search by name)
 
@@ -71,19 +71,34 @@ with `m === -1` is a showroom and is filtered out of the kitchen count, so the s
 
 | `m` | Meaning | Rows |
 |---|---|---|
+| `4` | Three Michelin stars | 0 — fully wired, waiting on data |
 | `3` | Two Michelin stars | 7 |
 | `2` | One Michelin star | 2 |
 | `1` | Michelin Guide | 8 |
 | `0` | Listed kitchen, no Michelin badge | 61 |
 | `-1` | Showroom — excluded from the kitchen count | 1 |
 
+**Adding a three-star venue takes one row and nothing else.** Write `4` in the `m` slot of a
+`const D` row and the pin (three stars, wider disc), popup badge, list group, per-row stars, the
+slogan's star count and the `3 STARS` filter chip all appear. That chip is hidden while no row
+carries `m = 4`, so the tier stays invisible until it is real.
+
 Tier labels are translated in `GRP`; list column headers in `COL`. Badge icons come from
 `assets/michelin-star.webp`, `michelin-star-white.png`, `michelin-guide-white.png`, `michelin-bib.png`.
+
+**Map markers** are built by `pinIcon(tier)` — a white body (disc + tail) with a red disc inset,
+following the Michelin Guide map. Red is `#D3072B`, sampled from `assets/michelin-star.webp` rather
+than guessed. Glyphs keep one size across tiers, so more stars means a wider disc (1 star 36px,
+2 stars 48px, 3 stars 64px); the fork & knife is an inline path, not the stroke icon used elsewhere.
+Markers are grouped by `markerGroup()`, rebuilt from scratch on every `refreshMarkers` — reusing one
+cluster group across filter changes made markercluster throw mid-loop and silently drop most pins.
+For the same reason `removeOutsideVisibleBounds` is **off**: 78 markers never needed culling, and the
+culling path computes bounds that are not ready during a re-render. Do not re-enable it.
 
 ### Editing copy / translations
 Every text string exists once per language inside `T` (and `DT`). To change wording, edit the matching
 key in **each** language object. Keys must stay identical across all five languages —
-they currently are (273 in `T`, 20 in `DT`, all five languages aligned, no untranslated leftovers).
+they currently are (274 in `T`, 20 in `DT`, all five languages aligned, no untranslated leftovers).
 Every one of the 293 merged keys is referenced by the template or logic; there are no unused keys.
 
 Do **not** translate: model codes (`LGA_900_S`…), dimensions, weights, phone numbers, email.
@@ -235,4 +250,5 @@ account, **expires 2027-08-01**) and `CLOUDFLARE_ACCOUNT_ID`.
 - **Three-star venues are not in `const D` yet.** `michelinBlurb` says "Michelin three-star and
   two-star kitchens" while the data tops out at two stars (`m = 3`). This is deliberate — the
   three-star kitchens are to be added to the dataset shortly. **Do not "correct" the copy**; add
-  the venues instead, with a new tier above `m = 3` and matching `GRP` labels in all five languages.
+  the venues instead, as `m = 4` rows. The whole `m = 4` tier is already built (see the tier table
+  above), so no code change is needed.
