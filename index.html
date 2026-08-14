@@ -1608,11 +1608,18 @@ class Component extends DCLogic {
   // mid-loop and silently drops most pins.
   markerGroup() {
     if (!L.markerClusterGroup) return L.layerGroup();
-    return L.markerClusterGroup({
+    const g = L.markerClusterGroup({
       showCoverageOnHover: false,
       spiderfyOnMaxZoom: true,
-      disableClusteringAtZoom: 12,
+      spiderfyDistanceMultiplier: 1.6,
+      // Cluster clicks are handled below instead, to land the pins clear of the frame edge.
+      zoomToBoundsOnClick: false,
+      // No disableClusteringAtZoom. It used to stop at 12, which is city level — precisely where
+      // Seoul's kitchens pile onto each other. Clustering now runs to street level, so anything
+      // still overlapping stays a countable group you can click into.
       maxClusterRadius: 46,
+      // Dark map: the stock spider legs are near-black and disappear against it.
+      spiderLegPolylineOptions: { weight: 1.5, color: '#ebe6dd', opacity: .45 },
       // 78 markers is far too few to need viewport culling, and the culling path computes bounds
       // that are not ready during a re-render — which is what was dropping pins on filter changes.
       removeOutsideVisibleBounds: false,
@@ -1627,6 +1634,19 @@ class Component extends DCLogic {
         });
       }
     });
+    g.on('clusterclick', (e) => {
+      const m = this._map;
+      if (!m) return;
+      const b = e.layer.getBounds();
+      // Kitchens sharing one coordinate never come apart by zooming — fan them out instead.
+      // Dormant while no two kitchens share a point, but city-level coordinates keep producing them.
+      if (b.getSouthWest().equals(b.getNorthEast())) { e.layer.spiderfy(); return; }
+      // One step past the fitted zoom, so the pins open up rather than hug the frame edge.
+      const z = Math.min(m.getBoundsZoom(b, true) + 1, m.getMaxZoom());
+      // No progress left to make means we are as deep as the map goes; spiderfyOnMaxZoom takes over.
+      if (z > m.getZoom()) m.setView(b.getCenter(), z);
+    });
+    return g;
   }
   // Pin, tip on the coordinate. Michelin red is sampled from assets/michelin-star.webp.
   pinIcon(tier) {
