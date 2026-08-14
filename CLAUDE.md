@@ -104,10 +104,12 @@ cluster group across filter changes made markercluster throw mid-loop and silent
 For the same reason `removeOutsideVisibleBounds` is **off**: 78 markers never needed culling, and the
 culling path computes bounds that are not ready during a re-render. Do not re-enable it.
 
-Cluster behaviour follows the Michelin and Milan Design Week maps: `zoomToBoundsOnClick` is off and
-the `clusterclick` handler drives it instead, going one zoom past the fitted bounds so the pins open
-up rather than hug the frame edge, and spiderfying instead when every kitchen in the cluster shares
-one coordinate — which zooming can never separate. There is deliberately **no
+`zoomToBoundsOnClick` is off so the `clusterclick` handler can spiderfy when every kitchen in a
+cluster shares one coordinate — zooming can never separate those. Every other cluster is handed
+straight back to markercluster's own `zoomToBounds`. Do not replace that with a hand-rolled
+`setView`: a cluster here can span Europe to Australia, and the centre of such bounds is open sea,
+so the click appears to jump somewhere random. `zoomToBounds` centres on the cluster instead and
+steps the zoom only as far as it takes to break it apart. There is deliberately **no
 `disableClusteringAtZoom`**: it used to stop at 12, exactly the zoom where Seoul's kitchens pile onto
 each other. The trade is that a list click zooms to ~17 to isolate its pin from the cluster.
 

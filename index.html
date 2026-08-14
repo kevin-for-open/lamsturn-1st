@@ -1635,16 +1635,15 @@ class Component extends DCLogic {
       }
     });
     g.on('clusterclick', (e) => {
-      const m = this._map;
-      if (!m) return;
+      if (!this._map) return;
       const b = e.layer.getBounds();
       // Kitchens sharing one coordinate never come apart by zooming — fan them out instead.
       // Dormant while no two kitchens share a point, but city-level coordinates keep producing them.
       if (b.getSouthWest().equals(b.getNorthEast())) { e.layer.spiderfy(); return; }
-      // One step past the fitted zoom, so the pins open up rather than hug the frame edge.
-      const z = Math.min(m.getBoundsZoom(b, true) + 1, m.getMaxZoom());
-      // No progress left to make means we are as deep as the map goes; spiderfyOnMaxZoom takes over.
-      if (z > m.getZoom()) m.setView(b.getCenter(), z);
+      // Otherwise hand back to markercluster's own zoomToBounds. It steps the zoom only as far as
+      // it takes to break the cluster apart and centres on the cluster's own position, whereas the
+      // bounds centre of a cluster spanning Europe to Australia is open sea.
+      e.layer.zoomToBounds({ padding: [40, 40] });
     });
     return g;
   }
