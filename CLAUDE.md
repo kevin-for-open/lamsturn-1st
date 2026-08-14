@@ -39,8 +39,17 @@ python3 -m http.server 8000   # open http://localhost:8000/
    This is plain JS (no imports/TypeScript). Put any computed value / handler here and expose it by
    name; the template can only do dotted lookups, never expressions like `{{ a + b }}`.
 
-External CDN dependencies (in `<helmet>`): Google Fonts (Archivo, IBM Plex Mono) and
-**Leaflet 1.9.4** plus **Leaflet.markercluster 1.5.3** for the kitchens map.
+External CDN dependencies: Google Fonts (Archivo, IBM Plex Mono) in `<helmet>`, and
+**Leaflet 1.9.4** plus **Leaflet.markercluster 1.5.3** for the kitchens map — those two sit in the
+real `<head>`, deliberately.
+
+> **Never move a JS library into `<helmet>`.** The DC runtime re-runs helmet scripts, so a second
+> copy of the library loads and replaces the global. Nothing errors, and most code survives it, but
+> every `instanceof` across the two copies silently returns false. That is what disabled cluster
+> clicks: markercluster promotes a click to `clusterclick` only when the layer passes
+> `instanceof MarkerCluster`, so clusters drew fine, took the click, and did nothing — while plain
+> markers, which need no such check, kept working and hid the problem. Stylesheets in `<helmet>`
+> are fine; only scripts that define classes are at risk.
 
 ### Where things live (line numbers are approximate — search by name)
 

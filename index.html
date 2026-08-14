@@ -55,6 +55,13 @@
 </script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="favicon.png" sizes="64x64">
+<!-- Kitchens map. These must sit outside <helmet>, which the DC runtime re-runs — a second Leaflet
+     replaces window.L and markercluster's `instanceof MarkerCluster` check then fails, which kills
+     cluster clicks without any error. -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -62,10 +69,10 @@
 <helmet data-dc-atomics>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
-<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<!-- Leaflet is loaded from the real <head>, not here: the DC runtime re-runs <helmet> scripts, and a
+     second Leaflet replaces window.L. The map keeps working, but markercluster decides a click is a
+     cluster click with `instanceof MarkerCluster`, and that check fails across two copies — clusters
+     silently stop responding while plain markers carry on. -->
 <style>
 body{margin:0;background:#131110;color:#ebe6dd;font-family:Archivo,system-ui,sans-serif}
 a{color:inherit;text-decoration:none}a:hover{color:#e05a1f}
@@ -1500,7 +1507,7 @@ class Component extends DCLogic {
       ["Gunmong",37.5373596,127.0028956,"LGA_900_T_NS, LGC_380_NS",0,"SEOUL, KOREA"],
       ["Private",51.5072178,-0.1275862,"LGY_840_D400",0,"LONDON, UK"],
       ["Yoo Yong Wook BBQ Lab",37.5439126,126.9727693,"LSV_850, LGY_610_D300",0,"SEOUL, KOREA"],
-      ["Yeon — Haeundae",35.1609259,129.1646888,"LGY_610_D400",0,"BUSAN, KOREA"],
+      ["Yeon — Haeundae",35.1609259,129.1645238,"LGY_610_D400",0,"BUSAN, KOREA"],
       ["The Steakhouse — IFC",37.5247882,126.9253976,"LGA_C1700_T",0,"SEOUL, KOREA"],
       ["Yesterday's Curry — Seongsu Lab",37.53959,127.0562226,"LGA_J1000_S",0,"SEOUL, KOREA"],
       ["The Chapel at Daechi",37.5030354,127.067046,"LGA_D1500_T_NS",0,"SEOUL, KOREA"],
@@ -1519,7 +1526,7 @@ class Component extends DCLogic {
       ["glod",37.5283979,127.0327686,"LGA_900_S",0,"SEOUL, KOREA"],
       ["Prahan",35.1653152,129.1577086,"LSV_850",0,"BUSAN, KOREA"],
       ["Mongtan Jeju",33.5536669,126.7151445,"CUSTOM DIRECT-FIRE",0,"JEJU, KOREA"],
-      ["Asador",35.1609259,129.1646888,"LGA_C1700_T_NS",0,"BUSAN, KOREA"],
+      ["Asador",35.1609259,129.1648538,"LGA_C1700_T_NS",0,"BUSAN, KOREA"],
       ["Grand Hyatt Seoul",37.5394318,126.997519,"LSO_1800, LGA_J900_S_NS, CUSTOM",0,"SEOUL, KOREA"],
       ["vuur",37.5068073,127.0311544,"LGA_1800_T, LOW_1100_T",0,"SEOUL, KOREA"],
       ["GwangAnMok — Gwangalli",35.1549908,129.1184415,"LGA_900_T_NS",0,"BUSAN, KOREA"],
@@ -1682,9 +1689,11 @@ class Component extends DCLogic {
     });
     if (this._markers) this._map.removeLayer(this._markers);
     this._markers = this.markerGroup();
-    // Fill while detached, then attach once — the bulk path markercluster is built for.
-    if (this._markers.addLayers) this._markers.addLayers(batch); else batch.forEach(mk => this._markers.addLayer(mk));
+    // Attach the group before filling it, the order markercluster's own docs use. Filling first
+    // parks the markers in a pending queue that is drained on add, which is a longer path for no
+    // gain at 78 markers.
     this._map.addLayer(this._markers);
+    if (this._markers.addLayers) this._markers.addLayers(batch); else batch.forEach(mk => this._markers.addLayer(mk));
     if (fit && pts.length) this._map.fitBounds(pts, { padding: [40, 40] });
   }
   focusPin(id) {
