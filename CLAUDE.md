@@ -96,8 +96,8 @@ Tier labels are translated in `GRP`; list column headers in `COL`. Badge icons c
 `assets/michelin-star.webp`, `michelin-star-white.png`, `michelin-guide-white.png`, `michelin-bib.png`.
 
 **Map markers** are built by `pinIcon(tier)` — a white body (disc + tail) with a red disc inset,
-following the Michelin Guide map. Red is `#D3072B`, sampled from `assets/michelin-star.webp` rather
-than guessed. Glyphs keep one size across tiers, so more stars means a wider disc (1 star 36px,
+following the Michelin Guide map. The disc takes the brand red `#C0012B` (see **Accent colour**
+below). Glyphs keep one size across tiers, so more stars means a wider disc (1 star 36px,
 2 stars 48px, 3 stars 64px); the fork & knife is an inline path, not the stroke icon used elsewhere.
 Markers are grouped by `markerGroup()`, rebuilt from scratch on every `refreshMarkers` — reusing one
 cluster group across filter changes made markercluster throw mid-loop and silently drop most pins.
@@ -110,6 +110,20 @@ up rather than hug the frame edge, and spiderfying instead when every kitchen in
 one coordinate — which zooming can never separate. There is deliberately **no
 `disableClusteringAtZoom`**: it used to stop at 12, exactly the zoom where Seoul's kitchens pile onto
 each other. The trade is that a list click zooms to ~17 to isolate its pin from the cluster.
+
+### Accent colour — two reds, on purpose
+
+The accent is Michelin red. It is written as **two** values and they are not interchangeable:
+
+| | Where | Contrast on `#131110` |
+|---|---|---|
+| `#C0012B` | Filled areas that carry white on top: solid buttons, `::selection`, map pin discs | — |
+| `#FE2A59` | Everything read *against* the dark page: text, borders, small graphics, focus ring | 5.10:1 |
+
+Same hue (347°); `#FE2A59` is only lighter. `#C0012B` is a light-background colour — on white it is
+6.4:1, but on this page it drops to **2.94:1**, under the 4.5:1 floor, and most accent text here is
+10–11px mono. So never paint text `#C0012B`, and never put dark text on a `#C0012B` fill: those
+fills all carry `color:#ffffff` (6.4:1). Translucent accents use `rgba(254,42,89,α)`.
 
 ### Editing copy / translations
 Every text string exists once per language inside `T` (and `DT`). To change wording, edit the matching

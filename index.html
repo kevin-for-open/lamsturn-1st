@@ -75,20 +75,20 @@
      silently stop responding while plain markers carry on. -->
 <style>
 body{margin:0;background:#131110;color:#ebe6dd;font-family:Archivo,system-ui,sans-serif}
-a{color:inherit;text-decoration:none}a:hover{color:#e05a1f}
-::selection{background:#e05a1f;color:#131110}
+a{color:inherit;text-decoration:none}a:hover{color:#FE2A59}
+::selection{background:#C0012B;color:#ffffff}
 input,select,textarea{font-family:Archivo,system-ui,sans-serif}
-:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:2px solid #e05a1f!important;outline-offset:3px}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:2px solid #FE2A59!important;outline-offset:3px}
 .leaflet-container{background:#131110}
-.leaflet-popup-content-wrapper{background:#1c1917;color:#ebe6dd;border:1px solid rgba(224,90,31,.5);border-radius:0;box-shadow:0 8px 24px rgba(0,0,0,.5)}
-.leaflet-popup-tip{background:#1c1917;border:1px solid rgba(224,90,31,.5)}
+.leaflet-popup-content-wrapper{background:#1c1917;color:#ebe6dd;border:1px solid rgba(254,42,89,.5);border-radius:0;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.leaflet-popup-tip{background:#1c1917;border:1px solid rgba(254,42,89,.5)}
 .leaflet-popup-close-button{color:#ebe6dd!important}
 .leaflet-bar a{background:#1c1917!important;color:#ebe6dd!important;border-color:rgba(235,230,221,.25)!important}
 .lam-icon{background:none!important;border:none!important}
 .lam-pin{display:block;transform-origin:50% 100%;transition:transform .13s ease;filter:drop-shadow(0 2px 5px rgba(0,0,0,.6))}
 .lam-icon:hover .lam-pin,.lam-pin-on{transform:scale(1.16)}
 .lam-cluster{display:flex;align-items:center;justify-content:center;border-radius:50%;font:600 12.5px Archivo,sans-serif;letter-spacing:.02em;color:#ebe6dd;background:rgba(28,25,23,.94);border:1.5px solid rgba(211,7,43,.8);box-shadow:0 2px 10px rgba(0,0,0,.6);transition:transform .13s ease}
-.lam-cluster-m{border-color:#D3072B;box-shadow:0 0 0 3px rgba(211,7,43,.22),0 2px 10px rgba(0,0,0,.6)}
+.lam-cluster-m{border-color:#C0012B;box-shadow:0 0 0 3px rgba(211,7,43,.22),0 2px 10px rgba(0,0,0,.6)}
 .lam-icon:hover .lam-cluster{transform:scale(1.09)}
 @media (max-width:900px){[data-r2]{grid-template-columns:minmax(0,1fr)!important}[data-r2]>*{border-left:none!important;border-right:none!important;min-width:0!important}[data-r2]>[data-col2]{grid-column:1!important}[data-rimg]{min-height:360px!important}}
 @media (max-width:1020px){[data-hide-sm]{display:none!important}[data-show-sm]{display:flex!important}}
@@ -107,7 +107,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <a onClick="{{ goCompare }}" style="cursor:pointer;text-transform:uppercase;color:{{ cCompare }}">{{ t.cmpNav }}</a>
     <a onClick="{{ goKitchens }}" style="cursor:pointer;color:{{ cKitchens }}">{{ t.kitchens }}</a>
     <a onClick="{{ goContact }}" style="cursor:pointer;color:{{ cContact }}">{{ t.contact }}</a>
-    <sc-if value="{{ hasInq }}" hint-placeholder-val="{{ false }}"><a onClick="{{ goContact }}" title="{{ t.inqTitle }}" style="cursor:pointer;display:flex;align-items:center;gap:8px;border:1px solid rgba(224,90,31,.55);padding:7px 12px;white-space:nowrap;color:#e05a1f" style-hover="border-color:#e05a1f"><span data-inqlabel style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em">{{ t.inqNav }}</span><span style="display:inline-flex;align-items:center;justify-content:center;min-width:17px;height:17px;border-radius:50%;background:#e05a1f;color:#131110;font:600 10px 'IBM Plex Mono',monospace">{{ inqCount }}</span></a></sc-if>
+    <sc-if value="{{ hasInq }}" hint-placeholder-val="{{ false }}"><a onClick="{{ goContact }}" title="{{ t.inqTitle }}" style="cursor:pointer;display:flex;align-items:center;gap:8px;border:1px solid rgba(254,42,89,.55);padding:7px 12px;white-space:nowrap;color:#FE2A59" style-hover="border-color:#FE2A59"><span data-inqlabel style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em">{{ t.inqNav }}</span><span style="display:inline-flex;align-items:center;justify-content:center;min-width:17px;height:17px;border-radius:50%;background:#C0012B;color:#ffffff;font:600 10px 'IBM Plex Mono',monospace">{{ inqCount }}</span></a></sc-if>
     <select value="{{ lang }}" onChange="{{ onLang }}" style="background:transparent;color:rgba(235,230,221,.7);border:1px solid rgba(235,230,221,.25);font:500 11px 'IBM Plex Mono',monospace;padding:6px 8px;cursor:pointer">
       <option value="EN" style="color:#131110">EN</option>
       <option value="ES" style="color:#131110">ES</option>
@@ -120,7 +120,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <option value="imperial" style="color:#131110">IMPERIAL — IN / LB</option>
     </select>
   </nav>
-  <a data-show-sm onClick="{{ toggleMenu }}" aria-label="Menu" style="cursor:pointer;display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;padding:0 11px;border:1px solid rgba(235,230,221,.3);box-sizing:border-box" style-hover="border-color:#e05a1f">
+  <a data-show-sm onClick="{{ toggleMenu }}" aria-label="Menu" style="cursor:pointer;display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;padding:0 11px;border:1px solid rgba(235,230,221,.3);box-sizing:border-box" style-hover="border-color:#FE2A59">
     <span style="display:block;width:18px;height:2px;background:#ebe6dd"></span>
     <span style="display:block;width:18px;height:2px;background:#ebe6dd"></span>
     <span style="display:block;width:18px;height:2px;background:#ebe6dd"></span>
@@ -131,7 +131,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 <div style="position:fixed;inset:0;z-index:100;background:#131110;display:flex;flex-direction:column;padding:0 24px 28px">
   <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(235,230,221,.14)">
     <img src="assets/lamsturn-ci-white.svg" alt="Lamsturn" style="height:40px;display:block">
-    <a onClick="{{ toggleMenu }}" aria-label="Close" style="cursor:pointer;display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(235,230,221,.3);font:400 22px/1 Archivo,sans-serif" style-hover="border-color:#e05a1f;color:#e05a1f">×</a>
+    <a onClick="{{ toggleMenu }}" aria-label="Close" style="cursor:pointer;display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(235,230,221,.3);font:400 22px/1 Archivo,sans-serif" style-hover="border-color:#FE2A59;color:#FE2A59">×</a>
   </div>
   <nav style="display:flex;flex-direction:column;margin-top:16px">
     <a onClick="{{ goHome }}" style="cursor:pointer;display:flex;align-items:baseline;gap:16px;padding:20px 0;border-bottom:1px solid rgba(235,230,221,.14)"><span style="font:500 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.45)">01</span><span style="font:600 30px Archivo,sans-serif;letter-spacing:-.01em;color:{{ mHome }}">HOME</span></a>
@@ -140,7 +140,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <a onClick="{{ goCompare }}" style="cursor:pointer;display:flex;align-items:baseline;gap:16px;padding:20px 0;border-bottom:1px solid rgba(235,230,221,.14)"><span style="font:500 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.45)">04</span><span style="font:600 30px Archivo,sans-serif;letter-spacing:-.01em;text-transform:uppercase;color:{{ cCompare }}">{{ t.cmpNav }}</span></a>
     <a onClick="{{ goKitchens }}" style="cursor:pointer;display:flex;align-items:baseline;gap:16px;padding:20px 0;border-bottom:1px solid rgba(235,230,221,.14)"><span style="font:500 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.45)">05</span><span style="font:600 30px Archivo,sans-serif;letter-spacing:-.01em;color:{{ cKitchens }}">{{ t.kitchens }}</span></a>
     <a onClick="{{ goContact }}" style="cursor:pointer;display:flex;align-items:baseline;gap:16px;padding:20px 0;border-bottom:1px solid rgba(235,230,221,.14)"><span style="font:500 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.45)">06</span><span style="font:600 30px Archivo,sans-serif;letter-spacing:-.01em;color:{{ cContact }}">{{ t.contact }}</span></a>
-    <sc-if value="{{ hasInq }}" hint-placeholder-val="{{ false }}"><a onClick="{{ goContact }}" style="cursor:pointer;display:flex;align-items:baseline;gap:16px;padding:20px 0;border-bottom:1px solid rgba(235,230,221,.14)"><span style="font:500 11px 'IBM Plex Mono',monospace;color:#e05a1f">→</span><span style="font:600 20px Archivo,sans-serif;color:#e05a1f">{{ t.inqTitle }} · {{ inqCount }}</span></a></sc-if>
+    <sc-if value="{{ hasInq }}" hint-placeholder-val="{{ false }}"><a onClick="{{ goContact }}" style="cursor:pointer;display:flex;align-items:baseline;gap:16px;padding:20px 0;border-bottom:1px solid rgba(235,230,221,.14)"><span style="font:500 11px 'IBM Plex Mono',monospace;color:#FE2A59">→</span><span style="font:600 20px Archivo,sans-serif;color:#FE2A59">{{ t.inqTitle }} · {{ inqCount }}</span></a></sc-if>
   </nav>
   <div style="margin-top:auto;display:flex;flex-direction:column;gap:16px">
     <div style="display:flex;flex-wrap:wrap;gap:10px;width:100%">
@@ -185,12 +185,12 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     </div>
     <div style="position:absolute;left:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));right:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));bottom:110px;pointer-events:none;z-index:10">
       <div>
-        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:18px">{{ t.heroEyebrow }}</div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:18px">{{ t.heroEyebrow }}</div>
         <h1 style="margin:0;font:600 clamp(38px,7.5vw,72px)/1.05 Archivo,sans-serif;letter-spacing:-.025em;max-width:20ch">{{ heroTitle1 }}<br>{{ heroTitle2 }}</h1>
       </div>
       <div data-herocta style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;pointer-events:auto">
-        <a onClick="{{ goContact }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.quote }}</a>
-        <a onClick="{{ goProducts }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.4)" style-hover="border-color:#e05a1f;color:#e05a1f">{{ t.explore }}</a>
+        <a onClick="{{ goContact }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#C0012B;color:#ffffff" style-hover="background:#f06a2c;color:#131110">{{ t.quote }}</a>
+        <a onClick="{{ goProducts }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.4)" style-hover="border-color:#FE2A59;color:#FE2A59">{{ t.explore }}</a>
       </div>
     </div>
     <div data-heroband style="position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:0;min-height:96px;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));box-sizing:border-box;background:#131110;border-top:1px solid rgba(235,230,221,.28);pointer-events:none;z-index:10">
@@ -204,7 +204,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   <section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid rgba(235,230,221,.18);padding-inline:max(0px, calc((100% - 1280px) / 2))">
     <div style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center;gap:22px">
       <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.craftEyebrow }}</div>
-      <h2 style="margin:0;font:600 clamp(30px,5vw,42px)/1.15 Archivo,sans-serif;letter-spacing:-.02em">{{ t.craftTpre }}<span style="color:#e05a1f">{{ t.craftTacc }}</span>{{ t.craftTend }}</h2>
+      <h2 style="margin:0;font:600 clamp(30px,5vw,42px)/1.15 Archivo,sans-serif;letter-spacing:-.02em">{{ t.craftTpre }}<span style="color:#FE2A59">{{ t.craftTacc }}</span>{{ t.craftTend }}</h2>
       <p style="margin:0;max-width:46ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.65)">{{ t.craftB1 }}<span style="color:#ebe6dd">{{ t.craftB2 }}</span>{{ t.craftB3 }}</p>
       <div style="display:flex;flex-wrap:wrap;gap:28px 44px;margin-top:10px">
         <div><div style="font:600 34px Archivo,sans-serif;letter-spacing:-.02em">2012</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:5px">{{ t.lblFounded }}</div></div>
@@ -220,17 +220,17 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div data-rimg style="position:relative;min-height:520px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-gear" src="assets/photos/b-gear.png" alt="Lamsturn grill with an adjustable grate above glowing charcoal" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     <div style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-left:1px solid rgba(235,230,221,.18);display:flex;flex-direction:column;justify-content:center;gap:22px">
       <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.precisionEyebrow }}</div>
-      <div style="display:flex;align-items:baseline;gap:12px"><span style="font:600 clamp(64px,12vw,104px)/0.9 Archivo,sans-serif;letter-spacing:-.045em;color:#e05a1f">{{ homeStepValue }}</span><span style="font:600 34px Archivo,sans-serif">{{ homeStepUnit }}</span></div>
+      <div style="display:flex;align-items:baseline;gap:12px"><span style="font:600 clamp(64px,12vw,104px)/0.9 Archivo,sans-serif;letter-spacing:-.045em;color:#FE2A59">{{ homeStepValue }}</span><span style="font:600 34px Archivo,sans-serif">{{ homeStepUnit }}</span></div>
       <p style="margin:0;max-width:42ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.65)">{{ t.precisionBody }}</p>
       <div style="display:flex;gap:10px;align-items:flex-end;margin-top:6px">
-        <span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:4px;background:#e05a1f"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;margin-left:6px">{{ homeSearStep }}</span>
+        <span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:2px;background:rgba(235,230,221,.3)"></span><span style="width:44px;height:4px;background:#FE2A59"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#FE2A59;margin-left:6px">{{ homeSearStep }}</span>
       </div>
     </div>
   </section>
 
   <section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid rgba(235,230,221,.18);padding-inline:max(0px, calc((100% - 1280px) / 2))">
     <div style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center;gap:22px">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.btoEyebrow }}</div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.btoEyebrow }}</div>
       <h2 style="margin:0;font:600 clamp(30px,5vw,42px)/1.15 Archivo,sans-serif;letter-spacing:-.02em;max-width:16ch">{{ t.btoTitle }}</h2>
       <p style="margin:0;max-width:48ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.65)">{{ t.btoBody }}</p>
       <div style="display:flex;flex-direction:column;margin-top:4px">
@@ -238,7 +238,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         <div style="display:flex;gap:16px;padding:14px 0;border-top:1px solid rgba(235,230,221,.18)"><span style="font:500 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.45);width:32px;flex:none">02</span><div><div style="font:600 15px Archivo,sans-serif">{{ t.bto2t }}</div><div style="font:400 13px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.55);margin-top:3px">{{ t.bto2d }}</div></div></div>
         <div style="display:flex;gap:16px;padding:14px 0;border-top:1px solid rgba(235,230,221,.18);border-bottom:1px solid rgba(235,230,221,.18)"><span style="font:500 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.45);width:32px;flex:none">03</span><div><div style="font:600 15px Archivo,sans-serif">{{ t.bto3t }}</div><div style="font:400 13px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.55);margin-top:3px">{{ t.bto3d }}</div></div></div>
       </div>
-      <p style="margin:6px 0 0;font:400 14px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.btoFootPre }}<span style="color:#e05a1f">{{ t.btoFootAcc }}</span></p>
+      <p style="margin:6px 0 0;font:400 14px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.btoFootPre }}<span style="color:#FE2A59">{{ t.btoFootAcc }}</span></p>
     </div>
     <div data-rimg style="position:relative;min-height:560px;border-left:1px solid rgba(235,230,221,.18)"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-custom" src="assets/photos/b-custom.png" alt="Custom-built Lamsturn grill with twin height-control wheels" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
   </section>
@@ -246,7 +246,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   <section style="padding:80px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.18)">
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:36px">
       <h2 style="margin:0;font:600 clamp(30px,5vw,42px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.rangeTitle }}</h2>
-      <a onClick="{{ goProducts }}" style="cursor:pointer;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#e05a1f">{{ t.allProducts }}</a>
+      <a onClick="{{ goProducts }}" style="cursor:pointer;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#FE2A59">{{ t.allProducts }}</a>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px">
             <a onClick="{{ goPRobata }}" style="cursor:pointer;display:flex;flex-direction:column;gap:14px"><div style="height:280px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p2" src="assets/photos/b-p2.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 18px Archivo,sans-serif">{{ t.famRobata }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)">LGY — 4 MODELS</span></div></a>
@@ -262,12 +262,12 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   <section style="padding:clamp(72px,10vh,130px) 0;border-top:1px solid rgba(235,230,221,.18)">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;padding-inline:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
       <div>
-        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:14px">{{ t.reelsEyebrow }}</div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:14px">{{ t.reelsEyebrow }}</div>
         <h2 style="margin:0;max-width:20ch;font:600 clamp(30px,5vw,42px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.reelsTitle }}</h2>
       </div>
       <div style="display:flex;gap:10px">
-        <a onClick="{{ prevReel }}" aria-label="Previous" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(235,230,221,.4);display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;padding-bottom:3px" style-hover="border-color:#e05a1f;color:#e05a1f">‹</a>
-        <a onClick="{{ nextReel }}" aria-label="Next" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(235,230,221,.4);display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;padding-bottom:3px" style-hover="border-color:#e05a1f;color:#e05a1f">›</a>
+        <a onClick="{{ prevReel }}" aria-label="Previous" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(235,230,221,.4);display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;padding-bottom:3px" style-hover="border-color:#FE2A59;color:#FE2A59">‹</a>
+        <a onClick="{{ nextReel }}" aria-label="Next" style="cursor:pointer;width:46px;height:46px;border-radius:50%;border:1px solid rgba(235,230,221,.4);display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;padding-bottom:3px" style-hover="border-color:#FE2A59;color:#FE2A59">›</a>
       </div>
     </div>
     <div data-reelviewport ref="{{ setReelRail }}" style="overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;margin-top:32px;padding-bottom:4px">
@@ -277,16 +277,16 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         <div style="position:relative;aspect-ratio:9/16;background:#1c1917;overflow:hidden;border-radius:clamp(20px,2.4vw,30px)">
           <sc-if value="{{ reel.v }}" hint-placeholder-val="{{ false }}">
             <video ref="{{ reel.setVid }}" data-src="{{ reel.video }}" muted loop playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
-              <a onClick="{{ reel.toggleMute }}" aria-label="Toggle sound" style="position:absolute;right:12px;bottom:12px;z-index:3;cursor:pointer;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(19,17,16,.5);backdrop-filter:blur(4px);border:1px solid rgba(235,230,221,.35);color:#ebe6dd" style-hover="border-color:#e05a1f"><sc-if value="{{ reel.muted }}" hint-placeholder-val="{{ true }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></sc-if><sc-if value="{{ reel.unmuted }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19.5 5a9 9 0 0 1 0 14"/></svg></sc-if></a>
+              <a onClick="{{ reel.toggleMute }}" aria-label="Toggle sound" style="position:absolute;right:12px;bottom:12px;z-index:3;cursor:pointer;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(19,17,16,.5);backdrop-filter:blur(4px);border:1px solid rgba(235,230,221,.35);color:#ebe6dd" style-hover="border-color:#FE2A59"><sc-if value="{{ reel.muted }}" hint-placeholder-val="{{ true }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></sc-if><sc-if value="{{ reel.unmuted }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19.5 5a9 9 0 0 1 0 14"/></svg></sc-if></a>
           </sc-if>
           <sc-if value="{{ reel.img }}" hint-placeholder-val="{{ true }}">
             <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ reel.id }}" src="{{ reel.poster }}" shape="rect" fit="cover" placeholder="Reel poster" hint-size="100%,100%"></x-import>
             <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div style="width:56px;height:56px;border-radius:50%;background:rgba(19,17,16,.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(235,230,221,.5)"><div style="width:0;height:0;border-left:16px solid #ebe6dd;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px"></div></div></div>
           </sc-if>
         </div>
-        <a onClick="{{ reel.go }}" style="cursor:pointer;display:block;margin-top:14px" style-hover="color:#e05a1f">
+        <a onClick="{{ reel.go }}" style="cursor:pointer;display:block;margin-top:14px" style-hover="color:#FE2A59">
           <div style="font:600 14px Archivo,sans-serif;color:#ebe6dd">{{ reel.cap }}</div>
-          <div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;margin-top:5px">{{ reel.tag }} — SEE THE GRILL →</div>
+          <div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#FE2A59;margin-top:5px">{{ reel.tag }} — SEE THE GRILL →</div>
         </a>
       </div>
       </sc-for>
@@ -297,7 +297,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.18)">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
       <div>
-        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:14px">{{ t.commEyebrow }}</div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:14px">{{ t.commEyebrow }}</div>
         <h2 style="margin:0;font:600 clamp(30px,5vw,42px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.commTitle }}</h2>
       </div>
     </div>
@@ -314,23 +314,23 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   <section style="padding:52px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.18);text-align:center">
     <img src="assets/michelin-bib.png" alt="Michelin" style="width:66px;height:auto;display:block;margin:0 auto 24px">
     <p style="margin:0 auto;max-width:34ch;font:400 clamp(19px,2.1vw,24px)/1.5 Archivo,sans-serif;color:rgba(235,230,221,.82);letter-spacing:-.01em">{{ t.michelinBlurb }}</p>
-    <a onClick="{{ goKitchens }}" style="cursor:pointer;display:inline-block;margin-top:26px;font:600 15px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:2px solid #e05a1f;padding-bottom:4px">{{ t.seeMap }}</a>
+    <a onClick="{{ goKitchens }}" style="cursor:pointer;display:inline-block;margin-top:26px;font:600 15px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#FE2A59;border-bottom:2px solid #FE2A59;padding-bottom:4px">{{ t.seeMap }}</a>
   </section>
   </sc-if>
 
   <section style="padding:clamp(80px,11vh,140px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.18)">
     <div data-r2 style="display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,5vw,72px);align-items:start">
       <div>
-        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">FAQ</div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">FAQ</div>
         <h2 style="margin:14px 0 0;font:600 clamp(30px,4.4vw,52px)/1.04 Archivo,sans-serif;letter-spacing:-.025em">{{ t.faqTitle }}</h2>
-        <p style="margin:20px 0 0;max-width:34ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.55)">{{ t.faqSub }} <a onClick="{{ goContact }}" style="cursor:pointer;color:#e05a1f">{{ t.faqCta }}</a></p>
+        <p style="margin:20px 0 0;max-width:34ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.55)">{{ t.faqSub }} <a onClick="{{ goContact }}" style="cursor:pointer;color:#FE2A59">{{ t.faqCta }}</a></p>
       </div>
       <div style="border-bottom:1px solid rgba(235,230,221,.16)">
         <sc-for list="{{ faqItems }}" as="item" hint-placeholder-count="8">
           <div style="border-top:1px solid rgba(235,230,221,.16)">
-            <a onClick="{{ item.toggle }}" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0" style-hover="color:#e05a1f">
+            <a onClick="{{ item.toggle }}" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0" style-hover="color:#FE2A59">
               <span style="font:600 clamp(16px,1.5vw,19px) Archivo,sans-serif;color:#ebe6dd">{{ item.q }}</span>
-              <span style="flex:none;font:400 24px 'IBM Plex Mono',monospace;color:#e05a1f;line-height:1">{{ item.mark }}</span>
+              <span style="flex:none;font:400 24px 'IBM Plex Mono',monospace;color:#FE2A59;line-height:1">{{ item.mark }}</span>
             </a>
             <sc-if value="{{ item.open }}" hint-placeholder-val="{{ false }}">
               <p style="margin:0;padding:2px 0 26px;max-width:62ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ item.a }}</p>
@@ -341,10 +341,10 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     </div>
   </section>
   <section style="padding:110px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.18);text-align:center;background:#1c1917">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:22px">{{ t.planEyebrow }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:22px">{{ t.planEyebrow }}</div>
     <h2 style="margin:0 auto;font:600 clamp(34px,7vw,64px)/1.08 Archivo,sans-serif;letter-spacing:-.025em;max-width:18ch">{{ t.plan }}</h2>
     <p style="margin:24px auto 0;max-width:52ch;font:400 15.5px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.planSub }}</p>
-    <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:36px;font:600 14px Archivo,sans-serif;letter-spacing:.04em;padding:18px 40px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
+    <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:36px;font:600 14px Archivo,sans-serif;letter-spacing:.04em;padding:18px 40px;background:#C0012B;color:#ffffff" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
   </section>
 </main>
 </sc-if>
@@ -353,37 +353,37 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 <main data-screen-label="Products" style="flex:1">
   <section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-bottom:1px solid rgba(235,230,221,.18);padding-inline:max(0px, calc((100% - 1280px) / 2))">
     <div style="padding:clamp(72px,12vh,150px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:20px">{{ t.pEyebrow }}</div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:20px">{{ t.pEyebrow }}</div>
       <h1 style="margin:0;font:600 clamp(40px,5.5vw,80px)/1.0 Archivo,sans-serif;letter-spacing:-.03em">{{ t.pHeroH1 }}</h1>
       <p style="margin:24px 0 0;max-width:52ch;font:400 clamp(15px,1.5vw,18px)/1.7 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.pHeroBody }}</p>
     </div>
     <div data-rimg style="position:relative;min-height:clamp(420px,46vw,620px);background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="prod-range-img" src="assets/photos/prod-range-img.jpg" alt="{{ altRange }}" shape="rect" fit="cover" placeholder="Drop image" hint-size="100%,100%"></x-import></div>
   </section>
   <div style="padding:clamp(48px,7vh,80px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 60px">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:14px">{{ t.pRangeEyebrow }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:14px">{{ t.pRangeEyebrow }}</div>
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 24px">
       <h2 style="margin:0;font:600 clamp(30px,5vw,42px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.rangeTitle }}</h2>
-      <a onClick="{{ goCompare }}" style="cursor:pointer;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:3px" style-hover="color:#f06a2c;border-color:#f06a2c">{{ t.cmpLink }}</a>
+      <a onClick="{{ goCompare }}" style="cursor:pointer;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#FE2A59;border-bottom:1px solid #FE2A59;padding-bottom:3px" style-hover="color:#f06a2c;border-color:#f06a2c">{{ t.cmpLink }}</a>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:18px;margin-top:38px">
-      <a onClick="{{ goPRobata }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#e05a1f"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p2" src="assets/photos/b-p2.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famRobata }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">LGY — 4 MODELS</div></a>
-      <a onClick="{{ goPGear }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#e05a1f"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p1g" src="assets/photos/b-p1g.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famAsadoGear }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">LGA GEAR · 5 MODELS</div></a>
-      <a onClick="{{ goPChain }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#e05a1f"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p1" src="assets/photos/b-p1.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famAsadoChain }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">LGA / LTR CHAIN · 10 MODELS</div></a>
-      <a onClick="{{ goPIndoor }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#e05a1f"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p4" src="assets/photos/b-p4.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famIndoor }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">LGC / LSC / LOW — 5 MODELS</div></a>
-      <a onClick="{{ goPSmokers }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#e05a1f"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p3" src="assets/photos/b-p3.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famSmokers }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">LSO / LSV — 8 MODELS</div></a>
-      <a onClick="{{ goPAcc }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#e05a1f"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p6" src="assets/photos/b-p6.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famAcc }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">STS 304 — 13 PIECES</div></a>
+      <a onClick="{{ goPRobata }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#FE2A59"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p2" src="assets/photos/b-p2.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famRobata }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">LGY — 4 MODELS</div></a>
+      <a onClick="{{ goPGear }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#FE2A59"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p1g" src="assets/photos/b-p1g.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famAsadoGear }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">LGA GEAR · 5 MODELS</div></a>
+      <a onClick="{{ goPChain }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#FE2A59"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p1" src="assets/photos/b-p1.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famAsadoChain }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">LGA / LTR CHAIN · 10 MODELS</div></a>
+      <a onClick="{{ goPIndoor }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#FE2A59"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p4" src="assets/photos/b-p4.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famIndoor }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">LGC / LSC / LOW — 5 MODELS</div></a>
+      <a onClick="{{ goPSmokers }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#FE2A59"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p3" src="assets/photos/b-p3.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famSmokers }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">LSO / LSV — 8 MODELS</div></a>
+      <a onClick="{{ goPAcc }}" style="cursor:pointer;display:flex;flex-direction:column;gap:12px;color:#ebe6dd" style-hover="color:#FE2A59"><div style="aspect-ratio:4/3;background:#1c1917;overflow:hidden"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="b-p6" src="assets/photos/b-p6.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div><div style="font:600 15px Archivo,sans-serif">{{ t.famAcc }}</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:-4px">STS 304 — 13 PIECES</div></a>
     </div>
   </div>
 
   <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
     <div style="margin-bottom:32px;max-width:840px">
-      <div><div id="sec-lgy" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">01 — LGY SERIES · MANUAL</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famRobata }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.lgyIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">{{ t.famRobataDesc }}</p></div>
+      <div><div id="sec-lgy" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#FE2A59;margin-bottom:12px">01 — LGY SERIES · MANUAL</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famRobata }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.lgyIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">{{ t.famRobataDesc }}</p></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
       <sc-for list="{{ lgy }}" as="m" hint-placeholder-count="4">
-        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(224,90,31,.6)">
+        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(254,42,89,.6)">
           <div style="margin:-22px -22px 16px;aspect-ratio:4/3;background:#131110"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ m.c }}" src="{{ m.img }}" alt="{{ m.alt }}" shape="rect" fit="cover" placeholder="{{ t.photoSoon }}" hint-size="100%,100%"></x-import></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px/1.5 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right;flex:0 1 auto">{{ m.n }}</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px/1.5 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right;flex:0 1 auto">{{ m.n }}</span></div>
           <div style="display:flex;flex-direction:column;gap:5px;margin-top:14px;font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblSize }}</span><span style="color:rgba(235,230,221,.8)">{{ m.s }}</span></div>
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblMainGrill }}</span><span style="color:rgba(235,230,221,.8)">{{ m.g }}</span></div>
@@ -391,9 +391,9 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between">
             <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ m.href }}" onClick="{{ m.go }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
+              <a href="{{ m.href }}" onClick="{{ m.go }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#FE2A59;border-bottom:1px solid #FE2A59;padding-bottom:2px">{{ t.viewDetails }}</a>
             </sc-if>
-            <sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ m.inqLabel }}</a></sc-if>
+            <sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#FE2A59;border-color:#FE2A59">{{ m.inqLabel }}</a></sc-if>
             
           </div>
         </div>
@@ -403,13 +403,13 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
     <div style="margin-bottom:32px;max-width:840px">
-      <div><div id="sec-gear" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">02 — ASADO · GEAR-DRIVEN</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famGearTitle }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.famGearDesc }}</p></div>
+      <div><div id="sec-gear" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#FE2A59;margin-bottom:12px">02 — ASADO · GEAR-DRIVEN</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famGearTitle }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.famGearDesc }}</p></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
       <sc-for list="{{ lgaGear }}" as="m" hint-placeholder-count="5">
-        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(224,90,31,.6)">
+        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(254,42,89,.6)">
           <div style="margin:-22px -22px 16px;aspect-ratio:4/3;background:#131110"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ m.c }}" src="{{ m.img }}" alt="{{ m.alt }}" shape="rect" fit="cover" placeholder="{{ t.photoSoon }}" hint-size="100%,100%"></x-import></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px/1.5 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right;flex:0 1 auto">{{ m.n }}</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px/1.5 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right;flex:0 1 auto">{{ m.n }}</span></div>
           <div style="display:flex;flex-direction:column;gap:5px;margin-top:14px;font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblSize }}</span><span style="color:rgba(235,230,221,.8)">{{ m.s }}</span></div>
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblMainGrill }}</span><span style="color:rgba(235,230,221,.8)">{{ m.g }}</span></div>
@@ -417,9 +417,9 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between">
             <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ m.href }}" onClick="{{ m.go }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
+              <a href="{{ m.href }}" onClick="{{ m.go }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#FE2A59;border-bottom:1px solid #FE2A59;padding-bottom:2px">{{ t.viewDetails }}</a>
             </sc-if>
-            <sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ m.inqLabel }}</a></sc-if>
+            <sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#FE2A59;border-color:#FE2A59">{{ m.inqLabel }}</a></sc-if>
             
           </div>
         </div>
@@ -429,13 +429,13 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
     <div style="margin-bottom:32px;max-width:840px">
-      <div><div id="sec-chain" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">03 — ASADO · CHAIN-DRIVEN</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famChainTitle }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.famChainDesc }}</p></div>
+      <div><div id="sec-chain" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#FE2A59;margin-bottom:12px">03 — ASADO · CHAIN-DRIVEN</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famChainTitle }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.famChainDesc }}</p></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
       <sc-for list="{{ lgaChain }}" as="m" hint-placeholder-count="9">
-        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(224,90,31,.6)">
+        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(254,42,89,.6)">
           <div style="margin:-22px -22px 16px;aspect-ratio:4/3;background:#131110"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ m.c }}" src="{{ m.img }}" alt="{{ m.alt }}" shape="rect" fit="cover" placeholder="{{ t.photoSoon }}" hint-size="100%,100%"></x-import></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px/1.5 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right;flex:0 1 auto">{{ m.n }}</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px/1.5 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right;flex:0 1 auto">{{ m.n }}</span></div>
           <div style="display:flex;flex-direction:column;gap:5px;margin-top:14px;font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblSize }}</span><span style="color:rgba(235,230,221,.8)">{{ m.s }}</span></div>
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblMainGrill }}</span><span style="color:rgba(235,230,221,.8)">{{ m.g }}</span></div>
@@ -443,9 +443,9 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between">
             <sc-if value="{{ m.hasDetail }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ m.href }}" onClick="{{ m.go }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#e05a1f;border-bottom:1px solid #e05a1f;padding-bottom:2px">{{ t.viewDetails }}</a>
+              <a href="{{ m.href }}" onClick="{{ m.go }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#FE2A59;border-bottom:1px solid #FE2A59;padding-bottom:2px">{{ t.viewDetails }}</a>
             </sc-if>
-            <sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ m.inqLabel }}</a></sc-if>
+            <sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#FE2A59;border-color:#FE2A59">{{ m.inqLabel }}</a></sc-if>
             
           </div>
         </div>
@@ -455,19 +455,19 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
     <div style="margin-bottom:32px;max-width:840px">
-      <div><div id="sec-indoor" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">04 — LGC / LSC / LOW SERIES</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famIndoor }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.indoorIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">{{ t.famIndoorDesc }}</p></div>
+      <div><div id="sec-indoor" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#FE2A59;margin-bottom:12px">04 — LGC / LSC / LOW SERIES</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famIndoor }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.indoorIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">{{ t.famIndoorDesc }}</p></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
       <sc-for list="{{ indoor }}" as="m" hint-placeholder-count="5">
-        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(224,90,31,.6)">
+        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(254,42,89,.6)">
           <div style="margin:-22px -22px 16px;aspect-ratio:4/3;background:#131110"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ m.c }}" src="{{ m.img }}" alt="{{ m.alt }}" shape="rect" fit="cover" placeholder="{{ t.photoSoon }}" hint-size="100%,100%"></x-import></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px/1.5 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right;flex:0 1 auto">{{ m.n }}</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px/1.5 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right;flex:0 1 auto">{{ m.n }}</span></div>
           <div style="display:flex;flex-direction:column;gap:5px;margin-top:14px;font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblSize }}</span><span style="color:rgba(235,230,221,.8)">{{ m.s }}</span></div>
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblMainGrill }}</span><span style="color:rgba(235,230,221,.8)">{{ m.g }}</span></div>
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblWeight }}</span><span style="color:rgba(235,230,221,.8)">{{ m.w }}</span></div>
           </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between"><sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ m.inqLabel }}</a></sc-if></div>
+          <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between"><sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#FE2A59;border-color:#FE2A59">{{ m.inqLabel }}</a></sc-if></div>
         </div>
       </sc-for>
     </div>
@@ -475,19 +475,19 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
     <div style="margin-bottom:32px;max-width:840px">
-      <div><div id="sec-smokers" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">05 — LSO / LSV SERIES</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famSmokers }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.smokerIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">{{ t.famSmokerDesc }}</p></div>
+      <div><div id="sec-smokers" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#FE2A59;margin-bottom:12px">05 — LSO / LSV SERIES</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famSmokers }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.smokerIntro }}</p><p style="margin:9px 0 0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.45)">{{ t.famSmokerDesc }}</p></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px">
       <sc-for list="{{ smokers }}" as="m" hint-placeholder-count="8">
-        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(224,90,31,.6)">
+        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:22px;overflow:hidden" style-hover="border-color:rgba(254,42,89,.6)">
           <div style="margin:-22px -22px 16px;aspect-ratio:4/3;background:#131110"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ m.c }}" src="{{ m.img }}" alt="{{ m.alt }}" shape="rect" fit="cover" placeholder="{{ t.photoSoon }}" hint-size="100%,100%"></x-import></div>
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px/1.5 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right;flex:0 1 auto">{{ m.n }}</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font:600 16px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ m.c }}</span><span style="font:400 10px/1.5 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right;flex:0 1 auto">{{ m.n }}</span></div>
           <div style="display:flex;flex-direction:column;gap:5px;margin-top:14px;font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblSize }}</span><span style="color:rgba(235,230,221,.8)">{{ m.s }}</span></div>
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblMainGrill }}</span><span style="color:rgba(235,230,221,.8)">{{ m.g }}</span></div>
             <div style="display:flex;justify-content:space-between;gap:12px"><span>{{ t.lblWeight }}</span><span style="color:rgba(235,230,221,.8)">{{ m.w }}</span></div>
           </div>
-          <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between"><sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ m.inqLabel }}</a></sc-if></div>
+          <div style="display:flex;gap:12px;align-items:flex-start;justify-content:space-between"><sc-if value="{{ m.noDepths }}" hint-placeholder-val="{{ true }}"><a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:16px;max-width:11ch;margin-left:auto;text-align:right;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#FE2A59;border-color:#FE2A59">{{ m.inqLabel }}</a></sc-if></div>
         </div>
       </sc-for>
     </div>
@@ -495,15 +495,15 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
     <div style="margin-bottom:32px;max-width:840px">
-      <div><div id="sec-acc" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f;margin-bottom:12px">06 — STS 304 TOOLS</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famAcc }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.accIntro }}</p></div>
+      <div><div id="sec-acc" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#FE2A59;margin-bottom:12px">06 — STS 304 TOOLS</div><h2 style="margin:0 0 10px;font:600 clamp(26px,4.5vw,36px) Archivo,sans-serif;letter-spacing:-.02em">{{ t.famAcc }}</h2><p style="margin:0;max-width:60ch;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.accIntro }}</p></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px">
       <sc-for list="{{ acc }}" as="m" hint-placeholder-count="8">
-        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:18px" style-hover="border-color:rgba(224,90,31,.6)">
+        <div style="background:#1c1917;border:1px solid rgba(235,230,221,.12);padding:18px" style-hover="border-color:rgba(254,42,89,.6)">
           <div style="font:600 15px Archivo,sans-serif">{{ m.c }}</div>
           <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:8px">{{ m.s }}</div>
           <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:3px">{{ m.n }}</div>
-          <a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:14px;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ m.inqLabel }}</a>
+          <a onClick="{{ m.inqTgl }}" style="cursor:pointer;display:inline-block;margin-top:14px;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ m.inqCol }};border-bottom:1px solid {{ m.inqCol }};padding-bottom:2px" style-hover="color:#FE2A59;border-color:#FE2A59">{{ m.inqLabel }}</a>
         </div>
       </sc-for>
     </div>
@@ -513,26 +513,26 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5);margin-bottom:16px">{{ t.sec1Eyebrow }}</div>
     <h2 style="margin:0 0 44px;font:600 clamp(30px,5vw,42px)/1.15 Archivo,sans-serif;letter-spacing:-.02em;max-width:24ch">{{ t.sec1Title }}</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
-      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">01</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">Parrilla</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradPd }}</p></div>
-      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">02</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">Robata</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradRd }}</p></div>
-      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">03</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">{{ t.tradB }}</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradBd }}</p></div>
-      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#e05a1f">04</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">{{ t.tradS }}</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradSd }}</p></div>
+      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#FE2A59">01</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">Parrilla</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradPd }}</p></div>
+      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#FE2A59">02</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">Robata</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradRd }}</p></div>
+      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#FE2A59">03</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">{{ t.tradB }}</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradBd }}</p></div>
+      <div style="border-top:1px solid rgba(235,230,221,.25);padding-top:18px"><div style="font:600 28px Archivo,sans-serif;color:#FE2A59">04</div><div style="font:600 19px Archivo,sans-serif;margin:12px 0 6px">{{ t.tradS }}</div><p style="margin:0;font:400 13.5px/1.6 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.tradSd }}</p></div>
     </div>
   </section>
 
   <section style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.18);text-align:center;background:#1c1917">
-    <h2 style="margin:0;font:600 clamp(28px,5vw,38px)/1.2 Archivo,sans-serif;letter-spacing:-.02em">{{ t.prodCtaPre }}<span style="color:#e05a1f">{{ t.prodCtaAcc }}</span></h2>
+    <h2 style="margin:0;font:600 clamp(28px,5vw,38px)/1.2 Archivo,sans-serif;letter-spacing:-.02em">{{ t.prodCtaPre }}<span style="color:#FE2A59">{{ t.prodCtaAcc }}</span></h2>
     <p style="margin:16px auto 0;max-width:52ch;font:400 14.5px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.prodCtaSub }}</p>
-    <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:28px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 32px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
+    <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:28px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 32px;background:#C0012B;color:#ffffff" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
   </section>
 </main>
 </sc-if>
 
 <sc-if value="{{ isCompare }}" hint-placeholder-val="{{ false }}">
 <main data-screen-label="Compare" style="flex:1">
-  <div style="padding:24px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 0"><a onClick="{{ goProducts }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(235,230,221,.55)" style-hover="color:#e05a1f">{{ t.cmpBack }}</a></div>
+  <div style="padding:24px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 0"><a onClick="{{ goProducts }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(235,230,221,.55)" style-hover="color:#FE2A59">{{ t.cmpBack }}</a></div>
   <div style="padding:34px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 40px">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:16px">{{ t.cmpEyebrow }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:16px">{{ t.cmpEyebrow }}</div>
     <h1 style="margin:0;font:600 clamp(34px,5.5vw,60px)/1.05 Archivo,sans-serif;letter-spacing:-.025em">{{ t.cmpTitle }}</h1>
     <p style="margin:18px 0 0;max-width:52ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.cmpSub }}</p>
   </div>
@@ -548,7 +548,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
             <sc-if value="{{ col.hasImg }}" hint-placeholder-val="{{ false }}"><img src="{{ col.img }}" alt="{{ col.alt }}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block"></sc-if>
             <sc-if value="{{ col.noImg }}" hint-placeholder-val="{{ true }}"><div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.3)">{{ col.phLabel }}</div></sc-if>
           </div>
-          <div style="margin-top:16px;min-height:62px"><div style="font:600 clamp(15px,1.8vw,19px) Archivo,sans-serif;color:#fff;overflow-wrap:anywhere">{{ col.c }}</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;margin-top:5px">{{ col.n }}</div></div>
+          <div style="margin-top:16px;min-height:62px"><div style="font:600 clamp(15px,1.8vw,19px) Archivo,sans-serif;color:#fff;overflow-wrap:anywhere">{{ col.c }}</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:#FE2A59;margin-top:5px">{{ col.n }}</div></div>
           <div style="display:flex;flex-direction:column;margin-top:4px;border-bottom:1px solid rgba(235,230,221,.16)">
             <div style="border-top:1px solid rgba(235,230,221,.16);padding:13px 0;min-height:44px;box-sizing:border-box"><div style="font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.4)">{{ t.lblSeries }}</div><div style="font:400 12.5px/1.5 'IBM Plex Mono',monospace;color:rgba(235,230,221,.85);margin-top:6px;overflow-wrap:anywhere">{{ col.ser }}</div></div>
             <div style="border-top:1px solid rgba(235,230,221,.16);padding:13px 0;min-height:44px;box-sizing:border-box"><div style="font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.4)">{{ t.lblHeight }}</div><div style="font:400 12.5px/1.5 'IBM Plex Mono',monospace;color:rgba(235,230,221,.85);margin-top:6px;overflow-wrap:anywhere">{{ col.hgt }}</div></div>
@@ -558,8 +558,8 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           </div>
           <sc-if value="{{ col.filled }}" hint-placeholder-val="{{ false }}">
             <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px">
-              <a onClick="{{ col.inqTgl }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ col.inqCol }};border-bottom:1px solid {{ col.inqCol }};padding-bottom:2px;align-self:flex-start" style-hover="color:#e05a1f;border-color:#e05a1f">{{ col.inqLabel }}</a>
-              <a onClick="{{ goContact }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.55);align-self:flex-start" style-hover="color:#e05a1f">{{ t.reqQuote }}</a>
+              <a onClick="{{ col.inqTgl }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ col.inqCol }};border-bottom:1px solid {{ col.inqCol }};padding-bottom:2px;align-self:flex-start" style-hover="color:#FE2A59;border-color:#FE2A59">{{ col.inqLabel }}</a>
+              <a onClick="{{ goContact }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.55);align-self:flex-start" style-hover="color:#FE2A59">{{ t.reqQuote }}</a>
             </div>
           </sc-if>
         </div>
@@ -574,20 +574,20 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 <main data-screen-label="About" style="flex:1">
   <div style="padding:88px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 72px;border-bottom:1px solid rgba(235,230,221,.18)">
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5);margin-bottom:18px">{{ t.aboutEyebrow }}</div>
-    <h1 style="margin:0;font:600 clamp(34px,6.5vw,58px)/1.1 Archivo,sans-serif;letter-spacing:-.025em;max-width:22ch">{{ t.aboutH1pre }}<span style="color:#e05a1f">{{ t.aboutH1acc }}</span></h1>
+    <h1 style="margin:0;font:600 clamp(34px,6.5vw,58px)/1.1 Archivo,sans-serif;letter-spacing:-.025em;max-width:22ch">{{ t.aboutH1pre }}<span style="color:#FE2A59">{{ t.aboutH1acc }}</span></h1>
     <p style="margin:28px 0 0;max-width:64ch;font:400 16px/1.8 Archivo,sans-serif;color:rgba(235,230,221,.65)">{{ t.aboutIntro }}</p>
   </div>
   <section style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:36px">{{ t.philEyebrow }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:36px">{{ t.philEyebrow }}</div>
     <div data-r2 style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:stretch">
-      <div style="background:#1c1917;border:1px solid rgba(224,90,31,.45);padding:44px;display:flex;flex-direction:column;gap:20px">
+      <div style="background:#1c1917;border:1px solid rgba(254,42,89,.45);padding:44px;display:flex;flex-direction:column;gap:20px">
         <h2 style="margin:0;font:600 clamp(26px,4vw,34px)/1.2 Archivo,sans-serif;letter-spacing:-.015em">"{{ t.philT1 }}<br>{{ t.philT2 }}"</h2>
         <p style="margin:0;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.68)">{{ t.philBody1 }}</p>
         <p style="margin:0;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.68)">{{ t.philBody2 }}</p>
         <div style="display:flex;flex-direction:column;margin-top:4px">
-          <div style="display:flex;gap:14px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 10.5px 'IBM Plex Mono',monospace;color:#e05a1f">01</span><span style="font:500 13.5px Archivo,sans-serif;color:rgba(235,230,221,.85)">{{ t.phil1 }}</span></div>
-          <div style="display:flex;gap:14px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 10.5px 'IBM Plex Mono',monospace;color:#e05a1f">02</span><span style="font:500 13.5px Archivo,sans-serif;color:rgba(235,230,221,.85)">{{ t.phil2 }}</span></div>
-          <div style="display:flex;gap:14px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(235,230,221,.16);border-bottom:1px solid rgba(235,230,221,.16)"><span style="font:500 10.5px 'IBM Plex Mono',monospace;color:#e05a1f">03</span><span style="font:500 13.5px Archivo,sans-serif;color:rgba(235,230,221,.85)">{{ t.phil3 }}</span></div>
+          <div style="display:flex;gap:14px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 10.5px 'IBM Plex Mono',monospace;color:#FE2A59">01</span><span style="font:500 13.5px Archivo,sans-serif;color:rgba(235,230,221,.85)">{{ t.phil1 }}</span></div>
+          <div style="display:flex;gap:14px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 10.5px 'IBM Plex Mono',monospace;color:#FE2A59">02</span><span style="font:500 13.5px Archivo,sans-serif;color:rgba(235,230,221,.85)">{{ t.phil2 }}</span></div>
+          <div style="display:flex;gap:14px;align-items:baseline;padding:12px 0;border-top:1px solid rgba(235,230,221,.16);border-bottom:1px solid rgba(235,230,221,.16)"><span style="font:500 10.5px 'IBM Plex Mono',monospace;color:#FE2A59">03</span><span style="font:500 13.5px Archivo,sans-serif;color:rgba(235,230,221,.85)">{{ t.phil3 }}</span></div>
         </div>
       </div>
       <div style="border:1px solid rgba(235,230,221,.14);padding:28px 20px 16px;display:flex;flex-direction:column;justify-content:center">
@@ -598,8 +598,8 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           <text x="240" y="86" text-anchor="middle" fill="rgba(235,230,221,.75)" style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.14em">DESIGN</text>
           <text x="128" y="318" text-anchor="middle" fill="rgba(235,230,221,.75)" style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.14em">ENGINEERING</text>
           <text x="352" y="318" text-anchor="middle" fill="rgba(235,230,221,.75)" style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.14em">FIRE</text>
-          <circle cx="240" cy="212" r="4" fill="#e05a1f"></circle>
-          <text x="240" y="238" text-anchor="middle" fill="#e05a1f" style="font:600 13px 'IBM Plex Mono',monospace;letter-spacing:.22em">CRAFT</text>
+          <circle cx="240" cy="212" r="4" fill="#FE2A59"></circle>
+          <text x="240" y="238" text-anchor="middle" fill="#FE2A59" style="font:600 13px 'IBM Plex Mono',monospace;letter-spacing:.22em">CRAFT</text>
           <line x1="70" y1="398" x2="410" y2="398" stroke="rgba(235,230,221,.2)" stroke-width="1"></line>
           <text x="240" y="420" text-anchor="middle" fill="rgba(235,230,221,.45)" style="font:400 10.5px 'IBM Plex Mono',monospace;letter-spacing:.12em">FIG. 03 — WHERE THE THREE MEET</text>
         </svg>
@@ -631,15 +631,15 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   <section style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-bottom:1px solid rgba(235,230,221,.18)">
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5);margin-bottom:36px">{{ t.milestonesLabel }}</div>
     <div style="display:flex;flex-direction:column">
-      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#e05a1f">2012</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2012 }}</span></div>
-      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#e05a1f">2016</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2016 }}</span></div>
-      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#e05a1f">2020</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2020 }}</span></div>
-      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16);border-bottom:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#e05a1f">2026</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2026 }}</span></div>
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#FE2A59">2012</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2012 }}</span></div>
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#FE2A59">2016</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2016 }}</span></div>
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#FE2A59">2020</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2020 }}</span></div>
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:24px;padding:18px 0;border-top:1px solid rgba(235,230,221,.16);border-bottom:1px solid rgba(235,230,221,.16)"><span style="font:500 13px 'IBM Plex Mono',monospace;color:#FE2A59">2026</span><span style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.ms2026 }}</span></div>
     </div>
   </section>
   <section style="padding:110px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));text-align:center;background:#1c1917">
     <h2 style="margin:0 auto;font:600 clamp(34px,6.5vw,56px)/1.08 Archivo,sans-serif;letter-spacing:-.025em;max-width:20ch">{{ t.plan }}</h2>
-    <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:32px;font:600 14px Archivo,sans-serif;letter-spacing:.04em;padding:17px 36px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
+    <a onClick="{{ goContact }}" style="cursor:pointer;display:inline-block;margin-top:32px;font:600 14px Archivo,sans-serif;letter-spacing:.04em;padding:17px 36px;background:#C0012B;color:#ffffff" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
   </section>
 </main>
 </sc-if>
@@ -649,14 +649,14 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   <div data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:calc(100vh - 77px);padding-inline:max(0px, calc((100% - 1280px) / 2))">
     <div style="padding:80px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;gap:36px;border-right:1px solid rgba(235,230,221,.18)">
       <div>
-        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:18px">{{ t.contactEyebrow }}</div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:18px">{{ t.contactEyebrow }}</div>
         <h1 style="margin:0;font:600 clamp(32px,6vw,52px)/1.1 Archivo,sans-serif;letter-spacing:-.025em;max-width:14ch">{{ t.plan }}</h1>
         <p style="margin:22px 0 0;max-width:44ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.contactIntro }}</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:24px">
         <div><div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.4);margin-bottom:8px">{{ t.cSales }}</div><div style="font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.75)">lamsturn@gmail.com</div></div>
         <div><div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.4);margin-bottom:8px">{{ t.cOffice }}</div><div style="font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.75)">56, Jeongmun-ro 586beon-gil, Paju-eup,<br>Paju-si, Gyeonggi-do, Republic of Korea</div></div>
-        <div><div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.4);margin-bottom:12px">FOLLOW</div><div style="display:flex;gap:18px;margin-top:2px"><a href="https://www.facebook.com/lllLamsturnlll/" target="_blank" rel="noopener" aria-label="Facebook" style="color:rgba(235,230,221,.75);display:flex" style-hover="color:#e05a1f"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.3l.4-2.9h-2.7V9.3c0-.8.3-1.4 1.5-1.4h1.4V5.3c-.7-.1-1.5-.2-2.4-.2-2.3 0-3.9 1.4-3.9 4v2.2H8v2.9h2.1V21h3.4z"/></svg></a><a href="https://www.instagram.com/lamsturn_official/" target="_blank" rel="noopener" aria-label="Instagram" style="color:rgba(235,230,221,.75);display:flex" style-hover="color:#e05a1f"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@LAMSTURN_official" target="_blank" rel="noopener" aria-label="YouTube" style="color:rgba(235,230,221,.75);display:flex" style-hover="color:#e05a1f"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.8.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 0 0 1.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a></div></div>
+        <div><div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.4);margin-bottom:12px">FOLLOW</div><div style="display:flex;gap:18px;margin-top:2px"><a href="https://www.facebook.com/lllLamsturnlll/" target="_blank" rel="noopener" aria-label="Facebook" style="color:rgba(235,230,221,.75);display:flex" style-hover="color:#FE2A59"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.3l.4-2.9h-2.7V9.3c0-.8.3-1.4 1.5-1.4h1.4V5.3c-.7-.1-1.5-.2-2.4-.2-2.3 0-3.9 1.4-3.9 4v2.2H8v2.9h2.1V21h3.4z"/></svg></a><a href="https://www.instagram.com/lamsturn_official/" target="_blank" rel="noopener" aria-label="Instagram" style="color:rgba(235,230,221,.75);display:flex" style-hover="color:#FE2A59"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@LAMSTURN_official" target="_blank" rel="noopener" aria-label="YouTube" style="color:rgba(235,230,221,.75);display:flex" style-hover="color:#FE2A59"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.8.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 0 0 1.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a></div></div>
         <div style="padding:16px 20px;background:#1c1917;border:1px solid rgba(235,230,221,.14);max-width:420px"><div style="font:400 12px/1.7 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">{{ t.exp1 }}<br>{{ t.exp2 }}<br>{{ t.exp3 }}</div></div>
       </div>
     </div>
@@ -664,16 +664,16 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
       <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:22px;max-width:560px">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
-          <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fNameL }}</span><input type="text" name="name" autocomplete="name" required="{{ true }}" value="{{ fName }}" onChange="{{ onName }}" placeholder="{{ t.phName }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
-          <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fEmailL }}</span><input type="email" name="email" autocomplete="email" inputmode="email" required="{{ true }}" value="{{ fEmail }}" onChange="{{ onEmail }}" placeholder="name@restaurant.com" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fNameL }}</span><input type="text" name="name" autocomplete="name" required="{{ true }}" value="{{ fName }}" onChange="{{ onName }}" placeholder="{{ t.phName }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#FE2A59"></label>
+          <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fEmailL }}</span><input type="email" name="email" autocomplete="email" inputmode="email" required="{{ true }}" value="{{ fEmail }}" onChange="{{ onEmail }}" placeholder="name@restaurant.com" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#FE2A59"></label>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
            <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fCountryL }}</span>{{ fCountrySel }}</label>
-           <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fCompanyL }}</span><input type="text" name="company" autocomplete="organization" value="{{ fCompany }}" onChange="{{ onCompany }}" placeholder="{{ t.phCompany }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
+           <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fCompanyL }}</span><input type="text" name="company" autocomplete="organization" value="{{ fCompany }}" onChange="{{ onCompany }}" placeholder="{{ t.phCompany }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#FE2A59"></label>
          </div>
          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
-           <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fInstagramL }}</span><input type="text" name="instagram" autocomplete="off" value="{{ fInstagram }}" onChange="{{ onInstagram }}" placeholder="{{ t.phInstagram }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
-           <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fWebsiteL }}</span><input type="url" name="website" autocomplete="url" inputmode="url" value="{{ fWebsite }}" onChange="{{ onWebsite }}" placeholder="{{ t.phWebsite }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#e05a1f"></label>
+           <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fInstagramL }}</span><input type="text" name="instagram" autocomplete="off" value="{{ fInstagram }}" onChange="{{ onInstagram }}" placeholder="{{ t.phInstagram }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#FE2A59"></label>
+           <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fWebsiteL }}</span><input type="url" name="website" autocomplete="url" inputmode="url" value="{{ fWebsite }}" onChange="{{ onWebsite }}" placeholder="{{ t.phWebsite }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none" style-focus="border-color:#FE2A59"></label>
          </div>
          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
         <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fInterestL }}</span>
@@ -686,31 +686,31 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         </sc-if>
         </div>
         <sc-if value="{{ hasInq }}" hint-placeholder-val="{{ false }}">
-        <div style="padding:18px 20px;background:#1c1917;border:1px solid rgba(224,90,31,.45)">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#e05a1f">{{ t.inqTitle }} · {{ inqCount }}</div><a onClick="{{ clearInq }}" style="cursor:pointer;font:400 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:rgba(235,230,221,.45)" style-hover="color:#e05a1f">{{ t.inqClear }}</a></div>
+        <div style="padding:18px 20px;background:#1c1917;border:1px solid rgba(254,42,89,.45)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#FE2A59">{{ t.inqTitle }} · {{ inqCount }}</div><a onClick="{{ clearInq }}" style="cursor:pointer;font:400 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:rgba(235,230,221,.45)" style-hover="color:#FE2A59">{{ t.inqClear }}</a></div>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
             <sc-for list="{{ inqItems }}" as="q" hint-placeholder-count="2">
-            <span style="display:inline-flex;align-items:center;gap:9px;font:500 11px 'IBM Plex Mono',monospace;color:#ebe6dd;border:1px solid rgba(235,230,221,.3);padding:6px 10px">{{ q.c }}<a onClick="{{ q.rm }}" aria-label="Remove" style="cursor:pointer;color:rgba(235,230,221,.5);font-size:13px;line-height:1" style-hover="color:#e05a1f">×</a></span>
+            <span style="display:inline-flex;align-items:center;gap:9px;font:500 11px 'IBM Plex Mono',monospace;color:#ebe6dd;border:1px solid rgba(235,230,221,.3);padding:6px 10px">{{ q.c }}<a onClick="{{ q.rm }}" aria-label="Remove" style="cursor:pointer;color:rgba(235,230,221,.5);font-size:13px;line-height:1" style-hover="color:#FE2A59">×</a></span>
             </sc-for>
           </div>
           <div style="font:400 11px/1.6 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:12px">{{ t.inqHint }}</div>
         </div>
         </sc-if>
-        <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fMsgL }}</span><textarea name="message" autocomplete="off" required="{{ true }}" value="{{ fMsg }}" onChange="{{ onMsg }}" rows="6" placeholder="{{ t.phMsg }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none;resize:vertical" style-focus="border-color:#e05a1f"></textarea></label>
+        <label style="display:flex;flex-direction:column;gap:8px"><span style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ t.fMsgL }}</span><textarea name="message" autocomplete="off" required="{{ true }}" value="{{ fMsg }}" onChange="{{ onMsg }}" rows="6" placeholder="{{ t.phMsg }}" style="background:#1c1917;border:1px solid rgba(235,230,221,.2);color:#ebe6dd;padding:14px 16px;font-size:14px;outline:none;resize:vertical" style-focus="border-color:#FE2A59"></textarea></label>
         <div ref="{{ turnstileRef }}" style="min-height:66px;display:flex;align-items:center"></div>
         <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}">
-          <div ref="{{ errorRef }}" role="alert" aria-live="assertive" aria-atomic="true" tabIndex="-1" style="font:400 12.5px 'IBM Plex Mono',monospace;color:#e05a1f">{{ err }}</div>
+          <div ref="{{ errorRef }}" role="alert" aria-live="assertive" aria-atomic="true" tabIndex="-1" style="font:400 12.5px 'IBM Plex Mono',monospace;color:#FE2A59">{{ err }}</div>
         </sc-if>
-        <button type="submit" disabled="{{ isSubmitting }}" aria-busy="{{ isSubmitting }}" aria-disabled="{{ isSubmitting }}" style="border:0;appearance:none;cursor:{{ sendCursor }};align-self:flex-start;font:600 13.5px Archivo,sans-serif;letter-spacing:.04em;padding:16px 34px;background:#e05a1f;color:#131110;opacity:{{ sendOpacity }}" style-hover="background:#f06a2c;color:#131110">{{ sendLabel }}</button>
+        <button type="submit" disabled="{{ isSubmitting }}" aria-busy="{{ isSubmitting }}" aria-disabled="{{ isSubmitting }}" style="border:0;appearance:none;cursor:{{ sendCursor }};align-self:flex-start;font:600 13.5px Archivo,sans-serif;letter-spacing:.04em;padding:16px 34px;background:#C0012B;color:#ffffff;opacity:{{ sendOpacity }}" style-hover="background:#f06a2c;color:#131110">{{ sendLabel }}</button>
       </form>
       </sc-if>
       <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-      <div style="display:flex;flex-direction:column;gap:20px;max-width:520px;padding:48px;background:#1c1917;border:1px solid rgba(224,90,31,.5)">
-        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.inquirySent }}</div>
+      <div style="display:flex;flex-direction:column;gap:20px;max-width:520px;padding:48px;background:#1c1917;border:1px solid rgba(254,42,89,.5)">
+        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.inquirySent }}</div>
         <h2 style="margin:0;font:600 32px/1.2 Archivo,sans-serif">{{ t.thankYou }}</h2>
         <p style="margin:0;font:400 14.5px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.sentBodyPre }}{{ echoEmail }}{{ t.sentBodyPost }}</p>
         <sc-if value="{{ hasSentModels }}" hint-placeholder-val="{{ false }}"><div style="font:400 11.5px/1.7 'IBM Plex Mono',monospace;color:rgba(235,230,221,.6)">{{ t.inqSentPre }}{{ sentModels }}</div></sc-if>
-        <a onClick="{{ resetForm }}" style="cursor:pointer;font:500 11.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.7);border-bottom:1px solid rgba(235,230,221,.3);padding-bottom:2px;align-self:flex-start" style-hover="color:#e05a1f;border-color:#e05a1f">{{ t.sendAnother }}</a>
+        <a onClick="{{ resetForm }}" style="cursor:pointer;font:500 11.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.7);border-bottom:1px solid rgba(235,230,221,.3);padding-bottom:2px;align-self:flex-start" style-hover="color:#FE2A59;border-color:#FE2A59">{{ t.sendAnother }}</a>
       </div>
       </sc-if>
     </div>
@@ -721,12 +721,12 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 <sc-if value="{{ isJ900 }}" hint-placeholder-val="{{ false }}">
 <main data-screen-label="LGA_J900_T Detail" style="flex:1">
   <div style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 0">
-    <a onClick="{{ goProducts }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(235,230,221,.5)" style-hover="color:#e05a1f">{{ t.dCrumbLGA }}</a>
+    <a onClick="{{ goProducts }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(235,230,221,.5)" style-hover="color:#FE2A59">{{ t.dCrumbLGA }}</a>
     <div data-r2 style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;margin-top:32px;align-items:stretch">
       <div style="min-height:440px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-hero" src="assets/photos/j900-hero.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
       <div style="display:flex;flex-direction:column;gap:22px">
         <div>
-          <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:14px">{{ t.jEyebrow }}</div>
+          <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:14px">{{ t.jEyebrow }}</div>
           <h1 style="margin:0;font:600 clamp(34px,5.5vw,54px)/1.05 Archivo,sans-serif;letter-spacing:-.025em">LGA_J900_T</h1>
           <div style="font:400 15px Archivo,sans-serif;color:rgba(235,230,221,.6);margin-top:10px">{{ t.jSub }}</div>
         </div>
@@ -740,8 +740,8 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
           <div style="display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(235,230,221,.16);border-bottom:1px solid rgba(235,230,221,.16)"><span style="color:rgba(235,230,221,.5)">{{ t.lblFrontPanel }}</span><span>BLACK COATING — RATED 600 °C</span></div>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:14px">
-          <a onClick="{{ goJ900Inquiry }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.quote }}</a>
-          <a href="uploads/26_LGA_J900_T_technical%20sheet%20share.pdf" target="_blank" style="font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.4)" style-hover="border-color:#e05a1f;color:#e05a1f">{{ t.dTechSheet }}</a>
+          <a onClick="{{ goJ900Inquiry }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#C0012B;color:#ffffff" style-hover="background:#f06a2c;color:#131110">{{ t.quote }}</a>
+          <a href="uploads/26_LGA_J900_T_technical%20sheet%20share.pdf" target="_blank" style="font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.4)" style-hover="border-color:#FE2A59;color:#FE2A59">{{ t.dTechSheet }}</a>
         </div>
         <p style="margin:0;font:400 11px/1.7 'IBM Plex Mono',monospace;color:rgba(235,230,221,.4)">{{ t.dMadeToOrder }}</p>
       </div>
@@ -757,7 +757,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-d1" src="assets/photos/j900-d1.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 26%,rgba(19,17,16,0) 46%,rgba(19,17,16,.88) 92%);pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:8%;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.djGearEye }}</div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djGearEye }}</div>
       <h2 style="margin:14px 0 0;max-width:18ch;font:600 clamp(28px,4.6vw,56px)/1.04 Archivo,sans-serif;letter-spacing:-.02em">{{ t.djGearT }}</h2>
       <p style="margin:18px 0 0;max-width:46ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.djGearB }}</p>
     </div>
@@ -775,7 +775,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding-inline:max(0px, calc((100% - 1280px) / 2));align-items:stretch">
     <div style="padding:clamp(60px,9vh,120px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center;gap:20px">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.djAshEye }}</div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djAshEye }}</div>
       <h2 style="margin:0;font:600 clamp(28px,3.8vw,46px)/1.08 Archivo,sans-serif;letter-spacing:-.02em">{{ t.djAshT }}</h2>
       <p style="margin:0;max-width:46ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.68)">{{ t.djAshB }}</p>
     </div>
@@ -793,13 +793,13 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.djCraftEye }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djCraftEye }}</div>
     <h2 style="margin:14px 0 0;font:600 clamp(32px,5.2vw,64px)/1.02 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djCraftT }}</h2>
     <div style="aspect-ratio:21/9;background:#1c1917;margin-top:40px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-q2" shape="rect" fit="cover" placeholder="The Korean workshop — one master per grill" hint-size="100%,100%"></x-import></div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px 44px;margin-top:48px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:12px">{{ t.djPremEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djPremB }}</p></div>
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:12px">{{ t.djOneEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djOneB }}</p></div>
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:12px">{{ t.djMoveEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djMoveB }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djPremEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djPremB }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djOneEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djOneB }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djMoveEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djMoveB }}</p></div>
     </div>
   </section>
 
@@ -815,47 +815,47 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.lblFilm }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.lblFilm }}</div>
     <h2 style="margin:14px 0 32px;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djFilmT }}</h2>
     <div style="position:relative;aspect-ratio:16/9;background:#1c1917;max-width:960px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-video" shape="rect" fit="cover" placeholder="Product film — thumbnail" hint-size="100%,100%"></x-import><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div style="width:78px;height:78px;border-radius:50%;background:rgba(19,17,16,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(235,230,221,.5)"><div style="width:0;height:0;border-left:22px solid #ebe6dd;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px"></div></div></div></div>
-    <a href="https://www.youtube.com/watch?v=AhsHoT9-STY&t=73s" target="_blank" rel="noopener" style="display:inline-block;margin-top:18px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;color:#e05a1f" style-hover="color:#f06a2c">{{ t.djWatch }}</a>
+    <a href="https://www.youtube.com/watch?v=AhsHoT9-STY&t=73s" target="_blank" rel="noopener" style="display:inline-block;margin-top:18px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;color:#FE2A59" style-hover="color:#f06a2c">{{ t.djWatch }}</a>
   </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.14)">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.djPromEye }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djPromEye }}</div>
     <h2 style="margin:14px 0 0;max-width:16ch;font:600 clamp(30px,5vw,60px)/1.03 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djPromT }}</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 44px;margin-top:44px">
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djMadeEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djMadeB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djShipEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djShipB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djCustEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djCustB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djChefEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djChefB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djKitEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djKitB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djWarrEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djWarrMade }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djMadeEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djMadeB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djShipEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djShipB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djCustEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djCustB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djChefEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djChefB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djKitEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djKitB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djWarrEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djWarrMade }}</p></div>
     </div>
   </section>
 
   <section style="padding:clamp(88px,13vh,160px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));text-align:center;border-top:1px solid rgba(235,230,221,.14)">
-    <h2 style="margin:0;font:600 clamp(30px,5vw,58px)/1.08 Archivo,sans-serif;letter-spacing:-.02em">{{ t.djBurners }} <span style="color:#e05a1f">{{ t.dLetsDraw }}</span></h2>
+    <h2 style="margin:0;font:600 clamp(30px,5vw,58px)/1.08 Archivo,sans-serif;letter-spacing:-.02em">{{ t.djBurners }} <span style="color:#FE2A59">{{ t.dLetsDraw }}</span></h2>
     <p style="margin:18px auto 0;max-width:52ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.djCtaSub }}</p>
-    <a onClick="{{ goJ900Inquiry }}" style="cursor:pointer;display:inline-block;margin-top:30px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:16px 34px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
+    <a onClick="{{ goJ900Inquiry }}" style="cursor:pointer;display:inline-block;margin-top:30px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:16px 34px;background:#C0012B;color:#ffffff" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
   </section>
 </main>
 </sc-if>
 
 <sc-if value="{{ isLgy610 }}" hint-placeholder-val="{{ false }}">
 <main data-screen-label="LGY_610 Detail" style="flex:1">
-  <div style="padding:24px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 0"><a onClick="{{ goProducts }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(235,230,221,.5)" style-hover="color:#e05a1f">{{ t.dCrumbLGY }}</a></div>
+  <div style="padding:24px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 0"><a onClick="{{ goProducts }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(235,230,221,.5)" style-hover="color:#FE2A59">{{ t.dCrumbLGY }}</a></div>
 
   <section style="position:relative;height:84vh;min-height:600px;margin-top:14px">
     <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy-hero" shape="rect" fit="cover" placeholder="LGY_610 — counter with skewers over binchotan" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 26%,rgba(19,17,16,0) 46%,rgba(19,17,16,.88) 92%);pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:7vh;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.y6Eyebrow }}</div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.y6Eyebrow }}</div>
       <h1 style="margin:16px 0 0;font:600 clamp(48px,9vw,108px)/.96 Archivo,sans-serif;letter-spacing:-.03em">LGY_610</h1>
       <div style="font:400 clamp(15px,1.9vw,19px) Archivo,sans-serif;color:rgba(235,230,221,.78);margin-top:14px">{{ t.y6Sub }}</div>
       <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px">
-        <a onClick="{{ goLgy610Inquiry }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.quote }}</a>
-        <a href="/products/lgy-840/" onClick="{{ goLgy840 }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.45)" style-hover="border-color:#e05a1f;color:#e05a1f">{{ t.dViewY8 }}</a>
+        <a onClick="{{ goLgy610Inquiry }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#C0012B;color:#ffffff" style-hover="background:#f06a2c;color:#131110">{{ t.quote }}</a>
+        <a href="/products/lgy-840/" onClick="{{ goLgy840 }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.45)" style-hover="border-color:#FE2A59;color:#FE2A59">{{ t.dViewY8 }}</a>
       </div>
     </div>
   </section>
@@ -869,7 +869,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy-d1" shape="rect" fit="cover" placeholder="The classic counter — skewers over binchotan" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 26%,rgba(19,17,16,0) 46%,rgba(19,17,16,.88) 92%);pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:8%;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.dyClassicEye }}</div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.dyClassicEye }}</div>
       <h2 style="margin:14px 0 0;max-width:18ch;font:600 clamp(28px,4.6vw,56px)/1.04 Archivo,sans-serif;letter-spacing:-.02em">{{ t.dyClassicT }}</h2>
       <p style="margin:18px 0 0;max-width:46ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.dyClassicB }}</p>
     </div>
@@ -887,7 +887,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding-inline:max(0px, calc((100% - 1280px) / 2));align-items:stretch">
     <div style="padding:clamp(60px,9vh,120px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center;gap:20px">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.dySmokeEye }}</div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.dySmokeEye }}</div>
       <h2 style="margin:0;font:600 clamp(28px,3.8vw,46px)/1.08 Archivo,sans-serif;letter-spacing:-.02em">{{ t.dySmokeT }}</h2>
       <p style="margin:0;max-width:46ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.68)">{{ t.dySmokeB }}</p>
     </div>
@@ -905,13 +905,13 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.djCraftEye }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djCraftEye }}</div>
     <h2 style="margin:14px 0 0;font:600 clamp(32px,5.2vw,64px)/1.02 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djCraftT }}</h2>
     <div style="aspect-ratio:21/9;background:#1c1917;margin-top:40px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-q2" shape="rect" fit="cover" placeholder="The Korean workshop — one master per grill" hint-size="100%,100%"></x-import></div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px 44px;margin-top:48px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:12px">{{ t.djPremEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyMadeKorea }}</p></div>
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:12px">{{ t.djOneEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djOneB }}</p></div>
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:12px">{{ t.dyTrustEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyTrustB }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djPremEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyMadeKorea }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djOneEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djOneB }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.dyTrustEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyTrustB }}</p></div>
     </div>
   </section>
 
@@ -937,63 +937,63 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.lblInService }}</div>
     <h2 style="margin:14px 0 32px;font:600 clamp(26px,4vw,46px)/1.05 Archivo,sans-serif;letter-spacing:-.02em">{{ t.dyWhere610 }}</h2>
     <div style="display:flex;flex-direction:column;max-width:820px">
-      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Restaurant Papilio<img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">PRAGUE, CZECHIA</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right">LGY_610_D300</span></div>
-      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Restaurant Allen<img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">SEOUL, KOREA</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right">LGY_610_D300_NS</span></div>
-      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Jungsik<img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">SEOUL, KOREA</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right">LGY_610_D400</span></div>
-      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14);border-bottom:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Momo Grill</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">KLAIPĖDA, LITHUANIA</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right">LGY_610_D300</span></div>
+      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Restaurant Papilio<img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">PRAGUE, CZECHIA</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right">LGY_610_D300</span></div>
+      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Restaurant Allen<img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">SEOUL, KOREA</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right">LGY_610_D300_NS</span></div>
+      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Jungsik<img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">SEOUL, KOREA</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right">LGY_610_D400</span></div>
+      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14);border-bottom:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Momo Grill</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">KLAIPĖDA, LITHUANIA</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right">LGY_610_D300</span></div>
     </div>
-    <a onClick="{{ goKitchens }}" style="cursor:pointer;display:inline-block;margin-top:24px;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#e05a1f">{{ t.dAllKitchensMap }}</a>
+    <a onClick="{{ goKitchens }}" style="cursor:pointer;display:inline-block;margin-top:24px;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#FE2A59">{{ t.dAllKitchensMap }}</a>
   </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.lblFilm }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.lblFilm }}</div>
     <h2 style="margin:14px 0 32px;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djFilmT }}</h2>
     <div style="position:relative;aspect-ratio:16/9;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-video" shape="rect" fit="cover" placeholder="Product film — thumbnail" hint-size="100%,100%"></x-import><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div style="width:78px;height:78px;border-radius:50%;background:rgba(19,17,16,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(235,230,221,.5)"><div style="width:0;height:0;border-left:22px solid #ebe6dd;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px"></div></div></div></div>
-    <a href="https://www.youtube.com/watch?v=AhsHoT9-STY&t=73s" target="_blank" rel="noopener" style="display:inline-block;margin-top:18px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;color:#e05a1f" style-hover="color:#f06a2c">{{ t.djWatch }}</a>
+    <a href="https://www.youtube.com/watch?v=AhsHoT9-STY&t=73s" target="_blank" rel="noopener" style="display:inline-block;margin-top:18px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;color:#FE2A59" style-hover="color:#f06a2c">{{ t.djWatch }}</a>
     <div data-r2 style="display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:32px;align-items:center;margin-top:56px">
       <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-chef" shape="rect" fit="cover" placeholder="Chef Yoo Yong-wook — IMOK Smoke Dining" hint-size="100%,100%"></x-import></div>
       <div>
-        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#e05a1f;margin-bottom:14px">{{ t.lblOnNetflix }}</div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#FE2A59;margin-bottom:14px">{{ t.lblOnNetflix }}</div>
         <p style="margin:0;font:400 clamp(17px,1.8vw,22px)/1.55 Archivo,sans-serif;color:rgba(235,230,221,.82)">{{ t.dyNetflixPre }} <strong style="color:#ebe6dd;font-weight:600">Yoo Yong-wook</strong> of <strong style="color:#ebe6dd;font-weight:600">IMOK Smoke Dining</strong> {{ t.dyMichelinFeat }} <em>Culinary Class Wars 2</em>.</p>
       </div>
     </div>
   </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.14)">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.djPromEye }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djPromEye }}</div>
     <h2 style="margin:14px 0 0;max-width:16ch;font:600 clamp(30px,5vw,60px)/1.03 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djPromT }}</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 44px;margin-top:44px">
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djMadeEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djMadeB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djShipEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djShipB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djCustEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djCustB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djChefEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djChefB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djKitEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djKitB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djWarrEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyWarrBuilt }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djMadeEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djMadeB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djShipEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djShipB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djCustEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djCustB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djChefEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djChefB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djKitEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djKitB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djWarrEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyWarrBuilt }}</p></div>
     </div>
   </section>
 
   <section style="padding:clamp(88px,13vh,160px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));text-align:center;border-top:1px solid rgba(235,230,221,.14)">
-    <h2 style="margin:0;font:600 clamp(30px,5vw,58px)/1.08 Archivo,sans-serif;letter-spacing:-.02em">{{ t.y6CtaPre }}<span style="color:#e05a1f">{{ t.dLetsDraw }}</span></h2>
+    <h2 style="margin:0;font:600 clamp(30px,5vw,58px)/1.08 Archivo,sans-serif;letter-spacing:-.02em">{{ t.y6CtaPre }}<span style="color:#FE2A59">{{ t.dLetsDraw }}</span></h2>
     <p style="margin:18px auto 0;max-width:52ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.y6CtaSub }}</p>
-    <a onClick="{{ goLgy610Inquiry }}" style="cursor:pointer;display:inline-block;margin-top:30px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:16px 34px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
+    <a onClick="{{ goLgy610Inquiry }}" style="cursor:pointer;display:inline-block;margin-top:30px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:16px 34px;background:#C0012B;color:#ffffff" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
   </section>
 </main>
 </sc-if>
 
 <sc-if value="{{ isLgy840 }}" hint-placeholder-val="{{ false }}">
 <main data-screen-label="LGY_840 Detail" style="flex:1">
-  <div style="padding:24px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 0"><a onClick="{{ goProducts }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(235,230,221,.5)" style-hover="color:#e05a1f">{{ t.dCrumbLGY }}</a></div>
+  <div style="padding:24px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 0"><a onClick="{{ goProducts }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(235,230,221,.5)" style-hover="color:#FE2A59">{{ t.dCrumbLGY }}</a></div>
 
   <section style="position:relative;height:84vh;min-height:600px;margin-top:14px">
     <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-hero" src="assets/photos/lgy840-hero.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 26%,rgba(19,17,16,0) 46%,rgba(19,17,16,.88) 92%);pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:7vh;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.y8Eyebrow }}</div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.y8Eyebrow }}</div>
       <h1 style="margin:16px 0 0;font:600 clamp(48px,9vw,108px)/.96 Archivo,sans-serif;letter-spacing:-.03em">LGY_840</h1>
       <div style="font:400 clamp(15px,1.9vw,19px) Archivo,sans-serif;color:rgba(235,230,221,.78);margin-top:14px">{{ t.y6Sub }}</div>
       <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px">
-        <a onClick="{{ goLgy840Inquiry }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.quote }}</a>
-        <a href="/products/lgy-610/" onClick="{{ goLgy610 }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.45)" style-hover="border-color:#e05a1f;color:#e05a1f">{{ t.dCompactSee }}</a>
+        <a onClick="{{ goLgy840Inquiry }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#C0012B;color:#ffffff" style-hover="background:#f06a2c;color:#131110">{{ t.quote }}</a>
+        <a href="/products/lgy-610/" onClick="{{ goLgy610 }}" style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.45)" style-hover="border-color:#FE2A59;color:#FE2A59">{{ t.dCompactSee }}</a>
       </div>
     </div>
   </section>
@@ -1007,7 +1007,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-d1" src="assets/photos/lgy840-d1.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 26%,rgba(19,17,16,0) 46%,rgba(19,17,16,.88) 92%);pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:8%;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.dyZonesEye }}</div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.dyZonesEye }}</div>
       <h2 style="margin:14px 0 0;max-width:18ch;font:600 clamp(28px,4.6vw,56px)/1.04 Archivo,sans-serif;letter-spacing:-.02em">{{ t.dyZonesT }}</h2>
       <p style="margin:18px 0 0;max-width:46ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.dyZonesB }}</p>
     </div>
@@ -1025,7 +1025,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 
   <section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding-inline:max(0px, calc((100% - 1280px) / 2));align-items:stretch">
     <div style="padding:clamp(60px,9vh,120px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center;gap:20px">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.dySmokeEye }}</div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.dySmokeEye }}</div>
       <h2 style="margin:0;font:600 clamp(28px,3.8vw,46px)/1.08 Archivo,sans-serif;letter-spacing:-.02em">{{ t.dySmokeT }}</h2>
       <p style="margin:0;max-width:46ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.68)">{{ t.dySmokeB }}</p>
     </div>
@@ -1043,13 +1043,13 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.djCraftEye }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djCraftEye }}</div>
     <h2 style="margin:14px 0 0;font:600 clamp(32px,5.2vw,64px)/1.02 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djCraftT }}</h2>
     <div style="aspect-ratio:21/9;background:#1c1917;margin-top:40px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-q2" shape="rect" fit="cover" placeholder="The Korean workshop — one master per grill" hint-size="100%,100%"></x-import></div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px 44px;margin-top:48px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:12px">{{ t.djPremEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyMadeKorea }}</p></div>
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:12px">{{ t.djOneEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djOneB }}</p></div>
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:12px">{{ t.dyTrustEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyTrustB }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djPremEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyMadeKorea }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djOneEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djOneB }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.dyTrustEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyTrustB }}</p></div>
     </div>
   </section>
 
@@ -1075,45 +1075,45 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.lblInService }}</div>
     <h2 style="margin:14px 0 32px;font:600 clamp(26px,4vw,46px)/1.05 Archivo,sans-serif;letter-spacing:-.02em">{{ t.dyWhere840 }}</h2>
     <div style="display:flex;flex-direction:column;max-width:820px">
-      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Amelia by Paulo Airaudo<img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">SAN SEBASTIÁN, SPAIN</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right">LGY_840_D400</span></div>
-      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">NOI by Paulo Airaudo<img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">HONG KONG</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right">LGY_840_D400</span></div>
-      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Restaurant Addiert</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">VIENNA, AUSTRIA</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right">LGY_840_D300</span></div>
-      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14);border-bottom:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Private</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">LONDON · MELBOURNE</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#e05a1f;text-align:right">LGY_840_D400</span></div>
+      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Amelia by Paulo Airaudo<img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">SAN SEBASTIÁN, SPAIN</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right">LGY_840_D400</span></div>
+      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">NOI by Paulo Airaudo<img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:15px;height:15px;vertical-align:-2px;margin-left:4px"></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">HONG KONG</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right">LGY_840_D400</span></div>
+      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Restaurant Addiert</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">VIENNA, AUSTRIA</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right">LGY_840_D300</span></div>
+      <div data-wrow style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 170px;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid rgba(235,230,221,.14);border-bottom:1px solid rgba(235,230,221,.14)"><span style="font:600 16px Archivo,sans-serif">Private</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.55)">LONDON · MELBOURNE</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#FE2A59;text-align:right">LGY_840_D400</span></div>
     </div>
-    <a onClick="{{ goKitchens }}" style="cursor:pointer;display:inline-block;margin-top:24px;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#e05a1f">{{ t.dAllKitchensMap }}</a>
+    <a onClick="{{ goKitchens }}" style="cursor:pointer;display:inline-block;margin-top:24px;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#FE2A59">{{ t.dAllKitchensMap }}</a>
   </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.lblFilm }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.lblFilm }}</div>
     <h2 style="margin:14px 0 32px;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djFilmT }}</h2>
     <div style="position:relative;aspect-ratio:16/9;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-video" shape="rect" fit="cover" placeholder="Product film — thumbnail" hint-size="100%,100%"></x-import><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div style="width:78px;height:78px;border-radius:50%;background:rgba(19,17,16,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(235,230,221,.5)"><div style="width:0;height:0;border-left:22px solid #ebe6dd;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px"></div></div></div></div>
-    <a href="https://www.youtube.com/watch?v=AhsHoT9-STY&t=73s" target="_blank" rel="noopener" style="display:inline-block;margin-top:18px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;color:#e05a1f" style-hover="color:#f06a2c">{{ t.djWatch }}</a>
+    <a href="https://www.youtube.com/watch?v=AhsHoT9-STY&t=73s" target="_blank" rel="noopener" style="display:inline-block;margin-top:18px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;color:#FE2A59" style-hover="color:#f06a2c">{{ t.djWatch }}</a>
     <div data-r2 style="display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:32px;align-items:center;margin-top:56px">
       <div style="aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-chef" shape="rect" fit="cover" placeholder="Chef Yoo Yong-wook — IMOK Smoke Dining" hint-size="100%,100%"></x-import></div>
       <div>
-        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#e05a1f;margin-bottom:14px">{{ t.lblOnNetflix }}</div>
+        <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#FE2A59;margin-bottom:14px">{{ t.lblOnNetflix }}</div>
         <p style="margin:0;font:400 clamp(17px,1.8vw,22px)/1.55 Archivo,sans-serif;color:rgba(235,230,221,.82)">{{ t.dyNetflixPre }} <strong style="color:#ebe6dd;font-weight:600">Yoo Yong-wook</strong> of <strong style="color:#ebe6dd;font-weight:600">IMOK Smoke Dining</strong> {{ t.dyMichelinFeat }} <em>Culinary Class Wars 2</em>.</p>
       </div>
     </div>
   </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.14)">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f">{{ t.djPromEye }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djPromEye }}</div>
     <h2 style="margin:14px 0 0;max-width:16ch;font:600 clamp(30px,5vw,60px)/1.03 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djPromT }}</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 44px;margin-top:44px">
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djMadeEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djMadeB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djShipEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djShipB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djCustEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djCustB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djChefEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djChefB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djKitEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djKitB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e05a1f;margin-bottom:10px">{{ t.djWarrEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyWarrBuilt }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djMadeEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djMadeB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djShipEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djShipB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djCustEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djCustB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djChefEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djChefB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djKitEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djKitB }}</p></div>
+      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djWarrEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyWarrBuilt }}</p></div>
     </div>
   </section>
 
   <section style="padding:clamp(88px,13vh,160px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));text-align:center;border-top:1px solid rgba(235,230,221,.14)">
-    <h2 style="margin:0;font:600 clamp(30px,5vw,58px)/1.08 Archivo,sans-serif;letter-spacing:-.02em">{{ t.y8CtaPre }}<span style="color:#e05a1f">{{ t.dLetsDraw }}</span></h2>
+    <h2 style="margin:0;font:600 clamp(30px,5vw,58px)/1.08 Archivo,sans-serif;letter-spacing:-.02em">{{ t.y8CtaPre }}<span style="color:#FE2A59">{{ t.dLetsDraw }}</span></h2>
     <p style="margin:18px auto 0;max-width:52ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.6)">{{ t.y8CtaSub }}</p>
-    <a onClick="{{ goLgy840Inquiry }}" style="cursor:pointer;display:inline-block;margin-top:30px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:16px 34px;background:#e05a1f;color:#131110" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
+    <a onClick="{{ goLgy840Inquiry }}" style="cursor:pointer;display:inline-block;margin-top:30px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:16px 34px;background:#C0012B;color:#ffffff" style-hover="background:#f06a2c;color:#131110">{{ t.start }}</a>
   </section>
 </main>
 </sc-if>
@@ -1121,10 +1121,10 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 <sc-if value="{{ isKitchens }}" hint-placeholder-val="{{ false }}">
 <main data-screen-label="Kitchens" style="flex:1">
   <div style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 36px">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#e05a1f;margin-bottom:16px">{{ t.kEyebrow }}</div>
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:16px">{{ t.kEyebrow }}</div>
     <h1 style="margin:0;font:600 clamp(34px,6.5vw,56px)/1.08 Archivo,sans-serif;letter-spacing:-.025em">{{ t.kH1 }}</h1>
     <p style="margin:20px 0 0;max-width:60ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.kIntro }}</p>
-    <div style="margin-top:18px;font:500 12.5px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f">{{ kSlogan }}</div>
+    <div style="margin-top:18px;font:500 12.5px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#FE2A59">{{ kSlogan }}</div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
       <a onClick="{{ kfMichelin }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelin }}"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain">{{ t.mfAll }}</a>
       <sc-if value="{{ kHasThree }}" hint-placeholder-val="{{ false }}"><a onClick="{{ kfMichelinThree }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelinThree }}"><span style="display:inline-flex;gap:1px"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain"></span>{{ t.mfThree }}</a></sc-if>
@@ -1133,10 +1133,10 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <a onClick="{{ kfMichelinGuide }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelinGuide }}"><img src="assets/michelin-guide-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain">{{ t.mfGuide }}</a>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:28px 44px;margin-top:28px">
-      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M4 2v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7 11v11"/><path d="M20 15V2a5 5 0 0 0-4 5v6a2 2 0 0 0 2 2h2v7"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#e05a1f">{{ kCount }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblKitchens }}</div></div>
-      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;flex:none;object-fit:contain;display:block"><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#e05a1f">{{ kMich }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblMich }}</div></div>
-      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M2.5 21h19"/><path d="M5 21V6.5L11 3v18"/><path d="M11 21V10.5h7.5V21"/><path d="M7.7 8.4h.01M7.7 12.2h.01M7.7 16h.01M14.6 14h.01M14.6 17.4h.01"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#e05a1f">{{ kCities }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblCities }}</div></div>
-      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4"/><path d="M12 2.8a14 14 0 0 1 3.7 9.2 14 14 0 0 1-3.7 9.2 14 14 0 0 1-3.7-9.2A14 14 0 0 1 12 2.8z"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#e05a1f">{{ kCountries }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblCountries }}</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M4 2v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7 11v11"/><path d="M20 15V2a5 5 0 0 0-4 5v6a2 2 0 0 0 2 2h2v7"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kCount }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblKitchens }}</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;flex:none;object-fit:contain;display:block"><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kMich }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblMich }}</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M2.5 21h19"/><path d="M5 21V6.5L11 3v18"/><path d="M11 21V10.5h7.5V21"/><path d="M7.7 8.4h.01M7.7 12.2h.01M7.7 16h.01M14.6 14h.01M14.6 17.4h.01"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kCities }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblCities }}</div></div>
+      <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4"/><path d="M12 2.8a14 14 0 0 1 3.7 9.2 14 14 0 0 1-3.7 9.2 14 14 0 0 1-3.7-9.2A14 14 0 0 1 12 2.8z"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kCountries }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblCountries }}</div></div>
     </div>
   </div>
   <div style="padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 16px;display:flex;flex-wrap:wrap;gap:10px">
@@ -1166,15 +1166,15 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
               <sc-if value="{{ k.gS1 }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="" style="width:19px;height:19px;display:block"></sc-if>
               <sc-if value="{{ k.gS2 }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="" style="width:19px;height:19px;display:block"></sc-if>
               <sc-if value="{{ k.gS3 }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="" style="width:19px;height:19px;display:block"></sc-if>
-              <sc-if value="{{ k.gGuide }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-guide-white.png" alt="" style="width:19px;height:19px;display:block"></sc-if><span style="font:600 13px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e05a1f">{{ k.group }}</span>
+              <sc-if value="{{ k.gGuide }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-guide-white.png" alt="" style="width:19px;height:19px;display:block"></sc-if><span style="font:600 13px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#FE2A59">{{ k.group }}</span>
             </span>
             <span style="font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.45)">{{ k.groupCount }}</span>
           </div>
         </sc-if>
         <div data-krow style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr) minmax(0,1fr) 130px;gap:20px;align-items:center;padding:18px 0;border-top:1px solid rgba(235,230,221,.14)">
-          <a onClick="{{ k.onFocus }}" title="{{ k.name }}" style="cursor:pointer;font:600 17px Archivo,sans-serif;color:#ebe6dd" style-hover="color:#e05a1f">{{ k.name }}</a>
+          <a onClick="{{ k.onFocus }}" title="{{ k.name }}" style="cursor:pointer;font:600 17px Archivo,sans-serif;color:#ebe6dd" style-hover="color:#FE2A59">{{ k.name }}</a>
           <span style="font:400 12.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.6)">{{ k.place }}</span>
-          <span style="font:400 12.5px 'IBM Plex Mono',monospace;color:#e05a1f">{{ k.prods }}</span>
+          <span style="font:400 12.5px 'IBM Plex Mono',monospace;color:#FE2A59">{{ k.prods }}</span>
           <span style="display:flex;gap:5px;justify-content:flex-end;align-items:center">
             <sc-if value="{{ k.s1 }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:20px;height:20px;display:block"></sc-if>
             <sc-if value="{{ k.s2 }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:20px;height:20px;display:block"></sc-if>
@@ -1184,14 +1184,14 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         </div>
       </sc-for>
     </div>
-    <p style="margin:24px 0 0;font:400 12px/1.7 'IBM Plex Mono',monospace;color:rgba(235,230,221,.4)">{{ t.kNote }} <a onClick="{{ goContact }}" style="cursor:pointer;color:#e05a1f">{{ t.startInquiry }}</a></p>
+    <p style="margin:24px 0 0;font:400 12px/1.7 'IBM Plex Mono',monospace;color:rgba(235,230,221,.4)">{{ t.kNote }} <a onClick="{{ goContact }}" style="cursor:pointer;color:#FE2A59">{{ t.startInquiry }}</a></p>
   </div>
 </main>
 </sc-if>
 
 <footer style="padding:clamp(56px,8vh,96px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 0;border-top:1px solid rgba(235,230,221,.18);overflow:hidden">
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px">
-    <div><div style="font:600 27px Archivo,sans-serif;letter-spacing:.04em;margin-bottom:12px;color:#ebe6dd">LAMSTURN</div><p style="margin:0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.5)">{{ t.footTag1 }}<br>{{ t.footTag2 }}</p><div style="display:flex;gap:18px;margin-top:12px"><a href="https://www.facebook.com/lllLamsturnlll/" target="_blank" rel="noopener" aria-label="Facebook" style="color:rgba(235,230,221,.55);display:flex" style-hover="color:#e05a1f"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.3l.4-2.9h-2.7V9.3c0-.8.3-1.4 1.5-1.4h1.4V5.3c-.7-.1-1.5-.2-2.4-.2-2.3 0-3.9 1.4-3.9 4v2.2H8v2.9h2.1V21h3.4z"/></svg></a><a href="https://www.instagram.com/lamsturn_official/" target="_blank" rel="noopener" aria-label="Instagram" style="color:rgba(235,230,221,.55);display:flex" style-hover="color:#e05a1f"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@LAMSTURN_official" target="_blank" rel="noopener" aria-label="YouTube" style="color:rgba(235,230,221,.55);display:flex" style-hover="color:#e05a1f"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.8.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 0 0 1.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a></div></div>
+    <div><div style="font:600 27px Archivo,sans-serif;letter-spacing:.04em;margin-bottom:12px;color:#ebe6dd">LAMSTURN</div><p style="margin:0;font:400 12.5px/1.55 Archivo,sans-serif;color:rgba(235,230,221,.5)">{{ t.footTag1 }}<br>{{ t.footTag2 }}</p><div style="display:flex;gap:18px;margin-top:12px"><a href="https://www.facebook.com/lllLamsturnlll/" target="_blank" rel="noopener" aria-label="Facebook" style="color:rgba(235,230,221,.55);display:flex" style-hover="color:#FE2A59"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.3l.4-2.9h-2.7V9.3c0-.8.3-1.4 1.5-1.4h1.4V5.3c-.7-.1-1.5-.2-2.4-.2-2.3 0-3.9 1.4-3.9 4v2.2H8v2.9h2.1V21h3.4z"/></svg></a><a href="https://www.instagram.com/lamsturn_official/" target="_blank" rel="noopener" aria-label="Instagram" style="color:rgba(235,230,221,.55);display:flex" style-hover="color:#FE2A59"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@LAMSTURN_official" target="_blank" rel="noopener" aria-label="YouTube" style="color:rgba(235,230,221,.55);display:flex" style-hover="color:#FE2A59"><svg width="23" height="23" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7c.2.8.9 1.5 1.7 1.7 1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 0 0 1.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a></div></div>
     <div style="display:flex;flex-direction:column;gap:8px;font:400 12.5px Archivo,sans-serif;color:rgba(235,230,221,.5)"><div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.35);margin-bottom:4px">{{ t.fSite }}</div><a onClick="{{ goAbout }}" style="cursor:pointer">{{ t.fAbout }}</a><a onClick="{{ goProducts }}" style="cursor:pointer">{{ t.fProducts }}</a><a onClick="{{ goCompare }}" style="cursor:pointer">{{ t.cmpNav }}</a><a onClick="{{ goKitchens }}" style="cursor:pointer">{{ t.fKitchens }}</a><a onClick="{{ goContact }}" style="cursor:pointer">{{ t.fContact }}</a></div>
     <div style="font:400 12.5px/1.9 Archivo,sans-serif;color:rgba(235,230,221,.5)"><div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.35);margin-bottom:10px">{{ t.fShowroom }}</div>56, Jeongmun-ro 586beon-gil,<br>Paju-eup, Paju-si, Gyeonggi-do,<br>Republic of Korea</div>
     <div style="font:400 12.5px/1.9 Archivo,sans-serif;color:rgba(235,230,221,.5)"><div style="font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.35);margin-bottom:10px">{{ t.fContactCol }}</div>lamsturn@gmail.com<br>@lamsturn_official</div>
@@ -1206,9 +1206,9 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.4)">{{ t.addInqDepth }}</div>
     <div style="margin-top:8px;font:600 20px Archivo,sans-serif;letter-spacing:.02em;color:#fff">{{ depthPopupTitle }}</div>
     <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
-      <sc-for list="{{ depthPopupOpts }}" as="d" hint-placeholder-count="2"><a onClick="{{ d.tgl }}" style="cursor:pointer;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:{{ d.col }};border:1px solid {{ d.col }};padding:11px 20px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ d.label }}</a></sc-for>
+      <sc-for list="{{ depthPopupOpts }}" as="d" hint-placeholder-count="2"><a onClick="{{ d.tgl }}" style="cursor:pointer;font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:{{ d.col }};border:1px solid {{ d.col }};padding:11px 20px" style-hover="color:#FE2A59;border-color:#FE2A59">{{ d.label }}</a></sc-for>
     </div>
-    <a onClick="{{ closeDepthPopup }}" style="cursor:pointer;display:inline-block;margin-top:24px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.5);border-bottom:1px solid rgba(235,230,221,.3);padding-bottom:2px" style-hover="color:#e05a1f;border-color:#e05a1f">{{ t.inqClose }}</a>
+    <a onClick="{{ closeDepthPopup }}" style="cursor:pointer;display:inline-block;margin-top:24px;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:rgba(235,230,221,.5);border-bottom:1px solid rgba(235,230,221,.3);padding-bottom:2px" style-hover="color:#FE2A59;border-color:#FE2A59">{{ t.inqClose }}</a>
   </div>
 </div></sc-if>
 </x-dc>
@@ -1650,7 +1650,7 @@ class Component extends DCLogic {
   }
   // Pin, tip on the coordinate. Michelin red is sampled from assets/michelin-star.webp.
   pinIcon(tier) {
-    const RED = '#D3072B';
+    const RED = '#C0012B';
     // White body (disc + short tail) with the red disc inset, the Michelin construction.
     const shell = (redR, inner) => {
       const R = redR + 3, cx = R, cy = R;                       // 3 = white margin around the disc
@@ -1703,8 +1703,8 @@ class Component extends DCLogic {
         : k.m === 3 ? bLine(rStar + rStar, 'MICHELIN 2 STARS', '#ebe6dd')
         : k.m === 2 ? bLine(rStar, 'MICHELIN STAR', '#ebe6dd')
         : k.m === 1 ? bLine('<img src="assets/michelin-guide-white.png" alt="" style="width:13px;height:13px;display:block">', 'MICHELIN GUIDE', '#ebe6dd')
-        : k.m === -1 ? bLine('', 'SHOWROOM — VISITS WELCOME', '#e05a1f') : '';
-      mk.bindPopup('<div style="font-family:Archivo,sans-serif;min-width:190px"><div style="font-weight:600;font-size:14px">' + k.name.replace(/&/g, '&') + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;opacity:.65;margin-top:3px;letter-spacing:.06em">' + k.place + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;color:#e05a1f;margin-top:6px">' + k.prods + '</div>' + badge + '</div>', { autoPan: false });
+        : k.m === -1 ? bLine('', 'SHOWROOM — VISITS WELCOME', '#FE2A59') : '';
+      mk.bindPopup('<div style="font-family:Archivo,sans-serif;min-width:190px"><div style="font-weight:600;font-size:14px">' + k.name.replace(/&/g, '&') + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;opacity:.65;margin-top:3px;letter-spacing:.06em">' + k.place + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;color:#FE2A59;margin-top:6px">' + k.prods + '</div>' + badge + '</div>', { autoPan: false });
       this._mk[k.id] = mk; batch.push(mk);
     });
     if (this._markers) this._map.removeLayer(this._markers);
@@ -3357,7 +3357,7 @@ class Component extends DCLogic {
     const canonicalT = Object.assign({}, T[lang] || T.EN, DT[lang] || DT.EN);
     const t = {};
     Object.keys(canonicalT).forEach((key) => { t[key] = convertCopy(canonicalT[key]); });
-    const active = '#e05a1f', idle = '#ebe6dd';
+    const active = '#FE2A59', idle = '#ebe6dd';
     const inq = s.inq || [];
     const inqTgl = (c) => () => { const cur = this.state.inq || []; const nx = cur.indexOf(c) >= 0 ? cur.filter(x => x !== c) : cur.concat([c]); try { localStorage.setItem('lamsturn-inq', JSON.stringify(nx)); } catch(e) {} this.setState({ inq: nx }); };
     const interestForModel = (c) => String(c || '').startsWith('LGY_') ? 'Robata Grills (LGY)' : String(c || '').startsWith('LGA_') ? 'Asado Grills (LGA)' : this.state.fInterest;
@@ -3379,7 +3379,7 @@ class Component extends DCLogic {
     // Every card adds its own code directly \u2014 depth variants are separate cards now.
     const inqFields = (m) => {
       const on = inq.indexOf(m.c) >= 0;
-      return { inqOn: on, inqLabel: on ? t.addedInq : t.addInq, inqCol: on ? '#e05a1f' : 'rgba(235,230,221,.5)', inqTgl: inqTgl(m.c), noDepths: true, depthOpts: [] };
+      return { inqOn: on, inqLabel: on ? t.addedInq : t.addInq, inqCol: on ? '#FE2A59' : 'rgba(235,230,221,.5)', inqTgl: inqTgl(m.c), noDepths: true, depthOpts: [] };
     };
     const catalog = this.productCatalog().groups;
     // A detail page covers every depth of its family, so its CTA still offers the chooser.
@@ -3388,7 +3388,7 @@ class Component extends DCLogic {
     catalog.robata.forEach((m) => { const fam = m.c.replace(/_D\d+$/, ''); if (fam !== m.c) (depthReg[fam] = depthReg[fam] || []).push(m.c); });
     Object.keys(depthReg).forEach((fam) => {
       if (depthReg[fam].length < 2) { delete depthReg[fam]; return; }
-      depthReg[fam] = depthReg[fam].map((code) => { const on = inq.indexOf(code) >= 0; return { code: code, label: (on ? '✓ ' : '+ ') + code.slice(fam.length + 1), col: on ? '#e05a1f' : 'rgba(235,230,221,.5)', tgl: inqTglClose(code) }; });
+      depthReg[fam] = depthReg[fam].map((code) => { const on = inq.indexOf(code) >= 0; return { code: code, label: (on ? '✓ ' : '+ ') + code.slice(fam.length + 1), col: on ? '#FE2A59' : 'rgba(235,230,221,.5)', tgl: inqTglClose(code) }; });
     });
     // `detail` carries the full page payload the static-page generator reads; `detailOf` is a
     // link-only reference for a sibling card that shares that page (the depth pairs).
@@ -3584,7 +3584,7 @@ class Component extends DCLogic {
         const kStars = kitchens.reduce((n, k) => n + starsOf(k.m), 0);
         const kStarred = kitchens.filter(k => k.m >= 2).length;
         const kSlogan = String(t.kSloganTpl || '').replace('{stars}', kStars).replace('{kitchens}', kStarred);
-        const chip = (v) => kf === v ? '#e05a1f' : 'rgba(235,230,221,.5)';
+        const chip = (v) => kf === v ? '#FE2A59' : 'rgba(235,230,221,.5)';
         const setKf = (v) => () => this.setState({ kf: v });
         return {
           kCount: kitchens.length, kMich: kitchens.filter(k => k.m > 0).length, kSlogan,
