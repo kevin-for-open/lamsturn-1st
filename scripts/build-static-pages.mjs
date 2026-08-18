@@ -31,9 +31,9 @@ const sections = [
     description: 'Based on craft since 2012, when the studio took root among the steel workshops of Mullae-dong, Seoul. How Lamsturn designs and builds grills for professional kitchens.'
   },
   {
-    slug: 'kitchens',
-    title: 'Kitchens Cooking on Lamsturn | Lamsturn',
-    description: 'From Michelin-starred rooms in San Sebastián and Hong Kong to smokehouses in Seoul — the professional kitchens cooking on Lamsturn grills, shown on a world map.'
+    slug: 'restaurants',
+    title: 'Restaurants Cooking on Lamsturn | Lamsturn',
+    description: 'From Michelin-starred rooms in San Sebastián and Hong Kong to smokehouses in Seoul — the restaurants cooking on Lamsturn grills, shown on a world map.'
   },
   {
     slug: 'compare',

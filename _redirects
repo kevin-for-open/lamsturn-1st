@@ -1,0 +1,5 @@
+# Cloudflare Workers Static Assets reads this file from the asset directory (_site/).
+# The Restaurants page moved from /kitchens/ to /restaurants/ on 2026-08-18; these keep
+# every existing link, bookmark and search result working instead of 404ing.
+/kitchens/ /restaurants/ 301
+/kitchens  /restaurants/ 301

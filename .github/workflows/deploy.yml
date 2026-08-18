@@ -56,7 +56,7 @@ jobs:
 
           # Indexable section routes — a generator regression here would ship 404s to
           # every link and search result pointing at them.
-          for sec in products about kitchens compare contact; do
+          for sec in products about restaurants compare contact; do
             test -f "_site/$sec/index.html" || { echo "::error::section page missing: /$sec/"; exit 1; }
           done
           test -f _site/sitemap.xml || { echo "::error::sitemap.xml missing"; exit 1; }

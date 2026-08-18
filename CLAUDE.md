@@ -72,6 +72,48 @@ real `<head>`, deliberately.
 
 ### Kitchens / Michelin data
 
+**The Restaurants page: label, route and internal id do not all use the same word — on purpose.**
+Renamed 2026-08-18 on the owner's request. What says *restaurant*: nav, mobile menu, footer link,
+page title + description, the stat tile, the Michelin slogan, the map caption, the footnote and
+the untiered `GRP` heading, in all five languages — plus the **URL, now `/restaurants/`**, its
+static page, canonical/og:url and the sitemap row.
+
+What still says *kitchens*, deliberately: `state.page === 'kitchens'` and every identifier built
+on it (`isKitchens`, `cKitchens`, `goKitchens`, `kitchenFilterPass`), and every translation key
+NAME (`kitchens`, `fKitchens`, `kLblKitchens`, `kIntro`, `kSloganTpl`, `mapCaption`, `kNote`) —
+only their VALUES moved. These are internal, they agree with each other, and renaming ~15
+identifiers changes nothing a visitor can see. **Do not "tidy" this.**
+
+Two things make the old URL safe: `_redirects` at the repo root 301s `/kitchens/` →
+`/restaurants/` at the edge (Workers Static Assets reads it from the asset directory, and the
+deploy rsync does not exclude it), and `pageFromUrl` keeps a legacy `'/kitchens'` row so a stale
+link that dodges the redirect still renders this page rather than silently falling back to Home.
+Keep both.
+
+**The home page uses "kitchen" in two senses. Only one of them was swept.** Venue sense — the
+businesses cooking on Lamsturn — moved to *restaurant* on 2026-08-18: `reelsTitle`,
+`lblProKitchens`, `michelinBlurb` (first occurrence only) and `btoFootPre`. Room sense — the
+physical space a grill is sized to fit — is correct as "kitchen" and must stay: `btoBody`,
+`bto1d`, `sec1Title`, `djKitEye`, `contactIntro`.
+
+**Two counts on the home page, and only one of them was stale.** `const D` holds 78 kitchens:
+17 Michelin-listed, 61 not.
+
+- The hero stat strip is a **total**. It was hardcoded `60+`, understating by 18 and disagreeing
+  with the Restaurants page. It now renders `{{ kCount }}` — derived from `const D`, so adding a
+  venue updates the home page too. Do not put a literal back.
+- `michelinBlurb`'s "60+ professional kitchens" is a **different quantity**. The sentence is
+  additive — starred rooms *and* 60+ others — and there are exactly 61 others, so **60+ is
+  correct**. Writing 78 there would claim 78 *on top of* the starred ones, i.e. 95 total.
+  **Do not "sync" this number to the hero.** (Its three-star claim is separately deliberate;
+  see Open items.)
+
+`plan` reads "Plan your grill with us." rather than "your kitchen": its own block promises
+"custom sizes, accessories and layout — planned together with our engineers", so the grill is
+what is actually planned together, and it echoes `btoTitle` "Your size. Your accessories. Your
+grill." Spanish takes `grill` there, not `parrilla` — this site uses `parrilla` for the grate
+(`cmpSub`, `precisionBody`) and `grill` for the appliance (`btoTitle`).
+
 `const D` is a compact tuple array — `[name, lat, lng, prods, m, place]`. **79 rows**; the one row
 with `m === -1` is a showroom and is filtered out of the kitchen count, so the site shows
 **78 kitchens**, 17 of them Michelin-rated (`m > 0`).
@@ -226,7 +268,7 @@ page still uses `-white`.
 `index.html` is a single-page app, so crawlers only ever see whatever static HTML sits at a
 URL. `scripts/build-static-pages.mjs` produces that HTML at release time: it copies the
 staged `index.html` to **3 product routes** (`/products/<slug>/`, from the catalog's
-`detail` entries) and **5 section routes** (`/products/ /about/ /kitchens/ /compare/
+`detail` entries) and **5 section routes** (`/products/ /about/ /restaurants/ /compare/
 /contact/`, from the `sections` table in the script), swaps title/description/canonical/og
 per page, adds Product + BreadcrumbList JSON-LD to product pages, and regenerates
 `sitemap.xml` (9 URLs, `lastmod` = build date; override with `--date=YYYY-MM-DD`).
