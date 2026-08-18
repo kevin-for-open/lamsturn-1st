@@ -92,7 +92,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 .lam-icon:hover .lam-cluster{transform:scale(1.09)}
 @media (max-width:900px){[data-r2]{grid-template-columns:minmax(0,1fr)!important}[data-r2]>*{border-left:none!important;border-right:none!important;min-width:0!important}[data-r2]>[data-col2]{grid-column:1!important}[data-rimg]{min-height:360px!important}}
 @media (max-width:1020px){[data-hide-sm]{display:none!important}[data-show-sm]{display:flex!important}}
-@media (max-width:760px){[data-hdr]{padding:14px 20px!important;gap:10px}[data-herocta]{flex-wrap:nowrap!important}[data-herocta]>a{flex:1 1 0;text-align:center;padding-left:8px!important;padding-right:8px!important;white-space:nowrap}[data-heroband]{display:grid!important;grid-template-columns:1fr 1fr;align-content:center;align-items:start!important;row-gap:14px;column-gap:18px}[data-heroband]>div{flex:none!important}[data-heroband] span{font-size:11.5px!important}[data-herodots]{top:24px!important;bottom:auto!important;right:20px!important;gap:6px!important}[data-herodots] a span:first-child{width:22px!important}[data-khead]{display:none!important}[data-krow]{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:5px!important}[data-krow]>span:last-child{justify-content:flex-start!important}[data-wrow]{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:5px!important}}
+@media (max-width:760px){[data-hdr]{padding:14px 20px!important;gap:10px}[data-herocta]{flex-wrap:nowrap!important}[data-herocta]>a{flex:1 1 0;text-align:center;padding-left:8px!important;padding-right:8px!important;white-space:nowrap}[data-heroband]{display:grid!important;grid-template-columns:1fr 1fr;align-content:center;align-items:start!important;row-gap:14px;column-gap:18px}[data-heroband]>div{flex:none!important}[data-heroband] span{font-size:11.5px!important}[data-herodots]{top:24px!important;bottom:auto!important;right:20px!important;gap:6px!important}[data-herodots] a span:first-child{width:22px!important}[data-khead]{display:none!important}[data-krow]{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:5px!important}[data-wrow]{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:5px!important}}
 @media (max-width:1100px){[data-inqlabel]{display:none!important}}
 @media (max-width:760px){[data-cmpgrid]{min-width:640px!important}[data-cmpwrap]{overflow-x:auto!important;padding-bottom:8px}}
 @media (max-width:760px){[data-reelviewport]{padding-left:clamp(20px,5vw,48px)!important;padding-right:clamp(20px,5vw,48px)!important}[data-reeltrack]{min-width:1220px!important}}
@@ -1153,11 +1153,10 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   </div>
   <div style="padding:40px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 72px">
     <div style="display:flex;flex-direction:column">
-      <div data-khead style="position:sticky;top:65px;z-index:2;background:#131110;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr) minmax(0,1fr) 130px;gap:20px;padding:14px 0;border-bottom:1px solid rgba(235,230,221,.3)">
+      <div data-khead style="position:sticky;top:65px;z-index:2;background:#131110;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr) minmax(0,1fr);gap:20px;padding:14px 0;border-bottom:1px solid rgba(235,230,221,.3)">
         <span style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ colR }}</span>
         <span style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ colLoc }}</span>
         <span style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5)">{{ colG }}</span>
-        <span style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:rgba(235,230,221,.5);text-align:right">{{ colGuide }}</span>
       </div>
       <sc-for list="{{ kList }}" as="k" hint-placeholder-count="8">
         <sc-if value="{{ k.showGroup }}" hint-placeholder-val="{{ false }}">
@@ -1171,16 +1170,16 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
             <span style="font:400 11px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.45)">{{ k.groupCount }}</span>
           </div>
         </sc-if>
-        <div data-krow style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr) minmax(0,1fr) 130px;gap:20px;align-items:center;padding:18px 0;border-top:1px solid rgba(235,230,221,.14)">
-          <a onClick="{{ k.onFocus }}" title="{{ k.name }}" style="cursor:pointer;font:600 17px Archivo,sans-serif;color:#ebe6dd" style-hover="color:#FE2A59">{{ k.name }}</a>
+        <div data-krow style="display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr) minmax(0,1fr);gap:20px;align-items:center;padding:18px 0;border-top:1px solid rgba(235,230,221,.14)">
+          <span style="display:flex;align-items:center;gap:8px;min-width:0">
+            <sc-if value="{{ k.s1 }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:20px;height:20px;display:block;flex:none"></sc-if>
+            <sc-if value="{{ k.s2 }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:20px;height:20px;display:block;flex:none"></sc-if>
+            <sc-if value="{{ k.s3 }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:20px;height:20px;display:block;flex:none"></sc-if>
+            <sc-if value="{{ k.guide }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-guide-white.png" alt="Michelin Guide" style="width:20px;height:20px;display:block;flex:none"></sc-if>
+            <a onClick="{{ k.onFocus }}" title="{{ k.name }}" style="cursor:pointer;font:600 17px Archivo,sans-serif;color:#ebe6dd" style-hover="color:#FE2A59">{{ k.name }}</a>
+          </span>
           <span style="font:400 12.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.6)">{{ k.place }}</span>
           <span style="font:400 12.5px 'IBM Plex Mono',monospace;color:#FE2A59">{{ k.prods }}</span>
-          <span style="display:flex;gap:5px;justify-content:flex-end;align-items:center">
-            <sc-if value="{{ k.s1 }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:20px;height:20px;display:block"></sc-if>
-            <sc-if value="{{ k.s2 }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:20px;height:20px;display:block"></sc-if>
-            <sc-if value="{{ k.s3 }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="Michelin star" style="width:20px;height:20px;display:block"></sc-if>
-            <sc-if value="{{ k.guide }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-guide-white.png" alt="Michelin Guide" style="width:20px;height:20px;display:block"></sc-if>
-          </span>
         </div>
       </sc-for>
     </div>
@@ -1493,83 +1492,84 @@ class Component extends DCLogic {
     const D = [
       ["Amelia by Paulo Airaudo",43.321703,-1.9799904,"LGY_840_D400",3,"SAN SEBASTIÁN, SPAIN"],
       ["NOI by Paulo Airaudo",22.2866377,114.156647,"LGY_840_D400",3,"HONG KONG"],
+      ["TATE Dining Room",22.28463,114.15018,"LGA_J900_T",3,"HONG KONG"],
       ["Restaurant Papilio",49.9933075,14.2046444,"LGY_610_D300",3,"PRAGUE, CZECHIA"],
-      ["Restaurant Allen",37.5036006,127.0418041,"LGY_610_D300_NS",3,"SEOUL, KOREA"],
-      ["Jungsik",37.5256734,127.0410846,"CUSTOM DIRECT-FIRE, LGY_610_D400",3,"SEOUL, KOREA"],
-      ["Solbam",37.5157568,127.0341109,"LSC_500_NS",3,"SEOUL, KOREA"],
-      ["Kwonsooksoo",37.5243775,127.0435589,"LGA_900_S",3,"SEOUL, KOREA"],
-      ["Kang Min Chul",37.5249753,127.0436445,"LSC_500_PA",2,"SEOUL, KOREA"],
-      ["Piotto",35.1618671,129.1735612,"LGY_610_D300",2,"BUSAN, KOREA"],
-      ["OPNNG",37.5189052,127.0310597,"LGY_840_D300",1,"SEOUL, KOREA"],
-      ["trid",37.5266693,127.0416788,"LGY_610_D300_NS",1,"SEOUL, KOREA"],
-      ["Bone & Bread",37.5667249,127.0445221,"LGA_1800_S, LOW_1100_S",1,"SEOUL, KOREA"],
-      ["Yimok Smoke Dining",37.5210962,127.019134,"LSV_850, LGA_J1000_S_NS",1,"SEOUL, KOREA"],
+      ["Restaurant Allen",37.5036006,127.0418041,"LGY_610_D300_NS",3,"SEOUL, SOUTH KOREA"],
+      ["Jungsik",37.5256734,127.0410846,"CUSTOM DIRECT-FIRE, LGY_610_D400",3,"SEOUL, SOUTH KOREA"],
+      ["Solbam",37.5157568,127.0341109,"LSC_500_NS",3,"SEOUL, SOUTH KOREA"],
+      ["Kwonsooksoo",37.5243775,127.0435589,"LGA_900_S",3,"SEOUL, SOUTH KOREA"],
+      ["Kang Min Chul",37.5249753,127.0436445,"LSC_500_PA",2,"SEOUL, SOUTH KOREA"],
+      ["Piotto",35.1618671,129.1735612,"LGY_610_D300",2,"BUSAN, SOUTH KOREA"],
+      ["OPNNG",37.5189052,127.0310597,"LGY_840_D300",1,"SEOUL, SOUTH KOREA"],
+      ["trid",37.5266693,127.0416788,"LGY_610_D300_NS",1,"SEOUL, SOUTH KOREA"],
+      ["Bone & Bread",37.5667249,127.0445221,"LGA_1800_S, LOW_1100_S",1,"SEOUL, SOUTH KOREA"],
+      ["Yimok Smoke Dining",37.5210962,127.019134,"LSV_850, LGA_J1000_S_NS",1,"SEOUL, SOUTH KOREA"],
       ["and Svolta",35.668573,139.7170107,"LGA_J900_T",0,"TOKYO, JAPAN"],
       ["Momo Grill",55.70813,21.12693,"LGY_610_D300",0,"KLAIPĖDA, LITHUANIA"],
       ["Private",-37.8136276,144.9630576,"LGY_840_D400",0,"MELBOURNE, AUSTRALIA"],
-      ["Gunmong",37.5373596,127.0028956,"LGA_900_T_NS, LGC_380_NS",0,"SEOUL, KOREA"],
+      ["Gunmong",37.5373596,127.0028956,"LGA_900_T_NS, LGC_380_NS",0,"SEOUL, SOUTH KOREA"],
       ["Private",51.5072178,-0.1275862,"LGY_840_D400",0,"LONDON, UK"],
-      ["Yoo Yong Wook BBQ Lab",37.5439126,126.9727693,"LSV_850, LGY_610_D300",0,"SEOUL, KOREA"],
-      ["Yeon — Haeundae",35.1609259,129.1645238,"LGY_610_D400",0,"BUSAN, KOREA"],
-      ["The Steakhouse — IFC",37.5247882,126.9253976,"LGA_C1700_T",0,"SEOUL, KOREA"],
-      ["Yesterday's Curry — Seongsu Lab",37.53959,127.0562226,"LGA_J1000_S",0,"SEOUL, KOREA"],
-      ["The Chapel at Daechi",37.5030354,127.067046,"LGA_D1500_T_NS",0,"SEOUL, KOREA"],
-      ["Tak",37.5260101,127.0355707,"CUSTOM DIRECT-FIRE, LGY_840_D300",0,"SEOUL, KOREA"],
-      ["Anjakran",37.2846996,127.0141992,"LGA_900_T",0,"SEONGNAM, KOREA"],
-      ["Notre",37.525346,127.0385762,"LGY_840_D400",0,"SEOUL, KOREA"],
+      ["Yoo Yong Wook BBQ Lab",37.5439126,126.9727693,"LSV_850, LGY_610_D300",0,"SEOUL, SOUTH KOREA"],
+      ["Yeon — Haeundae",35.1609259,129.1645238,"LGY_610_D400",0,"BUSAN, SOUTH KOREA"],
+      ["The Steakhouse — IFC",37.5247882,126.9253976,"LGA_C1700_T",0,"SEOUL, SOUTH KOREA"],
+      ["Yesterday's Curry — Seongsu Lab",37.53959,127.0562226,"LGA_J1000_S",0,"SEOUL, SOUTH KOREA"],
+      ["The Chapel at Daechi",37.5030354,127.067046,"LGA_D1500_T_NS",0,"SEOUL, SOUTH KOREA"],
+      ["Tak",37.5260101,127.0355707,"CUSTOM DIRECT-FIRE, LGY_840_D300",0,"SEOUL, SOUTH KOREA"],
+      ["Anjakran",37.2846996,127.0141992,"LGA_900_T",0,"SEONGNAM, SOUTH KOREA"],
+      ["Notre",37.525346,127.0385762,"LGY_840_D400",0,"SEOUL, SOUTH KOREA"],
       ["Restaurant Addiert",48.2147369,16.3725721,"LGY_840_D300",0,"VIENNA, AUSTRIA"],
-      ["Haevichi Hotel & Resort Jeju",33.323125,126.8447251,"LSO_1800_PL",0,"JEJU, KOREA"],
-      ["Fuego",37.5339321,127.0098223,"LGA_J1000_S",0,"SEOUL, KOREA"],
-      ["Yosujung",37.5471679,126.941574,"LGC_380",0,"SEOUL, KOREA"],
-      ["Osteria Eobu",35.1606334,129.1566418,"LGY_610_D300",0,"BUSAN, KOREA"],
-      ["DoubleTree by Hilton Pangyo",37.380477,127.1042112,"LSO_1300",0,"SEONGNAM, KOREA"],
-      ["Wild Duck Cantine",37.5414824,126.9870435,"LGY_840_D300",0,"SEOUL, KOREA"],
-      ["GwangAnMok — Haeundae",35.1623515,129.1595484,"LGA_900_T_NS",0,"BUSAN, KOREA"],
-      ["Dongkyung Babsang",35.1483979,129.113868,"LGY_840_D400",0,"BUSAN, KOREA"],
-      ["glod",37.5283979,127.0327686,"LGA_900_S",0,"SEOUL, KOREA"],
-      ["Prahan",35.1653152,129.1577086,"LSV_850",0,"BUSAN, KOREA"],
-      ["Mongtan Jeju",33.5536669,126.7151445,"CUSTOM DIRECT-FIRE",0,"JEJU, KOREA"],
-      ["Asador",35.1609259,129.1648538,"LGA_C1700_T_NS",0,"BUSAN, KOREA"],
-      ["Grand Hyatt Seoul",37.5394318,126.997519,"LSO_1800, LGA_J900_S_NS, CUSTOM",0,"SEOUL, KOREA"],
-      ["vuur",37.5068073,127.0311544,"LGA_1800_T, LOW_1100_T",0,"SEOUL, KOREA"],
-      ["GwangAnMok — Gwangalli",35.1549908,129.1184415,"LGA_900_T_NS",0,"BUSAN, KOREA"],
-      ["Hikarimono — Gran Seoul",37.5706468,126.9811761,"LGY_840_D300",0,"SEOUL, KOREA"],
-      ["Monologue",37.5723676,126.9864555,"LGY_610_D300",0,"SEOUL, KOREA"],
-      ["Yakitori Muk",37.5646654,126.9245756,"LGY_840_D300",0,"SEOUL, KOREA"],
-      ["Bullae",37.534573,127.0087808,"LGA_1800_S",0,"SEOUL, KOREA"],
-      ["Gowooga — Gwanghwamun",37.5684385,126.9780507,"LGY_840_D300_NS",0,"SEOUL, KOREA"],
-      ["Eliot",37.5185644,127.0436289,"LGA_900_S",0,"SEOUL, KOREA"],
-      ["Perigee",37.5112619,127.0494907,"LGY_610_D300_NS",1,"SEOUL, KOREA"],
-      ["Godosik",37.5103054,127.1086519,"CUSTOM DIRECT-FIRE",0,"SEOUL, KOREA"],
-      ["Log Seongsu",37.5464643,127.0425176,"LGY_840_D300",0,"SEOUL, KOREA"],
-      ["Osteria Sotti",37.5789417,126.9721806,"LGY_610_D300",0,"SEOUL, KOREA"],
-      ["Koshun — Apgujeong",37.5227037,127.0320513,"LSC_500_PA",0,"SEOUL, KOREA"],
-      ["Pit Boys BBQ",37.7497141,126.6895147,"CUSTOM BBQ SMOKER",0,"GIMPO, KOREA"],
-      ["Low & Slow",37.5340397,126.9942202,"CUSTOM BBQ SMOKER",0,"SEOUL, KOREA"],
-      ["American Village",35.1620488,129.1189694,"LSO_4500_V1, LSV_850",0,"BUSAN, KOREA"],
-      ["Daelim Changgo",37.5420299,127.0563762,"CUSTOM DIRECT-FIRE",0,"SEOUL, KOREA"],
-      ["Smoke Train",37.5840842,127.0007525,"LSO_4500_REV_V1",0,"SEOUL, KOREA"],
-      ["Jinseo Kalguksu",37.5728492,126.9732699,"LSO_3500_V1",0,"SEOUL, KOREA"],
-      ["Slow Yard BBQ",37.5487733,126.9095255,"LSO_4500_V1",0,"SEOUL, KOREA"],
-      ["Loco's BBQ — Gyeongnidan",37.5409566,126.9955175,"BBQ SMOKER TRAILER",0,"SEOUL, KOREA"],
-      ["Manimal Smokehouse",37.5345186,126.9884469,"LSV_850",0,"SEOUL, KOREA"],
-      ["Beodeunamu Brewery",37.7482296,128.8843596,"LSO_5500_V1",0,"GANGNEUNG, KOREA"],
-      ["Ambassador Seoul — Pullman",37.5601792,127.0023953,"LGA_W1600_T",0,"SEOUL, KOREA"],
-      ["Osteria Eden",37.5246691,127.0427083,"LGA_900_S",0,"SEOUL, KOREA"],
-      ["Black Charcoal",37.4015841,126.6315578,"LGA_900_T",0,"INCHEON, KOREA"],
-      ["Mallieoso",37.7330353,126.7099679,"LGA_1800_T, LGY_840_D300",0,"GIMPO, KOREA"],
-      ["Manao",37.5340957,127.006177,"LGA_900_S",1,"SEOUL, KOREA"],
-      ["Seoul Dining",37.5592198,127.0036135,"LGA_1800_S, LSC_500",1,"SEOUL, KOREA"],
-      ["Fiod",36.3961868,127.4096651,"LGA_J1000_S",0,"DAEJEON, KOREA"],
-      ["Byuldonbyul",33.3086406,126.1802146,"LGA_900_S",0,"JEJU, KOREA"],
-      ["P01",37.5457474,126.9138933,"LGA_900_S",0,"SEOUL, KOREA"],
-      ["RMW Carne",37.5348321,127.0008554,"LGA_J1000_S",1,"SEOUL, KOREA"],
-      ["Lever",37.5225418,127.0412171,"LGA_900_S",0,"SEOUL, KOREA"],
-      ["The Corner House",37.5234373,127.0377955,"LGA_900_T_NS",0,"SEOUL, KOREA"],
-      ["Jitterbug",37.5191226,126.9033115,"LGA_1200_S",0,"SEOUL, KOREA"],
-      ["Moonz BBQ",37.545652,127.048545,"LSO_4500 / 5500_V1",0,"SEOUL, KOREA"],
-      ["Brace",null,null,"LGA_900_T",0,"SEOUL, KOREA"],
-      ["Lamsturn Showroom & Office",37.8071602,126.8212755,"ALL SERIES ON DISPLAY",-1,"PAJU, KOREA"]
+      ["Haevichi Hotel & Resort Jeju",33.323125,126.8447251,"LSO_1800_PL",0,"JEJU, SOUTH KOREA"],
+      ["Fuego",37.5339321,127.0098223,"LGA_J1000_S",0,"SEOUL, SOUTH KOREA"],
+      ["Yosujung",37.5471679,126.941574,"LGC_380",0,"SEOUL, SOUTH KOREA"],
+      ["Osteria Eobu",35.1606334,129.1566418,"LGY_610_D300",0,"BUSAN, SOUTH KOREA"],
+      ["DoubleTree by Hilton Pangyo",37.380477,127.1042112,"LSO_1300",0,"SEONGNAM, SOUTH KOREA"],
+      ["Wild Duck Cantine",37.5414824,126.9870435,"LGY_840_D300",0,"SEOUL, SOUTH KOREA"],
+      ["GwangAnMok — Haeundae",35.1623515,129.1595484,"LGA_900_T_NS",0,"BUSAN, SOUTH KOREA"],
+      ["Dongkyung Babsang",35.1483979,129.113868,"LGY_840_D400",0,"BUSAN, SOUTH KOREA"],
+      ["glod",37.5283979,127.0327686,"LGA_900_S",0,"SEOUL, SOUTH KOREA"],
+      ["Prahan",35.1653152,129.1577086,"LSV_850",0,"BUSAN, SOUTH KOREA"],
+      ["Mongtan Jeju",33.5536669,126.7151445,"CUSTOM DIRECT-FIRE",0,"JEJU, SOUTH KOREA"],
+      ["Asador",35.1609259,129.1648538,"LGA_C1700_T_NS",0,"BUSAN, SOUTH KOREA"],
+      ["Grand Hyatt Seoul",37.5394318,126.997519,"LSO_1800, LGA_J900_S_NS, CUSTOM",0,"SEOUL, SOUTH KOREA"],
+      ["vuur",37.5068073,127.0311544,"LGA_1800_T, LOW_1100_T",0,"SEOUL, SOUTH KOREA"],
+      ["GwangAnMok — Gwangalli",35.1549908,129.1184415,"LGA_900_T_NS",0,"BUSAN, SOUTH KOREA"],
+      ["Hikarimono — Gran Seoul",37.5706468,126.9811761,"LGY_840_D300",0,"SEOUL, SOUTH KOREA"],
+      ["Monologue",37.5723676,126.9864555,"LGY_610_D300",0,"SEOUL, SOUTH KOREA"],
+      ["Yakitori Muk",37.5646654,126.9245756,"LGY_840_D300",0,"SEOUL, SOUTH KOREA"],
+      ["Bullae",37.534573,127.0087808,"LGA_1800_S",0,"SEOUL, SOUTH KOREA"],
+      ["Gowooga — Gwanghwamun",37.5684385,126.9780507,"LGY_840_D300_NS",0,"SEOUL, SOUTH KOREA"],
+      ["Eliot",37.5185644,127.0436289,"LGA_900_S",0,"SEOUL, SOUTH KOREA"],
+      ["Perigee",37.5112619,127.0494907,"LGY_610_D300_NS",1,"SEOUL, SOUTH KOREA"],
+      ["Godosik",37.5103054,127.1086519,"CUSTOM DIRECT-FIRE",0,"SEOUL, SOUTH KOREA"],
+      ["Log Seongsu",37.5464643,127.0425176,"LGY_840_D300",0,"SEOUL, SOUTH KOREA"],
+      ["Osteria Sotti",37.5789417,126.9721806,"LGY_610_D300",0,"SEOUL, SOUTH KOREA"],
+      ["Koshun — Apgujeong",37.5227037,127.0320513,"LSC_500_PA",0,"SEOUL, SOUTH KOREA"],
+      ["Pit Boys BBQ",37.7497141,126.6895147,"CUSTOM BBQ SMOKER",0,"GIMPO, SOUTH KOREA"],
+      ["Low & Slow",37.5340397,126.9942202,"CUSTOM BBQ SMOKER",0,"SEOUL, SOUTH KOREA"],
+      ["American Village",35.1620488,129.1189694,"LSO_4500_V1, LSV_850",0,"BUSAN, SOUTH KOREA"],
+      ["Daelim Changgo",37.5420299,127.0563762,"CUSTOM DIRECT-FIRE",0,"SEOUL, SOUTH KOREA"],
+      ["Smoke Train",37.5840842,127.0007525,"LSO_4500_REV_V1",0,"SEOUL, SOUTH KOREA"],
+      ["Jinseo Kalguksu",37.5728492,126.9732699,"LSO_3500_V1",0,"SEOUL, SOUTH KOREA"],
+      ["Slow Yard BBQ",37.5487733,126.9095255,"LSO_4500_V1",0,"SEOUL, SOUTH KOREA"],
+      ["Loco's BBQ — Gyeongnidan",37.5409566,126.9955175,"BBQ SMOKER TRAILER",0,"SEOUL, SOUTH KOREA"],
+      ["Manimal Smokehouse",37.5345186,126.9884469,"LSV_850",0,"SEOUL, SOUTH KOREA"],
+      ["Beodeunamu Brewery",37.7482296,128.8843596,"LSO_5500_V1",0,"GANGNEUNG, SOUTH KOREA"],
+      ["Ambassador Seoul — Pullman",37.5601792,127.0023953,"LGA_W1600_T",0,"SEOUL, SOUTH KOREA"],
+      ["Osteria Eden",37.5246691,127.0427083,"LGA_900_S",0,"SEOUL, SOUTH KOREA"],
+      ["Black Charcoal",37.4015841,126.6315578,"LGA_900_T",0,"INCHEON, SOUTH KOREA"],
+      ["Mallieoso",37.7330353,126.7099679,"LGA_1800_T, LGY_840_D300",0,"GIMPO, SOUTH KOREA"],
+      ["Manao",37.5340957,127.006177,"LGA_900_S",1,"SEOUL, SOUTH KOREA"],
+      ["Seoul Dining",37.5592198,127.0036135,"LGA_1800_S, LSC_500",1,"SEOUL, SOUTH KOREA"],
+      ["Fiod",36.3961868,127.4096651,"LGA_J1000_S",0,"DAEJEON, SOUTH KOREA"],
+      ["Byuldonbyul",33.3086406,126.1802146,"LGA_900_S",0,"JEJU, SOUTH KOREA"],
+      ["P01",37.5457474,126.9138933,"LGA_900_S",0,"SEOUL, SOUTH KOREA"],
+      ["RMW Carne",37.5348321,127.0008554,"LGA_J1000_S",1,"SEOUL, SOUTH KOREA"],
+      ["Lever",37.5225418,127.0412171,"LGA_900_S",0,"SEOUL, SOUTH KOREA"],
+      ["The Corner House",37.5234373,127.0377955,"LGA_900_T_NS",0,"SEOUL, SOUTH KOREA"],
+      ["Jitterbug",37.5191226,126.9033115,"LGA_1200_S",0,"SEOUL, SOUTH KOREA"],
+      ["Moonz BBQ",37.545652,127.048545,"LSO_4500 / 5500_V1",0,"SEOUL, SOUTH KOREA"],
+      ["Brace",null,null,"LGA_900_T",0,"SEOUL, SOUTH KOREA"],
+      ["Lamsturn Showroom & Office",37.8071602,126.8212755,"ALL SERIES ON DISPLAY",-1,"PAJU, SOUTH KOREA"]
     ];
     const catsOf = (p) => { const c = []; if (/LGA|LOW/.test(p)) c.push('asado'); if (/LGY/.test(p)) c.push('robata'); if (/LS[OVC]|SMOKER|LOW/i.test(p)) c.push('smoker'); if (/CUSTOM|TRAILER/i.test(p)) c.push('custom'); return c; };
     const countryOf = (place) => place.indexOf('KOREA') >= 0 ? 'Korea' : (place.indexOf(',') >= 0 ? place.split(',').pop().trim() : place.trim());
@@ -3574,11 +3574,11 @@ class Component extends DCLogic {
         const list = filtered.map(k => { const ti = tierIdx(k.m); const showGroup = ti !== prevTier; prevTier = ti;
           return { name: k.name.replace(/&/g, '&'), place: k.place, prods: k.prods, s1: ti <= 2, s2: ti <= 1, s3: ti === 0, guide: ti === 3, showGroup, group: gl[ti], groupCount: counts[ti], gS1: ti <= 2, gS2: ti <= 1, gS3: ti === 0, gGuide: ti === 3, hasPin: k.lat != null, onFocus: () => this.focusPin(k.id) }; });
         const COL = {
-          EN:['RESTAURANT','LOCATION','GRILL','GUIDE'],
-          ES:['RESTAURANTE','UBICACIÓN','GRILL','GUÍA'],
-          ZH:['餐厅','城市','烤炉','评级'],
-          FR:['RESTAURANT','LIEU','GRIL','GUIDE'],
-          JA:['レストラン','所在地','グリル','評価']
+          EN:['RESTAURANT','LOCATION','GRILL'],
+          ES:['RESTAURANTE','UBICACIÓN','GRILL'],
+          ZH:['餐厅','城市','烤炉'],
+          FR:['RESTAURANT','LIEU','GRIL'],
+          JA:['レストラン','所在地','グリル']
         };
         const col = COL[lang] || COL.EN;
         // Stars awarded per tier. m = 4 is three stars — wired ahead of the data landing.
@@ -3592,7 +3592,7 @@ class Component extends DCLogic {
           kCount: kitchens.length, kMich: kitchens.filter(k => k.m > 0).length, kSlogan,
           kCities: new Set(kitchens.filter(k => k.lat != null).map(k => k.place.split('—')[0].split(',')[0].trim())).size,
           kCountries: new Set(kitchens.filter(k => k.lat != null).map(k => k.country)).size,
-          kShown: shown.length, kList: list, colR: col[0], colLoc: col[1], colG: col[2], colGuide: col[3],
+          kShown: shown.length, kList: list, colR: col[0], colLoc: col[1], colG: col[2],
           // The 3-star chip stays hidden until at least one venue carries m = 4.
           kHasThree: kitchens.some(k => k.m === 4),
           kcAll: chip('all'), kcMichelin: chip('michelin'), kcMichelinThree: chip('michelin-3'), kcMichelinTwo: chip('michelin-2'), kcMichelinOne: chip('michelin-1'), kcMichelinGuide: chip('michelin-guide'), kcAsado: chip('asado'), kcRobata: chip('robata'), kcSmoker: chip('smoker'), kcCustom: chip('custom'),
