@@ -5,8 +5,8 @@ brand (asado / robata / smokers), targeting international professional-kitchen i
 
 This file briefs you (Claude Code) on how the project is built so you can make changes safely.
 
-Last verified against the build: **2026-07-27** (0723 final build + dead-key cleanup,
-`index.html` ≈ 329 KB).
+Last verified against the build: **2026-08-18** (tag v1.14, commit `4be4ab5`,
+`index.html` 385,971 bytes).
 
 ---
 
@@ -57,7 +57,7 @@ real `<head>`, deliberately.
 |---|---|
 | Page routing (home / products / about / contact / compare / product-detail) | `state.page`, the `go(p)` method, and `nav*` vals in `renderVals()` |
 | Per-page SEO (title/description/canonical/og) | `seoForPage(p)` + `urlForPage(p)` + `pageFromUrl()`. **Every indexable route needs an entry in all three, and a matching row in `sections`/`products` inside `scripts/build-static-pages.mjs`** — the script emits the static HTML that crawlers actually fetch, the logic class keeps the meta in step during SPA navigation. |
-| **All UI copy**, 5 languages, **264 keys each** | the **`T`** object, line ~1256 — keys `EN`, `ES`, `ZH`, `FR`, `JA` |
+| **All UI copy**, 5 languages, **274 keys each** | the **`T`** object, line ~1854 — keys `EN`, `ES`, `ZH`, `FR`, `JA` |
 | **Product-detail body copy** | also in **`T`** — the 69 `dj*` (J900) and `dy*` (LGY) keys |
 | Detail-page eyebrows / intros / breadcrumbs / CTAs | the **`DT`** object — **20 keys** per language |
 | How the template sees copy | `renderVals()` does `const t = Object.assign({}, T[lang], DT[lang])` — so **both** objects are read as `{{ t.someKey }}`; there is no `dt.` namespace in the template |
@@ -66,8 +66,8 @@ real `<head>`, deliberately.
 | Product card order | the order entries are written in the catalog JSON **is** the display order — `prep()` does not sort. To reorder cards, move the lines. |
 | Grill piece counts (`g`) | a count is written ` ×N` — whitespace, `×`, digits with **no gap** (`W378×D495 ×2`), and may appear anywhere in the value, so a model with two grills reads `W258×D270 ×3 · W565×D270 ×2`. Dimensions must keep their own shape — `A×B` (no space before `×`) or `A × B` (space after it) — because `displayDimensions` tells the two apart by exactly that. Never put letters after a number (`2ea`, `SUS304`): they are converted as inches. One grill carries no marker. The card/compare row is labelled `t.lblMainGrill`; resting-grill sizes live on detail pages only. |
 | Depth pairs (LGY_610_D300 / _D400 …) | two separate cards sharing one detail page: the **D300** entry carries the full `detail` payload plus `detail.model` (the family code, so the ProductGroup JSON-LD is not named after one card), the **D400** entry carries `detailOf: {slug, page}` — a link-only reference the generator ignores. The detail page's own CTA still opens a depth chooser, built by grouping catalog codes in `renderVals` (`depthReg`). |
-| Kitchens map + restaurant list | Leaflet; venue data in `const D` (line ~1127), mapped to `this._inst` at line ~1210 |
-| Kitchens tier/column labels per language | `GRP` (line ~3128) and `COL` (line ~3143) |
+| Kitchens map + restaurant list | Leaflet; venue data in `const D` (line ~1490), mapped to `this._inst` by `installs()` at line ~1487 |
+| Kitchens tier/column labels per language | `GRP` (line ~3558) and `COL` (line ~3573) |
 | Tweakable props (`lang`, `showMichelin`) | `data-props` on the `<script data-dc-script>` tag |
 
 ### Kitchens / Michelin data
@@ -131,7 +131,7 @@ fills all carry `color:#ffffff` (6.4:1). Translucent accents use `rgba(254,42,89
 Every text string exists once per language inside `T` (and `DT`). To change wording, edit the matching
 key in **each** language object. Keys must stay identical across all five languages —
 they currently are (274 in `T`, 20 in `DT`, all five languages aligned, no untranslated leftovers).
-Every one of the 293 merged keys is referenced by the template or logic; there are no unused keys.
+Every one of the 294 merged keys is referenced by the template or logic; there are no unused keys.
 
 Do **not** translate: model codes (`LGA_900_S`…), dimensions, weights, phone numbers, email.
 Some values are legitimately identical to English (`SHOWROOM` in ES; `CONTACT`, `SITE`, `MESSAGE *`,
@@ -141,7 +141,7 @@ Some values are legitimately identical to English (`SHOWROOM` in ES; `CONTACT`, 
 
 On 2026-08-06, `ms2024` (the 2024 About-timeline milestone, × 5 languages) was removed
 together with its template row on the owner's request — do not restore the 2024 row.
-(`photoSoon` was added the same day, so `T` stays at 264 keys per language.)
+(`photoSoon` was added the same day, so `T` held at 264 keys then; later work has taken it to 274.)
 
 On 2026-07-27, **52 unused keys (× 5 languages = 260 lines)** were deleted after verifying that
 nothing in the template or logic referenced them:
@@ -168,10 +168,10 @@ home range strip), so edits must be made in both places.
 
 ## Photos — IMPORTANT
 
-Real photos live in **`assets/photos/`** (74 files) and videos in **`assets/video/`**
-(`reel-1.mp4` … `reel-7.mp4`).
+Real photos live in **`assets/photos/`** (121 files) and videos in **`assets/video/`**
+(`reel-1.mp4` … `reel-11.mp4`).
 
-There are **68 `image-slot` slots**: **36 are filled** (they carry a `src=`) and
+There are **67 `image-slot` slots**: **35 are filled** (they carry a `src=`) and
 **32 are still empty drop-zone placeholders** rendered by `image-slot.js` as labelled grey boxes.
 Every empty slot is on a product-detail page — the home, products, about and contact pages are
 fully illustrated.
@@ -186,7 +186,7 @@ A filled slot looks like this:
 ### To add / replace a photo
 1. Drop the image file into `assets/photos/` (webp or jpg; keep files small).
 2. Find the slot by its `id` and **add a `src="assets/photos/YOUR-FILE.webp"` attribute** to the
-   existing `<x-import>` tag — that is how all 36 filled slots are done. (Replacing the tag with a
+   existing `<x-import>` tag — that is how all 35 filled slots are done. (Replacing the tag with a
    plain `<img style="width:100%;height:100%;object-fit:cover;display:block">` also works.)
 3. To swap an existing photo, replace the file in `assets/photos/` (same name) or edit the `src`.
 4. For dimension drawings use `fit="contain"` rather than `cover`.
@@ -194,7 +194,7 @@ A filled slot looks like this:
 ### Empty slots still needing photos (32)
 - **J900 detail** (8): `j900-build1`, `j900-build2`, `j900-q1`, `j900-q2`, `j900-dim-size`,
   `j900-exploded`, `j900-cross`, `j900-video`
-- **LGY_610 detail** (16): `lgy-hero`, `lgy-d1`, `lgy-d2`, `lgy-d3`, `lgy610-smoke`, `lgy610-q1`,
+- **LGY_610 detail** (13): `lgy-hero`, `lgy-d1`, `lgy-d2`, `lgy-d3`, `lgy610-smoke`, `lgy610-q1`,
   `lgy610-q2`, `lgy610-dim-size`, `lgy610-dim-height`, `lgy610-exploded`, `lgy610-cross`,
   `lgy610-video`, `lgy610-chef`
 - **LGY_840 detail** (11): `lgy840-d2`, `lgy840-d3`, `lgy840-smoke`, `lgy840-q1`, `lgy840-q2`,
@@ -204,9 +204,12 @@ A filled slot looks like this:
 `image-slot.js` is only needed while empty placeholders remain. Once every slot has a real image,
 it and the `<x-import … image-slot …>` wrappers can be dropped.
 
-Unused asset files (kept intentionally): `assets/photos/b-p5.webp` (oven — no oven card),
-`assets/lamsturn-ci.svg` (dark-background variant; the site is dark so it uses `-white`),
+Unused asset files (kept intentionally): `assets/photos/b-p5.webp` (oven — no oven card) and
 `assets/michelin-face.png`.
+
+`assets/lamsturn-ci.svg` is **no longer unused** — the dark-on-light CI variant rides the white
+showroom pin (`pinIcon`, the `tier === -1` branch, index.html ~1672). Everywhere else on the dark
+page still uses `-white`.
 
 ---
 
@@ -235,11 +238,22 @@ Adding an indexable route means four places: `sections` in the script, plus `url
 silently renders Home; miss the script and the URL 404s. `deploy.yml` asserts all eight
 generated pages and the sitemap exist, so a regression fails the release.
 
-**Origin:** every canonical / og:url / sitemap entry uses `https://lamsturn.com` and is
-marked `SEO_ORIGIN`. The domain is not connected yet (2026-08-06) — when it is confirmed,
-swap that origin everywhere (`index.html`, `scripts/build-static-pages.mjs`, `robots.txt`),
-then register the site in Google Search Console and submit the sitemap. Until then the site
-is deliberately not indexable under the workers.dev URL.
+**Origin — read this before touching anything SEO.** Every canonical / og:url / sitemap entry
+uses `https://lamsturn.com` and is marked `SEO_ORIGIN`. That origin is **no longer an empty
+placeholder**: as of 2026-08-18 `lamsturn.com` is live and 301s to `www.lamsturn.com`, which
+serves the brand's **Korean Imweb shop** — a different site carrying the same product line-up.
+And `lamsturn.co.kr`, the address the Deploy section below still names for the Korean site,
+**no longer resolves at all** (NXDOMAIN); the Korean site moved onto `lamsturn.com`.
+
+So this site currently declares someone else's page as its canonical, while `robots.txt` says
+`Allow: /` and every page carries `index,follow` — the workers.dev URL **is** crawlable. The
+older claim that it was "deliberately not indexable under the workers.dev URL" was never true;
+do not repeat it.
+
+**Owner decision, 2026-08-18: workers.dev stays the canonical origin for now.** Swapping
+`SEO_ORIGIN` to `https://fire.kimin-271.workers.dev` across `index.html`,
+`scripts/build-static-pages.mjs` and `robots.txt` is agreed but **not done yet** — it is in
+Open items. Google Search Console registration waits for whichever origin turns out final.
 
 Image `alt`: `<image-slot>` takes an `alt` attribute (added to the component's
 `observedAttributes`). Product cards get `Lamsturn <code> — <badge>` from `altFor()` in
@@ -253,8 +267,10 @@ Static, no build step. `index.html` is the entry point.
 <https://fire.kimin-271.workers.dev/>. It is a *Worker*, not a Pages project — `wrangler deploy`,
 never `wrangler pages deploy`. Config is in `wrangler.toml` (`[assets] directory = "./_site"`).
 
-> **Do not deploy this site to the Pages project `lamsturn-website`.** That project serves the
-> separate Korean site at `lamsturn.co.kr`; deploying here would overwrite it.
+> **Do not deploy this site to the Pages project `lamsturn-website`.** It belongs to the Korean
+> site, not to this one, and deploying here would overwrite it. (Its old address
+> `lamsturn.co.kr` stopped resolving by 2026-08-18 and the Korean site now runs on Imweb at
+> `lamsturn.com` — but the Pages project is still not ours to overwrite.)
 
 Releases are deliberate — `.github/workflows/deploy.yml` runs **only** on manual dispatch from the
 Actions tab or on a `v*` tag push, so ordinary commits to `main` never reach production:
@@ -273,12 +289,23 @@ account, **expires 2027-08-01**) and `CLOUDFLARE_ACCOUNT_ID`.
 
 ## Open items
 - **32 empty photo slots on the three detail pages** (list above) — the biggest remaining gap.
-- Inquiry form is front-end only — wire it to a backend (Formspree/email) in `submit()`.
-- **Broken link:** the J900 detail page "TECH SHEET (PDF)" button (line ~663) points to
+- **Inquiry form is already wired — do not "add a backend".** `submit()` POSTs to
+  `https://lamsturn-inquiry-collector.kimin-271.workers.dev/inquiries` behind Cloudflare
+  Turnstile (sitekey `0x4AAAAAAEAkTMbGgp3JtTQi`), and sends the multi-model inquiry list the
+  product cards accumulate in `localStorage` under `lamsturn-inq`. Reachability verified
+  2026-08-18 (CORS preflight → 204). What remains open is **email delivery** of what the
+  collector stores.
+- **Broken link:** the J900 detail page "TECH SHEET (PDF)" button (line ~744) points to
   `uploads/26_LGA_J900_T_technical%20sheet%20share.pdf`, but there is no `uploads/` folder in the
-  bundle — it 404s in production. Either add the folder + PDF or remove the button.
-- Optional: PDF catalog download, OG meta tags.
-- About timeline years (2016/2020/2024) were estimates — confirm with the brand.
+  bundle. Re-confirmed 404 in production on 2026-08-18. Either add the folder + PDF or remove
+  the button.
+- **`SEO_ORIGIN` swap to the workers.dev origin** — agreed 2026-08-18, not started. Three files:
+  `index.html`, `scripts/build-static-pages.mjs`, `robots.txt` (see the Origin note in SEO).
+- **Four product cards have no hover (second) photo**: `LGA_W1600_T`, `LOW_800_S`,
+  `LOW_1100_S`, `LSO_1400_PA` — each has `<code>.webp` but no `<code>_2.webp`.
+- Optional: PDF catalog download.
+- About timeline years were estimates — confirm with the brand. The timeline now reads
+  2012 / 2016 / 2020 / 2026; the 2024 row was removed on 2026-08-06 (see Removed keys).
 - **Three-star venues are not in `const D` yet.** `michelinBlurb` says "Michelin three-star and
   two-star kitchens" while the data tops out at two stars (`m = 3`). This is deliberate — the
   three-star kitchens are to be added to the dataset shortly. **Do not "correct" the copy**; add
