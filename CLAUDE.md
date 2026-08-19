@@ -137,6 +137,18 @@ carries `m = 4`, so the tier stays invisible until it is real.
 Tier labels are translated in `GRP`; list column headers in `COL`. Badge icons come from
 `assets/michelin-star.webp`, `michelin-star-white.png`, `michelin-guide-white.png`, `michelin-bib.png`.
 
+**Tier descriptors sit one rung below Michelin's own mapping, deliberately.** `GRPD` (next to
+`GRP`) gives each group heading a line under its name — Michelin's wording for each distinction.
+Our tiers do not line up with Michelin's: there is no Bib Gourmand in `const D`, and `m = 1`
+means "listed in the Guide". So the owner chose (2026-08-19) to shift the scale down a rung —
+the Bib line "Good quality, good value cooking" lands on **MICHELIN GUIDE**, and the Selected
+Restaurants line "Good cooking" lands on **ALL RESTAURANTS**, which is not a Michelin tier at
+all. It reads as one descending scale, which is the intent. **Do not "correct" these back to
+Michelin's own tier mapping.**
+
+The ALL RESTAURANTS heading renders without a badge row at all — `gHasBadge` (`ti !== 4`) drops
+it, so the heading starts at its name rather than leaving an empty icon line.
+
 **Map markers** are built by `pinIcon(tier)` — a white body (disc + tail) with a red disc inset,
 following the Michelin Guide map. The disc takes the brand red `#C0012B` (see **Accent colour**
 below). Glyphs keep one size across tiers, so more stars means a wider disc (1 star 36px,
