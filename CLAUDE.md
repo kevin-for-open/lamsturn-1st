@@ -8,6 +8,13 @@ This file briefs you (Claude Code) on how the project is built so you can make c
 Last verified against the build: **2026-08-18** (tag v1.14, commit `4be4ab5`,
 `index.html` 393,796 bytes).
 
+> **This file is behind the build.** v1.15–v1.22 shipped after that verification and only the
+> parts they contradicted have been corrected — the Restaurants rename, the filter rework, the
+> J900 photos and the photo tool are described below, but `data-zoom` (drawings open full
+> screen), `data-band` (full-bleed bands drop to 48vh under 760px) and the shared section order
+> across the three detail pages are **not** written up anywhere yet. Verify against the file
+> before trusting a section that is not dated later than 2026-08-18.
+
 ---
 
 ## How to run it
@@ -57,7 +64,8 @@ real `<head>`, deliberately.
 |---|---|
 | Page routing (home / products / about / contact / compare / product-detail) | `state.page`, the `go(p)` method, and `nav*` vals in `renderVals()` |
 | Per-page SEO (title/description/canonical/og) | `seoForPage(p)` + `urlForPage(p)` + `pageFromUrl()`. **Every indexable route needs an entry in all three, and a matching row in `sections`/`products` inside `scripts/build-static-pages.mjs`** — the script emits the static HTML that crawlers actually fetch, the logic class keeps the meta in step during SPA navigation. |
-| **All UI copy**, 5 languages, **274 keys each** | the **`T`** object, line ~1854 — keys `EN`, `ES`, `ZH`, `FR`, `JA` |
+| **All UI copy**, 5 languages, **275 keys each** | the **`T`** object, line ~1854 — keys `EN`, `ES`, `ZH`, `FR`, `JA` |
+| Home Michelin proof band (hero → band → BASED ON CRAFT) | the `data-michband` section, ~line 204 |
 | **Product-detail body copy** | also in **`T`** — the 69 `dj*` (J900) and `dy*` (LGY) keys |
 | Detail-page eyebrows / intros / breadcrumbs / CTAs | the **`DT`** object — **20 keys** per language |
 | How the template sees copy | `renderVals()` does `const t = Object.assign({}, T[lang], DT[lang])` — so **both** objects are read as `{{ t.someKey }}`; there is no `dt.` namespace in the template |
@@ -103,10 +111,15 @@ physical space a grill is sized to fit — is correct as "kitchen" and must stay
   with the Restaurants page. It now renders `{{ kCount }}` — derived from `const D`, so adding a
   venue updates the home page too. Do not put a literal back.
 - `michelinBlurb`'s "60+ professional kitchens" is a **different quantity**. The sentence is
-  additive — starred rooms *and* 60+ others — and there are exactly 61 others, so **60+ is
-  correct**. Writing 78 there would claim 78 *on top of* the starred ones, i.e. 95 total.
-  **Do not "sync" this number to the hero.** (Its three-star claim is separately deliberate;
-  see Open items.)
+  additive — starred restaurants *and* 60+ others. It now reads "In service in Michelin-starred
+  restaurants", which is `m >= 2` = 10 venues, so the others are 69 and **60+ is correct**.
+  Writing 79 there would claim 79 *on top of* the starred ones, i.e. 89 total.
+  **Do not "sync" this number to the hero.** Owner reviewed both halves on 2026-08-19 and kept
+  60+ deliberately.
+- The three-star wording is **gone as of 2026-08-19**, on the owner's instruction. The sentence
+  said "three-star and two-star" while `const D` topped out at two stars; it now says
+  "Michelin-starred", which covers every tier. That is the durable form — when an `m = 4` venue
+  lands, this copy needs no edit, and neither does the band's star row (see below).
 
 `plan` reads "Plan your grill with us." rather than "your kitchen": its own block promises
 "custom sizes, accessories and layout — planned together with our engineers", so the grill is
@@ -153,8 +166,26 @@ it, so the heading starts at its name rather than leaving an empty icon line.
 following the Michelin Guide map. The disc takes the brand red `#C0012B` (see **Accent colour**
 below). Glyphs keep one size across tiers, so more stars means a wider disc (1 star 36px,
 2 stars 48px, 3 stars 64px); the fork & knife is an inline path, not the stroke icon used elsewhere.
-Markers are grouped by `markerGroup()`, rebuilt from scratch on every `refreshMarkers` — reusing one
-cluster group across filter changes made markercluster throw mid-loop and silently drop most pins.
+Markers are grouped by `markerGroup(owner)`, rebuilt from scratch on every `refreshMarkers` — reusing
+one cluster group across filter changes made markercluster throw mid-loop and silently drop most pins.
+**`owner` is not optional decoration:** the `clusterclick` handler used to read `this._map`, which
+`initMap` nulls on every page except Restaurants, so a second map's clusters would draw, accept the
+click and do nothing. Pass the owning map; never reintroduce `this._map` there.
+
+**There are two maps, on purpose.** Restaurants uses `initMap` / `refreshMarkers` / `focusPin` and
+`this._map`; the home band uses `initHomeMap` / `buildHomeMap` and `this._homeMap`, keyed to
+`id="lam-map-home"`. Home has no filter chips and no clickable list, so it needs neither
+`refreshMarkers` nor `focusPin` — it draws every pin once and fits. Keeping them separate is what
+leaves the Restaurants map, which carries all the markercluster scar tissue, untouched. Both share
+`pinIcon()`, `markerGroup()` and `pinMarker(k)`; `pinMarker` was extracted so the two cannot drift
+apart in popup markup. Each `init*Map` destroys its own instance when the page is not its page, so
+only one map is ever alive.
+
+The home map builds when the band is within about a screen of the viewport, tested on render and on
+a window `scroll` listener — **not** an `IntersectionObserver`. The observer is the tidier API but
+never fires in a non-compositing browser, which makes the map unverifiable and silently absent
+rather than loudly broken. The band's top sits near 790px, so on a normal viewport it builds at
+load anyway: treat it as a pre-fetch margin, not a deferral.
 For the same reason `removeOutsideVisibleBounds` is **off**: 78 markers never needed culling, and the
 culling path computes bounds that are not ready during a re-render. Do not re-enable it.
 
@@ -184,8 +215,10 @@ fills all carry `color:#ffffff` (6.4:1). Translucent accents use `rgba(254,42,89
 ### Editing copy / translations
 Every text string exists once per language inside `T` (and `DT`). To change wording, edit the matching
 key in **each** language object. Keys must stay identical across all five languages —
-they currently are (274 in `T`, 20 in `DT`, all five languages aligned, no untranslated leftovers).
-Every one of the 294 merged keys is referenced by the template or logic; there are no unused keys.
+they currently are (**275** in `T`, 20 in `DT`, all five languages aligned, no untranslated
+leftovers). Of the 295 merged keys, **one is unreferenced — `phCountry`** (a contact-form
+placeholder). That orphan predates 2026-08-19; it is not new, but the old claim that every key is
+referenced was already untrue. Check with a real reference scan, not by trusting this line.
 
 Do **not** translate: model codes (`LGA_900_S`…), dimensions, weights, phone numbers, email.
 Some values are legitimately identical to English (`SHOWROOM` in ES; `CONTACT`, `SITE`, `MESSAGE *`,
@@ -325,6 +358,7 @@ production and there is no switch to remember to flip before a release.
 ```bash
 node scripts/dev-server.mjs      # http://localhost:8123 — the site
 node scripts/photo-tool.mjs      # http://localhost:8130 — fill photo slots
+# and http://localhost:8123/scripts/preview-michelin-band.html — the home band, agreed 2026-08-19
 ```
 
 **`dev-server.mjs`** exists for one reason: the SPA fallback. The real routes
@@ -411,8 +445,13 @@ account, **expires 2027-08-01**) and `CLOUDFLARE_ACCOUNT_ID`.
 - Optional: PDF catalog download.
 - About timeline years were estimates — confirm with the brand. The timeline now reads
   2012 / 2016 / 2020 / 2026; the 2024 row was removed on 2026-08-06 (see Removed keys).
-- **Three-star venues are not in `const D` yet.** `michelinBlurb` says "Michelin three-star and
-  two-star kitchens" while the data tops out at two stars (`m = 3`). This is deliberate — the
-  three-star kitchens are to be added to the dataset shortly. **Do not "correct" the copy**; add
-  the venues instead, as `m = 4` rows. The whole `m = 4` tier is already built (see the tier table
-  above), so no code change is needed.
+- **Three-star venues are not in `const D` yet**, and nothing now claims otherwise — the copy was
+  changed to "Michelin-starred" on 2026-08-19. Adding one is still a single `m = 4` row: the tier
+  table, the `3 STARS` chip, the pin, and the home band's third star (an `sc-if` on `kHasThree`)
+  all switch on by themselves.
+- **Home map cluster clicks were never exercised in a real browser.** The `markerGroup(owner)`
+  fix of 2026-08-19 exists precisely so they work — the handler used to read `this._map`, which is
+  null on Home, so clusters would have taken the click and done nothing, silently. The fix is
+  sound by inspection but synthetic mouse and pointer events cannot drive Leaflet in the agent's
+  browser pane (verified against the Restaurants map as a control), so it shipped unverified.
+  Click a cluster on the home band and confirm it zooms or spiderfies.

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="/">
+<title>PREVIEW — Home Michelin band</title>
+<meta name="robots" content="noindex,nofollow">
+<!--
+  LOCAL PREVIEW ONLY — a replica, not the site. index.html is untouched.
+
+  Lives in scripts/, which .github/workflows/deploy.yml excludes (line 41), so it cannot ship.
+  Serve with `node scripts/dev-server.mjs`:
+      http://localhost:8123/scripts/preview-michelin-band.html
+
+  <base href="/"> is set so every relative asset path resolves exactly as it does in
+  index.html — which is what lets pinIcon() below be a verbatim copy of the real one.
+
+  The numbers and the map are NOT hardcoded: on load this page fetches /index.html, lifts
+  `const D` out of it and derives every figure from that array. So the preview always shows
+  the live dataset, and adding a venue to const D updates this page too.
+
+  The hero above the band and the craft section below it are trimmed replicas, present only
+  to show how the band sits between them. The hero is one static frame, not the 8-slide
+  crossfade.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<style>
+/* lifted from index.html's <style> block, trimmed to what this page uses */
+body{margin:0;background:#131110;color:#ebe6dd;font-family:Archivo,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}a:hover{color:#FE2A59}
+::selection{background:#C0012B;color:#ffffff}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:2px solid #FE2A59!important;outline-offset:3px}
+.leaflet-container{background:#131110}
+.leaflet-popup-content-wrapper{background:#1c1917;color:#ebe6dd;border:1px solid rgba(254,42,89,.5);border-radius:0;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.leaflet-popup-tip{background:#1c1917;border:1px solid rgba(254,42,89,.5)}
+.leaflet-popup-close-button{color:#ebe6dd!important}
+.leaflet-bar a{background:#1c1917!important;color:#ebe6dd!important;border-color:rgba(235,230,221,.25)!important}
+.lam-icon{background:none!important;border:none!important}
+.lam-pin{display:block;transform-origin:50% 100%;transition:transform .13s ease;filter:drop-shadow(0 2px 5px rgba(0,0,0,.6))}
+.lam-icon:hover .lam-pin,.lam-pin-on{transform:scale(1.16)}
+.lam-cluster{display:flex;align-items:center;justify-content:center;border-radius:50%;font:600 12.5px Archivo,sans-serif;letter-spacing:.02em;color:#ebe6dd;background:rgba(28,25,23,.94);border:1.5px solid rgba(211,7,43,.8);box-shadow:0 2px 10px rgba(0,0,0,.6);transition:transform .13s ease}
+.lam-cluster-m{border-color:#C0012B;box-shadow:0 0 0 3px rgba(211,7,43,.22),0 2px 10px rgba(0,0,0,.6)}
+.lam-icon:hover .lam-cluster{transform:scale(1.09)}
+@media (max-width:900px){[data-r2]{grid-template-columns:minmax(0,1fr)!important}[data-r2]>*{border-left:none!important;border-right:none!important;min-width:0!important}[data-rimg]{min-height:360px!important}}
+@media (max-width:760px){[data-herocta]{flex-wrap:nowrap!important}[data-herocta]>a{flex:1 1 0;text-align:center;padding-left:8px!important;padding-right:8px!important;white-space:nowrap}[data-heroband]{display:grid!important;grid-template-columns:1fr 1fr;align-content:center;align-items:start!important;row-gap:14px;column-gap:18px}[data-heroband]>div{flex:none!important}[data-heroband] span{font-size:11.5px!important}}
+
+/* preview chrome — none of this is part of the proposal */
+#pv{position:fixed;z-index:9999;right:14px;top:14px;background:rgba(19,17,16,.95);backdrop-filter:blur(6px);border:1px solid rgba(254,42,89,.55);padding:13px 15px;font:400 11px 'IBM Plex Mono',monospace;color:#ebe6dd;width:262px;box-shadow:0 10px 30px rgba(0,0,0,.6);max-height:92vh;overflow:auto}
+#pv h4{margin:0 0 4px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#FE2A59}
+#pv .note{color:rgba(235,230,221,.5);line-height:1.5;margin:0 0 10px}
+#pv label{display:flex;align-items:flex-start;gap:8px;padding:6px 0;cursor:pointer;line-height:1.45;border-top:1px solid rgba(235,230,221,.14)}
+#pv .grp{margin-top:8px;padding-top:8px;border-top:1px solid rgba(235,230,221,.24);color:rgba(235,230,221,.5);letter-spacing:.1em;font-size:9.5px}
+#pv .grp+label{border-top:none}
+#pv input{accent-color:#FE2A59;margin:2px 0 0;flex:none}
+#pv .k{color:rgba(235,230,221,.55)}
+#pv button{margin-top:10px;width:100%;background:none;border:1px solid rgba(235,230,221,.28);color:#ebe6dd;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:7px;cursor:pointer}
+#pv button:hover{border-color:#FE2A59;color:#FE2A59}
+#pv .stat{margin-top:9px;padding-top:8px;border-top:1px solid rgba(235,230,221,.24);color:rgba(235,230,221,.45);line-height:1.5;font-size:10px}
+@media (max-width:900px){#pv{right:8px;top:8px;left:8px;width:auto}}
+</style>
+</head>
+<body>
+
+<div id="pv">
+  <h4>PREVIEW · NOT THE SITE</h4>
+  <p class="note">index.html은 그대로입니다. 끄고 켜며 비교하세요.</p>
+
+  <div class="grp">LAYOUT</div>
+  <label><input type="checkbox" id="o-map" checked><span>지도 표시 <span class="k">(PC 우측 / 모바일 하단)</span></span></label>
+  <label><input type="checkbox" id="o-bg" checked><span>밴드 배경 <span class="k">#1c1917</span> 패널</span></label>
+  <label><input type="checkbox" id="o-city" checked><span>도시 한 줄 표시</span></label>
+  <label><input type="checkbox" id="o-drop" checked><span>craft 줄에서 <span class="k">79 RESTAURANTS</span> 제거</span></label>
+
+  <div class="grp">TOP ICON</div>
+  <label><input type="radio" name="icon" id="i-bib" checked><span>michelin-bib.png <span class="k">— 흰색</span></span></label>
+  <label><input type="radio" name="icon" id="i-face"><span>michelin-face.png <span class="k">— 빕 얼굴 (빨강)</span></span></label>
+  <label><input type="radio" name="icon" id="i-none"><span>아이콘 없음</span></label>
+
+  <div class="grp">EYEBROW</div>
+  <label><input type="radio" name="eb" id="e-4" checked><span>MICHELIN-STARRED — WORLDWIDE<br><span class="k">★ 확정 — 390px에서 유일하게 1줄</span></span></label>
+  <label><input type="radio" name="eb" id="e-1"><span>IN SERVICE — MICHELIN-STARRED RESTAURANTS<br><span class="k">사이트의 em대시 리듬</span></span></label>
+  <label><input type="radio" name="eb" id="e-2"><span>MICHELIN-STARRED RESTAURANTS — WORLDWIDE<br><span class="k">교체되는 키와 같은 형태</span></span></label>
+  <label><input type="radio" name="eb" id="e-3"><span>IN SERVICE IN MICHELIN-STARRED RESTAURANTS<br><span class="k">원안, 하이픈만 수정 — 938px에서 2줄</span></span></label>
+  <label><input type="radio" name="eb" id="e-0"><span>In service in Michelin star restaurants<br><span class="k">원안 그대로 (소문자)</span></span></label>
+
+  <button id="o-off">전부 끄기 — 현재 홈 상태</button>
+  <div class="stat" id="pvstat">const D 읽는 중…</div>
+</div>
+
+<!-- ─────────────────────────────────────────────────────────────────────────
+     HERO — trimmed replica. One static frame instead of the 8-slide crossfade.
+     ───────────────────────────────────────────────────────────────────── -->
+<div style="position:relative;height:78vh;min-height:620px">
+  <div style="position:absolute;inset:0 0 96px 0">
+    <picture style="display:block;width:100%;height:100%">
+      <source media="(max-width: 760px)" srcset="assets/photos/b-hero-aug-01-mo.webp">
+      <img src="assets/photos/b-hero-aug-01.webp" alt="Lamsturn custom grill installation" style="display:block;width:100%;height:100%;object-fit:cover">
+    </picture>
+  </div>
+  <div style="position:absolute;inset:0 0 96px 0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 30%,rgba(19,17,16,0) 45%,rgba(19,17,16,.85) 90%,rgba(19,17,16,.4) 100%);pointer-events:none;z-index:5"></div>
+  <div style="position:absolute;left:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));right:max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));bottom:110px;pointer-events:none;z-index:10">
+    <div>
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:18px">SEOUL, KOREA — GRILL ATELIER</div>
+      <h1 style="margin:0;font:600 clamp(38px,7.5vw,72px)/1.05 Archivo,sans-serif;letter-spacing:-.025em;max-width:20ch">Steel. Fire.<br>Thirty millimetres.</h1>
+    </div>
+    <div data-herocta style="display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;pointer-events:auto">
+      <a style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;background:#C0012B;color:#ffffff">Request a quote</a>
+      <a style="cursor:pointer;font:600 13px Archivo,sans-serif;letter-spacing:.04em;padding:15px 28px;border:1px solid rgba(235,230,221,.4)">Explore the range</a>
+    </div>
+  </div>
+  <div data-heroband style="position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:0;min-height:96px;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));box-sizing:border-box;background:#131110;border-top:1px solid rgba(235,230,221,.28);pointer-events:none;z-index:10">
+    <div style="flex:1"><span style="font:500 16px 'IBM Plex Mono',monospace">STS 304</span><span style="font:400 13.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — BODY &amp; GRATES</span></div>
+    <div style="flex:1"><span style="font:500 16px 'IBM Plex Mono',monospace">GEAR-DRIVEN</span><span style="font:400 13.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — 30 MM STEPS</span></div>
+    <div style="flex:1"><span style="font:500 16px 'IBM Plex Mono',monospace">100% IN-HOUSE</span><span style="font:400 13.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5)"> — DESIGN TO WELD</span></div>
+    <div style="flex:0;white-space:nowrap"><span style="font:500 16px 'IBM Plex Mono',monospace">EST. 2012</span></div>
+  </div>
+</div>
+
+<!-- ─────────────────────────────────────────────────────────────────────────
+     ★ THE PROPOSED SECTION — two columns on PC, stacked on phones (data-r2).
+       LEFT  : bib icon · eyebrow · h2 · city line · stars · slogan · tiles · CTA
+       RIGHT : the map  (falls below the copy under 900px)
+     ───────────────────────────────────────────────────────────────────── -->
+<section id="band" data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid rgba(235,230,221,.18);background:#1c1917;padding-inline:max(0px, calc((100% - 1280px) / 2))">
+
+  <div style="padding:clamp(56px,8vh,84px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center">
+
+    <img id="topicon" src="assets/michelin-bib.png" alt="Michelin" style="width:62px;height:auto;display:block;margin:0 0 22px">
+
+    <div id="eyebrow" style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">MICHELIN-STARRED — WORLDWIDE</div>
+
+    <h2 style="margin:16px 0 0;font:600 clamp(30px,4.4vw,42px)/1.15 Archivo,sans-serif;letter-spacing:-.02em">Where chefs cook on Lamsturn.</h2>
+
+    <!-- Hong&nbsp;Kong / San&nbsp;Sebastián: U+00A0, so a place name never splits across lines.
+         In the real T key this must be written   — the template interpolates text, and a
+         literal &nbsp; would print as those six characters. -->
+    <p id="cityline" style="margin:18px 0 0;max-width:46ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">From Michelin-starred rooms in San&nbsp;Sebastián and Hong&nbsp;Kong to fine dining in Seoul.</p>
+
+    <!-- stars now sit on their own line above the slogan, at the 22px tile size -->
+    <div style="display:flex;gap:6px;align-items:center;margin-top:26px">
+      <img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;object-fit:contain;display:block">
+      <img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;object-fit:contain;display:block">
+    </div>
+    <div id="slogan" style="margin-top:10px;font:500 clamp(15px,1.9vw,21px)/1.35 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#FE2A59">—</div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:26px 40px;margin-top:32px">
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div style="display:flex;align-items:center;gap:10px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M4 2v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7 11v11"/><path d="M20 15V2a5 5 0 0 0-4 5v6a2 2 0 0 0 2 2h2v7"/></svg>
+          <div id="n-rest" style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">—</div>
+        </div>
+        <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">RESTAURANTS</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div style="display:flex;align-items:center;gap:10px">
+          <img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;flex:none;object-fit:contain;display:block">
+          <div id="n-mich" style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">—</div>
+        </div>
+        <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">MICHELIN LISTED</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div style="display:flex;align-items:center;gap:10px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M2.5 21h19"/><path d="M5 21V6.5L11 3v18"/><path d="M11 21V10.5h7.5V21"/><path d="M7.7 8.4h.01M7.7 12.2h.01M7.7 16h.01M14.6 14h.01M14.6 17.4h.01"/></svg>
+          <div id="n-city" style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">—</div>
+        </div>
+        <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">CITIES</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div style="display:flex;align-items:center;gap:10px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4"/><path d="M12 2.8a14 14 0 0 1 3.7 9.2 14 14 0 0 1-3.7 9.2 14 14 0 0 1-3.7-9.2A14 14 0 0 1 12 2.8z"/></svg>
+          <div id="n-ctry" style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">—</div>
+        </div>
+        <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">COUNTRIES</div>
+      </div>
+    </div>
+
+    <a style="cursor:pointer;display:inline-block;align-self:flex-start;margin-top:32px;font:600 15px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#FE2A59;border-bottom:2px solid #FE2A59;padding-bottom:4px">SEE THE MAP →</a>
+  </div>
+
+  <div id="mapcell" data-rimg style="display:flex;flex-direction:column;min-height:520px;border-left:1px solid rgba(235,230,221,.18)">
+    <div id="lam-map-preview" style="flex:1;min-height:0;background:#1c1917"></div>
+    <div style="flex:none;padding:9px clamp(20px,5vw,48px) 12px;font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.4)">CITY-LEVEL POSITIONS — CLICK A PIN FOR THE RESTAURANT &amp; ITS GRILL</div>
+  </div>
+
+</section>
+
+<!-- ─────────────────────────────────────────────────────────────────────────
+     CRAFT — the existing second section (index.html:204), replicated so the
+     transition is visible. The RESTAURANTS tile is the one under discussion.
+     ───────────────────────────────────────────────────────────────────── -->
+<section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid rgba(235,230,221,.18);padding-inline:max(0px, calc((100% - 1280px) / 2))">
+  <div style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center;gap:22px">
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">BASED ON CRAFT</div>
+    <h2 style="margin:0;font:600 clamp(30px,5vw,42px)/1.15 Archivo,sans-serif;letter-spacing:-.02em">Hand-built, gear-driven, <span style="color:#FE2A59">exact</span>.</h2>
+    <p style="margin:0;max-width:46ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.65)">Every grill is fabricated from stainless steel 304 — 9 mm charcoal trays, fully welded 1.5 mm pipe frames, front panels coated to 600 °C. The cogwheel gear moves the grate in 30 mm steps: no electronics, nothing to fail, the same position every service. And behind every grill, <span style="color:#ebe6dd">a single master</span> — from first cut to final weld.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:28px 44px;margin-top:10px">
+      <div><div style="font:600 34px Archivo,sans-serif;letter-spacing:-.02em">2012</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:5px">FOUNDED</div></div>
+      <div><div style="font:600 34px Archivo,sans-serif;letter-spacing:-.02em">100%</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:5px">IN-HOUSE</div></div>
+      <div id="crafttile" style="outline:1px dashed rgba(254,42,89,.5);outline-offset:6px"><div id="n-rest2" style="font:600 34px Archivo,sans-serif;letter-spacing:-.02em">—</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:5px">RESTAURANTS</div></div>
+      <div><div style="font:600 34px Archivo,sans-serif;letter-spacing:-.02em">5-YR</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:5px">WARRANTY</div></div>
+    </div>
+  </div>
+  <div data-rimg style="position:relative;min-height:520px;border-left:1px solid rgba(235,230,221,.18)">
+    <img src="assets/photos/c-craft.png" alt="Lamsturn asado grill built into a professional kitchen counter" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+  </div>
+</section>
+
+<div style="padding:56px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 90px;border-top:1px solid rgba(235,230,221,.18);font:400 11px/1.8 'IBM Plex Mono',monospace;color:rgba(235,230,221,.4)">
+  ↑ 실제 홈은 여기서 <span style="color:rgba(235,230,221,.7)">30 MM STEPS</span> 섹션으로 이어집니다. 이 미리보기는 밴드 전후만 담았습니다.
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  // ── the real pinIcon(), copied verbatim from index.html ────────────────────
+  function pinIcon(tier) {
+    var RED = '#C0012B';
+    var shell = function (redR, inner) {
+      var R = redR + 3, cx = R, cy = R;
+      var tip = 2 * R + R * 0.44, half = R * 0.30;
+      var a = Math.asin(half / R), jx = Math.sin(a) * R, jy = Math.cos(a) * R;
+      var d = 'M' + (cx + jx).toFixed(2) + ' ' + (cy + jy).toFixed(2)
+        + 'A' + R + ' ' + R + ' 0 1 0 ' + (cx - jx).toFixed(2) + ' ' + (cy + jy).toFixed(2)
+        + 'L' + cx + ' ' + tip.toFixed(2) + 'Z';
+      var w = 2 * R, h = +tip.toFixed(1);
+      return L.divIcon({ className: 'lam-icon', iconSize: [w, h], iconAnchor: [w / 2, h], popupAnchor: [0, -h + 8],
+        html: '<svg class="lam-pin" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" xmlns="http://www.w3.org/2000/svg">'
+          + '<path d="' + d + '" fill="#ffffff"/><circle cx="' + cx + '" cy="' + cy + '" r="' + redR + '" fill="' + RED + '"/>'
+          + inner(cx, cy) + '</svg>' });
+    };
+    if (tier === -1) {
+      return L.divIcon({ className: 'lam-icon', iconSize: [60, 37], iconAnchor: [19, 37], popupAnchor: [0, -30],
+        html: '<svg class="lam-pin" width="60" height="37" viewBox="0 0 60 37" xmlns="http://www.w3.org/2000/svg">'
+          + '<path d="M13 1H47A12 12 0 0 1 47 25H24.5L19 36L15.5 25H13A12 12 0 0 1 13 1Z" fill="#ffffff"/>'
+          + '<image href="assets/lamsturn-ci.svg" x="9" y="6" width="42" height="14"/></svg>' });
+    }
+    var FK = 'M0.05 5.9V0.3H0.9V5.5H1.8V0.3H2.65V5.5H3.55V0.3H4.4V5.9'
+      + 'C4.4 7.05 3.85 7.9 2.95 8.25L3.37 20.15A0.62 0.62 0 0 1 2.75 20.8H1.7A0.62 0.62 0 0 1 1.08 20.15L1.5 8.25'
+      + 'C0.6 7.9 0.05 7.05 0.05 5.9Z'
+      + 'M9.65 0.4C8.25 0.95 7.2 2.6 7.0 4.6L6.55 8.2C6.4 9.55 7.4 10.62 8.7 10.64L8.35 20.15'
+      + 'A0.62 0.62 0 0 0 8.97 20.8H9.63A0.62 0.62 0 0 0 10.25 20.15L9.65 10.6Z';
+    var forkKnife = function (cx, cy, h) {
+      return '<g transform="translate(' + (cx - 11 * h / 21 / 2).toFixed(2) + ' ' + (cy - h / 2).toFixed(2) + ') scale(' + (h / 21).toFixed(4) + ')">'
+        + '<path d="' + FK + '" fill="#ffffff"/></g>';
+    };
+    var S = 18;
+    var star = function (cx, cy) {
+      return '<image href="assets/michelin-star-white.png" x="' + (cx - S / 2) + '" y="' + (cy - S / 2) + '" width="' + S + '" height="' + S + '"/>';
+    };
+    if (tier === 4) return shell(29, function (cx, cy) { return star(cx - 18.6, cy) + star(cx, cy) + star(cx + 18.6, cy); });
+    if (tier === 3) return shell(21, function (cx, cy) { return star(cx - 9.6, cy) + star(cx + 9.6, cy); });
+    if (tier === 2) return shell(15, function (cx, cy) { return star(cx, cy); });
+    if (tier === 1) return shell(15, function (cx, cy) { return '<image href="assets/michelin-guide-white.png" x="' + (cx - 10) + '" y="' + (cy - 10) + '" width="20" height="20"/>'; });
+    return shell(15, function (cx, cy) { return forkKnife(cx, cy, 21); });
+  }
+
+  // ── the real markerGroup(), copied verbatim ────────────────────────────────
+  function markerGroup(map) {
+    if (!L.markerClusterGroup) return L.layerGroup();
+    var g = L.markerClusterGroup({
+      showCoverageOnHover: false,
+      spiderfyOnMaxZoom: true,
+      spiderfyDistanceMultiplier: 1.6,
+      zoomToBoundsOnClick: false,
+      maxClusterRadius: 46,
+      spiderLegPolylineOptions: { weight: 1.5, color: '#ebe6dd', opacity: .45 },
+      removeOutsideVisibleBounds: false,
+      iconCreateFunction: function (c) {
+        var n = c.getChildCount();
+        var mich = c.getAllChildMarkers().some(function (x) { return x.options.lamM > 0; });
+        var d = n < 10 ? 34 : n < 40 ? 40 : 46;
+        return L.divIcon({
+          className: 'lam-icon',
+          html: '<div class="lam-cluster' + (mich ? ' lam-cluster-m' : '') + '" style="width:' + d + 'px;height:' + d + 'px">' + n + '</div>',
+          iconSize: [d, d], iconAnchor: [d / 2, d / 2]
+        });
+      }
+    });
+    g.on('clusterclick', function (e) {
+      var b = e.layer.getBounds();
+      if (b.getSouthWest().equals(b.getNorthEast())) { e.layer.spiderfy(); return; }
+      e.layer.zoomToBounds({ padding: [40, 40] });
+    });
+    return g;
+  }
+
+  var map = null, markers = null, pts = [];
+
+  function buildMap(D) {
+    var el = document.getElementById('lam-map-preview');
+    map = L.map(el, { scrollWheelZoom: false, worldCopyJump: true });
+    map.setView([20, 10], 2);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+      { attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19 }).addTo(map);
+
+    var batch = [];
+    D.forEach(function (d) {
+      var name = d[0], lat = d[1], lng = d[2], prods = d[3], m = d[4], place = d[5];
+      if (lat == null) return;
+      pts.push([lat, lng]);
+      var mk = L.marker([lat, lng], { icon: pinIcon(m), lamM: m, title: name, riseOnHover: true, zIndexOffset: m > 0 ? 400 : m === -1 ? 300 : 0 });
+      var bLine = function (icon, txt, col) {
+        return '<div style="display:flex;align-items:center;gap:5px;font-size:10.5px;margin-top:7px;padding-top:7px;border-top:1px solid rgba(235,230,221,.14);letter-spacing:.08em;color:' + col + '">' + icon + txt + '</div>';
+      };
+      var rStar = '<img src="assets/michelin-star.webp" alt="" style="width:13px;height:13px;display:block">';
+      var badge = m === 4 ? bLine(rStar + rStar + rStar, 'MICHELIN 3 STARS', '#ebe6dd')
+        : m === 3 ? bLine(rStar + rStar, 'MICHELIN 2 STARS', '#ebe6dd')
+        : m === 2 ? bLine(rStar, 'MICHELIN STAR', '#ebe6dd')
+        : m === 1 ? bLine('<img src="assets/michelin-guide-white.png" alt="" style="width:13px;height:13px;display:block">', 'MICHELIN GUIDE', '#ebe6dd')
+        : m === -1 ? bLine('', 'SHOWROOM — VISITS WELCOME', '#FE2A59') : '';
+      mk.bindPopup('<div style="font-family:Archivo,sans-serif;min-width:190px"><div style="font-weight:600;font-size:14px">' + name + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;opacity:.65;margin-top:3px;letter-spacing:.06em">' + place + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;color:#FE2A59;margin-top:6px">' + prods + '</div>' + badge + '</div>', { autoPan: false });
+      batch.push(mk);
+    });
+
+    markers = markerGroup(map);
+    map.addLayer(markers);
+    markers.addLayers(batch);
+    if (pts.length) map.fitBounds(pts, { padding: [40, 40] });
+  }
+
+  function refit() {
+    if (!map) return;
+    map.invalidateSize();
+    if (pts.length) map.fitBounds(pts, { padding: [40, 40] });
+  }
+
+  // ── derive every figure from the live const D ──────────────────────────────
+  function derive(D) {
+    var countryOf = function (p) { return p.indexOf('KOREA') >= 0 ? 'Korea' : (p.indexOf(',') >= 0 ? p.split(',').pop().trim() : p.trim()); };
+    var starsOf = function (m) { return m === 4 ? 3 : m === 3 ? 2 : m === 2 ? 1 : 0; };
+    var kitchens = D.filter(function (r) { return r[4] !== -1; });
+    var pinned = kitchens.filter(function (r) { return r[1] != null; });
+    return {
+      count: kitchens.length,
+      mich: kitchens.filter(function (r) { return r[4] > 0; }).length,
+      cities: new Set(pinned.map(function (r) { return r[5].split('—')[0].split(',')[0].trim(); })).size,
+      countries: new Set(pinned.map(function (r) { return countryOf(r[5]); })).size,
+      stars: kitchens.reduce(function (n, r) { return n + starsOf(r[4]); }, 0),
+      starred: kitchens.filter(function (r) { return r[4] >= 2; }).length
+    };
+  }
+
+  function extractD(src) {
+    var i = src.indexOf('const D =');
+    if (i < 0) throw new Error('const D not found in index.html');
+    var j = src.indexOf('[', i), depth = 0, k = j;
+    for (; k < src.length; k++) {
+      var c = src[k];
+      if (c === '[') depth++;
+      else if (c === ']') { depth--; if (depth === 0) { k++; break; } }
+    }
+    return eval('(' + src.slice(j, k) + ')');
+  }
+
+  fetch('index.html').then(function (r) { return r.text(); }).then(function (src) {
+    var D = extractD(src);
+    var v = derive(D);
+
+    document.getElementById('n-rest').textContent = v.count;
+    document.getElementById('n-rest2').textContent = v.count;
+    document.getElementById('n-mich').textContent = v.mich;
+    document.getElementById('n-city').textContent = v.cities;
+    document.getElementById('n-ctry').textContent = v.countries;
+    document.getElementById('slogan').textContent = v.stars + ' MICHELIN STARS ACROSS ' + v.starred + ' STARRED RESTAURANTS';
+    document.getElementById('pvstat').innerHTML =
+      'const D에서 직접 계산 · ' + D.length + '행<br>' + v.count + ' / ' + v.mich + ' / ' + v.cities + ' / ' + v.countries
+      + ' · ★' + v.stars + ' · 별받은 곳 ' + v.starred;
+
+    buildMap(D);
+    setTimeout(refit, 60);
+  }).catch(function (e) {
+    document.getElementById('pvstat').textContent = 'const D 읽기 실패: ' + e.message;
+  });
+
+  // ── preview toggles ───────────────────────────────────────────────────────
+  var band = document.getElementById('band');
+  var mapcell = document.getElementById('mapcell');
+  var city = document.getElementById('cityline');
+  var tile = document.getElementById('crafttile');
+  var icon = document.getElementById('topicon');
+  var eyebrow = document.getElementById('eyebrow');
+  var cb = function (id) { return document.getElementById(id); };
+
+  var EB = {
+    'e-1': 'IN SERVICE — MICHELIN-STARRED RESTAURANTS',
+    'e-2': 'MICHELIN-STARRED RESTAURANTS — WORLDWIDE',
+    'e-3': 'IN SERVICE IN MICHELIN-STARRED RESTAURANTS',
+    'e-4': 'MICHELIN-STARRED — WORLDWIDE',
+    'e-0': 'In service in Michelin star restaurants'
+  };
+
+  function apply() {
+    var showMap = cb('o-map').checked;
+    // 'flex', not '': assigning '' clears the inline display and the cell falls back to
+    // block, which collapses the flex:1 map to zero height.
+    mapcell.style.display = showMap ? 'flex' : 'none';
+    band.style.gridTemplateColumns = showMap ? 'minmax(0,1fr) minmax(0,1fr)' : 'minmax(0,1fr)';
+    band.style.background = cb('o-bg').checked ? '#1c1917' : 'transparent';
+    city.style.display = cb('o-city').checked ? '' : 'none';
+    tile.style.display = cb('o-drop').checked ? 'none' : '';
+    if (cb('i-none').checked) { icon.style.display = 'none'; }
+    else {
+      icon.style.display = 'block';
+      icon.src = cb('i-face').checked ? 'assets/michelin-face.png' : 'assets/michelin-bib.png';
+    }
+    Object.keys(EB).forEach(function (id) { if (cb(id).checked) eyebrow.textContent = EB[id]; });
+    if (showMap) setTimeout(refit, 40);
+  }
+
+  ['o-map', 'o-bg', 'o-city', 'o-drop', 'i-face', 'i-bib', 'i-none', 'e-1', 'e-2', 'e-3', 'e-4', 'e-0'].forEach(function (id) {
+    cb(id).addEventListener('change', apply);
+  });
+  cb('o-off').addEventListener('click', function () {
+    ['o-map', 'o-bg', 'o-city', 'o-drop'].forEach(function (id) { cb(id).checked = false; });
+    cb('i-none').checked = true;
+    band.style.display = 'none';
+    apply();
+  });
+  window.addEventListener('resize', function () { clearTimeout(window._rt); window._rt = setTimeout(refit, 180); });
+  apply();
+})();
+</script>
+
+</body>
+</html>

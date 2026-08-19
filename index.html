@@ -201,6 +201,36 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     </div>
   </div>
 
+  <!-- Michelin proof band. Every k* hole below is already spread into renderVals() at the
+       kitchens IIFE, on every page — no logic change was needed to read them here. The star
+       row is two stars plus an sc-if third, so adding an m = 4 row to `const D` still takes
+       one row and nothing else. The right cell's map is wired by initHomeMap(). -->
+  <section data-r2 data-michband style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid rgba(235,230,221,.18);background:#1c1917;padding-inline:max(0px, calc((100% - 1280px) / 2))">
+    <div style="padding:clamp(56px,8vh,84px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center">
+      <img src="assets/michelin-bib.png" alt="Michelin" style="width:62px;height:auto;display:block;margin:0 0 22px">
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.michelinEyebrow }}</div>
+      <h2 style="margin:16px 0 0;font:600 clamp(30px,4.4vw,42px)/1.15 Archivo,sans-serif;letter-spacing:-.02em">{{ t.kH1 }}</h2>
+      <p style="margin:18px 0 0;max-width:46ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.michelinIntro }}</p>
+      <div style="display:flex;gap:6px;align-items:center;margin-top:26px">
+        <img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;object-fit:contain;display:block">
+        <img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;object-fit:contain;display:block">
+        <sc-if value="{{ kHasThree }}" hint-placeholder-val="{{ false }}"><img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;object-fit:contain;display:block"></sc-if>
+      </div>
+      <div style="margin-top:10px;font:500 clamp(15px,1.9vw,21px)/1.35 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#FE2A59">{{ kSlogan }}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:26px 40px;margin-top:32px">
+        <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M4 2v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7 11v11"/><path d="M20 15V2a5 5 0 0 0-4 5v6a2 2 0 0 0 2 2h2v7"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kCount }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblKitchens }}</div></div>
+        <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;flex:none;object-fit:contain;display:block"><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kMich }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblMich }}</div></div>
+        <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M2.5 21h19"/><path d="M5 21V6.5L11 3v18"/><path d="M11 21V10.5h7.5V21"/><path d="M7.7 8.4h.01M7.7 12.2h.01M7.7 16h.01M14.6 14h.01M14.6 17.4h.01"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kCities }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblCities }}</div></div>
+        <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4"/><path d="M12 2.8a14 14 0 0 1 3.7 9.2 14 14 0 0 1-3.7 9.2 14 14 0 0 1-3.7-9.2A14 14 0 0 1 12 2.8z"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kCountries }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblCountries }}</div></div>
+      </div>
+      <a onClick="{{ goKitchens }}" style="cursor:pointer;display:inline-block;align-self:flex-start;margin-top:32px;font:600 15px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#FE2A59;border-bottom:2px solid #FE2A59;padding-bottom:4px">{{ t.seeMap }}</a>
+    </div>
+    <div data-rimg style="display:flex;flex-direction:column;min-height:520px;border-left:1px solid rgba(235,230,221,.18)">
+      <div id="lam-map-home" style="flex:1;min-height:0;background:#1c1917"></div>
+      <div style="flex:none;padding:9px clamp(20px,5vw,48px) 12px;font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.4)">{{ t.mapCaption }}</div>
+    </div>
+  </section>
+
   <section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1px solid rgba(235,230,221,.18);padding-inline:max(0px, calc((100% - 1280px) / 2))">
     <div style="padding:72px max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center;gap:22px">
       <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.craftEyebrow }}</div>
@@ -209,7 +239,6 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <div style="display:flex;flex-wrap:wrap;gap:28px 44px;margin-top:10px">
         <div><div style="font:600 34px Archivo,sans-serif;letter-spacing:-.02em">2012</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:5px">{{ t.lblFounded }}</div></div>
         <div><div style="font:600 34px Archivo,sans-serif;letter-spacing:-.02em">100%</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:5px">{{ t.lblInhouse }}</div></div>
-        <div><div style="font:600 34px Archivo,sans-serif;letter-spacing:-.02em">{{ kCount }}</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:5px">{{ t.lblProKitchens }}</div></div>
         <div><div style="font:600 34px Archivo,sans-serif;letter-spacing:-.02em">5-YR</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:5px">{{ t.lblWarranty }}</div></div>
       </div>
     </div>
@@ -1476,7 +1505,7 @@ class Component extends DCLogic {
     document.addEventListener('mouseout', (e) => { const slot = slotOf(e.target); if (!slot || !alt[slot.id]) return; if (slotOf(e.relatedTarget) === slot) return; if (slot.getAttribute('src') !== base[slot.id]) slot.setAttribute('src', base[slot.id]); });
   }
   componentDidMount() {
-    this.startTimer(); this.initMap(); this.initHoverPhotos(); this.initDiagramZoom();
+    this.startTimer(); this.initMap(); this.initHomeMap(); this.initHoverPhotos(); this.initDiagramZoom();
     const linkedPage = this.pageFromUrl();
     if (linkedPage) {
       this.setState({ page: linkedPage });
@@ -1514,11 +1543,12 @@ class Component extends DCLogic {
   componentDidUpdate() {
     this.syncDocumentLang(this.state.lang || this.props.lang || 'EN');
     this.initMap();
+    this.initHomeMap();
     this.initTurnstile();
     const f = this.state.kf || 'all';
     if (this._map && this._lastKf !== f) { this._lastKf = f; this.refreshMarkers(false); }
   }
-  componentWillUnmount() { try { window.removeEventListener('popstate', this._onPopState); } catch(e) {} clearInterval(this._t); clearInterval(this._lpoll); if (this._reelIO) { this._reelIO.disconnect(); this._reelIO = null; } if (this._map) { this._map.remove(); this._map = null; } if (this._turnstileWidgetId !== undefined && window.turnstile) { try { window.turnstile.remove(this._turnstileWidgetId); } catch(e) {} } }
+  componentWillUnmount() { try { window.removeEventListener('popstate', this._onPopState); } catch(e) {} clearInterval(this._t); clearInterval(this._lpoll); clearInterval(this._hpoll); if (this._reelIO) { this._reelIO.disconnect(); this._reelIO = null; } this.dropHomeScroll(); if (this._map) { this._map.remove(); this._map = null; } if (this._homeMap) { this._homeMap.remove(); this._homeMap = null; } if (this._turnstileWidgetId !== undefined && window.turnstile) { try { window.turnstile.remove(this._turnstileWidgetId); } catch(e) {} } }
   loadReelVideo(v) {
     if (!v) return;
     if (v._rsrc && v.getAttribute('src') !== v._rsrc) { v.src = v._rsrc; v.load(); }
@@ -1645,10 +1675,74 @@ class Component extends DCLogic {
     this._lastKf = this.state.kf || 'all';
     this.refreshMarkers(true);
   }
+  // The Home band's map. Deliberately a second, simpler instance rather than a generalisation of
+  // initMap: Home has no filter chips and no clickable list, so it needs no refreshMarkers and no
+  // focusPin — it draws every pin once and fits. Keeping the two apart means the Restaurants map,
+  // which carries all the markercluster scar tissue, is not touched at all.
+  //
+  // The map is built once the band is within about a screen of the viewport. The band's top sits
+  // near 790px, so on a normal desktop or phone that is immediately at load — the wait only bites
+  // on a short window. It is a pre-fetch margin, not a real deferral; do not describe it as one.
+  initHomeMap() {
+    if (this.state.page !== 'home') {
+      if (this._homeMap) { this._homeMap.remove(); this._homeMap = null; }
+      this.dropHomeScroll();
+      return;
+    }
+    if (this._homeMap) return;
+    const el = document.getElementById('lam-map-home');
+    if (!el) return;
+    // Deliberately a rect test on render + scroll rather than an IntersectionObserver. The
+    // observer is the tidier API, but it makes the map's appearance depend on a callback that
+    // cannot be exercised in a non-compositing browser — it never fires there, so the feature
+    // becomes unverifiable and fails silently rather than loudly. This path has no such hole:
+    // it is re-evaluated on every render and on scroll, and the listener sits on window, so a
+    // re-rendered node changes nothing.
+    if (!this._homeScroll) {
+      this._homeScroll = () => this.initHomeMap();
+      try { window.addEventListener('scroll', this._homeScroll, { passive: true }); } catch(e) {}
+    }
+    if (el.getBoundingClientRect().top > (window.innerHeight || 0) + 300) return;
+    this.dropHomeScroll();
+    this.buildHomeMap(el);
+  }
+  dropHomeScroll() {
+    if (!this._homeScroll) return;
+    try { window.removeEventListener('scroll', this._homeScroll); } catch(e) {}
+    this._homeScroll = null;
+  }
+  buildHomeMap(el) {
+    if (!el || this._homeMap || this.state.page !== 'home') return;
+    // Same bounded wait as initMap: without markercluster the map still comes up, unclustered.
+    this._hwait = (this._hwait || 0) + 1;
+    if (!window.L || (!L.markerClusterGroup && this._hwait < 20)) {
+      if (!this._hpoll) this._hpoll = setInterval(() => { clearInterval(this._hpoll); this._hpoll = null; this.buildHomeMap(document.getElementById('lam-map-home')); }, 200);
+      return;
+    }
+    const m = L.map(el, { scrollWheelZoom: false, worldCopyJump: true });
+    m.setView([20, 10], 2);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19 }).addTo(m);
+    this._homeMap = m;
+    const pts = [], batch = [];
+    this.installs().forEach(k => {
+      if (k.lat == null) return;
+      pts.push([k.lat, k.lng]);
+      batch.push(this.pinMarker(k));
+    });
+    this._homeMarkers = this.markerGroup(m);
+    m.addLayer(this._homeMarkers);
+    if (this._homeMarkers.addLayers) this._homeMarkers.addLayers(batch); else batch.forEach(mk => this._homeMarkers.addLayer(mk));
+    if (pts.length) m.fitBounds(pts, { padding: [40, 40] });
+    // The cell is a flex child, so its height is only final after layout settles.
+    setTimeout(() => { if (this._homeMap) { this._homeMap.invalidateSize(); if (pts.length) this._homeMap.fitBounds(pts, { padding: [40, 40] }); } }, 60);
+  }
   // A fresh group per refresh. Reusing one group across filter changes (clearLayers + addLayer)
   // leaves markercluster reading _zoom off a group it no longer considers attached, which throws
   // mid-loop and silently drops most pins.
-  markerGroup() {
+  // `owner` is the map this group belongs to. It used to read this._map directly, which is null
+  // on every page except Restaurants — so the Home map's clusters drew, took the click and did
+  // nothing, with no error. Pass the owning map instead of assuming there is only one.
+  markerGroup(owner) {
     if (!L.markerClusterGroup) return L.layerGroup();
     const g = L.markerClusterGroup({
       showCoverageOnHover: false,
@@ -1677,7 +1771,7 @@ class Component extends DCLogic {
       }
     });
     g.on('clusterclick', (e) => {
-      if (!this._map) return;
+      if (!owner) return;
       const b = e.layer.getBounds();
       // Kitchens sharing one coordinate never come apart by zooming — fan them out instead.
       // Dormant while no two kitchens share a point, but city-level coordinates keep producing them.
@@ -1730,6 +1824,20 @@ class Component extends DCLogic {
     if (tier === 1) return shell(15, (cx, cy) => '<image href="assets/michelin-guide-white.png" x="' + (cx - 10) + '" y="' + (cy - 10) + '" width="20" height="20"/>');
     return shell(15, (cx, cy) => forkKnife(cx, cy, 21));
   }
+  // One marker, icon and popup included. Extracted so the Home map draws pins identical to the
+  // Restaurants map instead of carrying a second copy of the popup markup that could drift.
+  pinMarker(k) {
+    const mk = L.marker([k.lat, k.lng], { icon: this.pinIcon(k.m), lamM: k.m, title: k.name, riseOnHover: true, zIndexOffset: k.m > 0 ? 400 : k.m === -1 ? 300 : 0 });
+    const bLine = (icon, txt, col) => '<div style="display:flex;align-items:center;gap:5px;font-size:10.5px;margin-top:7px;padding-top:7px;border-top:1px solid rgba(235,230,221,.14);letter-spacing:.08em;color:' + col + '">' + icon + txt + '</div>';
+    const rStar = '<img src="assets/michelin-star.webp" alt="" style="width:13px;height:13px;display:block">';
+    const badge = k.m === 4 ? bLine(rStar + rStar + rStar, 'MICHELIN 3 STARS', '#ebe6dd')
+      : k.m === 3 ? bLine(rStar + rStar, 'MICHELIN 2 STARS', '#ebe6dd')
+      : k.m === 2 ? bLine(rStar, 'MICHELIN STAR', '#ebe6dd')
+      : k.m === 1 ? bLine('<img src="assets/michelin-guide-white.png" alt="" style="width:13px;height:13px;display:block">', 'MICHELIN GUIDE', '#ebe6dd')
+      : k.m === -1 ? bLine('', 'SHOWROOM — VISITS WELCOME', '#FE2A59') : '';
+    mk.bindPopup('<div style="font-family:Archivo,sans-serif;min-width:190px"><div style="font-weight:600;font-size:14px">' + k.name.replace(/&/g, '&') + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;opacity:.65;margin-top:3px;letter-spacing:.06em">' + k.place + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;color:#FE2A59;margin-top:6px">' + k.prods + '</div>' + badge + '</div>', { autoPan: false });
+    return mk;
+  }
   refreshMarkers(fit) {
     if (!this._map || !window.L) return;
     const f = this.state.kf || 'all'; this._mk = {}; this._onPin = null; const pts = [], batch = [];
@@ -1737,19 +1845,11 @@ class Component extends DCLogic {
       if (k.lat == null) return;
       if (!this.kitchenFilterPass(k, f)) return;
       pts.push([k.lat, k.lng]);
-      const mk = L.marker([k.lat, k.lng], { icon: this.pinIcon(k.m), lamM: k.m, title: k.name, riseOnHover: true, zIndexOffset: k.m > 0 ? 400 : k.m === -1 ? 300 : 0 });
-      const bLine = (icon, txt, col) => '<div style="display:flex;align-items:center;gap:5px;font-size:10.5px;margin-top:7px;padding-top:7px;border-top:1px solid rgba(235,230,221,.14);letter-spacing:.08em;color:' + col + '">' + icon + txt + '</div>';
-      const rStar = '<img src="assets/michelin-star.webp" alt="" style="width:13px;height:13px;display:block">';
-      const badge = k.m === 4 ? bLine(rStar + rStar + rStar, 'MICHELIN 3 STARS', '#ebe6dd')
-        : k.m === 3 ? bLine(rStar + rStar, 'MICHELIN 2 STARS', '#ebe6dd')
-        : k.m === 2 ? bLine(rStar, 'MICHELIN STAR', '#ebe6dd')
-        : k.m === 1 ? bLine('<img src="assets/michelin-guide-white.png" alt="" style="width:13px;height:13px;display:block">', 'MICHELIN GUIDE', '#ebe6dd')
-        : k.m === -1 ? bLine('', 'SHOWROOM — VISITS WELCOME', '#FE2A59') : '';
-      mk.bindPopup('<div style="font-family:Archivo,sans-serif;min-width:190px"><div style="font-weight:600;font-size:14px">' + k.name.replace(/&/g, '&') + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;opacity:.65;margin-top:3px;letter-spacing:.06em">' + k.place + '</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;color:#FE2A59;margin-top:6px">' + k.prods + '</div>' + badge + '</div>', { autoPan: false });
+      const mk = this.pinMarker(k);
       this._mk[k.id] = mk; batch.push(mk);
     });
     if (this._markers) this._map.removeLayer(this._markers);
-    this._markers = this.markerGroup();
+    this._markers = this.markerGroup(this._map);
     // Attach the group before filling it, the order markercluster's own docs use. Filling first
     // parks the markers in a pending queue that is drained on add, which is a longer path for no
     // gain at 78 markers.
@@ -1945,7 +2045,6 @@ class Component extends DCLogic {
             "craftB3": " — from first cut to final weld.",
             "lblFounded": "FOUNDED",
             "lblInhouse": "IN-HOUSE",
-            "lblProKitchens": "RESTAURANTS",
             "lblWarranty": "WARRANTY",
             "precisionEyebrow": "PRECISION HEAT CONTROL",
             "precisionBody": "A cogwheel gear raises the grate in exact 30 mm steps — the difference between a hold, a roast, and a hard sear. One handle, immediate response, the same position every service, for decades.",
@@ -1968,7 +2067,9 @@ class Component extends DCLogic {
             "famSmokers": "Professional Smokers",
             "famIndoor": "Indoor Smokers",
             "famAcc": "Accessories",
-            "michelinBlurb": "In service in Michelin three-star and two-star restaurants — and 60+ professional kitchens worldwide.",
+            "michelinEyebrow": "MICHELIN-STARRED — WORLDWIDE",
+            "michelinIntro": "From Michelin-starred rooms in San\u00a0Sebastián and Hong\u00a0Kong to fine dining in Seoul.",
+            "michelinBlurb": "In service in Michelin-starred restaurants — and 60+ professional kitchens worldwide.",
             "seeMap": "SEE THE MAP →",
             "planEyebrow": "FROM FIRST DRAWING TO FIRST FIRE",
             "planSub": "Custom sizes, accessories and layout — planned together with our engineers, and delivered worldwide by Umzikim.",
@@ -2221,7 +2322,6 @@ class Component extends DCLogic {
             "craftB3": " — del primer corte a la última soldadura.",
             "lblFounded": "FUNDADA",
             "lblInhouse": "PRODUCCIÓN PROPIA",
-            "lblProKitchens": "RESTAURANTES",
             "lblWarranty": "GARANTÍA",
             "precisionEyebrow": "CONTROL PRECISO DEL CALOR",
             "precisionBody": "Un engranaje eleva la parrilla en pasos exactos de 30 mm — la diferencia entre mantener, asar y sellar a fuego fuerte. Una sola palanca, respuesta inmediata, la misma posición en cada servicio, durante décadas.",
@@ -2244,7 +2344,9 @@ class Component extends DCLogic {
             "famSmokers": "Ahumadores profesionales",
             "famIndoor": "Ahumadores de interior",
             "famAcc": "Accesorios",
-            "michelinBlurb": "En servicio en restaurantes con tres y dos estrellas Michelin — y más de 60 cocinas profesionales en todo el mundo.",
+            "michelinEyebrow": "CON ESTRELLA MICHELIN — EN TODO EL MUNDO",
+            "michelinIntro": "De salas con estrella Michelin en San\u00a0Sebastián y Hong\u00a0Kong a la alta cocina de Seúl.",
+            "michelinBlurb": "En servicio en restaurantes con estrella Michelin — y más de 60 cocinas profesionales en todo el mundo.",
             "seeMap": "VER EL MAPA →",
             "planEyebrow": "DEL PRIMER PLANO AL PRIMER FUEGO",
             "planSub": "Medidas, accesorios y distribución a medida — planificados junto a nuestros ingenieros y entregados en todo el mundo por Umzikim.",
@@ -2497,7 +2599,6 @@ class Component extends DCLogic {
             "craftB3": "—— 从第一刀到最后一道焊缝。",
             "lblFounded": "成立",
             "lblInhouse": "自主生产",
-            "lblProKitchens": "餐厅",
             "lblWarranty": "质保",
             "precisionEyebrow": "精准控热",
             "precisionBody": "齿轮机构以精确的 30 mm 步距升降炉架 —— 保温、慢烤与猛火炙封之别，尽在其中。一根手柄，即时响应，每次营业同一位置，历经数十年。",
@@ -2520,7 +2621,9 @@ class Component extends DCLogic {
             "famSmokers": "专业烟熏炉",
             "famIndoor": "室内烟熏炉",
             "famAcc": "配件",
-            "michelinBlurb": "已服务于米其林三星与二星餐厅 —— 以及全球 60 多间专业厨房。",
+            "michelinEyebrow": "米其林星级 — 全球",
+            "michelinIntro": "从圣塞瓦斯蒂安、香港的米其林星级餐厅，到首尔的高级餐饮。",
+            "michelinBlurb": "已服务于米其林星级餐厅 —— 以及全球 60 多间专业厨房。",
             "seeMap": "查看地图 →",
             "planEyebrow": "从第一张图纸到第一把火",
             "planSub": "定制尺寸、配件与布局 —— 与我们的工程师共同规划，并由 Umzikim 运送至全球。",
@@ -2773,7 +2876,6 @@ class Component extends DCLogic {
             "craftB3": " — de la première coupe à la dernière soudure.",
             "lblFounded": "FONDÉE",
             "lblInhouse": "FABRICATION INTÉGRÉE",
-            "lblProKitchens": "RESTAURANTS",
             "lblWarranty": "GARANTIE",
             "precisionEyebrow": "CONTRÔLE PRÉCIS DE LA CHALEUR",
             "precisionBody": "Un engrenage relève la grille par pas exacts de 30 mm — toute la différence entre maintenir, rôtir et saisir à vif. Une seule manette, une réponse immédiate, la même position à chaque service, pendant des décennies.",
@@ -2796,7 +2898,9 @@ class Component extends DCLogic {
             "famSmokers": "Fumoirs professionnels",
             "famIndoor": "Fumoirs d’intérieur",
             "famAcc": "Accessoires",
-            "michelinBlurb": "En service dans des restaurants à trois et deux étoiles Michelin — et plus de 60 cuisines professionnelles dans le monde entier.",
+            "michelinEyebrow": "ÉTOILÉS MICHELIN — DANS LE MONDE",
+            "michelinIntro": "Des salles étoilées de Saint-Sébastien et Hong\u00a0Kong à la haute gastronomie de Séoul.",
+            "michelinBlurb": "En service dans des restaurants étoilés Michelin — et plus de 60 cuisines professionnelles dans le monde entier.",
             "seeMap": "VOIR LA CARTE →",
             "planEyebrow": "DU PREMIER PLAN AU PREMIER FEU",
             "planSub": "Dimensions, accessoires et agencement sur mesure — planifiés avec nos ingénieurs et livrés dans le monde entier par Umzikim.",
@@ -3049,7 +3153,6 @@ class Component extends DCLogic {
             "craftB3": " — 最初の切断から最後の溶接まで。",
             "lblFounded": "創業",
             "lblInhouse": "自社一貫生産",
-            "lblProKitchens": "レストラン",
             "lblWarranty": "保証",
             "precisionEyebrow": "精密な火力コントロール",
             "precisionBody": "歯車機構がグレートを正確に 30 mm 刻みで上下させます — 保温、ロースト、強火焼きを分ける違いです。ハンドルひとつ、即座の反応、毎回同じ位置を、何十年も。",
@@ -3072,7 +3175,9 @@ class Component extends DCLogic {
             "famSmokers": "業務用スモーカー",
             "famIndoor": "屋内用スモーカー",
             "famAcc": "アクセサリー",
-            "michelinBlurb": "ミシュラン三つ星・二つ星のレストランで稼働中 — さらに世界各地の 60 を超えるプロの厨房で。",
+            "michelinEyebrow": "ミシュラン星付き — 全世界",
+            "michelinIntro": "サン・セバスティアンや香港のミシュラン星付きの部屋から、ソウルのファインダイニングまで。",
+            "michelinBlurb": "ミシュラン星付きのレストランで稼働中 — さらに世界各地の 60 を超えるプロの厨房で。",
             "seeMap": "地図を見る →",
             "planEyebrow": "最初の図面から、最初の炎まで",
             "planSub": "特注の寸法、付属品、レイアウトを、私たちのエンジニアと共に設計し、Umzikim が世界中へお届けします。",
