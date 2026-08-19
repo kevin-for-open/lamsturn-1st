@@ -1124,7 +1124,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59;margin-bottom:16px">{{ t.kEyebrow }}</div>
     <h1 style="margin:0;font:600 clamp(34px,6.5vw,56px)/1.08 Archivo,sans-serif;letter-spacing:-.025em">{{ t.kH1 }}</h1>
     <p style="margin:20px 0 0;max-width:60ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.kIntro }}</p>
-    <div style="margin-top:18px;font:500 12.5px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#FE2A59">{{ kSlogan }}</div>
+    <div style="margin-top:18px;font:500 clamp(15px,2.1vw,21px) 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#FE2A59">{{ kSlogan }}</div>
     <div style="display:flex;flex-wrap:wrap;gap:28px 44px;margin-top:28px">
       <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M4 2v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7 11v11"/><path d="M20 15V2a5 5 0 0 0-4 5v6a2 2 0 0 0 2 2h2v7"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kCount }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblKitchens }}</div></div>
       <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;flex:none;object-fit:contain;display:block"><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kMich }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblMich }}</div></div>
@@ -2103,7 +2103,7 @@ class Component extends DCLogic {
             "errVerification": "PLEASE COMPLETE THE SECURITY CHECK AND TRY AGAIN.",
             "errSubmit": "WE COULDN'T SEND YOUR INQUIRY. PLEASE TRY AGAIN.",
             "kEyebrow": "INSTALLATIONS — WORLDWIDE",
-            "kH1": "In service, tonight.",
+            "kH1": "Where chefs cook on Lamsturn.",
             "kIntro": "From Michelin-starred rooms in San Sebastián and Hong Kong to smokehouses in Seoul — every pin is a restaurant cooking on Lamsturn. Positions shown at city level.",
             "kSloganTpl": "{stars} MICHELIN STARS ACROSS {kitchens} STARRED RESTAURANTS",
             "kLblKitchens": "RESTAURANTS",
@@ -2379,7 +2379,7 @@ class Component extends DCLogic {
             "errVerification": "COMPLETA LA VERIFICACIÓN DE SEGURIDAD E INTÉNTALO DE NUEVO.",
             "errSubmit": "NO PUDIMOS ENVIAR TU CONSULTA. VUELVE A INTENTARLO.",
             "kEyebrow": "INSTALACIONES — EN TODO EL MUNDO",
-            "kH1": "En servicio, esta noche.",
+            "kH1": "Donde los chefs cocinan con Lamsturn.",
             "kIntro": "De salas con estrella Michelin en San Sebastián y Hong Kong a ahumaderos en Seúl — cada marcador es un restaurante que cocina con Lamsturn. Ubicaciones a nivel de ciudad.",
             "kSloganTpl": "{stars} ESTRELLAS MICHELIN EN {kitchens} RESTAURANTES ESTRELLADOS",
             "kLblKitchens": "RESTAURANTES",
@@ -2655,7 +2655,7 @@ class Component extends DCLogic {
             "errVerification": "\u8bf7\u5b8c\u6210\u5b89\u5168\u9a8c\u8bc1\u540e\u91cd\u8bd5\u3002",
             "errSubmit": "\u65e0\u6cd5\u53d1\u9001\u60a8\u7684\u54a8\u8be2\uff0c\u8bf7\u91cd\u8bd5\u3002",
             "kEyebrow": "装机案例 — 全球",
-            "kH1": "今夜，正在服务。",
+            "kH1": "厨师以 Lamsturn 烹饪的地方。",
             "kIntro": "从圣塞瓦斯蒂安、香港的米其林星级餐厅，到首尔的烟熏工坊 —— 每一个标记，都是一家以 Lamsturn 烹饪的餐厅。位置精确到城市。",
             "kSloganTpl": "米其林 {stars} 星 · {kitchens} 家星级餐厅",
             "kLblKitchens": "餐厅",
@@ -2931,7 +2931,7 @@ class Component extends DCLogic {
             "errVerification": "VEUILLEZ TERMINER LA VÉRIFICATION DE SÉCURITÉ PUIS RÉESSAYER.",
             "errSubmit": "NOUS N’AVONS PAS PU ENVOYER VOTRE DEMANDE. VEUILLEZ RÉESSAYER.",
             "kEyebrow": "INSTALLATIONS — DANS LE MONDE",
-            "kH1": "En service, ce soir.",
+            "kH1": "Où les chefs cuisinent sur Lamsturn.",
             "kIntro": "Des salles étoilées de Saint-Sébastien et Hong Kong aux fumoirs de Séoul — chaque repère est un restaurant qui cuisine sur Lamsturn. Positions à l’échelle de la ville.",
             "kSloganTpl": "{stars} ÉTOILES MICHELIN DANS {kitchens} RESTAURANTS ÉTOILÉS",
             "kLblKitchens": "RESTAURANTS",
@@ -3207,7 +3207,7 @@ class Component extends DCLogic {
             "errVerification": "\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3\u78ba\u8a8d\u3092\u5b8c\u4e86\u3057\u3066\u304b\u3089\u3001\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002",
             "errSubmit": "\u304a\u554f\u3044\u5408\u308f\u305b\u3092\u9001\u4fe1\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002",
             "kEyebrow": "導入実績 — 全世界",
-            "kH1": "今夜も、稼働中。",
+            "kH1": "シェフが Lamsturn で調理する場所。",
             "kIntro": "サン・セバスティアンや香港のミシュラン星付きの部屋から、ソウルのスモークハウスまで — すべてのピンが、Lamsturn で調理するレストランです。位置は都市単位で表示しています。",
             "kSloganTpl": "ミシュラン {stars} 星 ／ 星付きレストラン {kitchens} 軒",
             "kLblKitchens": "レストラン",
