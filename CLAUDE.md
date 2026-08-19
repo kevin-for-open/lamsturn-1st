@@ -345,6 +345,14 @@ account, **expires 2027-08-01**) and `CLOUDFLARE_ACCOUNT_ID`.
   `index.html`, `scripts/build-static-pages.mjs`, `robots.txt` (see the Origin note in SEO).
 - **Four product cards have no hover (second) photo**: `LGA_W1600_T`, `LOW_800_S`,
   `LOW_1100_S`, `LSO_1400_PA` — each has `<code>.webp` but no `<code>_2.webp`.
+- **`style-hover` does nothing — 63 dead attributes.** No code reads it: `support.js` does not
+  contain the string "hover" at all, and no rule in the `<style>` block matches the attribute.
+  The only real hover rules are `a:hover{color:#FE2A59}` and two map-pin scales, and any element
+  carrying an inline `color` (most of them) outranks that `a:hover` anyway. So the site has
+  almost no hover feedback, and 15 of those dead attributes still hold the pre-2026-08-14 orange
+  `#f06a2c`. Deferred by the owner on 2026-08-19 for a separate pass. Two things follow: do not
+  add more `style-hover` attributes expecting them to work, and reviving them means real CSS in
+  the `<style>` block with `!important`, as the filter chips now do via `[data-kchip]`.
 - Optional: PDF catalog download.
 - About timeline years were estimates — confirm with the brand. The timeline now reads
   2012 / 2016 / 2020 / 2026; the 2024 row was removed on 2026-08-06 (see Removed keys).
