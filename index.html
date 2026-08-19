@@ -1125,13 +1125,6 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <h1 style="margin:0;font:600 clamp(34px,6.5vw,56px)/1.08 Archivo,sans-serif;letter-spacing:-.025em">{{ t.kH1 }}</h1>
     <p style="margin:20px 0 0;max-width:60ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.kIntro }}</p>
     <div style="margin-top:18px;font:500 12.5px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#FE2A59">{{ kSlogan }}</div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:18px">
-      <a onClick="{{ kfMichelin }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelin }}"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain">{{ t.mfAll }}</a>
-      <sc-if value="{{ kHasThree }}" hint-placeholder-val="{{ false }}"><a onClick="{{ kfMichelinThree }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelinThree }}"><span style="display:inline-flex;gap:1px"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain"></span>{{ t.mfThree }}</a></sc-if>
-      <a onClick="{{ kfMichelinTwo }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelinTwo }}"><span style="display:inline-flex;gap:1px"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain"></span>{{ t.mfTwo }}</a>
-      <a onClick="{{ kfMichelinOne }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelinOne }}"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain">{{ t.mfOne }}</a>
-      <a onClick="{{ kfMichelinGuide }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:8px 12px;border:1px solid currentColor;color:{{ kcMichelinGuide }}"><img src="assets/michelin-guide-white.png" alt="" style="width:15px;height:15px;display:block;object-fit:contain">{{ t.mfGuide }}</a>
-    </div>
     <div style="display:flex;flex-wrap:wrap;gap:28px 44px;margin-top:28px">
       <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><path d="M4 2v7a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V2"/><path d="M7 11v11"/><path d="M20 15V2a5 5 0 0 0-4 5v6a2 2 0 0 0 2 2h2v7"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kCount }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblKitchens }}</div></div>
       <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><img src="assets/michelin-star-white.png" alt="" style="width:22px;height:22px;flex:none;object-fit:contain;display:block"><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kMich }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblMich }}</div></div>
@@ -1139,14 +1132,23 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <div style="display:flex;flex-direction:column;align-items:center"><div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ebe6dd" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="display:block;flex:none"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4"/><path d="M12 2.8a14 14 0 0 1 3.7 9.2 14 14 0 0 1-3.7 9.2 14 14 0 0 1-3.7-9.2A14 14 0 0 1 12 2.8z"/></svg><div style="font:600 30px Archivo,sans-serif;letter-spacing:-.02em;color:#FE2A59">{{ kCountries }}</div></div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.5);margin-top:4px;text-align:center">{{ t.kLblCountries }}</div></div>
     </div>
   </div>
-  <div style="padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 16px;display:flex;flex-wrap:wrap;gap:10px">
-    <a onClick="{{ kfAll }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ kcAll }}">{{ t.fAll }}</a>
-    <a onClick="{{ kfMichelin }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ kcMichelin }}">{{ t.fMichelin }}</a>
-    <a onClick="{{ kfAsado }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ kcAsado }}">ASADO — LGA</a>
-    <a onClick="{{ kfRobata }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ kcRobata }}">ROBATA — LGY</a>
-    <a onClick="{{ kfSmoker }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ kcSmoker }}">{{ t.fSmokers }}</a>
-    <a onClick="{{ kfCustom }}" style="cursor:pointer;font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:9px 14px;border:1px solid currentColor;color:{{ kcCustom }}">{{ t.fCustom }}</a>
+  <div style="padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 12px;display:flex;flex-wrap:wrap;gap:10px">
+    <a onClick="{{ kfAll }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px 16px;border:1px solid {{ kbAll }};color:{{ kcAll }}">{{ t.fAll }}</a>
+    <a onClick="{{ kfMichelin }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px 16px;border:1px solid {{ kbMichelin }};color:{{ kcMichelin }}"><img src="assets/michelin-star-white.png" alt="" style="width:15px;height:15px;flex:none;object-fit:contain">{{ t.fMichelin }}</a>
+    <a onClick="{{ kfAsado }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px 16px;border:1px solid {{ kbAsado }};color:{{ kcAsado }}">ASADO — LGA</a>
+    <a onClick="{{ kfRobata }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px 16px;border:1px solid {{ kbRobata }};color:{{ kcRobata }}">ROBATA — LGY</a>
+    <a onClick="{{ kfSmoker }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px 16px;border:1px solid {{ kbSmoker }};color:{{ kcSmoker }}">{{ t.fSmokers }}</a>
+    <a onClick="{{ kfCustom }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px 16px;border:1px solid {{ kbCustom }};color:{{ kcCustom }}">{{ t.fCustom }}</a>
   </div>
+  <sc-if value="{{ kMichelinOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2)) 16px;display:flex;flex-wrap:wrap;gap:8px">
+      <a onClick="{{ kfMichelin }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:1px solid {{ kbMichelinAll }};color:{{ kcMichelinAll }}"><span style="display:inline-flex;gap:3px;align-items:center"><img src="assets/michelin-star-white.png" alt="" style="width:14px;height:14px;flex:none;object-fit:contain"></span>{{ t.mfAll }}<span style="font-weight:400">{{ kMich }}</span></a>
+      <sc-if value="{{ kHasThree }}" hint-placeholder-val="{{ false }}"><a onClick="{{ kfMichelinThree }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:1px solid {{ kbMichelinThree }};color:{{ kcMichelinThree }}"><span style="display:inline-flex;gap:3px;align-items:center"><img src="assets/michelin-star-white.png" alt="" style="width:14px;height:14px;flex:none;object-fit:contain"><img src="assets/michelin-star-white.png" alt="" style="width:14px;height:14px;flex:none;object-fit:contain"><img src="assets/michelin-star-white.png" alt="" style="width:14px;height:14px;flex:none;object-fit:contain"></span>{{ t.mfThree }}<span style="font-weight:400">{{ kCnt3 }}</span></a></sc-if>
+      <a onClick="{{ kfMichelinTwo }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:1px solid {{ kbMichelinTwo }};color:{{ kcMichelinTwo }}"><span style="display:inline-flex;gap:3px;align-items:center"><img src="assets/michelin-star-white.png" alt="" style="width:14px;height:14px;flex:none;object-fit:contain"><img src="assets/michelin-star-white.png" alt="" style="width:14px;height:14px;flex:none;object-fit:contain"></span>{{ t.mfTwo }}<span style="font-weight:400">{{ kCnt2 }}</span></a>
+      <a onClick="{{ kfMichelinOne }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:1px solid {{ kbMichelinOne }};color:{{ kcMichelinOne }}"><span style="display:inline-flex;gap:3px;align-items:center"><img src="assets/michelin-star-white.png" alt="" style="width:14px;height:14px;flex:none;object-fit:contain"></span>{{ t.mfOne }}<span style="font-weight:400">{{ kCnt1 }}</span></a>
+      <a onClick="{{ kfMichelinGuide }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:1px solid {{ kbMichelinGuide }};color:{{ kcMichelinGuide }}"><span style="display:inline-flex;gap:3px;align-items:center"><img src="assets/michelin-guide-white.png" alt="" style="width:14px;height:14px;flex:none;object-fit:contain"></span>{{ t.mfGuide }}<span style="font-weight:400">{{ kCntGuide }}</span></a>
+    </div>
+  </sc-if>
   <div style="padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
     <div id="lam-map" style="height:540px;background:#1c1917;border:1px solid rgba(235,230,221,.14)"></div>
     <div style="display:flex;justify-content:space-between;gap:12px;margin-top:10px;font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(235,230,221,.4)"><span>{{ t.mapCaption }}</span><span>{{ kShown }} {{ t.shownLabel }}</span></div>
@@ -3586,7 +3588,14 @@ class Component extends DCLogic {
         const kStars = kitchens.reduce((n, k) => n + starsOf(k.m), 0);
         const kStarred = kitchens.filter(k => k.m >= 2).length;
         const kSlogan = String(t.kSloganTpl || '').replace('{stars}', kStars).replace('{kitchens}', kStarred);
-        const chip = (v) => kf === v ? '#FE2A59' : 'rgba(235,230,221,.5)';
+        // Inactive chips used to be rgba(235,230,221,.5) — #7F7C77 composited, 4.51:1 at 11px, which
+        // is a pass on paper and unreadable in practice. Text now carries full weight; the border
+        // stays quiet so six lit chips do not read as six boxes.
+        const chip = (v) => kf === v ? '#FE2A59' : '#ebe6dd';
+        const chipB = (v) => kf === v ? '#FE2A59' : 'rgba(235,230,221,.28)';
+        // MICHELIN stays lit for every tier below it, or picking '2 STARS' would dim the parent
+        // whose own sub-menu is open. The sub-row's own 'MICHELIN ALL' keeps the exact match.
+        const michOpen = /^michelin/.test(kf);
         const setKf = (v) => () => this.setState({ kf: v });
         return {
           kCount: kitchens.length, kMich: kitchens.filter(k => k.m > 0).length, kSlogan,
@@ -3595,7 +3604,15 @@ class Component extends DCLogic {
           kShown: shown.length, kList: list, colR: col[0], colLoc: col[1], colG: col[2],
           // The 3-star chip stays hidden until at least one venue carries m = 4.
           kHasThree: kitchens.some(k => k.m === 4),
-          kcAll: chip('all'), kcMichelin: chip('michelin'), kcMichelinThree: chip('michelin-3'), kcMichelinTwo: chip('michelin-2'), kcMichelinOne: chip('michelin-1'), kcMichelinGuide: chip('michelin-guide'), kcAsado: chip('asado'), kcRobata: chip('robata'), kcSmoker: chip('smoker'), kcCustom: chip('custom'),
+          kMichelinOpen: michOpen,
+          kCnt3: kitchens.filter(k => k.m === 4).length, kCnt2: kitchens.filter(k => k.m === 3).length,
+          kCnt1: kitchens.filter(k => k.m === 2).length, kCntGuide: kitchens.filter(k => k.m === 1).length,
+          kbAll: chipB('all'), kbMichelin: michOpen ? '#FE2A59' : 'rgba(235,230,221,.28)',
+          kbMichelinAll: chipB('michelin'), kbMichelinThree: chipB('michelin-3'), kbMichelinTwo: chipB('michelin-2'),
+          kbMichelinOne: chipB('michelin-1'), kbMichelinGuide: chipB('michelin-guide'),
+          kbAsado: chipB('asado'), kbRobata: chipB('robata'), kbSmoker: chipB('smoker'), kbCustom: chipB('custom'),
+          kcMichelinAll: chip('michelin'),
+          kcAll: chip('all'), kcMichelin: michOpen ? '#FE2A59' : '#ebe6dd', kcMichelinThree: chip('michelin-3'), kcMichelinTwo: chip('michelin-2'), kcMichelinOne: chip('michelin-1'), kcMichelinGuide: chip('michelin-guide'), kcAsado: chip('asado'), kcRobata: chip('robata'), kcSmoker: chip('smoker'), kcCustom: chip('custom'),
           kfAll: setKf('all'), kfMichelin: setKf('michelin'), kfMichelinThree: setKf('michelin-3'), kfMichelinTwo: setKf('michelin-2'), kfMichelinOne: setKf('michelin-1'), kfMichelinGuide: setKf('michelin-guide'), kfAsado: setKf('asado'), kfRobata: setKf('robata'), kfSmoker: setKf('smoker'), kfCustom: setKf('custom')
         };
       })()
