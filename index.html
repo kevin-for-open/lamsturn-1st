@@ -753,23 +753,23 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <p style="margin:28px 0 0;max-width:62ch;font:400 clamp(16px,1.5vw,19px)/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.jIntro }}</p>
   </section>
 
-  <section style="position:relative;height:80vh;min-height:520px">
-    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-d1" src="assets/photos/j900-d1.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 26%,rgba(19,17,16,0) 46%,rgba(19,17,16,.88) 92%);pointer-events:none"></div>
-    <div style="position:absolute;left:0;right:0;bottom:8%;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djGearEye }}</div>
-      <h2 style="margin:14px 0 0;max-width:18ch;font:600 clamp(28px,4.6vw,56px)/1.04 Archivo,sans-serif;letter-spacing:-.02em">{{ t.djGearT }}</h2>
-      <p style="margin:18px 0 0;max-width:46ch;font:400 15px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.75)">{{ t.djGearB }}</p>
-    </div>
-  </section>
+<section data-r2 style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding-inline:max(0px, calc((100% - 1280px) / 2));align-items:center">
+  <div style="position:relative;aspect-ratio:4/3;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-d1" src="assets/photos/j900-d1.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
+  <div style="padding:clamp(60px,9vh,120px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));display:flex;flex-direction:column;justify-content:center;gap:20px">
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djGearEye }}</div>
+    <h2 style="margin:0;font:600 clamp(28px,3.8vw,46px)/1.08 Archivo,sans-serif;letter-spacing:-.02em">{{ t.djGearT }}</h2>
+    <p style="margin:0;max-width:46ch;font:400 15px/1.75 Archivo,sans-serif;color:rgba(235,230,221,.68)">{{ t.djGearB }}</p>
+  </div>
+</section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.djMatEye }}</div>
     <h2 style="margin:14px 0 0;max-width:20ch;font:600 clamp(28px,4.2vw,52px)/1.05 Archivo,sans-serif;letter-spacing:-.02em">{{ t.djMatT }}</h2>
     <p style="margin:18px 0 0;max-width:58ch;font:400 16px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.djMatB }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:40px">
-      <div style="aspect-ratio:4/5;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-build1" shape="rect" fit="cover" placeholder="Welded 304 frame — detail" hint-size="100%,100%"></x-import></div>
-      <div style="aspect-ratio:4/5;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-build2" shape="rect" fit="cover" placeholder="{{ jTrayPlaceholder }}" hint-size="100%,100%"></x-import></div>
+      <div style="aspect-ratio:4/5;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-build1" src="assets/photos/j900-build1.webp" shape="rect" fit="cover" placeholder="Welded 304 frame — detail" hint-size="100%,100%"></x-import></div>
+      <div style="aspect-ratio:4/5;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-build2" src="assets/photos/j900-build2.webp" shape="rect" fit="cover" placeholder="{{ jTrayPlaceholder }}" hint-size="100%,100%"></x-import></div>
+      <div style="aspect-ratio:4/5;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-build3" src="assets/photos/j900-build3.webp" shape="rect" fit="cover" placeholder="{{ jTrayPlaceholder }}" hint-size="100%,100%"></x-import></div>
     </div>
   </section>
 
@@ -783,7 +783,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   </section>
 
   <section style="position:relative;height:82vh;min-height:540px">
-    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-q1" shape="rect" fit="cover" placeholder="More than a grill — the finished piece" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-q1" src="assets/photos/j900-q1.webp" shape="rect" fit="cover" placeholder="More than a grill — the finished piece" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:rgba(19,17,16,.5)"></div>
     <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
       <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.djQualEye }}</div>
@@ -795,7 +795,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djCraftEye }}</div>
     <h2 style="margin:14px 0 0;font:600 clamp(32px,5.2vw,64px)/1.02 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djCraftT }}</h2>
-    <div style="aspect-ratio:21/9;background:#1c1917;margin-top:40px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-q2" shape="rect" fit="cover" placeholder="The Korean workshop — one master per grill" hint-size="100%,100%"></x-import></div>
+    <div style="aspect-ratio:21/9;background:#1c1917;margin-top:40px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-q2" src="assets/photos/j900-q2.webp" shape="rect" fit="cover" placeholder="The Korean workshop — one master per grill" hint-size="100%,100%"></x-import></div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px 44px;margin-top:48px">
       <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djPremEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djPremB }}</p></div>
       <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djOneEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djOneB }}</p></div>
@@ -808,17 +808,17 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <h2 style="margin:12px 0 0;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em;color:#131110">{{ t.djSizeT }}</h2>
     <p style="margin:14px 0 0;font:400 12px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);letter-spacing:.04em">{{ t.djDims }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:36px">
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-dim-size" shape="rect" fit="contain" placeholder="{{ jSizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-exploded" shape="rect" fit="contain" placeholder="Exploded view diagram" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblExploded }}</figcaption></figure>
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-cross" shape="rect" fit="contain" placeholder="Cross-section view" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblCross }}</figcaption></figure>
+      <figure style="margin:0"><div style="aspect-ratio:1000/842;padding:4%;box-sizing:border-box;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-dim-size" src="assets/photos/j900-dim-size.webp" shape="rect" fit="contain" placeholder="{{ jSizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
+      <figure style="margin:0"><div style="aspect-ratio:1000/448;padding:4%;box-sizing:border-box;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-dim-size2" src="assets/photos/j900-dim-size2.webp" shape="rect" fit="contain" placeholder="{{ jSizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.capJ900DimSize2 }}</figcaption></figure>
+      <figure style="margin:0"><div style="aspect-ratio:750/415;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-exploded" src="assets/photos/j900-exploded.webp" shape="rect" fit="contain" placeholder="Exploded view diagram" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblExploded }}</figcaption></figure>
+      <figure style="margin:0"><div style="aspect-ratio:750/1028;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-cross" src="assets/photos/j900-cross.webp" shape="rect" fit="contain" placeholder="Cross-section view" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblCross }}</figcaption></figure>
     </div>
   </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.lblFilm }}</div>
     <h2 style="margin:14px 0 32px;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djFilmT }}</h2>
-    <div style="position:relative;aspect-ratio:16/9;background:#1c1917;max-width:960px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-video" shape="rect" fit="cover" placeholder="Product film — thumbnail" hint-size="100%,100%"></x-import><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div style="width:78px;height:78px;border-radius:50%;background:rgba(19,17,16,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(235,230,221,.5)"><div style="width:0;height:0;border-left:22px solid #ebe6dd;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px"></div></div></div></div>
-    <a href="https://www.youtube.com/watch?v=AhsHoT9-STY&t=73s" target="_blank" rel="noopener" style="display:inline-block;margin-top:18px;font:600 13px Archivo,sans-serif;letter-spacing:.04em;color:#FE2A59" style-hover="color:#f06a2c">{{ t.djWatch }}</a>
+    <a href="https://www.youtube.com/watch?v=BCbsfXE4ivw&t=2s" target="_blank" rel="noopener" style="display:block;cursor:pointer"><div data-fitbox style="position:relative;aspect-ratio:1000/667;background:#1c1917;max-width:960px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-video" src="assets/photos/j900-video.webp" shape="rect" fit="cover" placeholder="Product film — thumbnail" hint-size="100%,100%"></x-import><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div style="width:78px;height:78px;border-radius:50%;background:rgba(19,17,16,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(235,230,221,.5)"><div style="width:0;height:0;border-left:22px solid #ebe6dd;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px"></div></div></div></div></a>
   </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.14)">
@@ -1859,6 +1859,7 @@ class Component extends DCLogic {
     const faqItems = faqData.map((it, i) => ({ q: it.q, a: it.a, open: faqOpen === i, mark: faqOpen === i ? '\u2212' : '+', toggle: () => this.setState({ faqOpen: this.state.faqOpen === i ? null : i }) }));
     const T = {
       "EN": {
+            "capJ900DimSize2": "GRILL SIZE CHART",
             "products": "PRODUCTS",
             "kitchens": "RESTAURANTS",
             "about": "ABOUT",
@@ -1982,7 +1983,7 @@ class Component extends DCLogic {
             "lblSizeChart": "SIZE CHART",
             "lblExploded": "EXPLODED VIEW",
             "lblCross": "CROSS-SECTION",
-            "lblFilm": "FILM",
+            "lblFilm": "VIDEO",
             "djExact": "Exact heat. Room to work.",
             "djGearEye": "GEAR-DRIVEN FIRE CONTROL",
             "djGearT": "Two gearboxes. Exact, repeatable heat.",
@@ -2023,7 +2024,7 @@ class Component extends DCLogic {
             "djKitB": "It begins as a drawing made for one kitchen and ends as the piece the whole room is built around.",
             "djWarrEye": "5-YEAR WARRANTY",
             "djWarrMade": "Backed by a 5-year warranty and a direct line to the people who made it.",
-            "djBurners": "{{ t.djBurners }}",
+            "djBurners": "One, two or three burners?",
             "djCtaSub": "Every J900 is built to order — dimensions, grate pattern and accessories matched to your kitchen and menu.",
             "faqTitle": "Questions, answered.",
             "faqSub": "Still unsure about a build, a size or shipping?",
@@ -2135,6 +2136,7 @@ class Component extends DCLogic {
             "fContact": "Contact"
       },
       "ES": {
+            "capJ900DimSize2": "GRILL SIZE CHART",
             "products": "PRODUCTOS",
             "kitchens": "RESTAURANTES",
             "about": "ESTUDIO",
@@ -2411,6 +2413,7 @@ class Component extends DCLogic {
             "fContact": "Contacto"
       },
       "ZH": {
+            "capJ900DimSize2": "GRILL SIZE CHART",
             "products": "产品",
             "kitchens": "合作餐厅",
             "about": "关于",
@@ -2687,6 +2690,7 @@ class Component extends DCLogic {
             "fContact": "联系"
       },
       "FR": {
+            "capJ900DimSize2": "GRILL SIZE CHART",
             "products": "PRODUITS",
             "kitchens": "RESTAURANTS",
             "about": "À PROPOS",
@@ -2810,7 +2814,7 @@ class Component extends DCLogic {
             "lblSizeChart": "PLAN COTÉ",
             "lblExploded": "VUE ÉCLATÉE",
             "lblCross": "COUPE",
-            "lblFilm": "FILM",
+            "lblFilm": "VIDÉO",
             "djExact": "Une chaleur exacte. De la place pour travailler.",
             "djGearEye": "CONTRÔLE DU FEU À ENGRENAGE",
             "djGearT": "Deux boîtiers d’engrenage. Une chaleur exacte et reproductible.",
@@ -2963,6 +2967,7 @@ class Component extends DCLogic {
             "fContact": "Contact"
       },
       "JA": {
+            "capJ900DimSize2": "GRILL SIZE CHART",
             "products": "製品",
             "kitchens": "導入レストラン",
             "about": "ブランド",

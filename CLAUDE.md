@@ -6,7 +6,7 @@ brand (asado / robata / smokers), targeting international professional-kitchen i
 This file briefs you (Claude Code) on how the project is built so you can make changes safely.
 
 Last verified against the build: **2026-08-18** (tag v1.14, commit `4be4ab5`,
-`index.html` 385,971 bytes).
+`index.html` 393,796 bytes).
 
 ---
 
@@ -222,11 +222,11 @@ home range strip), so edits must be made in both places.
 
 ## Photos — IMPORTANT
 
-Real photos live in **`assets/photos/`** (121 files) and videos in **`assets/video/`**
+Real photos live in **`assets/photos/`** (131 files) and videos in **`assets/video/`**
 (`reel-1.mp4` … `reel-11.mp4`).
 
-There are **67 `image-slot` slots**: **35 are filled** (they carry a `src=`) and
-**32 are still empty drop-zone placeholders** rendered by `image-slot.js` as labelled grey boxes.
+There are **69 `image-slot` slots**: **45 are filled** (they carry a `src=`) and
+**24 are still empty drop-zone placeholders** rendered by `image-slot.js` as labelled grey boxes.
 Every empty slot is on a product-detail page — the home, products, about and contact pages are
 fully illustrated.
 
@@ -240,14 +240,16 @@ A filled slot looks like this:
 ### To add / replace a photo
 1. Drop the image file into `assets/photos/` (webp or jpg; keep files small).
 2. Find the slot by its `id` and **add a `src="assets/photos/YOUR-FILE.webp"` attribute** to the
-   existing `<x-import>` tag — that is how all 35 filled slots are done. (Replacing the tag with a
+   existing `<x-import>` tag — that is how all 45 filled slots are done. (Replacing the tag with a
    plain `<img style="width:100%;height:100%;object-fit:cover;display:block">` also works.)
 3. To swap an existing photo, replace the file in `assets/photos/` (same name) or edit the `src`.
 4. For dimension drawings use `fit="contain"` rather than `cover`.
 
-### Empty slots still needing photos (32)
-- **J900 detail** (8): `j900-build1`, `j900-build2`, `j900-q1`, `j900-q2`, `j900-dim-size`,
-  `j900-exploded`, `j900-cross`, `j900-video`
+### Empty slots still needing photos (24)
+
+**J900 is finished** — all 13 of its slots carry a photo, including two added with the tool
+(`j900-dim-size2`, `j900-build3`). Only the two LGY pages are left.
+
 - **LGY_610 detail** (13): `lgy-hero`, `lgy-d1`, `lgy-d2`, `lgy-d3`, `lgy610-smoke`, `lgy610-q1`,
   `lgy610-q2`, `lgy610-dim-size`, `lgy610-dim-height`, `lgy610-exploded`, `lgy610-cross`,
   `lgy610-video`, `lgy610-chef`
@@ -314,6 +316,46 @@ Image `alt`: `<image-slot>` takes an `alt` attribute (added to the component's
 `renderVals()`; the six family tiles are intentionally left with empty alt because they sit
 inside links that already carry a visible text label.
 
+
+## Tooling — local only, never shipped
+
+Both live in `scripts/`, which the deploy rsync already excludes, so neither can reach
+production and there is no switch to remember to flip before a release.
+
+```bash
+node scripts/dev-server.mjs      # http://localhost:8123 — the site
+node scripts/photo-tool.mjs      # http://localhost:8130 — fill photo slots
+```
+
+**`dev-server.mjs`** exists for one reason: the SPA fallback. The real routes
+(`/products/lga-j900-t/`, `/restaurants/` …) are directories that only exist after
+`build-static-pages.mjs` runs at release time, so `python -m http.server` 404s on every one of
+them. Here any path that names no file is answered with `index.html` and `pageFromUrl()` routes
+it — the same thing production does. Paths that end in an extension still 404, so a genuinely
+missing asset stays visible.
+
+**`photo-tool.mjs`** drops a photo into a slot: the browser resizes to 1200px and encodes WebP
+(canvas `toBlob`, so the tool needs no dependencies), the server writes
+`assets/photos/<slot-id>.webp` and patches the slot's `src=` in `index.html`. The result is an
+ordinary filled slot — no sidecar, nothing to undo. Per card it also offers:
+
+- **caption** — writes a `cap*` key seeded into all five languages, not an English literal, so
+  the five-language invariant holds. Blank removes the caption and drops the key.
+- **frame 4–16%** (contain slots) — white padding around a drawing that sits too tight. A
+  percentage, because vertical padding resolves against the width, which is what makes the
+  frame even on all four sides. The `aspect-ratio` is recomputed so nothing letterboxes.
+- **no crop** — pins the box's `aspect-ratio` to the photo's own and marks it `data-fitbox` so a
+  later drop keeps the promise. Opt-in per slot: most cover slots crop to a designed shape on
+  purpose (the build photos are a 4/5 column, the wide shot 21/9).
+- **+ / −** — add or remove a slot. It clones the whole wrapper LINE, not the `<x-import>`:
+  every slot line is self-contained, and cloning just the tag nests the copy inside the
+  original's box where it never becomes a new cell.
+
+`image-slot.js`'s own drop handling does **not** work here — it persists through
+`window.omelette.writeFile`, which only exists inside that component's host runtime. Its header
+says as much: "Outside the omelette runtime the slot is read-only." That is why this tool
+writes real files instead.
+
 ## Deploy
 Static, no build step. `index.html` is the entry point.
 
@@ -342,17 +384,18 @@ Requires repository secrets `CLOUDFLARE_API_TOKEN` (permission `Workers Scripts:
 account, **expires 2027-08-01**) and `CLOUDFLARE_ACCOUNT_ID`.
 
 ## Open items
-- **32 empty photo slots on the three detail pages** (list above) — the biggest remaining gap.
+- **24 empty photo slots on the two LGY detail pages** (list above) — the biggest remaining gap.
+  J900 is done. Fill them with `node scripts/photo-tool.mjs` (see Tooling).
 - **Inquiry form is already wired — do not "add a backend".** `submit()` POSTs to
   `https://lamsturn-inquiry-collector.kimin-271.workers.dev/inquiries` behind Cloudflare
   Turnstile (sitekey `0x4AAAAAAEAkTMbGgp3JtTQi`), and sends the multi-model inquiry list the
   product cards accumulate in `localStorage` under `lamsturn-inq`. Reachability verified
   2026-08-18 (CORS preflight → 204). What remains open is **email delivery** of what the
   collector stores.
-- **Broken link:** the J900 detail page "TECH SHEET (PDF)" button (line ~744) points to
-  `uploads/26_LGA_J900_T_technical%20sheet%20share.pdf`, but there is no `uploads/` folder in the
-  bundle. Re-confirmed 404 in production on 2026-08-18. Either add the folder + PDF or remove
-  the button.
+- ~~J900 tech-sheet PDF 404~~ — **fixed 2026-08-19.** The owner supplied the file; it now
+  lives at `uploads/26_LGA_J900_T_technical sheet share.pdf` (420 KB). `uploads/` is not in the
+  deploy exclusion list, so it ships. The button's href is relative but `index.html` carries
+  `<base href="/">`, so it resolves to `/uploads/…` from a product route too.
 - **`SEO_ORIGIN` swap to the workers.dev origin** — agreed 2026-08-18, not started. Three files:
   `index.html`, `scripts/build-static-pages.mjs`, `robots.txt` (see the Origin note in SEO).
 - **Four product cards have no hover (second) photo**: `LGA_W1600_T`, `LOW_800_S`,
