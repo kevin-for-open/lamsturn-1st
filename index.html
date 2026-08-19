@@ -92,7 +92,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
 .lam-icon:hover .lam-cluster{transform:scale(1.09)}
 @media (max-width:900px){[data-r2]{grid-template-columns:minmax(0,1fr)!important}[data-r2]>*{border-left:none!important;border-right:none!important;min-width:0!important}[data-r2]>[data-col2]{grid-column:1!important}[data-rimg]{min-height:360px!important}}
 @media (max-width:1020px){[data-hide-sm]{display:none!important}[data-show-sm]{display:flex!important}}
-@media (max-width:760px){[data-hdr]{padding:14px 20px!important;gap:10px}[data-herocta]{flex-wrap:nowrap!important}[data-herocta]>a{flex:1 1 0;text-align:center;padding-left:8px!important;padding-right:8px!important;white-space:nowrap}[data-heroband]{display:grid!important;grid-template-columns:1fr 1fr;align-content:center;align-items:start!important;row-gap:14px;column-gap:18px}[data-heroband]>div{flex:none!important}[data-heroband] span{font-size:11.5px!important}[data-herodots]{top:24px!important;bottom:auto!important;right:20px!important;gap:6px!important}[data-herodots] a span:first-child{width:22px!important}[data-khead]{display:none!important}[data-krow]{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:5px!important}[data-krow]>span:first-child{flex-wrap:wrap!important;gap:5px 8px!important}[data-krow]>span:first-child>a{flex:0 0 100%!important}[data-wrow]{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:5px!important}}
+@media (max-width:760px){[data-hdr]{padding:14px 20px!important;gap:10px}[data-herocta]{flex-wrap:nowrap!important}[data-herocta]>a{flex:1 1 0;text-align:center;padding-left:8px!important;padding-right:8px!important;white-space:nowrap}[data-heroband]{display:grid!important;grid-template-columns:1fr 1fr;align-content:center;align-items:start!important;row-gap:14px;column-gap:18px}[data-heroband]>div{flex:none!important}[data-heroband] span{font-size:11.5px!important}[data-herodots]{top:24px!important;bottom:auto!important;right:20px!important;gap:6px!important}[data-herodots] a span:first-child{width:22px!important}[data-khead]{display:none!important}[data-krow]{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:5px!important}[data-krow]>span:first-child{flex-wrap:wrap!important;gap:5px 8px!important}[data-krow]>span:first-child>a{flex:0 0 100%!important}[data-band]{height:48vh!important;min-height:0!important}[data-wrow]{display:flex!important;flex-direction:column;align-items:flex-start!important;gap:5px!important}}
 @media (max-width:1100px){[data-inqlabel]{display:none!important}}
 @media (max-width:760px){[data-cmpgrid]{min-width:640px!important}[data-cmpwrap]{overflow-x:auto!important;padding-bottom:8px}}
 @media (max-width:760px){[data-reelviewport]{padding-left:clamp(20px,5vw,48px)!important;padding-right:clamp(20px,5vw,48px)!important}[data-reeltrack]{min-width:1220px!important}}
@@ -782,7 +782,25 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="position:relative;min-height:520px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-d2" src="assets/photos/j900-d2.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
   </section>
 
-  <section style="position:relative;height:82vh;min-height:540px">
+
+  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));background:#ece7de;color:#131110">
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#b3502a">{{ t.djSizeEye }}</div>
+    <h2 style="margin:12px 0 0;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em;color:#131110">{{ t.djSizeT }}</h2>
+    <p style="margin:14px 0 0;font:400 12px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);letter-spacing:.04em">{{ t.djDims }}</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:36px">
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:1000/842;padding:4%;box-sizing:border-box;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-dim-size" src="assets/photos/j900-dim-size.webp" shape="rect" fit="contain" placeholder="{{ jSizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:1000/448;padding:4%;box-sizing:border-box;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-dim-size2" src="assets/photos/j900-dim-size2.webp" shape="rect" fit="contain" placeholder="{{ jSizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.capJ900DimSize2 }}</figcaption></figure>
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:750/415;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-exploded" src="assets/photos/j900-exploded.webp" shape="rect" fit="contain" placeholder="Exploded view diagram" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblExploded }}</figcaption></figure>
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:750/1028;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-cross" src="assets/photos/j900-cross.webp" shape="rect" fit="contain" placeholder="Cross-section view" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblCross }}</figcaption></figure>
+    </div>
+  </section>
+
+  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.lblFilm }}</div>
+    <h2 style="margin:14px 0 32px;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djFilmT }}</h2>
+    <a href="https://www.youtube.com/watch?v=BCbsfXE4ivw&t=2s" target="_blank" rel="noopener" style="display:block;cursor:pointer"><div data-fitbox style="position:relative;aspect-ratio:1000/667;background:#1c1917;max-width:960px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-video" src="assets/photos/j900-video.webp" shape="rect" fit="cover" placeholder="Product film — thumbnail" hint-size="100%,100%"></x-import><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div style="width:78px;height:78px;border-radius:50%;background:rgba(19,17,16,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(235,230,221,.5)"><div style="width:0;height:0;border-left:22px solid #ebe6dd;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px"></div></div></div></div></a>
+  </section>
+  <section data-band style="position:relative;height:82vh;min-height:540px">
     <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-q1" src="assets/photos/j900-q1.webp" shape="rect" fit="cover" placeholder="More than a grill — the finished piece" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:rgba(19,17,16,.5)"></div>
     <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
@@ -803,24 +821,6 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     </div>
   </section>
 
-  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));background:#ece7de;color:#131110">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#b3502a">{{ t.djSizeEye }}</div>
-    <h2 style="margin:12px 0 0;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em;color:#131110">{{ t.djSizeT }}</h2>
-    <p style="margin:14px 0 0;font:400 12px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);letter-spacing:.04em">{{ t.djDims }}</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:36px">
-      <figure style="margin:0"><div style="aspect-ratio:1000/842;padding:4%;box-sizing:border-box;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-dim-size" src="assets/photos/j900-dim-size.webp" shape="rect" fit="contain" placeholder="{{ jSizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
-      <figure style="margin:0"><div style="aspect-ratio:1000/448;padding:4%;box-sizing:border-box;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-dim-size2" src="assets/photos/j900-dim-size2.webp" shape="rect" fit="contain" placeholder="{{ jSizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.capJ900DimSize2 }}</figcaption></figure>
-      <figure style="margin:0"><div style="aspect-ratio:750/415;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-exploded" src="assets/photos/j900-exploded.webp" shape="rect" fit="contain" placeholder="Exploded view diagram" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblExploded }}</figcaption></figure>
-      <figure style="margin:0"><div style="aspect-ratio:750/1028;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-cross" src="assets/photos/j900-cross.webp" shape="rect" fit="contain" placeholder="Cross-section view" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblCross }}</figcaption></figure>
-    </div>
-  </section>
-
-  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.lblFilm }}</div>
-    <h2 style="margin:14px 0 32px;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djFilmT }}</h2>
-    <a href="https://www.youtube.com/watch?v=BCbsfXE4ivw&t=2s" target="_blank" rel="noopener" style="display:block;cursor:pointer"><div data-fitbox style="position:relative;aspect-ratio:1000/667;background:#1c1917;max-width:960px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="j900-video" src="assets/photos/j900-video.webp" shape="rect" fit="cover" placeholder="Product film — thumbnail" hint-size="100%,100%"></x-import><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none"><div style="width:78px;height:78px;border-radius:50%;background:rgba(19,17,16,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;border:1px solid rgba(235,230,221,.5)"><div style="width:0;height:0;border-left:22px solid #ebe6dd;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px"></div></div></div></div></a>
-  </section>
-
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));border-top:1px solid rgba(235,230,221,.14)">
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djPromEye }}</div>
     <h2 style="margin:14px 0 0;max-width:16ch;font:600 clamp(30px,5vw,60px)/1.03 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djPromT }}</h2>
@@ -829,8 +829,6 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
       <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djShipEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djShipB }}</p></div>
       <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djCustEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djCustB }}</p></div>
       <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djChefEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djChefB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djKitEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djKitB }}</p></div>
-      <div style="padding:24px 0;border-top:1px solid rgba(235,230,221,.16)"><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:10px">{{ t.djWarrEye }}</div><p style="margin:0;font:400 14px/1.65 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djWarrMade }}</p></div>
     </div>
   </section>
 
@@ -865,7 +863,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <p style="margin:28px 0 0;max-width:62ch;font:400 clamp(16px,1.5vw,19px)/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.y6Intro }}</p>
   </section>
 
-  <section style="position:relative;height:80vh;min-height:520px">
+  <section data-band style="position:relative;height:80vh;min-height:520px">
     <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy-d1" shape="rect" fit="cover" placeholder="The classic counter — skewers over binchotan" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 26%,rgba(19,17,16,0) 46%,rgba(19,17,16,.88) 92%);pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:8%;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
@@ -894,36 +892,16 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="position:relative;min-height:520px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-smoke" shape="rect" fit="cover" placeholder="Grill with smoking lid + thermometer" hint-size="100%,100%"></x-import></div>
   </section>
 
-  <section style="position:relative;height:82vh;min-height:540px">
-    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-q1" shape="rect" fit="cover" placeholder="More than a grill — the finished piece" hint-size="100%,100%"></x-import></div>
-    <div style="position:absolute;inset:0;background:rgba(19,17,16,.5)"></div>
-    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.djQualEye }}</div>
-      <h2 style="margin:16px 0 0;max-width:15ch;font:600 clamp(32px,5.4vw,68px)/1.03 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djQualT }}</h2>
-      <p style="margin:20px 0 0;max-width:52ch;font:400 clamp(15px,1.4vw,17px)/1.7 Archivo,sans-serif;color:rgba(235,230,221,.78)">{{ t.djQualB }}</p>
-    </div>
-  </section>
-
-  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djCraftEye }}</div>
-    <h2 style="margin:14px 0 0;font:600 clamp(32px,5.2vw,64px)/1.02 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djCraftT }}</h2>
-    <div style="aspect-ratio:21/9;background:#1c1917;margin-top:40px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-q2" shape="rect" fit="cover" placeholder="The Korean workshop — one master per grill" hint-size="100%,100%"></x-import></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px 44px;margin-top:48px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djPremEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyMadeKorea }}</p></div>
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djOneEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djOneB }}</p></div>
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.dyTrustEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyTrustB }}</p></div>
-    </div>
-  </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));background:#ece7de;color:#131110">
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#b3502a">{{ t.djSizeEye }}</div>
     <h2 style="margin:12px 0 0;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em;color:#131110">{{ t.djSizeT }}</h2>
     <p style="margin:14px 0 0;font:400 12px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);letter-spacing:.04em">{{ t.dyDims610 }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:36px">
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-dim-size" shape="rect" fit="contain" placeholder="{{ l6SizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-dim-height" shape="rect" fit="contain" placeholder="Charcoal support / resting grill — height by level" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblHeightByLevel }}</figcaption></figure>
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-exploded" shape="rect" fit="contain" placeholder="Exploded view diagram" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblExploded }}</figcaption></figure>
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-cross" shape="rect" fit="contain" placeholder="Cross-section view" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblCross }}</figcaption></figure>
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-dim-size" shape="rect" fit="contain" placeholder="{{ l6SizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-dim-height" shape="rect" fit="contain" placeholder="Charcoal support / resting grill — height by level" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblHeightByLevel }}</figcaption></figure>
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-exploded" shape="rect" fit="contain" placeholder="Exploded view diagram" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblExploded }}</figcaption></figure>
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-cross" shape="rect" fit="contain" placeholder="Cross-section view" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblCross }}</figcaption></figure>
     </div>
     <div style="max-width:640px;margin-top:44px;font:400 12px 'IBM Plex Mono',monospace;color:#131110">
       <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblD300Overall }}</span><span>{{ l6D300 }}</span></div>
@@ -956,6 +934,26 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#FE2A59;margin-bottom:14px">{{ t.lblOnNetflix }}</div>
         <p style="margin:0;font:400 clamp(17px,1.8vw,22px)/1.55 Archivo,sans-serif;color:rgba(235,230,221,.82)">{{ t.dyNetflixPre }} <strong style="color:#ebe6dd;font-weight:600">Yoo Yong-wook</strong> of <strong style="color:#ebe6dd;font-weight:600">IMOK Smoke Dining</strong> {{ t.dyMichelinFeat }} <em>Culinary Class Wars 2</em>.</p>
       </div>
+    </div>
+  </section>
+  <section data-band style="position:relative;height:82vh;min-height:540px">
+    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-q1" shape="rect" fit="cover" placeholder="More than a grill — the finished piece" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0;background:rgba(19,17,16,.5)"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.djQualEye }}</div>
+      <h2 style="margin:16px 0 0;max-width:15ch;font:600 clamp(32px,5.4vw,68px)/1.03 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djQualT }}</h2>
+      <p style="margin:20px 0 0;max-width:52ch;font:400 clamp(15px,1.4vw,17px)/1.7 Archivo,sans-serif;color:rgba(235,230,221,.78)">{{ t.djQualB }}</p>
+    </div>
+  </section>
+
+  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djCraftEye }}</div>
+    <h2 style="margin:14px 0 0;font:600 clamp(32px,5.2vw,64px)/1.02 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djCraftT }}</h2>
+    <div style="aspect-ratio:21/9;background:#1c1917;margin-top:40px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy610-q2" shape="rect" fit="cover" placeholder="The Korean workshop — one master per grill" hint-size="100%,100%"></x-import></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px 44px;margin-top:48px">
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djPremEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyMadeKorea }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djOneEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djOneB }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.dyTrustEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyTrustB }}</p></div>
     </div>
   </section>
 
@@ -1003,7 +1001,7 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <p style="margin:28px 0 0;max-width:62ch;font:400 clamp(16px,1.5vw,19px)/1.7 Archivo,sans-serif;color:rgba(235,230,221,.62)">{{ t.y8Intro }}</p>
   </section>
 
-  <section style="position:relative;height:80vh;min-height:520px">
+  <section data-band style="position:relative;height:80vh;min-height:520px">
     <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-d1" src="assets/photos/lgy840-d1.webp" shape="rect" fit="cover" hint-size="100%,100%"></x-import></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,17,16,.5) 0%,rgba(19,17,16,0) 26%,rgba(19,17,16,0) 46%,rgba(19,17,16,.88) 92%);pointer-events:none"></div>
     <div style="position:absolute;left:0;right:0;bottom:8%;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
@@ -1032,36 +1030,16 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
     <div style="position:relative;min-height:520px;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-smoke" shape="rect" fit="cover" placeholder="Grill with smoking lid + thermometer" hint-size="100%,100%"></x-import></div>
   </section>
 
-  <section style="position:relative;height:82vh;min-height:540px">
-    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-q1" shape="rect" fit="cover" placeholder="More than a grill — the finished piece" hint-size="100%,100%"></x-import></div>
-    <div style="position:absolute;inset:0;background:rgba(19,17,16,.5)"></div>
-    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.djQualEye }}</div>
-      <h2 style="margin:16px 0 0;max-width:15ch;font:600 clamp(32px,5.4vw,68px)/1.03 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djQualT }}</h2>
-      <p style="margin:20px 0 0;max-width:52ch;font:400 clamp(15px,1.4vw,17px)/1.7 Archivo,sans-serif;color:rgba(235,230,221,.78)">{{ t.djQualB }}</p>
-    </div>
-  </section>
-
-  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
-    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djCraftEye }}</div>
-    <h2 style="margin:14px 0 0;font:600 clamp(32px,5.2vw,64px)/1.02 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djCraftT }}</h2>
-    <div style="aspect-ratio:21/9;background:#1c1917;margin-top:40px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-q2" shape="rect" fit="cover" placeholder="The Korean workshop — one master per grill" hint-size="100%,100%"></x-import></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px 44px;margin-top:48px">
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djPremEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyMadeKorea }}</p></div>
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djOneEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djOneB }}</p></div>
-      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.dyTrustEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyTrustB }}</p></div>
-    </div>
-  </section>
 
   <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2));background:#ece7de;color:#131110">
     <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#b3502a">{{ t.djSizeEye }}</div>
     <h2 style="margin:12px 0 0;font:600 clamp(28px,4.6vw,54px)/1.04 Archivo,sans-serif;letter-spacing:-.025em;color:#131110">{{ t.djSizeT }}</h2>
     <p style="margin:14px 0 0;font:400 12px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);letter-spacing:.04em">{{ t.dyDims840 }}</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin-top:36px">
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-dim-size" shape="rect" fit="contain" placeholder="{{ l8SizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-dim-height" shape="rect" fit="contain" placeholder="Charcoal support / resting grill — height by level" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblHeightByLevel }}</figcaption></figure>
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-exploded" shape="rect" fit="contain" placeholder="Exploded view diagram" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblExploded }}</figcaption></figure>
-      <figure style="margin:0"><div style="aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-cross" shape="rect" fit="contain" placeholder="Cross-section view" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblCross }}</figcaption></figure>
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-dim-size" shape="rect" fit="contain" placeholder="{{ l8SizePlaceholder }}" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblSizeChart }}</figcaption></figure>
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-dim-height" shape="rect" fit="contain" placeholder="Charcoal support / resting grill — height by level" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblHeightByLevel }}</figcaption></figure>
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-exploded" shape="rect" fit="contain" placeholder="Exploded view diagram" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblExploded }}</figcaption></figure>
+      <figure style="margin:0"><div data-zoom style="cursor:zoom-in;aspect-ratio:4/3;background:#fff"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-cross" shape="rect" fit="contain" placeholder="Cross-section view" hint-size="100%,100%"></x-import></div><figcaption style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(19,17,16,.55);margin-top:10px;letter-spacing:.06em">{{ t.lblCross }}</figcaption></figure>
     </div>
     <div style="max-width:640px;margin-top:44px;font:400 12px 'IBM Plex Mono',monospace;color:#131110">
       <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid rgba(19,17,16,.16)"><span style="color:rgba(19,17,16,.5)">{{ t.lblD300Overall }}</span><span>{{ l8D300 }}</span></div>
@@ -1094,6 +1072,26 @@ input,select,textarea{font-family:Archivo,system-ui,sans-serif}
         <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#FE2A59;margin-bottom:14px">{{ t.lblOnNetflix }}</div>
         <p style="margin:0;font:400 clamp(17px,1.8vw,22px)/1.55 Archivo,sans-serif;color:rgba(235,230,221,.82)">{{ t.dyNetflixPre }} <strong style="color:#ebe6dd;font-weight:600">Yoo Yong-wook</strong> of <strong style="color:#ebe6dd;font-weight:600">IMOK Smoke Dining</strong> {{ t.dyMichelinFeat }} <em>Culinary Class Wars 2</em>.</p>
       </div>
+    </div>
+  </section>
+  <section data-band style="position:relative;height:82vh;min-height:540px">
+    <div style="position:absolute;inset:0;background:#1c1917"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-q1" shape="rect" fit="cover" placeholder="More than a grill — the finished piece" hint-size="100%,100%"></x-import></div>
+    <div style="position:absolute;inset:0;background:rgba(19,17,16,.5)"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
+      <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:rgba(235,230,221,.5)">{{ t.djQualEye }}</div>
+      <h2 style="margin:16px 0 0;max-width:15ch;font:600 clamp(32px,5.4vw,68px)/1.03 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djQualT }}</h2>
+      <p style="margin:20px 0 0;max-width:52ch;font:400 clamp(15px,1.4vw,17px)/1.7 Archivo,sans-serif;color:rgba(235,230,221,.78)">{{ t.djQualB }}</p>
+    </div>
+  </section>
+
+  <section style="padding:clamp(72px,10vh,130px) max(clamp(20px,5vw,48px), calc((100% - 1280px) / 2))">
+    <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.2em;color:#FE2A59">{{ t.djCraftEye }}</div>
+    <h2 style="margin:14px 0 0;font:600 clamp(32px,5.2vw,64px)/1.02 Archivo,sans-serif;letter-spacing:-.025em">{{ t.djCraftT }}</h2>
+    <div style="aspect-ratio:21/9;background:#1c1917;margin-top:40px"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="lgy840-q2" shape="rect" fit="cover" placeholder="The Korean workshop — one master per grill" hint-size="100%,100%"></x-import></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px 44px;margin-top:48px">
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djPremEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyMadeKorea }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.djOneEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.djOneB }}</p></div>
+      <div><div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#FE2A59;margin-bottom:12px">{{ t.dyTrustEye }}</div><p style="margin:0;font:400 14px/1.7 Archivo,sans-serif;color:rgba(235,230,221,.66)">{{ t.dyTrustB }}</p></div>
     </div>
   </section>
 
@@ -1428,6 +1426,44 @@ class Component extends DCLogic {
     return codes.map((code) => { const name = names ? names.of(code) : code; return { value: name || code, label: name || code }; });
   }
   goSec(id) { this.setState({ page: 'products', menu: false, depthPopup: null }); this.syncSeo('products'); let n = 0; const seek = () => { const el = document.getElementById(id); if (el) { const y = el.getBoundingClientRect().top + window.pageYOffset - 112; try { window.scrollTo(0, Math.max(0, y)); } catch(e) {} } else if (n++ < 20) { setTimeout(seek, 50); } }; try { window.history.pushState({ product: 'products' }, '', this.urlForPage('products')); window.scrollTo(0, 0); } catch(e) {} setTimeout(seek, 60); }
+  initDiagramZoom() {
+    // Size charts, exploded views and cross-sections are drawings — people need to read the
+    // numbers on them, and at ~380px in the grid they cannot. Click one and it opens full
+    // screen at its natural size.
+    //
+    // Wired at document level for the same reason initHoverPhotos is: the DC runtime replaces
+    // these nodes on every re-render, so a listener bound to the elements themselves would be
+    // dropped. The picture lives inside <image-slot>'s shadow root, but the src is on the host
+    // element's attribute, so the overlay reads it from there rather than piercing the shadow.
+    if (this._zoom) return;
+    this._zoom = true;
+    document.addEventListener('click', (e) => {
+      const hit = e.target.closest && e.target.closest('[data-zoom]');
+      if (!hit) return;
+      const slot = hit.querySelector('image-slot') || hit.querySelector('[src]');
+      const src = slot && slot.getAttribute('src');
+      if (!src) return;                       // an empty slot has nothing to enlarge
+      e.preventDefault();
+      const ov = document.createElement('div');
+      ov.setAttribute('data-zoomview', '');
+      ov.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(19,17,16,.94);' +
+        'display:flex;overflow:auto;padding:24px;cursor:zoom-out;-webkit-overflow-scrolling:touch';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = '';
+      // Natural size, and the overlay scrolls when that overflows. Capping the image to the
+      // viewport would defeat the point on a phone, where the grid already shows it at ~335px
+      // and "zoom" would hand back the same 327px. margin:auto centres it while it fits and
+      // still lets it overflow both ways once it does not.
+      img.style.cssText = 'max-width:none;margin:auto;background:#fff;flex:none';
+      ov.appendChild(img);
+      const close = () => { ov.remove(); document.removeEventListener('keydown', onKey); };
+      const onKey = (k) => { if (k.key === 'Escape') close(); };
+      ov.addEventListener('click', close);
+      document.addEventListener('keydown', onKey);
+      document.body.appendChild(ov);
+    });
+  }
   initHoverPhotos() {
     // Hover swap is wired at document level so it survives template re-renders; hover-less (touch) devices keep photo 1.
     if (this._hoverPhotos || !(window.matchMedia && window.matchMedia('(hover: hover)').matches)) return;
@@ -1440,7 +1476,7 @@ class Component extends DCLogic {
     document.addEventListener('mouseout', (e) => { const slot = slotOf(e.target); if (!slot || !alt[slot.id]) return; if (slotOf(e.relatedTarget) === slot) return; if (slot.getAttribute('src') !== base[slot.id]) slot.setAttribute('src', base[slot.id]); });
   }
   componentDidMount() {
-    this.startTimer(); this.initMap(); this.initHoverPhotos();
+    this.startTimer(); this.initMap(); this.initHoverPhotos(); this.initDiagramZoom();
     const linkedPage = this.pageFromUrl();
     if (linkedPage) {
       this.setState({ page: linkedPage });
@@ -2023,7 +2059,6 @@ class Component extends DCLogic {
             "djKitEye": "BUILT FOR YOUR KITCHEN",
             "djKitB": "It begins as a drawing made for one kitchen and ends as the piece the whole room is built around.",
             "djWarrEye": "5-YEAR WARRANTY",
-            "djWarrMade": "Backed by a 5-year warranty and a direct line to the people who made it.",
             "djBurners": "One, two or three burners?",
             "djCtaSub": "Every J900 is built to order — dimensions, grate pattern and accessories matched to your kitchen and menu.",
             "faqTitle": "Questions, answered.",
@@ -2300,7 +2335,6 @@ class Component extends DCLogic {
             "djKitEye": "HECHA PARA TU COCINA",
             "djKitB": "Empieza como un dibujo hecho para una cocina y termina como la pieza en torno a la cual se construye toda la sala.",
             "djWarrEye": "GARANTÍA DE 5 AÑOS",
-            "djWarrMade": "Respaldada por una garantía de 5 años y una línea directa con quienes la fabricaron.",
             "djBurners": "¿Uno, dos o tres quemadores?",
             "djCtaSub": "Cada J900 se fabrica por encargo — dimensiones, patrón de parrilla y accesorios ajustados a tu cocina y tu menú.",
             "faqTitle": "Preguntas, respondidas.",
@@ -2577,7 +2611,6 @@ class Component extends DCLogic {
             "djKitEye": "为你的厨房而造",
             "djKitB": "它始于为一间厨房而绘的图纸，最终成为整个空间围绕而建的核心。",
             "djWarrEye": "5 年质保",
-            "djWarrMade": "享 5 年质保，并可直接联系亲手打造它的人。",
             "djBurners": "一个、两个还是三个火口？",
             "djCtaSub": "每台 J900 均按单打造 —— 尺寸、炉栅样式与配件皆依你的厨房与菜单而定。",
             "faqTitle": "问题，一一解答。",
@@ -2854,7 +2887,6 @@ class Component extends DCLogic {
             "djKitEye": "CONÇU POUR VOTRE CUISINE",
             "djKitB": "Cela commence par un dessin fait pour une cuisine et finit comme la pièce autour de laquelle toute la salle est construite.",
             "djWarrEye": "GARANTIE 5 ANS",
-            "djWarrMade": "Soutenu par une garantie de 5 ans et une ligne directe avec ceux qui l’ont fabriqué.",
             "djBurners": "Un, deux ou trois foyers ?",
             "djCtaSub": "Chaque J900 est fabriqué sur commande — dimensions, motif de grille et accessoires adaptés à votre cuisine et votre menu.",
             "faqTitle": "Vos questions, nos réponses.",
@@ -3131,7 +3163,6 @@ class Component extends DCLogic {
             "djKitEye": "あなたの厨房のために",
             "djKitB": "ひとつの厨房のために描かれた図面として始まり、やがて部屋全体がそれを中心に構成される一台になります。",
             "djWarrEye": "5 年保証",
-            "djWarrMade": "5 年保証と、つくった本人へ直接つながる窓口が支えます。",
             "djBurners": "火口はひとつ、ふたつ、それとも三つ？",
             "djCtaSub": "各 J900 は受注生産 — 寸法、グレートのパターン、付属品をあなたの厨房とメニューに合わせて。",
             "faqTitle": "よくある質問。",
