@@ -297,8 +297,8 @@ a{color:inherit;text-decoration:none}a:hover{color:#FE2A59}
     var el = document.getElementById('lam-map-preview');
     map = L.map(el, { scrollWheelZoom: false, worldCopyJump: true });
     map.setView([20, 10], 2);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-      { attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19 }).addTo(map);
+    L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png?key=cb1_44au_1_ddcf2742d6cf1096dfe3ed2b',
+      { attribution: '&copy; OpenStreetMap contributors, &copy; <a href="https://carto.com/attributions/">CARTO</a>', maxZoom: 19 }).addTo(map);
 
     var batch = [];
     D.forEach(function (d) {

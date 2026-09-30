@@ -1674,7 +1674,7 @@ class Component extends DCLogic {
     // is deferred and the cluster group has no ._map when refreshMarkers starts adding markers.
     // refreshMarkers' own fitBounds replaces this straight away.
     m.setView([20, 10], 2);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19 }).addTo(m);
+    L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png?key=cb1_44au_1_ddcf2742d6cf1096dfe3ed2b', { attribution: '&copy; OpenStreetMap contributors, &copy; <a href="https://carto.com/attributions/">CARTO</a>', maxZoom: 19 }).addTo(m);
     this._map = m;
     this._lastKf = this.state.kf || 'all';
     this.refreshMarkers(true);
@@ -1725,7 +1725,7 @@ class Component extends DCLogic {
     }
     const m = L.map(el, { scrollWheelZoom: false, worldCopyJump: true });
     m.setView([20, 10], 2);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19 }).addTo(m);
+    L.tileLayer('https://basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png?key=cb1_44au_1_ddcf2742d6cf1096dfe3ed2b', { attribution: '&copy; OpenStreetMap contributors, &copy; <a href="https://carto.com/attributions/">CARTO</a>', maxZoom: 19 }).addTo(m);
     this._homeMap = m;
     const pts = [], batch = [];
     this.installs().forEach(k => {
